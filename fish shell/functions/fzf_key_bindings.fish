@@ -1,0 +1,1 @@
+/home/suofeiya/.fzf/shell/key-bindings.fish
