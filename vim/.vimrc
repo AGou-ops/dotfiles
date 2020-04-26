@@ -48,7 +48,18 @@ autocmd BufNewFile * normal G
 " ========     
 
 colorscheme onedark
+" colorscheme one
+" set background=dark " for the dark version
+" let g:one_allow_italics = 1 " I love italic for comments
 syntax enable
+" set background=dark
+" colorscheme solarized
+" let g:airline_theme='one'
+" set background=dark
+" colorscheme solarized
+
+let g:onedark_termcolors=256
+
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -123,7 +134,7 @@ endif
 set autoindent
 set smartindent
 set smarttab
-set shiftwidth=2
+set shiftwidth=4
 set softtabstop=2
 set tabstop=2
 set expandtab
@@ -176,5 +187,5 @@ set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
 " ================ Custom Settings ========================
-so ~/.yadr/vim/settings.vim
+" so /.yadr/vim/settings.vim
 
