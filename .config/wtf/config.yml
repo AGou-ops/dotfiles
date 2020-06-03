@@ -24,7 +24,7 @@ wtf:
   mods:
     # You can have multiple widgets of the same type.
     # The "key" is the name of the widget and the type is the actual
-    # widget you want to implement. 
+    # widget you want to implement.
     digitalclock:
       color: red
       enabled: true

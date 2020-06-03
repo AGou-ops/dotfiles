@@ -1,0 +1,13 @@
+items:
+- checked: false
+  checkedicon: x
+  text: Ctrl-k Move the selected item up the list
+  uncheckedicon: ' '
+- checked: false
+  checkedicon: x
+  text: Ctrl-j Move the selected item down the list
+  uncheckedicon: ' '
+- checked: false
+  checkedicon: x
+  text: Ctrl-d  Delete the selected item
+  uncheckedicon: ' '
