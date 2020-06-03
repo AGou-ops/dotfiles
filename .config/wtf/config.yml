@@ -1,0 +1,186 @@
+wtf:
+  colors:
+    background: black
+    border:
+      focusable: darkslateblue
+      focused: orange
+      normal: gray
+    checked: yellow
+    highlight: 
+      fore: black
+      back: gray
+    rows:
+      even: yellow
+      odd: white
+  grid:
+    # How _wide_ the columns are, in terminal characters. In this case we have
+    # four columns, each of which are 35 characters wide.
+    columns: [55, 35, 35, 55]
+    # How _high_ the rows are, in terminal lines. In this case we have four rows
+    # that support ten line of text and one of four.
+    rows: [10, 10, 10, 10, 4]
+  refreshInterval: 1
+  openFileUtil: "open"
+  mods:
+    # You can have multiple widgets of the same type.
+    # The "key" is the name of the widget and the type is the actual
+    # widget you want to implement.
+    digitalclock:
+      color: red
+      enabled: true
+      font: digitalfont
+      hourFormat: 24
+      position:
+        top: 0
+        left: 0
+        height: 1
+        width: 1
+      refreshInterval: 1
+      title: "big clock"
+      type: "digitalclock"
+    world_time:
+      title: "World Time"
+      type: clocks
+      colors:
+        rows:
+          even: "lightblue"
+          odd: "white"
+      enabled: true
+      locations:
+        UTC: "Etc/UTC"
+        London: "Europe/London"
+        Berlin: "Europe/Berlin"
+        New_York: "America/New_York"
+        China: "Asia/Shanghai"
+      position:
+        top: 0
+        left: 1
+        height: 1
+        width: 1
+      refreshInterval: 15
+      sort: "alphabetical"
+    battery:
+      type: power
+      title: "⚡️"
+      enabled: true
+      position:
+        top: 1
+        left: 3
+        height: 1
+        width: 1
+      refreshInterval: 15
+    todolist:
+      type: todo
+      checkedIcon: "X"
+      colors:
+        checked: gray
+        highlight:
+          fore: "black"
+          back: "orange"
+      enabled: true
+      filename: "todo.yml"
+      position:
+        top: 1
+        left: 0
+        height: 2
+        width: 1
+      refreshInterval: 3600
+    ip:
+      type: ipinfo
+      title: "My IP"
+      colors:
+        name: "lightblue"
+        value: "white"
+      enabled: true
+      position:
+        top: 0
+        left: 2
+        height: 1
+        width: 2
+      refreshInterval: 150
+    prettyweather:
+      enabled: true
+      city: "临沂"
+      position:
+        top: 1
+        left: 2
+        height: 1
+        width: 1
+      refreshInterval: 300
+      unit: "m"
+      view: 0
+      language: "en"
+    security:
+      enabled: true
+      position:
+        top: 1
+        left: 1
+        height: 1
+        width: 1
+      refreshInterval: 3600
+    # readme:
+    #   type: textfile
+    #   enabled: true
+    #   filePaths:
+    #     - "~/.config/wtf/config.yml"
+    #   format: true
+    #   formatStyle: "monokai"
+    #   position:
+    #     top: 1
+    #     left: 1
+    #     height: 1
+    #     width: 1
+    #   refreshInterval: 15
+    # news:
+    #   type: hackernews
+    #   title: "HackerNews"
+    #   enabled: true
+    #   numberOfStories: 10
+    #   position:
+    #     top: 2
+    #     left: 1
+    #     height: 1
+    #     width: 3
+    #   storyType: top
+    #   refreshInterval: 900
+    docker:
+      type: docker
+      enabled: true
+      labelColor: lightblue
+      position:
+        top: 2
+        left: 1
+        height: 1
+        width: 3
+      refreshInterval: 1
+    resources:
+      type: resourceusage
+      enabled: true
+      position:
+        top: 3
+        left: 0
+        height: 2
+        width: 1
+      refreshInterval: 1
+    uptime:
+      type: cmdrunner
+      args: [""]
+      cmd: "uptime"
+      enabled: true
+      position:
+        top: 4
+        left: 1
+        height: 1
+        width: 3
+      refreshInterval: 30
+    disks:
+      type: cmdrunner
+      cmd: "df"
+      args: ["-h"]
+      enabled: true
+      position:
+        top: 3
+        left: 1
+        height: 1
+        width: 3
+      refreshInterval: 3600
