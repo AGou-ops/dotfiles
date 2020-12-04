@@ -3,4 +3,7 @@
 - [junegunn/vim-plug](https://github.com/junegunn/vim-plug): 轻量vim插件管理器。
 - [scrooloose/nerdtree](https://github.com/scrooloose/nerdtree): 侧边目录树。
 - [sheerun/vim-polyglot](https://github.com/sheerun/vim-polyglot): 语法高亮。
-- 
+
+
+
+vim Hotkeys and cheatsheet: https://devhints.io/vim
