@@ -24,10 +24,25 @@ Plug 'plasticboy/vim-markdown'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
+Plug 'preservim/tagbar'
 " Plug 'mcchrish/nnn.vim'
 call plug#end()
 
 " ========= End Plug
+"
+"
+" ========== Plugin Settings
+
+" autocmd vimenter * NERDTree       " NERDTree automatically when vim starts up
+map <C-n> :NERDTreeToggle<CR>
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif 
+ 
+ 
+ 
+ 
+ 
+" ===========
 
 " =========  Auto Shell comment.                                                                                                        
 autocmd BufNewFile *.sh,*.py exec ":call SetTitle()"
@@ -133,7 +148,7 @@ function! NumberToggle()
   endif
 endfunc
 " remap <C-n> to switch between relative and absolute line number.
-nnoremap <C-n> :call NumberToggle()<cr>
+nnoremap <A-n> :call NumberToggle()<cr>
 
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
@@ -361,6 +376,8 @@ set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
 nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 " disbale paste mode when leaving insert mode
 " au InsertLeave * set nopaste
+" F8 trun on tagbar
+nmap <F8> :TagbarToggle<CR>
 
 " Automatically set paste mode in Vim when pasting in insert mode
 function! XTermPasteBegin()
