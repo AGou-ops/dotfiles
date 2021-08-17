@@ -1,14 +1,8 @@
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
+" AGou-ops VIMRC FILE         -- Update Date: 2021-08-11
+set nocompatible              " be iMproved, required
 
-" TODO: this may not be in the correct place. It is intended to allow overriding <Leader>.
-" source ~/.vimrc.before if it exists.
-if filereadable(expand("~/.vimrc.before"))
-  source ~/.vimrc.before
-endif
-
-" =========
+"
+" Begin Plug, Depends On https://github.com/junegunn/vim-plug
 
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-plug'
@@ -21,45 +15,79 @@ Plug 'trevordmiller/nova-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'powerline/powerline'
 Plug 'mxw/vim-jsx'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'majutsushi/tagbar'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+" Dependence `npm -g install instant-markdown-d`
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'camspiers/animate.vim'
+Plug 'camspiers/lens.vim'
+Plug 'preservim/tagbar'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'miyakogi/seiya.vim'
+" Plug 'mcchrish/nnn.vim'
 call plug#end()
 
-" =========为shell自动添加注释信息                                                                                                           
-autocmd BufNewFile *.sh exec ":call SetTitle()"
+" ========= End Plug
+"
+"
+" ========== Plugin Settings
+
+" autocmd vimenter * NERDTree       " NERDTree automatically when vim starts up
+map <C-n> :NERDTreeToggle<CR>
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif 
+ 
+ 
+ 
+" ===========
+
+" =========  Auto Shell comment.                                                                                                        
+autocmd BufNewFile *.sh,*.py exec ":call SetTitle()"
 func SetTitle()
- if expand("%:e") == 'sh'
+if expand("%:e") == 'sh'
  call setline(1,"#!/bin/bash")
  call setline(2,"#")
  call setline(3,"#**************************************************")
- call setline(4,"# Author:         suofeiya                        *")                
- call setline(5,"# E-mail：        ictw@qq.com                     *")
- call setline(6,"# Date：          ".strftime("%Y-%m-%d"). "       *")
- call setline(7,"# Description：  *")
- call setline(8,"# Copyright ".strftime("%Y"). " by suofeiya.All Rights Reserved  *")
+ call setline(4,"# Author:         AGou-ops                        *")                
+ call setline(5,"# E-mail:         agou-ops@foxmail.com            *")
+ call setline(6,"# Date:           ".strftime("%Y-%m-%d"). "                      *")
+ call setline(7,"# Description:                              *")
+ call setline(8,"# Copyright ".strftime("%Y"). " by AGou-ops.All Rights Reserved  *")
  call setline(9,"#**************************************************")
  call setline(10,"")
  call setline(11,"")
 endif
+if expand("%:e") == 'py'
+    " call setline(1, "\#!/usr/bin/env python")
+    " call append(1, "\# encoding: utf-8")
+    call setline(1, "\# -*- coding: utf-8 -*-")
+    normal G
+    normal o
+    normal o
+endif
 endfunc
-autocmd BufNewFile * normal G                                                                                                            
-" ========     
+autocmd BufNewFile * normal G
+" ================
 
 colorscheme onedark
+set guifont=Consolas:h14:cANSI:qDRAFT
 " colorscheme one
 " set background=dark " for the dark version
 " let g:one_allow_italics = 1 " I love italic for comments
-syntax enable
 " set background=dark
 " colorscheme solarized
 " let g:airline_theme='one'
 " set background=dark
 " colorscheme solarized
 
-let g:onedark_termcolors=256
+let g:instant_markdown_slow = 1
 
+let g:onedark_termcolors=256
+set t_Co=256
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -80,25 +108,50 @@ endif
 
 " ================ General Config ====================
 
+syntax on
 set number                      "Line numbers are good
+set paste                       " set paste mode default
+set autoread                    " Auto reload file content from disk
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
-set visualbell                  "No sounds
+set novisualbell                "No sounds
+set noerrorbells
 set autoread                    "Reload files changed outside vim
 set laststatus=2
 set noshowmode
-set cursorline
-set mouse=a
-" This makes vim act like all other editors, buffers can
-" exist in the background without being in a window.
-" http://items.sjbach.com/319/configuring-vim-right
+set cursorline                  " set cursorline, highlight current line.
+" set cursorcolumn              " set cursorline, highlight current column.
+set mouse=a                     " to disable, use `set mouse-=a`.
+set mousehide                   " hide the mouse cursor when typing.
 set hidden
+set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
+set fileformats=unix,dos
+set report=0                                                      " always report number of lines changed
+set shortmess=atI               " disable welcome page.
+set t_ti= t_te=                 " after exit vim, show context on the terminal.
+set showmatch
+set matchtime=2
+set nrformats=
+set termencoding=utf-8
+set ffs=unix,dos,mac            " Use Unix as the standard file type
 
-"turn on syntax highlighting
-syntax on
+set relativenumber number       " use relative line number inside of absolute line number.
+au FocusLost * :set norelativenumber number
+au FocusGained * :set relativenumber
+autocmd InsertEnter * :set norelativenumber number    " use absolute line number.
+autocmd InsertLeave * :set relativenumber
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber number
+  else
+    set relativenumber
+  endif
+endfunc
+" remap <C-n> to switch between relative and absolute line number.
+nnoremap <A-n> :call NumberToggle()<cr>
 
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
@@ -109,8 +162,10 @@ let mapleader=","
 " =============== Vundle Initialization ===============
 " This loads all the plugins specified in ~/.vim/vundles.vim
 " Use Vundle plugin to manage all other plugins
-if filereadable(expand("~/.vim/vundles.vim"))
-  source ~/.vim/vundles.vim
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+elseif filereadable(expand("~/.config/nvim/vimrc.bundles")) " neovim
+  source ~/.config/nvim/vimrc.bundles
 endif
 au BufNewFile,BufRead *.vundle set filetype=vim
 
@@ -119,6 +174,9 @@ au BufNewFile,BufRead *.vundle set filetype=vim
 set noswapfile
 set nobackup
 set nowb
+"set backup
+"set backupext=.bak
+"set backupdir=/tmp/vimbk/
 
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
@@ -138,6 +196,24 @@ set shiftwidth=4
 set softtabstop=2
 set tabstop=2
 set expandtab
+set completeopt=longest,menu
+
+
+autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
+autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
+autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
+autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd
+
+" syntax support
+autocmd Syntax javascript set syntax=jquery   " JQuery syntax support
+" js
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
 
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
@@ -145,12 +221,26 @@ nnoremap P P=`]<C-o>
 
 filetype plugin on
 filetype indent on
+filetype on
+filetype plugin indent on
 
 " Display tabs and trailing spaces visually
-set list listchars=tab:\ \ ,trail:·
+" set list listchars=tab:\ \ ,trail:��
 
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
+" ================ Auto Cmd =========================
+
+" auto reload when modified vimrc file (Windows)
+autocmd! bufwritepost _vimrc source %
+" auto reload when modified vimrc file (Linux)
+autocmd! bufwritepost .vimrc source %
+
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|DONE\|XXX\|BUG\|HACK\)')
+    autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|NOTICE\)')
+endif
 
 " ================ Folds ============================
 
@@ -160,18 +250,25 @@ set nofoldenable        "dont fold by default
 
 " ================ Completion =======================
 
-set wildmode=list:longest
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
-set wildignore+=*vim/backups*
-set wildignore+=*sass-cache*
-set wildignore+=*DS_Store*
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
-set wildignore+=*.gem
-set wildignore+=log/**
-set wildignore+=tmp/**
-set wildignore+=*.png,*.jpg,*.gif
+" Wildmenu completion {{{
+set wildmenu
+" " set wildmode=list:longest
+set wildmode=list:full
+
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store                       " OSX bullshit
+set wildignore+=*.luac                           " Lua byte code
+set wildignore+=migrations                       " Django migrations
+set wildignore+=go/pkg                           " Go static files
+set wildignore+=go/bin                           " Go bin files
+set wildignore+=go/bin-vagrant                   " Go bin-vagrant files
+set wildignore+=*.pyc                            " Python byte code
+set wildignore+=*.orig                           " Merge resolution files
 
 " ================ Scrolling ========================
 
@@ -189,3 +286,117 @@ set smartcase       " ...unless we type a capital
 " ================ Custom Settings ========================
 " so /.yadr/vim/settings.vim
 
+if filereadable($HOME . "/.vimrc.local")
+    source ~/.vimrc.local
+endif
+
+" ================ Hotkey ReMap =====================
+
+" w!! to sudo & write a file
+cmap w!! %!sudo tee >/dev/null %
+
+" Quicker window movement
+nnoremap U <C-r>
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-Down> <C-w>j
+nnoremap <C-Up> <C-w>k
+nnoremap <C-Left> <C-w>h
+nnoremap <C-Right> <C-w>l
+noremap H ^
+noremap L $
+nnoremap / /\v
+vnoremap / /\v
+noremap <A-left> :bp<CR>
+noremap <A-right> :bn<CR>
+nnoremap ; :
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>0 :tablast<cr>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-t>     <Esc>:tabnew<CR>
+" copy to system clipboard
+" vnoremap <leader>y "+y
+vnoremap <C-c>y "+y
+nnoremap <C-h> <C-w>>
+nnoremap <C-j> <C-w>+
+nnoremap <C-k> <C-w>-
+nnoremap <C-l> <C-w><
+
+" turn off direction keyboard, force yourself use `hjkl` !!!
+map <Left> <Nop>
+map <Right> <Nop>
+map <Up> <Nop>
+map <Down> <Nop>
+map <space> /
+
+" tab quick swich
+map <leader>th :tabfirst<cr>
+map <leader>tl :tablast<cr>
+map <leader>tj :tabnext<cr>
+map <leader>tk :tabprev<cr>
+map <leader>tn :tabnext<cr>
+map <leader>tp :tabprev<cr>
+map <leader>te :tabedit<cr>
+map <leader>td :tabclose<cr>
+map <leader>tm :tabm<cr>
+
+" eggcache vim 
+:command W w
+:command WQ wq
+:command Wq wq
+:command Q q
+:command QW wq
+:command Qa qa
+:command QA qa
+
+" ===================== F1-F12 Hotkey Settings
+" trun off F1 help page, just use `:help`.
+noremap <F1> <Esc>"
+" F2 show line number or not
+function! HideNumber()
+  if(&relativenumber == &number)
+    set relativenumber! number!
+  elseif(&number)
+    set number!
+  else
+    set relativenumber!
+  endif
+  set number?
+endfunc
+nnoremap <F2> :call HideNumber()<CR>
+" F3 show print char
+" nnoremap <F3> :set list! list?<CR>
+" F3 transparent terminal
+nnoremap <F3> :SeiyaEnable<CR>
+" F4 wrap line on|off
+nnoremap <F4> :set wrap! wrap?<CR>
+set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
+                                "    paste mode, where you can paste mass data
+                                "    that won't be autoindented
+" F6 trun on|off syntax, speed up read large file
+nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+" disbale paste mode when leaving insert mode
+" au InsertLeave * set nopaste
+" F8 trun on tagbar
+nmap <F8> :TagbarToggle<CR>
+
+" Automatically set paste mode in Vim when pasting in insert mode
+function! XTermPasteBegin()
+set pastetoggle=<Esc>[201~
+set paste
+return ""
+endfunction
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+" delete Redundant Space when saving Python file
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
