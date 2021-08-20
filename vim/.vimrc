@@ -28,6 +28,7 @@ Plug 'camspiers/lens.vim'
 Plug 'preservim/tagbar'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'miyakogi/seiya.vim'
+Plug '907th/vim-auto-save'
 " Plug 'mcchrish/nnn.vim'
 call plug#end()
 
@@ -84,6 +85,8 @@ set guifont=Consolas:h14:cANSI:qDRAFT
 " set background=dark
 " colorscheme solarized
 
+let g:auto_save = 1  " enable AutoSave on Vim startup
+
 let g:instant_markdown_slow = 1
 
 let g:onedark_termcolors=256
@@ -112,6 +115,7 @@ syntax on
 set number                      "Line numbers are good
 set paste                       " set paste mode default
 set autoread                    " Auto reload file content from disk
+set clipboard=unnamed           " Add clipboard support
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
@@ -320,7 +324,8 @@ nnoremap <C-t>     :tabnew<CR>
 inoremap <C-t>     <Esc>:tabnew<CR>
 " copy to system clipboard
 " vnoremap <leader>y "+y
-vnoremap <C-c>y "+y
+vnoremap <C-c> "+y
+vnoremap <C-v> "+p
 nnoremap <C-h> <C-w>>
 nnoremap <C-j> <C-w>+
 nnoremap <C-k> <C-w>-
@@ -332,6 +337,9 @@ map <Right> <Nop>
 map <Up> <Nop>
 map <Down> <Nop>
 map <space> /
+map <Esc>[1;3D :bn<CR>
+map <Esc>[1;3C :bp<CR>
+
 
 " tab quick swich
 map <leader>th :tabfirst<cr>
