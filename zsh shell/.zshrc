@@ -1,24 +1,32 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
+
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+# --------- history cotrol ------------
+# 不区分历史重复命令
+export HISTCONTROL=ignoredups
+export HISTTIMEFORMAT="%F %T "
+# -------------------------------------
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/agou-ops/.oh-my-zsh"
-export GOROOT=/usr/local/go                                                                                                                                                                                
-export GOPATH=$HOME/GolandProjects/studyNote
-export PATH=/usr/local/texlive/2021/bin/x86_64-linux/:$PATH:/home/agou-ops/.local/bin
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="robbyrussell"
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -79,23 +87,40 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
+plugins=(git zsh-history-substring-search)
 source $ZSH/oh-my-zsh.sh
-source /home/agou-ops/.local/share/lscolors.sh
-source $ZSH/antigen.zsh
 
+# ----------- bind keys -----------
+# bindkey '^[[1;3A' history-substring-search-up
+# bindkey '^[[1;3B' history-substring-search-down
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# ---------------------------------
+
+source /home/agou-ops/.config/zsh/antigen.zsh
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle heroku
 antigen bundle pip
 antigen bundle lein
 antigen bundle command-not-found
 
+# Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle changyuheng/fz
+antigen bundle rupa/z
+
 # Load the theme.
-antigen theme robbyrussell
-#
-# # Tell Antigen that you're done.
+THEME=romkatv/powerlevel10k
+antigen list | grep $THEME; if [ $? -ne 0 ]; then antigen theme $THEME; fi
+
+# Tell Antigen that you're done.
 antigen apply
+
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -112,6 +137,7 @@ antigen apply
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -125,7 +151,11 @@ alias open="nautilus"
 alias setproxy="export http_proxy=127.0.0.1:8889 && export https_proxy=127.0.0.1:8889"
 alias docsify="npx docsify"
 alias yarn='npx yarn'
+alias cc='clipctl -s "$(xclip -selection c -o)"'
+alias s="clipctl"
+alias vv="clipctl -g $(clipctl -l | jq -r ".[0].id") | xclip -sel c && echo -e  '`clipctl -g $(clipctl -l | jq -r ".[0].id")`'"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 . "/home/agou-ops/.local/share/lscolors.sh"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
