@@ -30,6 +30,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'miyakogi/seiya.vim'
 Plug '907th/vim-auto-save'
 " Plug 'mcchrish/nnn.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
+
 call plug#end()
 
 " ========= End Plug
@@ -91,6 +94,28 @@ let g:instant_markdown_slow = 1
 
 let g:onedark_termcolors=256
 set t_Co=256
+
+" --------- nerdcommenter plguin settings
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
+
+" ----------------------
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -161,7 +186,7 @@ nnoremap <A-n> :call NumberToggle()<cr>
 " That means all \x commands turn into ,x
 " The mapleader has to be set before vundle starts loading all
 " the plugins.
-let mapleader=","
+let mapleader="."
 
 " =============== Vundle Initialization ===============
 " This loads all the plugins specified in ~/.vim/vundles.vim
@@ -203,8 +228,7 @@ set expandtab
 set completeopt=longest,menu
 
 
-autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
-autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType php,ruby,go setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
 autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
@@ -256,8 +280,8 @@ set nofoldenable        "dont fold by default
 
 " Wildmenu completion {{{
 set wildmenu
-" " set wildmode=list:longest
-set wildmode=list:full
+"set wildmode=list:longest
+set wildmode=longest:full,full
 
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
@@ -356,10 +380,21 @@ map <leader>tm :tabm<cr>
 :command W w
 :command WQ wq
 :command Wq wq
-:command Q q
-:command QW wq
-:command Qa qa
 :command QA qa
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RENAME CURRENT FILE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+map <leader>n :call RenameFile()<cr>
 
 " ===================== F1-F12 Hotkey Settings
 " trun off F1 help page, just use `:help`.
