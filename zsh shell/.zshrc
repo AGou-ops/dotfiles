@@ -1,13 +1,16 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
 
 # --------- history cotrol ------------
 # 不区分历史重复命令
@@ -20,6 +23,11 @@ export HISTTIMEFORMAT="%F %T "
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/agou-ops/.oh-my-zsh"
+
+unset all_proxy
+unset ALL_PROXY
+
+export PATH=$PATH:/home/agou-ops/.local/bin:/home/agou-ops/go/bin
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -112,6 +120,11 @@ antigen bundle command-not-found
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle changyuheng/fz
 antigen bundle rupa/z
+antigen bundle nnao45/zsh-kubectl-completion
+antigen bundle jonmosco/kube-ps1
+antigen bundle dbz/kube-aliases
+PROMPT='$(kube_ps1)'$PROMPT
+
 
 # Load the theme.
 THEME=romkatv/powerlevel10k
@@ -119,6 +132,7 @@ antigen list | grep $THEME; if [ $? -ne 0 ]; then antigen theme $THEME; fi
 
 # Tell Antigen that you're done.
 antigen apply
+
 
 
 # User configuration
@@ -149,13 +163,27 @@ antigen apply
 alias open="nautilus"
 # alias setproxy="export http_proxy=`ip a | grep -w "inet" | grep -v "127.0.0" | awk '{print $2}' | sed 's@/.*@@'`:8889 && export https_proxy=`ip a | grep -w "inet" | grep -v "127.0.0" | awk '{print $2}' | sed 's@/.*@@'`:8889"
 alias setproxy="export http_proxy=127.0.0.1:8889 && export https_proxy=127.0.0.1:8889"
+alias unsetproxy='export http_proxy="" && export https_proxy=""'
 alias docsify="npx docsify"
 alias yarn='npx yarn'
 alias cc='clipctl -s "$(xclip -selection c -o)"'
 alias s="clipctl"
-alias vv="clipctl -g $(clipctl -l | jq -r ".[0].id") | xclip -sel c && echo -e  '`clipctl -g $(clipctl -l | jq -r ".[0].id")`'"
+alias vv="clipctl -g $(clipctl -l | jq -r ".[0].id") | xclip -sel c; clipctl -g $(clipctl -l | jq -r ".[0].id")"
+alias apt="apt-get"
+alias cnpm="npx npm"
+alias k="kubecolor --insecure-skip-tls-verify"
+alias kubectl="kubecolor --insecure-skip-tls-verify"
+alias sl="ls"
+alias kp="k apply -f"
+alias kd="k delete -f "
+alias svim="sudo vim"
+
+. "/home/agou-ops/.local/share/lscolors.sh"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-. "/home/agou-ops/.local/share/lscolors.sh"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# zplug config file
+[ -f ~/.zplug.zsh ] && source ~/.zplug.zsh
+

@@ -18,11 +18,12 @@ Plug 'itchyny/lightline.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 " Dependence `npm -g install instant-markdown-d`
-Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-Plug 'camspiers/animate.vim'
+" Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+" Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
 Plug 'miyakogi/seiya.vim'
 Plug '907th/vim-auto-save'
+Plug 'preservim/tagbar'
 " Plug 'mcchrish/nnn.vim'
 Plug 'tpope/vim-fugitive'     " vim plug for git
 Plug 'junegunn/gv.vim'
@@ -35,8 +36,14 @@ Plug 'ryanoasis/vim-devicons'  " https://github.com/ryanoasis/vim-devicons + htt
 Plug 'tpope/vim-commentary'    " https://github.com/tpope/vim-commentary
 Plug 'airblade/vim-gitgutter'  " https://github.com/airblade/vim-gitgutter
 Plug 'mkitt/tabline.vim'       " https://github.com/mkitt/tabline.vim
-Plug 'morhetz/gruvbox'
-
+" Plug 'morhetz/gruvbox'         " neovim colorschem
+Plug 'jiangmiao/auto-pairs'    " auto complete brackets
+Plug 'ryanoasis/vim-devicons'
+Plug 'joshdick/onedark.vim'
+" Plug 'will133/vim-dirdiff'
+Plug 'sindrets/diffview.nvim'
+Plug 'tmhedberg/simpylfold'
+" Plug 'thaerkh/vim-workspace'  " autosave vim session
 
 
 call plug#end()
@@ -47,11 +54,29 @@ call plug#end()
 " ========== Plugin Settings
 
 " autocmd vimenter * NERDTree       " NERDTree automatically when vim starts up
-map <C-n> :NERDTreeToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif 
+" map <C-n> :NERDTreeToggle<CR>
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif 
+" " auto refresh nerdtree when file changed
+" autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
  
- 
+map <C-n> :call NERDTreeToggleAndRefresh()<CR>
+set splitright        " nerdtree split right instead of left
+
+function NERDTreeToggleAndRefresh()
+  :NERDTreeToggle
+  if g:NERDTree.IsOpen()
+    :NERDTreeRefreshRoot
+  endif
+endfunction
+
+" autoload vim-workspace plugin
+" let g:workspace_autocreate = 1
+" nnoremap <leader>f :ToggleWorkspace<CR>
+" let g:workspace_session_name = 'Session.vim'
+" let g:workspace_autosave_always = 1
+" let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+
  
 " ===========
 
@@ -83,8 +108,8 @@ endfunc
 autocmd BufNewFile * normal G
 " ================
 
-" colorscheme onedark
-colorscheme gruvbox
+colorscheme onedark
+" colorscheme gruvbox
 set bg=dark
 set guifont=Consolas:h14:cANSI:qDRAFT
 " colorscheme one
@@ -176,7 +201,6 @@ set hidden
 set vb
 set ruler
 set spelllang=en_us
-set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 set fileformats=unix,dos
 set report=0                                                      " always report number of lines changed
 set shortmess=atI               " disable welcome page.
@@ -185,6 +209,8 @@ set showmatch
 set matchtime=2
 set nrformats=
 set termencoding=utf-8
+set encoding=utf-8
+set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 set ffs=unix,dos,mac            " Use Unix as the standard file type
 set autochdir
 
@@ -255,7 +281,7 @@ set expandtab
 set completeopt=longest,menu
 
 
-autocmd FileType php,ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType php,ruby,yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
 autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
 autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
@@ -372,6 +398,7 @@ noremap H ^
 noremap L $
 nnoremap / /\v
 vnoremap / /\v
+vnoremap // y/<c-r>"<cr>
 noremap <A-left> :bp<CR>
 noremap <A-right> :bn<CR>
 nnoremap ; :
@@ -389,6 +416,11 @@ nnoremap <C-h> <C-w>>
 nnoremap <C-j> <C-w>+
 nnoremap <C-k> <C-w>-
 nnoremap <C-l> <C-w><
+nnoremap p ]p
+nnoremap P [p
+nnoremap ( %
+nnoremap ) %
+
 
 " netrw
 
@@ -488,6 +520,9 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+
+autocmd FileType go nmap <Leader>rr :!go run %<CR>
+
 
 " =========== load coc-go plug config ===========
 if filereadable($HOME . ".config/nvim/coc-go.vim")
