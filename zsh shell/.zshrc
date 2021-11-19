@@ -4,10 +4,6 @@
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -22,12 +18,12 @@ export HISTTIMEFORMAT="%F %T "
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/agou-ops/.oh-my-zsh"
+export ZSH="/Users/agou-ops/.oh-my-zsh"
 
 unset all_proxy
 unset ALL_PROXY
 
-export PATH=$PATH:/home/agou-ops/.local/bin:/home/agou-ops/go/bin
+export PATH=$PATH:/Users/agou-ops/.local/bin:/Users/agou-ops/go/bin
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -106,7 +102,7 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 
 # ---------------------------------
 
-source /home/agou-ops/.config/zsh/antigen.zsh
+source /Users/agou-ops/.config/zsh/antigen.zsh
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
