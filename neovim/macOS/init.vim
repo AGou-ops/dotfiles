@@ -23,7 +23,6 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 " golang dev tools
 Plug 'jiangmiao/auto-pairs'    " auto complete brackets
-Plug 'ryanoasis/vim-devicons'
 Plug 'joshdick/onedark.vim'
 " Plug 'will133/vim-dirdiff'
 Plug 'tmhedberg/simpylfold'
@@ -43,7 +42,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'ap/vim-buftabline'
 
 Plug 'Yggdroot/indentLine'
-
+Plug 'itchyny/vim-cursorword'
+Plug 'rrethy/vim-illuminate'
+Plug 'ryanoasis/vim-devicons'
+Plug 'sebdah/vim-delve'
 
 
 
@@ -54,12 +56,25 @@ call plug#end()
 "
 "========== Plugin Settings
 "
+set list lcs=tab:\┆\ 
+
+let g:tagbar_ctags_bin='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'
+
 " =======-- identline settings =========
 " not working on macOS
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let g:indentLine_bgcolor_term = 202
-let g:indentLine_bgcolor_gui = '#FF5F00'
 let g:indentLine_setColors = 0
+
+" ======== illuminate settings =========
+" Time in milliseconds (default 0)
+let g:Illuminate_delay = 3000
+hi illuminatedWord cterm=underline gui=underline
+" hi illuminatedCurWord cterm=italic gui=italic
+" augroup illuminate_augroup
+"     autocmd!
+"     autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
+" augroup END
+
+" ======================================
 
 
 " ========= LuaLine Settings ===========
@@ -102,11 +117,6 @@ EOF
 autocmd User FloatermOpen        " triggered after opening a new/existed floaterm
 hi FloatermNC guibg=gray
 
-" ========= coc.spelling settings ========
-vmap <leader>s <Plug>(coc-codeaction-selected)
-nmap <leader>s <Plug>(coc-codeaction-selected)
-
-" =========================================
 
 " ========== LSP config ========
 " lua require("lsp_config")
@@ -240,7 +250,6 @@ set number                      "Line numbers are good
 " --------------------------- neovim auto reload file from disk -----------------------------
 set autoread                    " Auto reload file content from disk
 
-set list lcs=tab:\|\ 
 
 au CursorHold * checktime  
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
@@ -279,6 +288,8 @@ set encoding=utf-8
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 set ffs=unix,dos,mac            " Use Unix as the standard file type
 set autochdir
+" or:
+set guifont=VictorMono_Nerd_Font:h13
 
 " vim-gitgutter
 
@@ -452,10 +463,12 @@ cmap w!! %!sudo tee >/dev/null %
 
 " Quicker window movement
 nnoremap U <C-r>
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+" notworking on terminal neovim, only affect on Gvim!!!
+nnoremap <D-j> <C-w>j
+nnoremap <D-k> <C-w>k
+nnoremap <D-h> <C-w>h
+nnoremap <D-l> <C-w>l
+" =====================
 nnoremap <C-Down> <C-w>j
 nnoremap <C-Up> <C-w>k
 nnoremap <C-Left> <C-w>h
@@ -478,6 +491,12 @@ nnoremap <leader>t :FloatermNew<CR>
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>w :Windows<CR>
 nnoremap <leader>m :Maps<CR>
+nnoremap <leader>d ::bufdo! bd!<CR>
+" ========= coc.spelling settings ========
+vmap <leader>s <Plug>(coc-codeaction-selected)
+nmap <leader>s <Plug>(coc-codeaction-selected)
+
+" =========================================
 
 
 " copy to system clipboard
