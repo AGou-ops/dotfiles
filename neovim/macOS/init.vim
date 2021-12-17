@@ -6,7 +6,10 @@ set nocompatible              " be iMproved, required
 
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
-Plug 'powerline/powerline'
+" better than nerdtree
+" Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+
+" Plug 'powerline/powerline'
 Plug 'dense-analysis/ale'
 " Plug 'itchyny/lightline.vim'
 Plug 'plasticboy/vim-markdown'
@@ -23,7 +26,6 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 " golang dev tools
 Plug 'jiangmiao/auto-pairs'    " auto complete brackets
-Plug 'joshdick/onedark.vim'
 " Plug 'will133/vim-dirdiff'
 Plug 'tmhedberg/simpylfold'
 " Plug 'thaerkh/vim-workspace'  " autosave vim session
@@ -31,32 +33,107 @@ Plug 'tmhedberg/simpylfold'
 
 " Plug 'neovim/nvim-lspconfig'
 
+" Plug 'ray-x/go.nvim'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'voldikss/vim-floaterm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'ap/vim-buftabline'
+" Plug 'ap/vim-buftabline'
+Plug 'akinsho/bufferline.nvim'
+
 
 Plug 'Yggdroot/indentLine'
 Plug 'itchyny/vim-cursorword'
+" Plug 'dominikduda/vim_current_word'
+
 Plug 'rrethy/vim-illuminate'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sebdah/vim-delve'
+" Plug 'Shougo/echodoc.vim'
 
+" ========= colorscheme here. ==========
+"
+" Plug 'joshdick/onedark.vim'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'EdenEast/nightfox.nvim'
+Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 
 
 call plug#end()
 
 " ========= End Plug
 
+" colorscheme sttings
+"
+"
+"
+" let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_char = '┆'
+let g:indentLine_concealcursor = 'inc'
+let g:indentLine_conceallevel = 2
+
+
+
+" colorscheme gruvbox
+" colorscheme onedark
+" set bg=dark
+" let g:onedark_termcolors=256
+" ===========================
+" Example config in VimScript
+" let g:tokyonight_style = "night"
+" let g:tokyonight_italic_functions = 1
+" let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
+" 
+"  Change the "hint" color to the "orange" color, and make the "error" color bright red
+" let g:tokyonight_colors = {
+"   \ 'hint': 'orange',
+"   \ 'error': '#ff0000'
+" \ }
+" colorscheme tokyonight
+" ============================
+" colorscheme Duskfox
+" ============================
+" ========= gruvbox_material settings =======
+" https://github.com/sainnhe/gruvbox-material/blob/master/doc/gruvbox-material.txt
+" Important!!
+if has('termguicolors')
+  set termguicolors
+endif
+" For dark version.
+set background=dark
+" For light version.
+" set background=light
+" Set contrast.
+" This configuration option should be placed before `colorscheme gruvbox-material`.
+" Available values: 'hard', 'medium'(default), 'soft'
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_enable_italic = 1
+let g:gruvbox_material_enable_bold = 1
+" only support GUI client
+let g:gruvbox_material_cursor = 'auto'
+let g:gruvbox_material_transparent_background = 0
+let g:gruvbox_material_menu_selection_background = 'green'
+let g:gruvbox_material_ui_contrast = 'high'
+let g:gruvbox_material_diagnostic_text_highlight = 1
+let g:gruvbox_material_better_performance = 1
+
+
+
+
+colorscheme gruvbox-material
+
+" ==================
 "
 "========== Plugin Settings
 "
-set list lcs=tab:\┆\ 
+" set list lcs=tab:\┆\ 
 
 let g:tagbar_ctags_bin='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'
 
@@ -76,13 +153,32 @@ hi illuminatedWord cterm=underline gui=underline
 
 " ======================================
 
+" ============ echodoc.vim settings =======
+" set cmdheight=2
 
-" ========= LuaLine Settings ===========
+" Or, you could use neovim's floating text feature.
+" let g:echodoc#enable_at_startup = 1
+" let g:echodoc#type = 'floating'
+" " To use a custom highlight for the float window,
+" " change Pmenu to your highlight group
+" highlight link EchoDocFloat Pmenu
+" =========================================
+
+" ============= go.nvim settings ==========
+"
+" autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
+" require('go').setup()
+"
+"
+" ============ buffer line settings =========
+set termguicolors
+
+" ========= LuaLine, bufferline Settings ===========
 lua << EOF
 require'lualine'.setup {
   options = {
     icons_enabled = true,
-    theme = 'onedark',
+    theme = 'gruvbox-material',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {},
@@ -90,10 +186,23 @@ require'lualine'.setup {
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff',
-                  {'diagnostics', sources={'nvim_lsp', 'coc'}}},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {
+        {
+      'filename',
+      file_status = true,  -- displays file status (readonly status, modified status)
+      path = 2,            -- 0 = just filename, 1 = relative path, 2 = absolute path
+      shorting_target = 40 -- Shortens path to leave 40 space in the window
+                           -- for other components. Terrible name any suggestions?
+        }
+        },
+    lualine_x = {'encoding', 'fileformat',
+    {
+      'filetype',
+      colored = true, -- displays filetype icon in color if set to `true
+      icon_only = false -- Display only icon for filetype
+    }
+    },
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
@@ -108,6 +217,7 @@ require'lualine'.setup {
   tabline = {},
   extensions = {}
 }
+require("bufferline").setup{}
 
 EOF
 " =========== END LuaLine settings ==========
@@ -116,6 +226,36 @@ EOF
 " ========== floaterm settings ===========
 autocmd User FloatermOpen        " triggered after opening a new/existed floaterm
 hi FloatermNC guibg=gray
+" ========== vim_current_word settings =========
+" " Twins of word under cursor:
+" let g:vim_current_word#highlight_twins = 1
+" The word under cursor:
+" let g:vim_current_word#highlight_current_word = 1
+" autocmd BufAdd NERD_tree_*,your_buffer_name.rb,*.js :let b:vim_current_word_disabled_in_this_buffer = 1
+" " hi CurrentWord ctermbg=53
+" " hi CurrentWordTwins ctermbg=237
+" " let g:vim_current_word#highlight_only_in_focused_window = 1
+" " hi CurrentWordTwins guifg=#XXXXXX guibg=#XXXXXX gui=underline,bold,italic ctermfg=XXX ctermbg=XXX cterm=underline,bold,italic
+" hi CurrentWord guifg=0 guibg=163 gui=underline,bold,italic ctermfg=0 ctermbg=163 cterm=underline,bold,italic
+
+" ========== vim-cursor settings ===========
+let g:cursorword_highlight = 0
+
+augroup cursorword
+  autocmd!
+  autocmd VimEnter,ColorScheme * call MyHighlight()
+augroup END
+
+function! MyHighlight() abort
+  highlight CursorWord0 cterm=bold,underline gui=bold,underline
+
+  redir => out
+    silent! highlight CursorLine
+  redir END
+  execute 'highlight CursorWord1 cterm=underline gui=underline'
+    \ matchstr(out, 'ctermbg=#\?\w\+')
+    \ matchstr(out, 'guibg=#\?\w\+')
+endfunction
 
 
 " ========== LSP config ========
@@ -150,17 +290,16 @@ endfunction
 " let g:workspace_autosave_always = 1
 " let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 
- 
 " ===========
 
-" =========  Auto Shell comment.                                                                                                        
+" =========  Auto Shell comment.
 autocmd BufNewFile *.sh,*.py exec ":call SetTitle()"
 func SetTitle()
 if expand("%:e") == 'sh'
  call setline(1,"#!/bin/bash")
  call setline(2,"#")
  call setline(3,"#**************************************************")
- call setline(4,"# Author:         AGou-ops                        *")                
+ call setline(4,"# Author:         AGou-ops                        *")
  call setline(5,"# E-mail:         agou-ops@foxmail.com            *")
  call setline(6,"# Date:           ".strftime("%Y-%m-%d"). "                      *")
  call setline(7,"# Description:                              *")
@@ -181,24 +320,10 @@ endfunc
 autocmd BufNewFile * normal G
 " ================
 
-colorscheme onedark
-" colorscheme gruvbox
-set bg=dark
-set guifont=Consolas:h14:cANSI:qDRAFT
-" colorscheme one
-" set background=dark " for the dark version
-" let g:one_allow_italics = 1 " I love italic for comments
-" set background=dark
-" colorscheme solarized
-" let g:airline_theme='one'
-" set background=dark
-" colorscheme solarized
-
 let g:auto_save = 1  " enable AutoSave on Vim startup
 
 let g:instant_markdown_slow = 1
 
-let g:onedark_termcolors=256
 set t_Co=256
 
 " --------- nerdcommenter plguin settings
@@ -269,6 +394,7 @@ set noerrorbells
 set laststatus=2
 set noshowmode
 set cursorline                  " set cursorline, highlight current line.
+set guifont=Consolas:h14:cANSI:qDRAFT
 " set cursorcolumn              " set cursorline, highlight current column.
 set mouse=a                     " to disable, use `set mouse-=a`.
 set mousehide                   " hide the mouse cursor when typing.
