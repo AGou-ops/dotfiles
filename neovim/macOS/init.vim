@@ -138,7 +138,10 @@ colorscheme gruvbox-material
 "
 " set list lcs=tab:\┆\ 
 
+" ======= tagbar settings ========
 let g:tagbar_ctags_bin='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'
+autocmd VimEnter *.go  Tagbar
+
 
 " =======-- identline settings =========
 " not working on macOS
