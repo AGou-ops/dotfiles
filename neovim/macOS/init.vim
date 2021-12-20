@@ -64,6 +64,9 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'EdenEast/nightfox.nvim'
 Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
+" welcome page
+Plug 'mhinz/vim-startify'
+
 
 
 call plug#end()
@@ -192,7 +195,7 @@ require'lualine'.setup {
       'filename',
       file_status = true,  -- displays file status (readonly status, modified status)
       path = 2,            -- 0 = just filename, 1 = relative path, 2 = absolute path
-      shorting_target = 40 -- Shortens path to leave 40 space in the window
+      shorting_target = 20 -- Shortens path to leave 40 space in the window
                            -- for other components. Terrible name any suggestions?
         }
         },
@@ -240,22 +243,26 @@ hi FloatermNC guibg=gray
 
 " ========== vim-cursor settings ===========
 let g:cursorword_highlight = 0
-
-augroup cursorword
-  autocmd!
-  autocmd VimEnter,ColorScheme * call MyHighlight()
-augroup END
-
-function! MyHighlight() abort
-  highlight CursorWord0 cterm=bold,underline gui=bold,underline
-
-  redir => out
-    silent! highlight CursorLine
-  redir END
-  execute 'highlight CursorWord1 cterm=underline gui=underline'
-    \ matchstr(out, 'ctermbg=#\?\w\+')
-    \ matchstr(out, 'guibg=#\?\w\+')
-endfunction
+let g:cursorword_delay = 0
+autocmd Colorscheme * highlight CursorWord0 cterm=underline gui=underline ctermbg=52 guibg=#303030
+autocmd Colorscheme * highlight CursorWord1 cterm=underline gui=underline ctermbg=52 guibg=#303030
+" highlight CursorWord0 cterm=underline gui=underline guisp=#ebcb8b
+" highlight CursorWord1 cterm=underline gui=underline guisp=#ebcb8b
+" augroup cursorword
+"   autocmd!
+"   autocmd VimEnter,ColorScheme * call MyHighlight()
+" augroup END
+" 
+" function! MyHighlight() abort
+"   highlight CursorWord0 cterm=bold,underline gui=bold,underline
+" 
+"   redir => out
+"     silent! highlight CursorLine
+"   redir END
+"   execute 'highlight CursorWord1 cterm=underline gui=underline'
+"     \ matchstr(out, 'ctermbg=#\?\w\+')
+"     \ matchstr(out, 'guibg=#\?\w\+')
+" endfunction
 
 
 " ========== LSP config ========
