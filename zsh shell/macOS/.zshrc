@@ -21,7 +21,7 @@ export HISTTIMEFORMAT="%F %T "
 #
 # ----- plugins ------
 
-plugins=(git )
+plugins=(git colored-man-pages command-not-found git-extras zsh-autosuggestions)
 
 # ----- END plugins configure ------
 
@@ -30,8 +30,10 @@ antigen use oh-my-zsh
 antigen bundle changyuheng/fz
 antigen bundle rupa/z
 antigen bundle agkozak/zsh-z
-antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle hcgraf/zsh-sudo
+antigen bundle b4b4r07/enhancd
 
 
 
@@ -45,10 +47,21 @@ alias ls='colorls'
 alias ll='ls -l --gs'
 alias vim='nvim'
 alias setproxy='export http_proxy=127.0.0.1:9870 && export https_proxy=127.0.0.1:9870'
+alias unproxy='export http_proxy= && export https_proxy= '
+# 手残有时候老是按错
+alias s='ls'
+alias la='ll -a'
+alias sub='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+alias sublime='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+# export CPATH="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include"
+# export CGO_CPPFLAGS="-Wno-error -Wno-nullability-completeness -Wno-expansion-to-defined -Wno-builtin-requires-header"
+# export GOPATH="/opt/homebrew/Cellar/go/1.17.2"
+# export GOBIN=$GOPATH/bin
+export PATH="/Users/agou-ops/PATH:/opt/homebrew/Cellar/go/1.17.2/bin:/opt/homebrew/opt/ruby/bin:/Library/Developer/CommandLineTools/usr/bin:/Users/agou-ops/Library/Python/3.8/bin:$PATH"
+
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -57,6 +70,14 @@ export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
 export TERM=xterm-256color
 export ZSH_CUSTOM=~/.config/zsh
 # export EDITOR=vim
+#
+
+#----------------
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=254,bg=#808080,italic,underline"
+# ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+#-----------------
+
 
 # -----
 #
@@ -67,6 +88,9 @@ export ZSH_CUSTOM=~/.config/zsh
 # zstyle ':completion:*' menu select
 # 
 zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+#zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+autoload -Uz compinit && compinit
 # ----- END z plugin ----
 
 bindkey -e
@@ -77,8 +101,17 @@ source ~/.config/zsh/plugins/vscode/vscode.plugin.zsh
 # ----- zsh syntax highlighting -----
 # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# spack env
+source ~/GitHub_workspace/spack/share/spack/setup-env.sh
+
 # ----- zsh history substring search ----
 source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-# ----------------------------------------
+# -------- thefuck -----------
+eval $(thefuck --alias)
+# --------------PATH--------------------------
+export PATH="/Users/agou-ops/go/bin:/opt/homebrew/opt/ruby/bin:$PATH"
+
+
+
