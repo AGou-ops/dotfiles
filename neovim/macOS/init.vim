@@ -66,7 +66,10 @@ Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 " welcome page
 Plug 'mhinz/vim-startify'
-
+" scroll bar
+Plug 'Xuyuanp/scrollbar.nvim'
+" smmoth scroll: :h scroll.txt  for help
+Plug 'psliwka/vim-smoothie'
 
 
 call plug#end()
@@ -132,7 +135,7 @@ let g:gruvbox_material_better_performance = 1
 
 colorscheme gruvbox-material
 
-" ==================
+" ======================================================================
 "
 "========== Plugin Settings
 "
@@ -146,6 +149,21 @@ autocmd VimEnter *.go  Tagbar
 " =======-- identline settings =========
 " not working on macOS
 let g:indentLine_setColors = 0
+
+" ======== scrollbar settings =========
+" more settings --> :h Scrollbar.nvim
+augroup ScrollbarInit
+  autocmd!
+  autocmd WinScrolled,VimResized,QuitPre * silent! lua require('scrollbar').show()
+  autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
+  autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
+augroup end
+
+let g:scrollbar_shape = {
+  \ 'head': '',
+  \ 'body': '█',
+  \ 'tail': '',
+  \ }
 
 " ======== illuminate settings =========
 " Time in milliseconds (default 0)
@@ -245,10 +263,10 @@ hi FloatermNC guibg=gray
 " hi CurrentWord guifg=0 guibg=163 gui=underline,bold,italic ctermfg=0 ctermbg=163 cterm=underline,bold,italic
 
 " ========== vim-cursor settings ===========
-let g:cursorword_highlight = 0
+" let g:cursorword_highlight = 0
 let g:cursorword_delay = 0
-autocmd Colorscheme * highlight CursorWord0 cterm=underline gui=underline ctermbg=52 guibg=#303030
-autocmd Colorscheme * highlight CursorWord1 cterm=underline gui=underline ctermbg=52 guibg=#303030
+" autocmd Colorscheme * highlight CursorWord0 cterm=underline gui=underline ctermbg=52 guibg=#303030
+" autocmd Colorscheme * highlight CursorWord1 cterm=underline gui=underline ctermbg=52 guibg=#303030
 " highlight CursorWord0 cterm=underline gui=underline guisp=#ebcb8b
 " highlight CursorWord1 cterm=underline gui=underline guisp=#ebcb8b
 " augroup cursorword
@@ -300,7 +318,7 @@ endfunction
 " let g:workspace_autosave_always = 1
 " let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 
-" ===========
+" ==========================================================================
 
 " =========  Auto Shell comment.
 autocmd BufNewFile *.sh,*.py exec ":call SetTitle()"
@@ -605,21 +623,23 @@ nnoremap <D-k> <C-w>k
 nnoremap <D-h> <C-w>h
 nnoremap <D-l> <C-w>l
 " =====================
-nnoremap <C-Down> <C-w>j
-nnoremap <C-Up> <C-w>k
-nnoremap <C-Left> <C-w>h
-nnoremap <C-Right> <C-w>l
+nnoremap <A-Down> <C-w>j
+nnoremap <A-Up> <C-w>k
+nnoremap <A-Left> <C-w>h
+nnoremap <A-Right> <C-w>l
 noremap H ^
 noremap L $
 nnoremap / /\v
 vnoremap / /\v
 vnoremap // y/<c-r>"<cr>
-noremap <A-left> :bp<CR>
-noremap <A-right> :bn<CR>
+noremap <C-left> :bp<CR>
+noremap <C-right> :bn<CR>
 nnoremap ; :
+" not working on macOS
 noremap <leader>1 1gt
 noremap <leader>2 2gt
 noremap <leader>3 3gt
+" ================
 noremap <leader>0 :tablast<cr>
 nnoremap <C-t>     :tabnew<CR>
 inoremap <C-t>     <Esc>:tabnew<CR>
@@ -639,10 +659,10 @@ nmap <leader>s <Plug>(coc-codeaction-selected)
 " vnoremap <leader>y "+y
 vnoremap <C-c> "+y
 vnoremap <C-v> "+p
-nnoremap <C-h> <C-w>>
-nnoremap <C-j> <C-w>+
-nnoremap <C-k> <C-w>-
-nnoremap <C-l> <C-w><
+" nnoremap <C-h> <C-w>>
+" nnoremap <C-j> <C-w>+
+" nnoremap <C-k> <C-w>-
+" nnoremap <C-l> <C-w><
 nnoremap p ]p
 nnoremap P [p
 nnoremap ( %
