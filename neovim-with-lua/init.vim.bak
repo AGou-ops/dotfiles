@@ -47,9 +47,6 @@ Plug 'junegunn/fzf.vim'
 
 " Plug 'ap/vim-buftabline'
 Plug 'akinsho/bufferline.nvim'
-Plug 'junegunn/goyo.vim'
-Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
-
 
 
 Plug 'Yggdroot/indentLine'
@@ -74,13 +71,6 @@ Plug 'mhinz/vim-startify'
 Plug 'Xuyuanp/scrollbar.nvim'
 " smmoth scroll: :h scroll.txt  for help
 Plug 'psliwka/vim-smoothie'
-Plug 'numToStr/Comment.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-Plug 'owickstrom/vim-colors-paramount'
-
-
 
 
 call plug#end()
@@ -153,37 +143,7 @@ colorscheme gruvbox-material
 let g:tagbar_ctags_bin='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'
 autocmd VimEnter *.go  Tagbar
 
-" ======= goyo settings ==========
-let g:goyo_width = '60%'
-let g:goyo_height = '90%'
-" line number
-let g:goyo_linenr = 0
 
-" ====== firenvim settings ========
-if exists('g:started_by_firenvim')
-  set guifont=Fira_Code:h30
-end
-
-
-"
-"======= command bar style =========
-" Default keys
-
-call wilder#setup({'modes': [':', '/', '?']})
-call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
-      \ 'border': 'rounded',
-      \ 'highlighter': wilder#basic_highlighter(),
-      \ 'highlights': {
-      \   'border': 'Normal',
-      \   'accent': wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#f4468f'}]),
-      \ },
-      \ 'left': [
-      \   ' ', wilder#popupmenu_devicons(),
-      \ ],
-      \ 'right': [
-      \   ' ', wilder#popupmenu_scrollbar(),
-      \ ],
-      \ })))
 " =======-- identline settings =========
 " not working on macOS
 let g:indentLine_setColors = 0
@@ -339,7 +299,7 @@ let g:nvim_tree_window_picker_exclude = {
 " Dictionary of buffer option names mapped to a list of option values that
 " indicates to the window picker that the buffer's window should not be
 " selectable.
-let g:nvim_tree_special_files = { 'README.md': 0, 'Makefile': 0, 'MAKEFILE': 0 } " List of filenames that gets highlighted with NvimTreeSpecialFile
+let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
 let g:nvim_tree_show_icons = {
     \ 'git': 1,
     \ 'folders': 1,
@@ -377,7 +337,6 @@ let g:nvim_tree_icons = {
     \   'symlink_open': "",
     \   }
     \ }
-
 
 nnoremap <C-n> :NvimTreeToggle<CR>
 " conflict with my vim-go plugin and create new file
@@ -712,7 +671,6 @@ vnoremap / /\v
 vnoremap // y/<c-r>"<cr>
 noremap <C-left> :bp<CR>
 noremap <C-right> :bn<CR>
-noremap <C-g> :Goyo<CR>
 nnoremap ; :
 " not working on macOS
 noremap <leader>1 1gt
