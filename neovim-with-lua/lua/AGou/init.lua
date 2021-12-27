@@ -18,3 +18,4 @@ require('Comment').setup{
     },
 }
 -- ----------------------------------------------------------------------
+require('AGou.nvim-transparent')
