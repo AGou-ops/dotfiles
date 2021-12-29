@@ -1,5 +1,5 @@
 **Neovim及其插件简单视频介绍：https://www.bilibili.com/video/BV1am4y197bR/  
-保姆级安装up主同款Neovim：[计划中。。。](https://agou-ops.cn)**
+保姆级安装up主同款Neovim：https://www.bilibili.com/video/BV1YF411i72t/**
 
 ## 该仓库用于备份我的dotfiles.
 
