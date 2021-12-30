@@ -19,3 +19,5 @@ require('Comment').setup{
 }
 -- ----------------------------------------------------------------------
 require('AGou.nvim-transparent')
+require('AGou.nvim-cmp')
+require('AGou.nvim-lsp-installer')

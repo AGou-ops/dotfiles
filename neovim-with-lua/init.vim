@@ -35,7 +35,14 @@ Plug 'tmhedberg/simpylfold'
 
 " lsp server
 Plug 'neovim/nvim-lspconfig'
-
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+" Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 " Plug 'ray-x/go.nvim'
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
@@ -82,6 +89,7 @@ Plug 'roxma/vim-hug-neovim-rpc'
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'owickstrom/vim-colors-paramount'
 Plug 'f-person/git-blame.nvim'
+
 
 
 call plug#end()
@@ -182,6 +190,9 @@ let g:indentLine_setColors = 0
 " ========= tagbar settings ==========
 let g:tagbar_ctags_bin='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'
 autocmd VimEnter *.go  Tagbar
+
+" ========= nvim-cmp settings ==========
+set completeopt=menu,menuone,noselect
 
 " ========= goyo settings ==========
 let g:goyo_width = '60%'
@@ -318,7 +329,7 @@ let g:cursorword_delay = 0
 " " auto refresh nerdtree when file changed
 " autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
 
-" 弃用NerdTree 改为下面的nvim-tree.lua
+" !! 弃用NerdTree 改为下面的nvim-tree.lua
 " ==========
 " map <C-n> :call NERDTreeToggleAndRefresh()<CR>
 " set splitright        " nerdtree split right instead of left
