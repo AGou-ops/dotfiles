@@ -41,14 +41,15 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 " Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
+" Plug 'hrsh7th/cmp-vsnip'
+" Plug 'hrsh7th/vim-vsnip'
 " Plug 'ray-x/go.nvim'
+" not working on my macOS, fuckkkkk
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'voldikss/vim-floaterm'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -95,7 +96,6 @@ Plug 'f-person/git-blame.nvim'
 call plug#end()
 
 " ============================== END Plugin packages ============================== 
-
 
 
 " ============================== Pre settings ============================== 
@@ -246,6 +246,58 @@ let g:scrollbar_shape = {
   \ 'tail': '',
   \ }
 
+" ========= coc_explorer settings ==========
+let g:coc_explorer_global_presets = {
+\   '.vim': {
+\     'root-uri': '~/.config/nvim',
+\   },
+\   'cocConfig': {
+\      'root-uri': '~/.config/coc',
+\   },
+\   'tab': {
+\     'position': 'tab',
+\     'quit-on-open': v:true,
+\   },
+\   'tab:$': {
+\     'position': 'tab:$',
+\     'quit-on-open': v:true,
+\   },
+\   'floating': {
+\     'position': 'floating',
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingTop': {
+\     'position': 'floating',
+\     'floating-position': 'center-top',
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingLeftside': {
+\     'position': 'floating',
+\     'floating-position': 'left-center',
+\     'floating-width': 50,
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'floatingRightside': {
+\     'position': 'floating',
+\     'floating-position': 'right-center',
+\     'floating-width': 50,
+\     'open-action-strategy': 'sourceWindow',
+\   },
+\   'simplify': {
+\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+\   },
+\   'buffer': {
+\     'sources': [{'name': 'buffer', 'expand': v:true}]
+\   },
+\ }
+
+" Use preset argument to open it
+nmap <leader>ed <Cmd>CocCommand explorer --preset .vim<CR>
+nmap <leader>ef <Cmd>CocCommand explorer --preset floating<CR>
+nmap <leader>ec <Cmd>CocCommand explorer --preset cocConfig<CR>
+nmap <leader>eb <Cmd>CocCommand explorer --preset buffer<CR>
+" List all presets
+nmap <leader>el <Cmd>CocList explPresets<CR>
 " ========= illuminate settings ==========
 " Time in milliseconds (default 0)
 let g:Illuminate_delay = 3000

@@ -1,27 +1,58 @@
+vim.lsp.protocol.CompletionItemKind = {
+    '', -- Text          = 1;
+    '', -- Method        = 2;
+    'ƒ', -- Function      = 3;
+    '', -- Constructor   = 4;
+    '⌘', -- Field         = 5;
+    '', -- Variable      = 6;
+    '', -- Class         = 7;
+    'ﰮ', -- Interface     = 8;
+    '', -- Module        = 9;
+    '', -- Property      = 10;
+    '', -- Unit          = 11;
+    '', -- Value         = 12;
+    '了', -- Enum          = 13;
+    '', -- Keyword       = 14;
+    '﬌', -- Snippet       = 15;
+    '', -- Color         = 16;
+    '', -- File          = 17;
+    '', -- Reference     = 18;
+    '', -- Folder        = 19;
+    '', -- EnumMember    = 20;
+    '', -- Constant      = 21;
+    '', -- Struct        = 22;
+    '', -- Event         = 23;
+    '', -- Operator      = 24;
+    '', -- TypeParameter = 25;
+}
 -- Setup nvim-cmp.
 local cmp = require'cmp'
+for index, value in ipairs(vim.lsp.protocol.CompletionItemKind) do
+    -- cmp.lsp.CompletionItemKind[index] = value
+    cmp.lsp.CompletionItemKind[index] = value .. ' ' ..  cmp.lsp.CompletionItemKind[index]
+end
 
 cmp.setup({
-snippet = {
-  -- REQUIRED - you must specify a snippet engine
-  expand = function(args)
-    vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-    -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-    -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-    -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-  end,
-},
-mapping = {
-  ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-  ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-  ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-  ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-  ['<C-e>'] = cmp.mapping({
-    i = cmp.mapping.abort(),
-    c = cmp.mapping.close(),
-  }),
-  ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-},
+-- snippet = {
+--   -- REQUIRED - you must specify a snippet engine
+--   expand = function(args)
+--     vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+--     -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+--     -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+--     -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+--   end,
+-- },
+-- mapping = {
+--   ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+--   ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+--   ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+--   ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+--   ['<C-e>'] = cmp.mapping({
+--     i = cmp.mapping.abort(),
+--     c = cmp.mapping.close(),
+--   }),
+--   ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+-- },
 sources = cmp.config.sources({
   { name = 'nvim_lsp' },
   { name = 'vsnip' }, -- For vsnip users.
@@ -57,7 +88,7 @@ local servers = {
 "bashls",
 -- "pyright",
 "pylsp",
-"sumneko_lua",
+"gopls",
 }
 
 for _, name in pairs(servers) do

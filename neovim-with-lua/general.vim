@@ -108,5 +108,6 @@ set sidescroll=1
 set incsearch       " Find the next match as we type the search
 set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
+set wildignorecase
 set smartcase       " ...unless we type a capital
 hi Search cterm=NONE ctermfg=black ctermbg=red

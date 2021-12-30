@@ -63,6 +63,9 @@ nnoremap P [p
 nnoremap ( %
 nnoremap ) %
 
+" use tab/shift tab to switch coc or native lsp cmp
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " netrw
 
