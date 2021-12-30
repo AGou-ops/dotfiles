@@ -41,25 +41,30 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 " Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-" Plug 'hrsh7th/cmp-vsnip'
-" Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+
 " Plug 'ray-x/go.nvim'
 " not working on my macOS, fuckkkkk
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'voldikss/vim-floaterm'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+
+" not longer use fzf, just use telescope
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Plug 'ap/vim-buftabline'
 Plug 'akinsho/bufferline.nvim'
 Plug 'junegunn/goyo.vim'
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
-
 
 Plug 'Yggdroot/indentLine'
 Plug 'itchyny/vim-cursorword'
@@ -293,8 +298,8 @@ let g:coc_explorer_global_presets = {
 
 " Use preset argument to open it
 nmap <leader>ed <Cmd>CocCommand explorer --preset .vim<CR>
-nmap <leader>ef <Cmd>CocCommand explorer --preset floating<CR>
-nmap <leader>ec <Cmd>CocCommand explorer --preset cocConfig<CR>
+nmap <leader>ef <Cmd>CocCommand explorer --preset simplify<CR>
+" nmap <leader>ec <Cmd>CocCommand explorer --preset <CR>
 nmap <leader>eb <Cmd>CocCommand explorer --preset buffer<CR>
 " List all presets
 nmap <leader>el <Cmd>CocList explPresets<CR>
@@ -517,8 +522,9 @@ autocmd! bufwritepost _vimrc source %
 " auto reload when modified vimrc file (Linux)
 autocmd! bufwritepost $HOME/.config/nvim/init.vim source %
 
-au CursorHold * checktime  
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+" some error occur
+" au CursorHold * checktime  
+" autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
 " notification after file change
 autocmd FileChangedShellPost *
     \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None

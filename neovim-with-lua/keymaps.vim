@@ -26,6 +26,8 @@ vnoremap // y/<c-r>"<cr>
 noremap <C-left> :bp<CR>
 noremap <C-right> :bn<CR>
 noremap <C-g> :Goyo<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-t>     <Esc>:tabnew<CR>
 nnoremap ; :
 " not working on macOS
 noremap <leader>1 1gt
@@ -33,16 +35,19 @@ noremap <leader>2 2gt
 noremap <leader>3 3gt
 " ================
 noremap <leader>0 :tablast<cr>
-nnoremap <C-t>     :tabnew<CR>
-inoremap <C-t>     <Esc>:tabnew<CR>
 nnoremap <leader>t :FloatermNew<CR>
-nnoremap <leader>f :Files<CR>
 nnoremap <leader>w :Windows<CR>
 nnoremap <leader>m :Maps<CR>
 nnoremap <leader>d ::bufdo! bd!<CR>
 " ========= coc.spelling settings ========
 vmap <leader>s <Plug>(coc-codeaction-selected)
 nmap <leader>s <Plug>(coc-codeaction-selected)
+
+" ========= telescope settings ========
+nnoremap <leader>ff :Telescope find_files<CR>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " =========================================
 " Auto indent pasted text
@@ -66,6 +71,10 @@ nnoremap ) %
 " use tab/shift tab to switch coc or native lsp cmp
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" cmdline quickly go to head or tail
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
 
 " netrw
 
