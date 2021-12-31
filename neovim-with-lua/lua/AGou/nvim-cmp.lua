@@ -26,6 +26,7 @@ vim.lsp.protocol.CompletionItemKind = {
     '', -- TypeParameter = 25;
 }
 -- Setup nvim-cmp.
+vim.o.completeopt = 'menuone,noselect'
 local cmp = require'cmp'
 for index, value in ipairs(vim.lsp.protocol.CompletionItemKind) do
     -- cmp.lsp.CompletionItemKind[index] = value
@@ -60,7 +61,10 @@ cmp.setup({
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       }),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ['<CR>'] = cmp.mapping.confirm({ 
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = true,
+      }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
       ['<Tab>'] = function(fallback)  -- see GH-231, GH-286
       if cmp.visible() then cmp.select_next_item()
       elseif has_words_before() then cmp.complete()
@@ -82,19 +86,18 @@ cmp.setup({
     })
 })
 
+-- 这个地方视频上讲的有些错误,下面这些东西只需在lsp.lua中设置即可,无需重复设置.
 -- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-
-local servers = {
-"bashls",
--- "pyright",
-"pylsp",
--- "gopls",
-}
-
-for _, name in pairs(servers) do
-  require('lspconfig')[name].setup {
-  capabilities = capabilities
-}
-end
+-- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- local servers = {
+-- "bashls",
+-- -- "pyright",
+-- "pylsp",
+-- -- "gopls",
+-- }
+--
+-- for _, name in pairs(servers) do
+--   require('lspconfig')[name].setup {
+--   capabilities = capabilities
+-- }
+-- end
