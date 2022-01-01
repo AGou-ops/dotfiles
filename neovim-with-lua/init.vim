@@ -23,12 +23,16 @@ Plug 'xiyaowong/nvim-transparent'
 Plug '907th/vim-auto-save'
 Plug 'preservim/tagbar'
 Plug 'nvim-lualine/lualine.nvim'
+"
+Plug 'feline-nvim/feline.nvim'
 " If you want to have icons in your statusline choose one of these
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 
 " golang dev tools
-Plug 'jiangmiao/auto-pairs'    " auto complete brackets
+Plug 'windwp/nvim-autopairs'
+Plug 'lukas-reineke/indent-blankline.nvim'
+
 " Plug 'will133/vim-dirdiff'
 Plug 'tmhedberg/simpylfold'
 " Plug 'thaerkh/vim-workspace'  " autosave vim session
@@ -65,7 +69,7 @@ Plug 'akinsho/bufferline.nvim'
 Plug 'junegunn/goyo.vim'
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 Plug 'itchyny/vim-cursorword'
 " Plug 'dominikduda/vim_current_word'
 
@@ -185,17 +189,21 @@ colorscheme gruvbox-material
 " ============================== Plugins settings ============================== 
 
 " ========= indentline settings ==========
-" let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let g:indentLine_char = '┆'
-let g:indentLine_concealcursor = 'inc'
-let g:indentLine_conceallevel = 2
-
-" disable by default
-let g:transparent_enabled = v:false
-" not working on macOS, change color for indentLine
-let g:indentLine_setColors = 0
+" " let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+" let g:indentLine_char = '┆'
+" let g:indentLine_concealcursor = 'inc'
+" let g:indentLine_conceallevel = 2
+"
+" " disable by default
+" let g:transparent_enabled = v:false
+" " not working on macOS, change color for indentLine
+" let g:indentLine_setColors = 0
 " more simple method to achieve indentline
 " set list lcs=tab:\┆\ 
+
+" ========= autopairs settings ==========
+" defalut options
+
 
 " ========= tagbar settings ==========
 let g:tagbar_ctags_bin='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'

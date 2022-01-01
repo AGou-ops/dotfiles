@@ -17,10 +17,24 @@ require('Comment').setup{
         extended = true,
     },
 }
+-- --------------------------------------
+-- idnent-line  更多配置参考: https://github.com/lukas-reineke/indent-blankline.nvim/blob/master/doc/indent_blankline.txt
+vim.opt.list = true
+-- vim.opt.listchars:append("space:⋅")
+vim.opt.listchars:append("eol:↴")
+require("indent_blankline").setup {
+    -- for example, context is off by default, use this to turn it on
+    space_char_blankline = " ",
+    show_current_context = true,
+    show_current_context_start = true,
+}
+-- --------------------------------------
+--
+--
 -- ----------------------------------------------------------------------
 require('AGou.nvim-transparent')
 require('AGou.nvim-cmp')
 require('AGou.nvim-lsp-installer')
 require('AGou.nvim-treesitter')
 require('AGou.gitsigns')
-require('AGou.distant')
+require('AGou.autopairs')

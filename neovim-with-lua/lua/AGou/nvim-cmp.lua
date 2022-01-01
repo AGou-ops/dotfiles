@@ -27,7 +27,11 @@ vim.lsp.protocol.CompletionItemKind = {
 }
 -- Setup nvim-cmp.
 vim.o.completeopt = 'menuone,noselect'
+
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require'cmp'
+cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
+
 for index, value in ipairs(vim.lsp.protocol.CompletionItemKind) do
     -- cmp.lsp.CompletionItemKind[index] = value
     cmp.lsp.CompletionItemKind[index] = value .. ' ' ..  cmp.lsp.CompletionItemKind[index]
