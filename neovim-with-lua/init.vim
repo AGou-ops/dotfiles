@@ -49,8 +49,7 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 
 Plug 'voldikss/vim-floaterm'
 
@@ -98,6 +97,9 @@ Plug 'owickstrom/vim-colors-paramount'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 
+" Easily speed up your neovim startup time!
+Plug 'dstein64/vim-startuptime'
+Plug 'nathom/filetype.nvim'
 
 
 
@@ -253,6 +255,17 @@ let g:scrollbar_shape = {
   \ 'body': '█',
   \ 'tail': '',
   \ }
+
+" ========= coc.nvim witelist CocGroup
+" augroup CocGroup
+"   autocmd!
+"   " disable coc.nvim
+"   autocmd BufNew,BufRead,BufReadPost * execute "CocDisable"
+"   " witelist below
+"   autocmd BufNew,BufEnter,BufRead,BufReadPost *.go execute "CocDisable"
+" augroup end
+" ========= END coc.nvim witelist settings ==========
+
 
 " ========= coc_explorer settings ==========
 let g:coc_explorer_global_presets = {
@@ -519,9 +532,12 @@ let g:NERDToggleCheckAllLines = 1
 
 
 " ============================== Autocmd/Function settings ============================== 
-"
+augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+augroup end
 " auto reload when modified vimrc file (Windows)
-autocmd! bufwritepost _vimrc source %
+" autocmd! bufwritepost _vimrc source %
 " auto reload when modified vimrc file (Linux)
 autocmd! bufwritepost $HOME/.config/nvim/init.vim source %
 

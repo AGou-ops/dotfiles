@@ -22,6 +22,8 @@ echo -e "\n"
 
 read -p "Enter commit message here: " commitMsg
 
+echo -e "\n"
+
 git commit -m "${commitMsg}"
 
 export http_proxy=127.0.0.1:9870

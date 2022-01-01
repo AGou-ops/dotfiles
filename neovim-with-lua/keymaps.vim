@@ -35,10 +35,14 @@ noremap <leader>2 2gt
 noremap <leader>3 3gt
 " ================
 noremap <leader>0 :tablast<cr>
-nnoremap <leader>t :FloatermNew<CR>
-nnoremap <leader>w :Windows<CR>
-nnoremap <leader>m :Maps<CR>
+nnoremap <leader>tt :FloatermNew<CR>
 nnoremap <leader>d ::bufdo! bd!<CR>
+" add quote for current word
+nnoremap <Leader>q" ciw""<Esc>P
+nnoremap <Leader>q' ciw''<Esc>P
+nnoremap <Leader>q( ciw()<Esc>P
+nnoremap <Leader>q{ ciw{}<Esc>P
+nnoremap <Leader>qd daW"=substitute(@@,"'\\\|\"","","g")<CR>P
 " ========= coc.spelling settings ========
 vmap <leader>s <Plug>(coc-codeaction-selected)
 nmap <leader>s <Plug>(coc-codeaction-selected)
