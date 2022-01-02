@@ -105,6 +105,10 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'dstein64/vim-startuptime'
 Plug 'nathom/filetype.nvim'
 
+Plug 'tami5/lspsaga.nvim'
+Plug 'ray-x/lsp_signature.nvim'
+
+
 
 
 call plug#end()
@@ -263,6 +267,23 @@ let g:scrollbar_shape = {
   \ 'body': '█',
   \ 'tail': '',
   \ }
+
+" ========= lspsaga.nvim settings ==========
+nnoremap <silent> gf <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
+nnoremap <silent> gx <cmd>Lspsaga code_action<cr>
+nnoremap <silent> gs :Lspsaga signature_help<CR>
+nnoremap <silent> gr :Lspsaga rename<CR>
+vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
+nnoremap <silent> gp :Lspsaga preview_definition<CR>
+nnoremap <silent> go :Lspsaga show_line_diagnostics<CR>
+
+nnoremap <silent> gj <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>
+nnoremap <silent> gk <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>
+" show hover doc
+nnoremap <silent> K <cmd>Lspsaga hover_doc<CR>
+
+
+" highlight link LspSagaFinderSelection Search
 
 " ========= coc.nvim witelist CocGroup
 " augroup CocGroup
