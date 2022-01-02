@@ -53,6 +53,9 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+" ========= other settings ========
+nnoremap <leader>h :UndotreeToggle <bar> :UndotreeFocus<CR>
+
 " =========================================
 " Auto indent pasted text
 nnoremap p p=`]<C-o>

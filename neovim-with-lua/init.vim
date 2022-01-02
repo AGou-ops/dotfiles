@@ -1,42 +1,72 @@
-" AGou-ops VIMRC FILE         -- Update Date: 2021年12月27日08:46:29
+" AGou-ops VIMRC FILE         -- Update Date: 2022年01月02日16:57:08
 set nocompatible              " be iMproved, required
 
 " ============================== Plugin packages ============================== 
 " Begin Plug, Depends On https://github.com/junegunn/vim-plug
 
 call plug#begin('~/.vim/plugged')
-" Plug 'scrooloose/nerdtree'
-" better than nerdtree
-" Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 
-" Plug 'powerline/powerline'
-Plug 'dense-analysis/ale'
-" Plug 'itchyny/lightline.vim'
-Plug 'plasticboy/vim-markdown'
-" Dependence `npm -g install instant-markdown-d`
-" Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-" Plug 'camspiers/animate.vim'
-Plug 'camspiers/lens.vim'
-" seiya not working on gruvbox colorscheme
-" Plug 'miyakogi/seiya.vim'
+" ========= colorscheme here. ==========
+" Plug 'joshdick/onedark.vim'
+" Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+" Plug 'EdenEast/nightfox.nvim'
+" Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
+
+" ========= appearence here. ==========
+
+Plug 'nvim-lualine/lualine.nvim'
+" Plug 'feline-nvim/feline.nvim'
 Plug 'xiyaowong/nvim-transparent'
+Plug 'junegunn/goyo.vim'
+Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
+" welcome page
+Plug 'mhinz/vim-startify'
+
+" ========= useful tool here. ==========
+
+Plug 'plasticboy/vim-markdown'
+Plug 'camspiers/lens.vim'
 Plug '907th/vim-auto-save'
 Plug 'preservim/tagbar'
-Plug 'nvim-lualine/lualine.nvim'
-"
-Plug 'feline-nvim/feline.nvim'
-" If you want to have icons in your statusline choose one of these
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
-
-" golang dev tools
 Plug 'windwp/nvim-autopairs'
 Plug 'lukas-reineke/indent-blankline.nvim'
+" not working on my macOS, fuckkkkk
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'voldikss/vim-floaterm'
+" not longer use fzf, just use telescope
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'akinsho/bufferline.nvim'
 
-" Plug 'will133/vim-dirdiff'
-Plug 'tmhedberg/simpylfold'
-" Plug 'thaerkh/vim-workspace'  " autosave vim session
+" Plug 'Yggdroot/indentLine'
+Plug 'itchyny/vim-cursorword'
+" Plug 'dominikduda/vim_current_word'
 
+Plug 'rrethy/vim-illuminate'
+Plug 'ryanoasis/vim-devicons'
+Plug 'sebdah/vim-delve'
+" scroll bar
+Plug 'Xuyuanp/scrollbar.nvim'
+" smmoth scroll: :h scroll.txt  for help
+Plug 'psliwka/vim-smoothie'
+" Easily speed up your neovim startup time!
+Plug 'dstein64/vim-startuptime'
+Plug 'nathom/filetype.nvim'
+Plug 'numToStr/Comment.nvim'
+" Plug 'roxma/nvim-yarp'
+" Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'mbbill/undotree'
+
+
+" ========= programming tool here. ==========
+
+Plug 'dense-analysis/ale'
 " lsp server
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
@@ -47,74 +77,19 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
-
-" Plug 'ray-x/go.nvim'
-" not working on my macOS, fuckkkkk
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-
-Plug 'voldikss/vim-floaterm'
-
-" not longer use fzf, just use telescope
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
-
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-" Plug 'ap/vim-buftabline'
-Plug 'akinsho/bufferline.nvim'
-Plug 'junegunn/goyo.vim'
-Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
-
-" Plug 'Yggdroot/indentLine'
-Plug 'itchyny/vim-cursorword'
-" Plug 'dominikduda/vim_current_word'
-
-Plug 'rrethy/vim-illuminate'
-Plug 'ryanoasis/vim-devicons'
-Plug 'sebdah/vim-delve'
-" Plug 'Shougo/echodoc.vim'
-
-" ========= colorscheme here. ==========
-" Plug 'joshdick/onedark.vim'
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'EdenEast/nightfox.nvim'
-Plug 'morhetz/gruvbox'
-Plug 'sainnhe/gruvbox-material'
-" =========  END colorscheme ==========
-
-" welcome page
-Plug 'mhinz/vim-startify'
-" scroll bar
-Plug 'Xuyuanp/scrollbar.nvim'
-" smmoth scroll: :h scroll.txt  for help
-Plug 'psliwka/vim-smoothie'
-Plug 'numToStr/Comment.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'owickstrom/vim-colors-paramount'
-" Plug 'f-person/git-blame.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 
-" Easily speed up your neovim startup time!
-Plug 'dstein64/vim-startuptime'
-Plug 'nathom/filetype.nvim'
-
 Plug 'tami5/lspsaga.nvim'
 Plug 'ray-x/lsp_signature.nvim'
-
-
-
-
+"
+" =============== END plugin ===============
 call plug#end()
 
 " ============================== END Plugin packages ============================== 
-
 
 " ============================== Pre settings ============================== 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
@@ -234,6 +209,11 @@ let g:gitblame_date_format = '%r'
 " let g:gitblame_highlight_group = "Question"
 highlight default link Visual default
 
+" ========= vim-visual-multi settings ==========
+let g:VM_maps = {}
+let g:VM_maps['Find Under']         = '<C-m>'           " replace C-n
+let g:VM_maps['Find Subword Under'] = '<C-m>'           " replace visual C-n
+let g:VM_mouse_mappings = 1
 " ========= commandbar settings ==========
 " Default keys
 
@@ -277,11 +257,11 @@ vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
 nnoremap <silent> gp :Lspsaga preview_definition<CR>
 nnoremap <silent> go :Lspsaga show_line_diagnostics<CR>
 
-nnoremap <silent> gj <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>
-nnoremap <silent> gk <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>
+
+nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
 " show hover doc
 nnoremap <silent> K <cmd>Lspsaga hover_doc<CR>
-
 
 " highlight link LspSagaFinderSelection Search
 
