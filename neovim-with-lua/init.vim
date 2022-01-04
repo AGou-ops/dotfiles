@@ -23,7 +23,7 @@ Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 " welcome page
 Plug 'mhinz/vim-startify'
 
-" ========= useful tool here. ==========
+" ========= useful tools here. ==========
 
 Plug 'plasticboy/vim-markdown'
 Plug 'camspiers/lens.vim'
@@ -35,12 +35,14 @@ Plug 'windwp/nvim-autopairs'
 Plug 'lukas-reineke/indent-blankline.nvim'
 " not working on my macOS, fuckkkkk
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-Plug 'voldikss/vim-floaterm'
+" Plug 'voldikss/vim-floaterm'
+Plug 'akinsho/toggleterm.nvim'
 " not longer use fzf, just use telescope
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
 Plug 'akinsho/bufferline.nvim'
 
 " Plug 'Yggdroot/indentLine'
@@ -53,7 +55,8 @@ Plug 'sebdah/vim-delve'
 " scroll bar
 Plug 'Xuyuanp/scrollbar.nvim'
 " smmoth scroll: :h scroll.txt  for help
-Plug 'psliwka/vim-smoothie'
+" Plug 'psliwka/vim-smoothie'
+Plug 'karb94/neoscroll.nvim'
 " Easily speed up your neovim startup time!
 Plug 'dstein64/vim-startuptime'
 Plug 'nathom/filetype.nvim'
@@ -62,9 +65,12 @@ Plug 'numToStr/Comment.nvim'
 " Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'mbbill/undotree'
+Plug 'rmagatti/auto-session'
+Plug 'folke/which-key.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'folke/todo-comments.nvim'
 
-
-" ========= programming tool here. ==========
+" ========= programming tools here. ==========
 
 Plug 'dense-analysis/ale'
 " lsp server
@@ -80,11 +86,11 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'owickstrom/vim-colors-paramount'
-Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'tami5/lspsaga.nvim'
 Plug 'ray-x/lsp_signature.nvim'
+
 "
 " =============== END plugin ===============
 call plug#end()
@@ -208,6 +214,12 @@ let g:gitblame_message_template = '     ◆ <summary> • <date> • <author>   
 let g:gitblame_date_format = '%r'
 " let g:gitblame_highlight_group = "Question"
 highlight default link Visual default
+
+" ========= auto-session settings ==========
+" let g:auto_session_root_dir = '~/.vim/sessions/'
+nnoremap <leader>ss <cmd>SaveSession<CR>
+nnoremap <leader>sd <cmd>!rm -f ~/.config/nvim/sessions/*<CR>
+
 
 " ========= vim-visual-multi settings ==========
 let g:VM_maps = {}
@@ -354,13 +366,22 @@ hi illuminatedWord cterm=underline gui=underline
 " require('go').setup()
 "
 "
-" ============ buffer line settings =========
-" set termguicolors
 
 
-" ========= floaterm settings ==========
-autocmd User FloatermOpen        " triggered after opening a new/existed floaterm
-hi FloatermNC guibg=gray
+" ========= floaterm settings[NOT USED] ==========
+" autocmd User FloatermOpen        " triggered after opening a new/existed floaterm
+" hi FloatermNC guibg=gray
+
+" ========= toggleterm settings ==========
+autocmd TermEnter term://*toggleterm#*
+      \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+
+" By applying the mappings this way you can pass a count to your
+" mapping to open a specific window.
+" For example: 2<C-t> will open terminal 2
+nnoremap <silent><leader>tt <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <silent><leader>tt <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
+nnoremap <silent><leader>gg <Cmd>lua _LAZYGIT_TOGGLE()<CR>
 
 " ========= current cursor settings ==========
 " " Twins of word under cursor:

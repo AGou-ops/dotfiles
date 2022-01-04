@@ -35,7 +35,7 @@ noremap <leader>2 2gt
 noremap <leader>3 3gt
 " ================
 noremap <leader>0 :tablast<cr>
-nnoremap <leader>tt :FloatermNew<CR>
+" nnoremap <leader>tt :FloatermNew<CR>
 nnoremap <leader>d ::bufdo! bd!<CR>
 " add quote for current word
 nnoremap <Leader>q" ciw""<Esc>P
@@ -44,14 +44,15 @@ nnoremap <Leader>q( ciw()<Esc>P
 nnoremap <Leader>q{ ciw{}<Esc>P
 nnoremap <Leader>qd daW"=substitute(@@,"'\\\|\"","","g")<CR>P
 " ========= coc.spelling settings ========
-vmap <leader>s <Plug>(coc-codeaction-selected)
-nmap <leader>s <Plug>(coc-codeaction-selected)
+" vmap <leader>s <Plug>(coc-codeaction-selected)
+" nmap <leader>s <Plug>(coc-codeaction-selected)
 
 " ========= telescope settings ========
 nnoremap <leader>ff :Telescope find_files<CR>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>ft <cmd>TodoTelescope<cr>
 
 " ========= other settings ========
 nnoremap <leader>h :UndotreeToggle <bar> :UndotreeFocus<CR>
