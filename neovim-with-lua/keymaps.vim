@@ -143,7 +143,7 @@ nnoremap <F2> :call HideNumber()<CR>
 nnoremap <F3> :TransparentToggle<CR>
 " F4 wrap line on|off
 nnoremap <F4> :set wrap! wrap?<CR>
-set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
+" set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
                                 "    paste mode, where you can paste mass data
                                 "    that won't be autoindented
 " F6 turn on|off syntax, speed up read large file
@@ -152,3 +152,4 @@ nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 " au InsertLeave * set nopaste
 " F8 turn on tagbar
 nmap <F8> :TagbarToggle<CR>
+

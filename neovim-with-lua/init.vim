@@ -60,6 +60,7 @@ Plug 'karb94/neoscroll.nvim'
 " Easily speed up your neovim startup time!
 Plug 'dstein64/vim-startuptime'
 Plug 'nathom/filetype.nvim'
+
 Plug 'numToStr/Comment.nvim'
 " Plug 'roxma/nvim-yarp'
 " Plug 'roxma/vim-hug-neovim-rpc'
@@ -90,6 +91,10 @@ Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'tami5/lspsaga.nvim'
 Plug 'ray-x/lsp_signature.nvim'
+Plug 'puremourning/vimspector'
+" Plug 'mfussenegger/nvim-dap'
+
+
 
 "
 " =============== END plugin ===============
@@ -102,16 +107,16 @@ call plug#end()
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
 if (empty($TMUX))
-  if (has("nvim"))
-    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
+    if (has("nvim"))
+        "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+        let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    endif
+    "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+    "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+    " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+    if (has("termguicolors"))
+        set termguicolors
+    endif
 endif
 " ============================== END Pre settings ============================== 
 
@@ -146,7 +151,7 @@ endif
 " https://github.com/sainnhe/gruvbox-material/blob/master/doc/gruvbox-material.txt
 " Important!!
 if has('termguicolors')
-  set termguicolors
+    set termguicolors
 endif
 " For dark version.
 set background=dark
@@ -231,34 +236,34 @@ let g:VM_mouse_mappings = 1
 
 call wilder#setup({'modes': [':', '/', '?']})
 call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
-      \ 'border': 'rounded',
-      \ 'highlighter': wilder#basic_highlighter(),
-      \ 'highlights': {
-      \   'border': 'Normal',
-      \   'accent': wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#f4468f'}]),
-      \ },
-      \ 'left': [
-      \   ' ', wilder#popupmenu_devicons(),
-      \ ],
-      \ 'right': [
-      \   ' ', wilder#popupmenu_scrollbar(),
-      \ ],
-      \ })))
+            \ 'border': 'rounded',
+            \ 'highlighter': wilder#basic_highlighter(),
+            \ 'highlights': {
+                \   'border': 'Normal',
+                \   'accent': wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#f4468f'}]),
+                \ },
+                \ 'left': [
+                    \   ' ', wilder#popupmenu_devicons(),
+                    \ ],
+                    \ 'right': [
+                        \   ' ', wilder#popupmenu_scrollbar(),
+                        \ ],
+                        \ })))
 
 " ========= scrollbar settings ==========
 " more settings --> :h Scrollbar.nvim
 augroup ScrollbarInit
-  autocmd!
-  autocmd WinScrolled,VimResized,QuitPre * silent! lua require('scrollbar').show()
-  autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
-  autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
+    autocmd!
+    autocmd WinScrolled,VimResized,QuitPre * silent! lua require('scrollbar').show()
+    autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
+    autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
 augroup end
 
 let g:scrollbar_shape = {
-  \ 'head': '',
-  \ 'body': '█',
-  \ 'tail': '',
-  \ }
+            \ 'head': '',
+            \ 'body': '█',
+            \ 'tail': '',
+            \ }
 
 " ========= lspsaga.nvim settings ==========
 nnoremap <silent> gf <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
@@ -288,58 +293,6 @@ nnoremap <silent> K <cmd>Lspsaga hover_doc<CR>
 " ========= END coc.nvim witelist settings ==========
 
 
-" ========= coc_explorer settings ==========
-let g:coc_explorer_global_presets = {
-\   '.vim': {
-\     'root-uri': '~/.config/nvim',
-\   },
-\   'cocConfig': {
-\      'root-uri': '~/.config/coc',
-\   },
-\   'tab': {
-\     'position': 'tab',
-\     'quit-on-open': v:true,
-\   },
-\   'tab:$': {
-\     'position': 'tab:$',
-\     'quit-on-open': v:true,
-\   },
-\   'floating': {
-\     'position': 'floating',
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingTop': {
-\     'position': 'floating',
-\     'floating-position': 'center-top',
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingLeftside': {
-\     'position': 'floating',
-\     'floating-position': 'left-center',
-\     'floating-width': 50,
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingRightside': {
-\     'position': 'floating',
-\     'floating-position': 'right-center',
-\     'floating-width': 50,
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'simplify': {
-\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
-\   },
-\   'buffer': {
-\     'sources': [{'name': 'buffer', 'expand': v:true}]
-\   },
-\ }
-
-" Use preset argument to open it
-nmap <leader>ed <Cmd>CocCommand explorer --preset .vim<CR>
-nmap <leader>ef <Cmd>CocCommand explorer --preset simplify<CR>
-" nmap <leader>ec <Cmd>CocCommand explorer --preset <CR>
-nmap <leader>eb <Cmd>CocCommand explorer --preset buffer<CR>
-" List all presets
-nmap <leader>el <Cmd>CocList explPresets<CR>
 " ========= illuminate settings ==========
 " Time in milliseconds (default 0)
 let g:Illuminate_delay = 3000
@@ -366,7 +319,47 @@ hi illuminatedWord cterm=underline gui=underline
 " require('go').setup()
 "
 "
+" ============= vimspector(go) settings ==========
+" 
+let g:vimspector_enable_mappings = 'HUMAN'
+" default keymap below
+" | KEY          | FUNCTION                                                  | API                                                          |
+" | :----------- | :-------------------------------------------------------- | :----------------------------------------------------------- |
+" | `F5`         | When debugging, continue. Otherwise start debugging.      | `vimspector#Continue()`                                      |
+" | `F3`         | Stop debugging.                                           | `vimspector#Stop()`                                          |
+" | `F4`         | Restart debugging with the same configuration.            | `vimspector#Restart()`                                       |
+" | `F6`         | Pause debuggee.                                           | `vimspector#Pause()`                                         |
+" | `F9`         | Toggle line breakpoint on the current line.               | `vimspector#ToggleBreakpoint()`                              |
+" | `<leader>F9` | Toggle conditional line breakpoint on the current line.   | `vimspector#ToggleBreakpoint( { trigger expr, hit count expr } )` |
+" | `F8`         | Add a function breakpoint for the expression under cursor | `vimspector#AddFunctionBreakpoint( '<cexpr>' )`              |
+" | `<leader>F8` | Run to Cursor                                             | `vimspector#RunToCursor()`                                   |
+" | `F10`        | Step Over                                                 | `vimspector#StepOver()`                                      |
+" | `F11`        | Step Into                                                 | `vimspector#StepInto()`                                      |
+" | `F12`        | Step out of current function scope                        | `vimspector#StepOut()`                                       |
+nmap <leader>vl :call vimspector#Launch()<CR>
+nmap <leader>vr :VimspectorReset<CR>
+nmap <leader>ve :VimspectorEval
+nmap <leader>vw :VimspectorWatch
+nmap <leader>vo :VimspectorShowOutput
+nmap <leader>vi <Plug>VimspectorBalloonEval
+xmap <leader>vi <Plug>VimspectorBalloonEval
 
+" for normal mode - the word under the cursor
+nmap <Leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <Leader>di <Plug>VimspectorBalloonEval
+
+let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-go', 'CodeLLDB', 'vscode-node-debug2' ]
+
+" for normal mode - the word under the cursor
+" nmap <Leader>di <Plug>VimspectorBalloonEval
+" " for visual mode, the visually selected text
+" xmap <Leader>di <Plug>VimspectorBalloonEval
+
+" ============= nvim-dap settings ==========
+
+nnoremap <silent><leader>da <Cmd>lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent><leader>dc <Cmd>lua require'dap'.continue()<CR>
 
 " ========= floaterm settings[NOT USED] ==========
 " autocmd User FloatermOpen        " triggered after opening a new/existed floaterm
@@ -374,7 +367,7 @@ hi illuminatedWord cterm=underline gui=underline
 
 " ========= toggleterm settings ==========
 autocmd TermEnter term://*toggleterm#*
-      \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+            \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 
 " By applying the mappings this way you can pass a count to your
 " mapping to open a specific window.
@@ -468,25 +461,25 @@ let g:nvim_tree_respect_buf_cwd = 0 "0 by default, will change cwd of nvim-tree 
 let g:nvim_tree_create_in_closed_folder = 0 "1 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
 let g:nvim_tree_refresh_wait = 500 "1000 by default, control how often the tree can be refreshed, 1000 means the tree can be refresh once per 1000ms.
 let g:nvim_tree_window_picker_exclude = {
-    \   'filetype': [
-    \     'notify',
-    \     'packer',
-    \     'qf'
-    \   ],
-    \   'buftype': [
-    \     'terminal'
-    \   ]
-    \ }
+            \   'filetype': [
+                \     'notify',
+                \     'packer',
+                \     'qf'
+                \   ],
+                \   'buftype': [
+                    \     'terminal'
+                    \   ]
+                    \ }
 " Dictionary of buffer option names mapped to a list of option values that
 " indicates to the window picker that the buffer's window should not be
 " selectable.
 let g:nvim_tree_special_files = { 'README.md': 0, 'Makefile': 0, 'MAKEFILE': 0 } " List of filenames that gets highlighted with NvimTreeSpecialFile
 let g:nvim_tree_show_icons = {
-    \ 'git': 1,
-    \ 'folders': 1,
-    \ 'files': 1,
-    \ 'folder_arrows': 1,
-    \ }
+            \ 'git': 1,
+            \ 'folders': 1,
+            \ 'files': 1,
+            \ 'folder_arrows': 1,
+            \ }
 "If 0, do not show the icons for one of 'git' 'folder' and 'files'
 "1 by default, notice that if 'files' is 1, it will only display
 "if nvim-web-devicons is installed and on your runtimepath.
@@ -496,28 +489,28 @@ let g:nvim_tree_show_icons = {
 " default will show icon by default if no icon is provided
 " default shows no icon by default
 let g:nvim_tree_icons = {
-    \ 'default': '',
-    \ 'symlink': '',
-    \ 'git': {
-    \   'unstaged': "✗",
-    \   'staged': "✓",
-    \   'unmerged': "",
-    \   'renamed': "➜",
-    \   'untracked': "★",
-    \   'deleted': "",
-    \   'ignored': "◌"
-    \   },
-    \ 'folder': {
-    \   'arrow_open': "",
-    \   'arrow_closed': "",
-    \   'default': "",
-    \   'open': "",
-    \   'empty': "",
-    \   'empty_open': "",
-    \   'symlink': "",
-    \   'symlink_open': "",
-    \   }
-    \ }
+            \ 'default': '',
+            \ 'symlink': '',
+            \ 'git': {
+                \   'unstaged': "✗",
+                \   'staged': "✓",
+                \   'unmerged': "",
+                \   'renamed': "➜",
+                \   'untracked': "★",
+                \   'deleted': "",
+                \   'ignored': "◌"
+                \   },
+                \ 'folder': {
+                    \   'arrow_open': "",
+                    \   'arrow_closed': "",
+                    \   'default': "",
+                    \   'open': "",
+                    \   'empty': "",
+                    \   'empty_open': "",
+                    \   'symlink': "",
+                    \   'symlink_open': "",
+                    \   }
+                    \ }
 
 
 nnoremap <C-n> :NvimTreeToggle<CR>
@@ -576,7 +569,7 @@ autocmd! bufwritepost $HOME/.config/nvim/init.vim source %
 " autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
 " notification after file change
 autocmd FileChangedShellPost *
-    \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+            \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 " --------------------------------------------------------------------------------------------
 
 au FocusLost * :set norelativenumber number
@@ -584,11 +577,11 @@ au FocusGained * :set relativenumber
 autocmd InsertEnter * :set norelativenumber number    " use absolute line number.
 autocmd InsertLeave * :set relativenumber
 function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber number
-  else
-    set relativenumber
-  endif
+    if(&relativenumber == 1)
+        set norelativenumber number
+    else
+        set relativenumber
+    endif
 endfunc
 " remap <C-n> to switch between relative and absolute line number.
 " nnoremap <C-n> :call NumberToggle()<cr>
@@ -597,9 +590,9 @@ endfunc
 " This loads all the plugins specified in ~/.vim/vundles.vim
 " Use Vundle plugin to manage all other plugins
 if filereadable(expand("~/.vimrc.bundles"))
-  source ~/.vimrc.bundles
+    source ~/.vimrc.bundles
 elseif filereadable(expand("~/.config/nvim/vimrc.bundles")) " neovim
-  source ~/.config/nvim/vimrc.bundles
+    source ~/.config/nvim/vimrc.bundles
 endif
 au BufNewFile,BufRead *.vundle set filetype=vim
 
@@ -607,9 +600,9 @@ au BufNewFile,BufRead *.vundle set filetype=vim
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
 if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
-  set undofile
+    silent !mkdir ~/.vim/backups > /dev/null 2>&1
+    set undodir=~/.vim/backups
+    set undofile
 endif
 
 " indent for different filetype
@@ -661,9 +654,9 @@ map <leader>n :call RenameFile()<cr>
 
 " Automatically set paste mode in Vim when pasting in insert mode
 function! XTermPasteBegin()
-set pastetoggle=<Esc>[201~
-set paste
-return ""
+    set pastetoggle=<Esc>[201~
+    set paste
+    return ""
 endfunction
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
