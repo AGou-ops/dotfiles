@@ -66,7 +66,8 @@ Plug 'numToStr/Comment.nvim'
 " Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'mbbill/undotree'
-Plug 'rmagatti/auto-session'
+" Plug 'rmagatti/auto-session'
+Plug 'folke/persistence.nvim'
 Plug 'folke/which-key.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'folke/todo-comments.nvim'
@@ -93,6 +94,9 @@ Plug 'tami5/lspsaga.nvim'
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'puremourning/vimspector'
 " Plug 'mfussenegger/nvim-dap'
+Plug 'sindrets/diffview.nvim'
+Plug 'matze/vim-move'
+
 
 
 
@@ -222,9 +226,18 @@ highlight default link Visual default
 
 " ========= auto-session settings ==========
 " let g:auto_session_root_dir = '~/.vim/sessions/'
-nnoremap <leader>ss <cmd>SaveSession<CR>
+" nnoremap <leader>ss <cmd>SaveSession<CR>
 nnoremap <leader>sd <cmd>!rm -f ~/.config/nvim/sessions/*<CR>
 
+
+" ========= persistence(auto session) settings ==========
+
+" restore the session for the current directory
+nnoremap <leader>ss <cmd>lua require("persistence").load()<CR>
+" restore the last session
+nnoremap <leader>sl <cmd>lua require("persistence").load({ last = true })<CR>
+" stop Persistence => session won't be saved on exit
+nnoremap <leader>s <cmd>lua require("persistence").stop()<CR>
 
 " ========= vim-visual-multi settings ==========
 let g:VM_maps = {}
@@ -318,6 +331,9 @@ hi illuminatedWord cterm=underline gui=underline
 " autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
 " require('go').setup()
 "
+
+" ============= vim-move settings ==========
+let g:move_key_modifier = 'C'
 "
 " ============= vimspector(go) settings ==========
 " 
@@ -343,6 +359,7 @@ nmap <leader>vw :VimspectorWatch
 nmap <leader>vo :VimspectorShowOutput
 nmap <leader>vi <Plug>VimspectorBalloonEval
 xmap <leader>vi <Plug>VimspectorBalloonEval
+setlocal nobuflisted
 
 " for normal mode - the word under the cursor
 nmap <Leader>di <Plug>VimspectorBalloonEval

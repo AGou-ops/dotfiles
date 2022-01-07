@@ -16,8 +16,3 @@
 * pycharm 2020.1
 * Windows Terminal
 
-INFO
-HACK
-TODO
-INFO
-    FIX

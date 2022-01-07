@@ -15,5 +15,5 @@ configs.setup({
     autopairs = {
         enable = false,
     },
-    indent = { enable = true, disable = { "yaml", "python" } },
+    indent = { enable = false, disable = { "yaml", "python" } },
 })

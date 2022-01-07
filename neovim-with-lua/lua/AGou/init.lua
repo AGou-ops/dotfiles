@@ -29,7 +29,11 @@ require("indent_blankline").setup {
     show_current_context_start = true,
 }
 -- --------------------------------------
---
+--{
+require("persistence").setup {
+    dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
+    options = { "buffers", "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
+}
 --
 -- ----------------------------------------------------------------------
 require('AGou.nvim-transparent')
@@ -39,10 +43,11 @@ require('AGou.nvim-treesitter')
 require('AGou.nvim-gitsigns')
 require('AGou.nvim-autopairs')
 require('AGou.nvim-lspsaga')
-require("AGou.nvim_signature")
+require("AGou.nvim-signature")
 require('AGou.nvim-telescope')
 require('AGou.nvim-toggleterm')
 require('AGou.nvim-neoscroll')
-require('AGou.nvim-session-manager')
+-- require('AGou.nvim-session-manager')
 require('AGou.nvim-whichkey')
 require('AGou.nvim-todo-comments')
+require('AGou.nvim-diffview')
