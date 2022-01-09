@@ -34,7 +34,19 @@ require("persistence").setup {
     dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
     options = { "buffers", "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
 }
---
+-- --------------------------------------
+local tabnine = require('cmp_tabnine.config')
+tabnine:setup({
+    max_lines = 1000;
+    max_num_results = 20;
+    sort = true;
+    run_on_every_keystroke = true;
+    snippet_placeholder = '..';
+    ignored_file_types = { -- default is not to ignore
+        -- uncomment to ignore in lua:
+        -- lua = true
+    };
+})
 -- ----------------------------------------------------------------------
 require('AGou.nvim-transparent')
 require('AGou.nvim-cmp')
@@ -51,3 +63,6 @@ require('AGou.nvim-neoscroll')
 require('AGou.nvim-whichkey')
 require('AGou.nvim-todo-comments')
 require('AGou.nvim-diffview')
+
+
+

@@ -1,30 +1,36 @@
-vim.lsp.protocol.CompletionItemKind = {
-    '', -- Text          = 1;
-    '', -- Method        = 2;
-    'ƒ', -- Function      = 3;
-    '', -- Constructor   = 4;
-    '⌘', -- Field         = 5;
-    '', -- Variable      = 6;
-    '', -- Class         = 7;
-    'ﰮ', -- Interface     = 8;
-    '', -- Module        = 9;
-    '', -- Property      = 10;
-    '', -- Unit          = 11;
-    '', -- Value         = 12;
-    '了', -- Enum          = 13;
-    '', -- Keyword       = 14;
-    '﬌', -- Snippet       = 15;
-    '', -- Color         = 16;
-    '', -- File          = 17;
-    '', -- Reference     = 18;
-    '', -- Folder        = 19;
-    '', -- EnumMember    = 20;
-    '', -- Constant      = 21;
-    '', -- Struct        = 22;
-    '', -- Event         = 23;
-    '', -- Operator      = 24;
-    '', -- TypeParameter = 25;
-}
+-- vim.lsp.protocol.CompletionItemKind = {
+--     '', -- Text          = 1;
+--     '', -- Method        = 2;
+--     'ƒ', -- Function      = 3;
+--     '', -- Constructor   = 4;
+--     '⌘', -- Field         = 5;
+--     '', -- Variable      = 6;
+--     '', -- Class         = 7;
+--     'ﰮ', -- Interface     = 8;
+--     '', -- Module        = 9;
+--     '', -- Property      = 10;
+--     '', -- Unit          = 11;
+--     '', -- Value         = 12;
+--     '了', -- Enum          = 13;
+--     '', -- Keyword       = 14;
+--     '﬌', -- Snippet       = 15;
+--     '', -- Color         = 16;
+--     '', -- File          = 17;
+--     '', -- Reference     = 18;
+--     '', -- Folder        = 19;
+--     '', -- EnumMember    = 20;
+--     '', -- Constant      = 21;
+--     '', -- Struct        = 22;
+--     '', -- Event         = 23;
+--     '', -- Operator      = 24;
+--     '', -- TypeParameter = 25;
+-- }
+-- 如果不想用lspkind,那么可以用手动进行图标设置
+-- for index, value in ipairs(vim.lsp.protocol.CompletionItemKind) do
+--     -- cmp.lsp.CompletionItemKind[index] = value
+--     cmp.lsp.CompletionItemKind[index] = value .. ' ' ..  cmp.lsp.CompletionItemKind[index]
+-- end
+-- -----------------------------------------------------
 -- Setup nvim-cmp.
 vim.o.completeopt = 'menuone,noselect'
 
@@ -32,10 +38,6 @@ local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require'cmp'
 cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
 
-for index, value in ipairs(vim.lsp.protocol.CompletionItemKind) do
-    -- cmp.lsp.CompletionItemKind[index] = value
-    cmp.lsp.CompletionItemKind[index] = value .. ' ' ..  cmp.lsp.CompletionItemKind[index]
-end
 
 local has_words_before = function()
   if vim.api.nvim_buf_get_option(0, 'buftype') == 'prompt' then
@@ -44,6 +46,18 @@ local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line-1, line, true)[1]:sub(col, col):match('%s') == nil
 end
+
+-- Add lspkind
+local lspkind = require('lspkind')
+
+local source_mapping = {
+    buffer = "[Buffer]",
+    nvim_lsp = "[LSP]",
+    nvim_lua = "[Lua]",
+    cmp_tabnine = "[TN]",
+    path = "[Path]",
+}
+
 
 cmp.setup({
     snippet = {
@@ -56,6 +70,20 @@ cmp.setup({
       end,
     },
 
+    formatting = {
+        format = function(entry, vim_item)
+            vim_item.kind = lspkind.presets.default[vim_item.kind]
+            local menu = source_mapping[entry.source.name]
+            if entry.source.name == 'cmp_tabnine' then
+                if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+                    menu = entry.completion_item.data.detail .. ' ' .. menu
+                end
+                vim_item.kind = ''
+            end
+            vim_item.menu = menu
+            return vim_item
+        end
+    },
     mapping = {
       ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
@@ -83,7 +111,7 @@ cmp.setup({
       { name = 'nvim_lsp' },
       { name = 'vsnip' }, -- For vsnip users.
       { name = 'path' },
-      { name = 'buffer' },
+      { name = 'cmp_tabnine' },
       -- { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.

@@ -96,8 +96,8 @@ Plug 'puremourning/vimspector'
 " Plug 'mfussenegger/nvim-dap'
 Plug 'sindrets/diffview.nvim'
 Plug 'matze/vim-move'
-
-
+Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+Plug 'onsails/lspkind-nvim'
 
 
 "
