@@ -78,13 +78,17 @@ Plug 'dense-analysis/ale'
 " lsp server
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
+
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
+Plug 'onsails/lspkind-nvim'
 Plug 'hrsh7th/cmp-path'
 " Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'uga-rosa/cmp-dictionary'
+
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'owickstrom/vim-colors-paramount'
@@ -97,7 +101,6 @@ Plug 'puremourning/vimspector'
 Plug 'sindrets/diffview.nvim'
 Plug 'matze/vim-move'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
-Plug 'onsails/lspkind-nvim'
 
 
 "
