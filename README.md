@@ -11,11 +11,17 @@
 
 - Golang
 
-![image](https://user-images.githubusercontent.com/57939102/148730351-694da8a7-5627-4d08-b21a-2d5c9bb66998.png)
+![image](https://user-images.githubusercontent.com/57939102/148733814-f00d0566-b364-4f86-8bb9-b894a324f0f1.png)
+
+![image](https://user-images.githubusercontent.com/57939102/148733939-c4b1c808-d7dc-484c-ac74-5b6ccdf2ea55.png)
+
+![image](https://user-images.githubusercontent.com/57939102/148733986-49d660a8-6570-421e-8afe-1503c94b6fef.png)
+
 
 - Lua
 
-![image](https://user-images.githubusercontent.com/57939102/148730492-02a213e8-9ddc-4786-b70b-4ece39e55fc6.png)
+![image](https://user-images.githubusercontent.com/57939102/148733899-e891a7cf-e0ca-4864-b501-df436ba2f224.png)
+
 
 
 
