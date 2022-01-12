@@ -60,6 +60,7 @@ local source_mapping = {
     cmp_tabnine = "[TN]",
     path = "[Path]",
     dictionary = "[Dict]",
+    emoji = "[Emoji]",
 }
 
 
@@ -103,7 +104,7 @@ cmp.setup({
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
         }),
-        ['<CR>'] = cmp.mapping.confirm({ 
+        ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
         }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
@@ -118,17 +119,18 @@ cmp.setup({
         end,
     },
     sources = {
-        { name = "nvim_lsp" },
+        { name = "nvim_lsp", priority = 100 }, -- Keep LSP results on top.
         { name = "nvim_lua" },
-        { name = 'vsnip' }, -- For vsnip users.
+        -- { name = 'vsnip' }, -- For vsnip users.
         -- { name = "luasnip" },
-        { name = "buffer"  , keyword_pattern = [[\k]] },
-        { name = "cmp_tabnine" },
+        { name = "buffer" ,keyword_pattern = [[\k]] ,priority = 90},
+        { name = "cmp_tabnine" , priority = 85 },
         { name = "path" },
-        -- { name = "emoji" },
+        {name = 'emoji', insert = true},
         {
             name = "dictionary",
             keyword_length = 2,
+            priority = 80,
         },
     },
     -- confirm_opts = {

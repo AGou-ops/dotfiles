@@ -54,6 +54,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>ft <cmd>TodoTelescope<cr>
 
+
 " ========= other settings ========
 nnoremap <leader>h :UndotreeToggle <bar> :UndotreeFocus<CR>
 

@@ -51,7 +51,7 @@ tabnine:setup({
 
 require("cmp_dictionary").setup({
     dic = {
-        ["*"] = "/Users/agou-ops/.vim/dict/american_english",
+        ["*"] = "~/.vim/dict/american_english",
         -- ["markdown"] = { "~/.vim/dict/american_english", "~/.vim/dict/american-english" },
         -- ["javascript,typescript"] = { "path/to/jsdict" },
     },
@@ -59,7 +59,7 @@ require("cmp_dictionary").setup({
     exact = 2,
     async = false,
     capacity = 5,
-    debug = true,
+    debug = false,
 })
 -- ----------------------------------------------------------------------
 require('AGou.nvim-transparent')
