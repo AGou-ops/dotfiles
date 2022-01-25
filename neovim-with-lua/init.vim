@@ -18,10 +18,12 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'nvim-lualine/lualine.nvim'
 " Plug 'feline-nvim/feline.nvim'
 Plug 'xiyaowong/nvim-transparent'
-Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/goyo.vim'
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 " welcome page
-Plug 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
+Plug 'goolord/alpha-nvim'
+Plug 'lewis6991/impatient.nvim'
 
 " ========= useful tools here. ==========
 
@@ -30,12 +32,13 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'camspiers/lens.vim'
 Plug '907th/vim-auto-save'
 Plug 'preservim/tagbar'
+" Plug 'simrat39/symbols-outline.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'windwp/nvim-autopairs'
 Plug 'lukas-reineke/indent-blankline.nvim'
-" not working on my macOS, fuckkkkk
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+
 " Plug 'voldikss/vim-floaterm'
 Plug 'akinsho/toggleterm.nvim'
 " not longer use fzf, just use telescope
@@ -49,6 +52,8 @@ Plug 'akinsho/bufferline.nvim'
 " Plug 'Yggdroot/indentLine'
 Plug 'itchyny/vim-cursorword'
 " Plug 'dominikduda/vim_current_word'
+
+Plug 'nanotee/sqls.nvim'
 
 Plug 'rrethy/vim-illuminate'
 Plug 'ryanoasis/vim-devicons'
@@ -73,6 +78,13 @@ Plug 'folke/which-key.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'folke/todo-comments.nvim'
 
+Plug 'chipsenkbeil/distant.nvim'
+" Plug 'max397574/better-escape.nvim'
+
+Plug 'folke/zen-mode.nvim'
+Plug 'folke/twilight.nvim'
+
+Plug 'norcalli/nvim-colorizer.lua'
 
 " ========= programming tools here. ==========
 
@@ -90,11 +102,10 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-emoji'
 " Plug 'hrsh7th/vim-vsnip'
 " Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'uga-rosa/cmp-dictionary'
+" Plug 'uga-rosa/cmp-dictionary'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-Plug 'owickstrom/vim-colors-paramount'
 Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'tami5/lspsaga.nvim'
@@ -202,19 +213,28 @@ colorscheme gruvbox-material
 " ========= autopairs settings ==========
 " defalut options
 
+let g:indent_blankline_disable_with_nolist = v:true
+
+
+" ========= startuptime settings ==========
+let g:startuptime_tries = 3
+
+" which-key plugin timeout delay.
+set timeoutlen=2500
 
 " ========= tagbar settings ==========
 let g:tagbar_ctags_bin='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'
 autocmd VimEnter *.go  Tagbar
+"
 
 " ========= nvim-cmp settings ==========
 set completeopt=menu,menuone,noselect
 
 " ========= goyo settings ==========
-let g:goyo_width = '60%'
-let g:goyo_height = '85%'
-" line number
-let g:goyo_linenr = 0
+" let g:goyo_width = '60%'
+" let g:goyo_height = '85%'
+" " line number
+" let g:goyo_linenr = 0
 
 " ========= firenvim settings ==========
 " if exists('g:started_by_firenvim')
@@ -233,6 +253,98 @@ highlight default link Visual default
 " nnoremap <leader>ss <cmd>SaveSession<CR>
 nnoremap <leader>sd <cmd>!rm -f ~/.config/nvim/sessions/*<CR>
 
+
+" ========= instant-markdown settings ==========
+" set to 1, nvim will open the preview window after entering the markdown buffer
+" default: 0
+let g:mkdp_auto_start = 1
+
+" set to 1, the nvim will auto close current preview window when change
+" from markdown buffer to another buffer
+" default: 1
+let g:mkdp_auto_close = 1
+
+" set to 1, the vim will refresh markdown when save the buffer or
+" leave from insert mode, default 0 is auto refresh markdown as you edit or
+" move the cursor
+" default: 0
+let g:mkdp_refresh_slow = 0
+
+" set to 1, the MarkdownPreview command can be use for all files,
+" by default it can be use in markdown file
+" default: 0
+let g:mkdp_command_for_global = 0
+
+" set to 1, preview server available to others in your network
+" by default, the server listens on localhost (127.0.0.1)
+" default: 0
+let g:mkdp_open_to_the_world = 0
+
+" use custom IP to open preview page
+" useful when you work in remote vim and preview on local browser
+" more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
+" default empty
+let g:mkdp_open_ip = ''
+
+" specify browser to open preview page
+" default: ''
+let g:mkdp_browser = ''
+
+" set to 1, echo preview page url in command line when open preview page
+" default is 0
+let g:mkdp_echo_preview_url = 0
+
+" a custom vim function name to open preview page
+" this function will receive url as param
+" default is empty
+let g:mkdp_browserfunc = ''
+
+" options for markdown render
+" mkit: markdown-it options for render
+" katex: katex options for math
+" uml: markdown-it-plantuml options
+" maid: mermaid options
+" disable_sync_scroll: if disable sync scroll, default 0
+" sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
+"   middle: mean the cursor position alway show at the middle of the preview page
+"   top: mean the vim top viewport alway show at the top of the preview page
+"   relative: mean the cursor position alway show at the relative positon of the preview page
+" hide_yaml_meta: if hide yaml metadata, default is 1
+" sequence_diagrams: js-sequence-diagrams options
+" content_editable: if enable content editable for preview page, default: v:false
+" disable_filename: if disable filename header for preview page, default: 0
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {},
+    \ 'flowchart_diagrams': {},
+    \ 'content_editable': v:false,
+    \ 'disable_filename': 0
+    \ }
+
+" use a custom markdown style must be absolute path
+" like '/Users/username/markdown.css' or expand('~/markdown.css')
+let g:mkdp_markdown_css = ''
+
+" use a custom highlight style must absolute path
+" like '/Users/username/highlight.css' or expand('~/highlight.css')
+let g:mkdp_highlight_css = ''
+
+" use a custom port to start server or random for empty
+let g:mkdp_port = ''
+
+" preview page title
+" ${name} will be replace with the file name
+let g:mkdp_page_title = '「${name}」'
+
+" recognized filetypes
+" these filetypes will have MarkdownPreview... commands
+let g:mkdp_filetypes = ['markdown']
 
 " ========= persistence(auto session) settings ==========
 
@@ -467,96 +579,6 @@ let g:cursorword_delay = 0
 " let g:workspace_autosave_always = 1
 " let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 "
-" ========== markdown-preview settings ===========
-
-" nnoremap <leader>md <Plug>MarkdownPreview
-
-let g:mkdp_auto_start = 1
-let g:mkdp_auto_close = 1
-
-" set to 1, the vim will refresh markdown when save the buffer or
-" leave from insert mode, default 0 is auto refresh markdown as you edit or
-" move the cursor
-" default: 0
-let g:mkdp_refresh_slow = 0
-
-" set to 1, the MarkdownPreview command can be use for all files,
-" by default it can be use in markdown file
-" default: 0
-let g:mkdp_command_for_global = 0
-
-" set to 1, preview server available to others in your network
-" by default, the server listens on localhost (127.0.0.1)
-" default: 0
-let g:mkdp_open_to_the_world = 1
-
-" use custom IP to open preview page
-" useful when you work in remote vim and preview on local browser
-" more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
-" default empty
-let g:mkdp_open_ip = ''
-
-" specify browser to open preview page
-" default: ''
-let g:mkdp_browser = ''
-
-" set to 1, echo preview page url in command line when open preview page
-" default is 0
-let g:mkdp_echo_preview_url = 0
-
-" a custom vim function name to open preview page
-" this function will receive url as param
-" default is empty
-let g:mkdp_browserfunc = ''
-
-" options for markdown render
-" mkit: markdown-it options for render
-" katex: katex options for math
-" uml: markdown-it-plantuml options
-" maid: mermaid options
-" disable_sync_scroll: if disable sync scroll, default 0
-" sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
-"   middle: mean the cursor position alway show at the middle of the preview page
-"   top: mean the vim top viewport alway show at the top of the preview page
-"   relative: mean the cursor position alway show at the relative positon of the preview page
-" hide_yaml_meta: if hide yaml metadata, default is 1
-" sequence_diagrams: js-sequence-diagrams options
-" content_editable: if enable content editable for preview page, default: v:false
-" disable_filename: if disable filename header for preview page, default: 0
-let g:mkdp_preview_options = {
-    \ 'mkit': {},
-    \ 'katex': {},
-    \ 'uml': {},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'sequence_diagrams': {},
-    \ 'flowchart_diagrams': {},
-    \ 'content_editable': v:false,
-    \ 'disable_filename': 0
-    \ }
-
-" use a custom markdown style must be absolute path
-" like '/Users/username/markdown.css' or expand('~/markdown.css')
-let g:mkdp_markdown_css = ''
-
-" use a custom highlight style must absolute path
-" like '/Users/username/highlight.css' or expand('~/highlight.css')
-let g:mkdp_highlight_css = ''
-
-" use a custom port to start server or random for empty
-let g:mkdp_port = ''
-
-" preview page title
-" ${name} will be replace with the file name
-let g:mkdp_page_title = '「${name}」'
-
-" recognized filetypes
-" these filetypes will have MarkdownPreview... commands
-let g:mkdp_filetypes = ['markdown']
-
-"
 " ========== nvim-tree.lua settings ===========
 " defalut hotkeys actions: https://github.com/kyazdani42/nvim-tree.lua#default-actions
 let g:nvim_tree_quit_on_open = 1 "0 by default, closes the tree when you open a file
@@ -667,6 +689,10 @@ let g:NERDToggleCheckAllLines = 1
 
 
 " ============================== Autocmd/Function settings ============================== 
+
+
+
+
 augroup YankHighlight
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
@@ -684,17 +710,17 @@ autocmd FileChangedShellPost *
             \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 " --------------------------------------------------------------------------------------------
 
-au FocusLost * :set norelativenumber number
-au FocusGained * :set relativenumber
+" au FocusLost * :set norelativenumber number
+" au FocusGained * :set relativenumber
 autocmd InsertEnter * :set norelativenumber number    " use absolute line number.
 autocmd InsertLeave * :set relativenumber
-function! NumberToggle()
-    if(&relativenumber == 1)
-        set norelativenumber number
-    else
-        set relativenumber
-    endif
-endfunc
+" function! NumberToggle()
+"     if(&relativenumber == 1)
+"         set norelativenumber number
+"     else
+"         set relativenumber
+"     endif
+" endfunc
 " remap <C-n> to switch between relative and absolute line number.
 " nnoremap <C-n> :call NumberToggle()<cr>
 

@@ -1,3 +1,4 @@
+require('impatient')
 require('AGou.lsp')
 require('AGou.nvim-lualine')
 require('AGou.nvim-bufferline')
@@ -18,18 +19,12 @@ require('Comment').setup{
     },
 }
 -- --------------------------------------
--- idnent-line  更多配置参考: https://github.com/lukas-reineke/indent-blankline.nvim/blob/master/doc/indent_blankline.txt
-vim.opt.list = true
--- vim.opt.listchars:append("space:⋅")
-vim.opt.listchars:append("eol:↴")
-require("indent_blankline").setup {
-    -- for example, context is off by default, use this to turn it on
-    space_char_blankline = " ",
-    show_current_context = true,
-    show_current_context_start = true,
+require 'colorizer'.setup {
+  '*'; -- Highlight all files, but customize some others.
+  '!vim'; -- Exclude vim from highlighting.
+  -- Exclusion Only makes sense if '*' is specified!
 }
 -- --------------------------------------
---{
 require("persistence").setup {
     dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
     options = { "buffers", "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
@@ -48,19 +43,39 @@ tabnine:setup({
     };
 })
 -- --------------------------------------
-
-require("cmp_dictionary").setup({
-    dic = {
-        ["*"] = "~/.vim/dict/american_english",
-        -- ["markdown"] = { "~/.vim/dict/american_english", "~/.vim/dict/american-english" },
-        -- ["javascript,typescript"] = { "path/to/jsdict" },
-    },
-    -- The following are default values, so you don't need to write them if you don't want to change them
-    exact = 2,
-    async = false,
-    capacity = 5,
-    debug = false,
-})
+require('distant').setup {
+    -- Applies Chip's personal settings to every machine you connect to
+    --
+    -- 1. Ensures that distant servers terminate with no connections
+    -- 2. Provides navigation bindings for remote directories
+    -- 3. Provides keybinding to jump into a remote file's parent directory
+    ['*'] = require('distant.settings').chip_default()
+}
+-- --------------------------------------
+-- require("cmp_dictionary").setup({
+--     dic = {
+--         ["*"] = "~/.vim/dict/american_english",
+--         -- ["markdown"] = { "~/.vim/dict/american_english", "~/.vim/dict/american-english" },
+--         -- ["javascript,typescript"] = { "path/to/jsdict" },
+--     },
+--     -- The following are default values, so you don't need to write them if you don't want to change them
+--     exact = 1,
+--     async = false,
+--     capacity = 3,
+--     debug = false,
+-- })
+-- ----------------------------------------------------------------------
+-- lua, default settings
+-- require("better_escape").setup {
+--     mapping = {"jk", "jj"}, -- a table with mappings to use
+--     timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
+--     clear_empty_lines = false, -- clear line after escaping if there is only whitespace
+--     keys = "<Esc>", -- keys used for escaping, if it is a function will use the result everytime
+--     -- example
+--     -- keys = function()
+--     --   return vim.fn.col '.' - 2 >= 1 and '<esc>l' or '<esc>'
+--     -- end,
+-- }
 -- ----------------------------------------------------------------------
 require('AGou.nvim-transparent')
 require('AGou.nvim-cmp')
@@ -77,3 +92,6 @@ require('AGou.nvim-neoscroll')
 require('AGou.nvim-whichkey')
 require('AGou.nvim-todo-comments')
 require('AGou.nvim-diffview')
+require('AGou.nvim-dashboard')
+require('AGou.nvim-zen-mode')
+require('AGou.nvim-indent_blankline')

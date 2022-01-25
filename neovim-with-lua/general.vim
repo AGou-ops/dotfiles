@@ -60,6 +60,10 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 set completeopt=longest,menu
+" 
+" au FileType c,cpp,python,vim,go set textwidth=80
+" set colorcolumn=81
+
 
 " ================ Turn Off Swap Files ==============
 set noswapfile

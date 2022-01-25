@@ -30,7 +30,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- -------------------------- lsp server ----------------------
-local servers = { 'gopls', 'bashls'}
+local servers = { 'gopls', 'bashls', 'sqls'}
 ---------------------------------------------------------------
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
@@ -38,6 +38,7 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
 
 -- -------------------- lua lsp settings -- --------------------
 local runtime_path = vim.split(package.path, ';')

@@ -6,10 +6,10 @@ cmap w!! %!sudo tee >/dev/null %
 " Quicker window movement
 nnoremap U <C-r>
 " notworking on terminal neovim, only affect on Gvim!!!
-nnoremap <D-j> <C-w>j
-nnoremap <D-k> <C-w>k
-nnoremap <D-h> <C-w>h
-nnoremap <D-l> <C-w>l
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-h> <C-w>h
+nnoremap <M-l> <C-w>l
 " =====================
 nnoremap <A-Down> <C-w>j
 nnoremap <A-Up> <C-w>k
@@ -28,6 +28,9 @@ noremap <C-right> :bn<CR>
 noremap <C-g> :Goyo<CR>
 nnoremap <C-t>     :tabnew<CR>
 inoremap <C-t>     <Esc>:tabnew<CR>
+
+inoremap jk <ESC>
+
 nnoremap ; :
 " not working on macOS
 noremap <leader>1 1gt

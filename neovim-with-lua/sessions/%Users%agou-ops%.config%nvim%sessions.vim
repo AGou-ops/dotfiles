@@ -10,17 +10,17 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
+$argadd \%Users\%agou-ops\%.config\%nvim.vim
+edit ~/.config/nvim/sessions/\%Users\%agou-ops\%.config\%nvim.vim
 argglobal
-enew
-setlocal fdm=indent
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=3
-setlocal nofen
+let s:l = 60 - ((31 * winheight(0) + 24) / 49)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 60
+normal! 0
 tabnext 1
+badd +60 ~/.config/nvim/sessions/\%Users\%agou-ops\%.config\%nvim.vim
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
