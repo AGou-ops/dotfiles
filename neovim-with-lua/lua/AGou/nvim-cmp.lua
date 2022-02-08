@@ -33,7 +33,6 @@
 -- -----------------------------------------------------
 -- Setup nvim-cmp.
 vim.o.completeopt = 'menuone,noselect'
-
 -- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 -- local cmp = require'cmp'
 -- cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
@@ -54,7 +53,7 @@ end
 local lspkind = require('lspkind')
 
 local source_mapping = {
-    buffer = "[Buffer]",
+    -- buffer = "[Buffer]",
     nvim_lsp = "[LSP]",
     nvim_lua = "[Lua]",
     cmp_tabnine = "[TN]",
@@ -125,7 +124,7 @@ cmp.setup({
         { name = "nvim_lua" },
         -- { name = 'vsnip' }, -- For vsnip users.
         -- { name = "luasnip" },
-        { name = "buffer" ,keyword_pattern = [[\k]] ,priority = 90},
+        -- { name = "buffer" ,keyword_pattern = [[\k]] ,priority = 90},
         { name = "cmp_tabnine" , priority = 85 },
         { name = "path" },
         {name = 'emoji', insert = true},

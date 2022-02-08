@@ -220,7 +220,7 @@ let g:indent_blankline_disable_with_nolist = v:true
 let g:startuptime_tries = 3
 
 " which-key plugin timeout delay.
-set timeoutlen=2500
+set timeoutlen=500
 
 " ========= tagbar settings ==========
 let g:tagbar_ctags_bin='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'

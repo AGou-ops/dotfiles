@@ -18,7 +18,16 @@ set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
-set gcr=a:blnkon0              "Disable cursor blink
+" set gcr=a:blnkon0              "Disable cursor blink
+" guicursor settings
+highlight Cursor gui=reverse guifg=NONE guibg=NONE
+" default guicursor
+" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+"       \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+"       \,sm:block-blinkwait175-blinkoff150-blinkon175
+set gcr=i:ver25-blinkon5,v:blinkon1
+
+
 set novisualbell                "No sounds
 set noerrorbells
 set laststatus=2
@@ -35,7 +44,7 @@ set nowrap                     "Don't wrap lines
 set linebreak                 "Wrap lines at convenient points
 set spelllang=en_us
 set fileformats=unix,dos
-set report=0                                                      " always report number of lines changed
+set report=0                    " always report number of lines changed
 set shortmess=atI               " disable welcome page.
 set t_ti= t_te=                 " after exit vim, show context on the terminal.
 set showmatch
