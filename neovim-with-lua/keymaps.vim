@@ -25,7 +25,7 @@ vnoremap / /\v
 vnoremap // y/<c-r>"<cr>
 noremap <C-left> :bp<CR>
 noremap <C-right> :bn<CR>
-noremap <C-g> :Goyo<CR>
+noremap <C-h> :Goyo<CR>
 nnoremap <C-t>     :tabnew<CR>
 inoremap <C-t>     <Esc>:tabnew<CR>
 
@@ -57,6 +57,11 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>ft <cmd>TodoTelescope<cr>
 
+" ========= vim-translate settings ========
+" more settings: https://github.com/voldikss/vim-translator
+" Display translation in a window
+nmap <silent> <Leader>ts <Plug>TranslateW
+vmap <silent> <Leader>ts <Plug>TranslateWV
 
 " ========= other settings ========
 nnoremap <leader>h :UndotreeToggle <bar> :UndotreeFocus<CR>

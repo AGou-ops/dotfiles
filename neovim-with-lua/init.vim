@@ -85,6 +85,7 @@ Plug 'folke/zen-mode.nvim'
 Plug 'folke/twilight.nvim'
 
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'voldikss/vim-translator'
 
 " ========= programming tools here. ==========
 
@@ -99,7 +100,9 @@ Plug 'onsails/lspkind-nvim'
 Plug 'hrsh7th/cmp-path'
 " Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-calc'
 Plug 'hrsh7th/cmp-emoji'
+Plug 'octaltree/cmp-look'
 " Plug 'hrsh7th/vim-vsnip'
 " Plug 'hrsh7th/vim-vsnip-integ'
 " Plug 'uga-rosa/cmp-dictionary'
@@ -808,6 +811,7 @@ endfun
 autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 autocmd FileType go nmap <Leader>rr :!go run %<CR>
+autocmd FileType go nmap <Leader>gt :!go test -v .<CR>
 
 " ============================== END Autocmd settings ============================== 
 

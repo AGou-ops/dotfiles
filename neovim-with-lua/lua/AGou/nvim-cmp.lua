@@ -58,8 +58,9 @@ local source_mapping = {
     nvim_lua = "[Lua]",
     cmp_tabnine = "[TN]",
     path = "[Path]",
-    dictionary = "[Dict]",
     emoji = "[Emoji]",
+    look = "[Dict]",
+    calc = "[Calc]",
 }
 
 
@@ -129,10 +130,16 @@ cmp.setup({
         { name = "path" },
         {name = 'emoji', insert = true},
         {
-            name = "dictionary",
+            name = 'look',
+            priority = 1,
             keyword_length = 2,
-            priority = 80,
+            option = {
+                convert_case = true,
+                loud = true
+                --dict = '/usr/share/dict/words'
+            }
         },
+        { name = 'calc' },
     },
     -- confirm_opts = {
     --     behavior = cmp.ConfirmBehavior.Replace,
