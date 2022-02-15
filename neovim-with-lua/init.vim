@@ -1,4 +1,4 @@
-" AGou-ops VIMRC FILE         -- Update Date: 2022年01月02日16:57:08
+" AGou-ops VIMRC FILE         -- Update Date: 2022年02月15日17:12:52
 set nocompatible              " be iMproved, required
 
 " ============================== Plugin packages ============================== 
@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'EdenEast/nightfox.nvim'
 " Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
+Plug 'ellisonleao/gruvbox.nvim'
 
 " ========= appearence here. ==========
 
@@ -86,6 +87,8 @@ Plug 'folke/twilight.nvim'
 
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'voldikss/vim-translator'
+Plug 'folke/lsp-colors.nvim'
+
 
 " ========= programming tools here. ==========
 
@@ -107,8 +110,9 @@ Plug 'octaltree/cmp-look'
 " Plug 'hrsh7th/vim-vsnip-integ'
 " Plug 'uga-rosa/cmp-dictionary'
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+
 Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'tami5/lspsaga.nvim'
@@ -118,6 +122,10 @@ Plug 'puremourning/vimspector'
 Plug 'sindrets/diffview.nvim'
 Plug 'matze/vim-move'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+
+Plug 'folke/trouble.nvim'
+
+
 
 "
 call plug#end()
@@ -194,6 +202,11 @@ let g:gruvbox_material_diagnostic_text_highlight = 1
 let g:gruvbox_material_better_performance = 1
 
 colorscheme gruvbox-material
+
+" original colorscheme gruvbox configuration: https://github.com/morhetz/gruvbox/wiki/Configuration
+" colorscheme gruvbox
+
+
 
 " ============================== END colorscheme settings ============================== 
 "

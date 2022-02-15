@@ -126,13 +126,13 @@ cmp.setup({
         -- { name = 'vsnip' }, -- For vsnip users.
         -- { name = "luasnip" },
         -- { name = "buffer" ,keyword_pattern = [[\k]] ,priority = 90},
-        { name = "cmp_tabnine" , priority = 85 },
+        { name = "cmp_tabnine" , priority = 15 },
         { name = "path" },
         {name = 'emoji', insert = true},
         {
             name = 'look',
             priority = 1,
-            keyword_length = 2,
+            keyword_length = 4,
             option = {
                 convert_case = true,
                 loud = true

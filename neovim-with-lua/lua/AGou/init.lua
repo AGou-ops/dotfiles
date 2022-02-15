@@ -42,6 +42,14 @@ tabnine:setup({
         -- lua = true
     };
 })
+
+-- --------------------------------------
+require("lsp-colors").setup({
+  Error = "#db4b4b",
+  Warning = "#e0af68",
+  Information = "#0db9d7",
+  Hint = "#10B981"
+})
 -- --------------------------------------
 require('distant').setup {
     -- Applies Chip's personal settings to every machine you connect to
@@ -95,3 +103,4 @@ require('AGou.nvim-diffview')
 require('AGou.nvim-dashboard')
 require('AGou.nvim-zen-mode')
 require('AGou.nvim-indent_blankline')
+require('AGou.nvim-trouble')
