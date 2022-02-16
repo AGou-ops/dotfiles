@@ -25,7 +25,7 @@ vnoremap / /\v
 vnoremap // y/<c-r>"<cr>
 noremap <C-left> :bp<CR>
 noremap <C-right> :bn<CR>
-noremap <C-h> :Goyo<CR>
+" noremap <C-h> :Goyo<CR>
 nnoremap <C-t>     :tabnew<CR>
 inoremap <C-t>     <Esc>:tabnew<CR>
 
@@ -85,10 +85,10 @@ nnoremap P P=`]<C-o>
 " vnoremap <leader>y "+y
 vnoremap <C-c> "+y
 vnoremap <C-v> "+p
-" nnoremap <C-h> <C-w>>
-" nnoremap <C-j> <C-w>+
-" nnoremap <C-k> <C-w>-
-" nnoremap <C-l> <C-w><
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 nnoremap p ]p
 nnoremap P [p
 nnoremap ( %
