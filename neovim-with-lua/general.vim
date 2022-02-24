@@ -28,6 +28,7 @@ highlight Cursor gui=reverse guifg=NONE guibg=NONE
 set gcr=i:ver25-blinkon5,v:blinkon1
 
 
+" set ttimeoutlen=10            " key delay time
 set novisualbell                "No sounds
 set noerrorbells
 set laststatus=2

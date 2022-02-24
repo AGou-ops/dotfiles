@@ -132,7 +132,7 @@ cmp.setup({
         {
             name = 'look',
             priority = 1,
-            keyword_length = 4,
+            keyword_length = 5,
             option = {
                 convert_case = true,
                 loud = true

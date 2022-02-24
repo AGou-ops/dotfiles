@@ -23,13 +23,16 @@ Plug 'xiyaowong/nvim-transparent'
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 " welcome page
 " Plug 'mhinz/vim-startify'
+" dashboard
 Plug 'goolord/alpha-nvim'
+" Speed up Neovim.
 Plug 'lewis6991/impatient.nvim'
 
 " ========= useful tools here. ==========
 
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+" windows size auto resize
 Plug 'camspiers/lens.vim'
 Plug '907th/vim-auto-save'
 Plug 'preservim/tagbar'
@@ -38,13 +41,16 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'windwp/nvim-autopairs'
 Plug 'lukas-reineke/indent-blankline.nvim'
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+" Plug 'sheerun/vim-polyglot'
 
 " Plug 'voldikss/vim-floaterm'
 Plug 'akinsho/toggleterm.nvim'
 " not longer use fzf, just use telescope
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
+
+" All the lua functions.
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
@@ -52,11 +58,10 @@ Plug 'akinsho/bufferline.nvim'
 
 " Plug 'Yggdroot/indentLine'
 Plug 'itchyny/vim-cursorword'
-" Plug 'dominikduda/vim_current_word'
 
-Plug 'nanotee/sqls.nvim'
 
-Plug 'rrethy/vim-illuminate'
+" Vim plugin for automatically highlighting other uses of the current word under the cursor
+" Plug 'rrethy/vim-illuminate'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sebdah/vim-delve'
 " scroll bar
@@ -74,20 +79,25 @@ Plug 'numToStr/Comment.nvim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'mbbill/undotree'
 " Plug 'rmagatti/auto-session'
+" session manager
 Plug 'folke/persistence.nvim'
 Plug 'folke/which-key.nvim'
-Plug 'nvim-lua/plenary.nvim'
 Plug 'folke/todo-comments.nvim'
 
-Plug 'chipsenkbeil/distant.nvim'
+
 " Plug 'max397574/better-escape.nvim'
 
 Plug 'folke/zen-mode.nvim'
+" works with zen-mode
 Plug 'folke/twilight.nvim'
 
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'voldikss/vim-translator'
+" lsp-color not support gruvbox_material colorscheme
 Plug 'folke/lsp-colors.nvim'
+
+Plug 'mhartington/formatter.nvim'
+
 
 
 " ========= programming tools here. ==========
@@ -106,9 +116,10 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-calc'
 Plug 'hrsh7th/cmp-emoji'
 Plug 'octaltree/cmp-look'
-" Plug 'hrsh7th/vim-vsnip'
-" Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 " Plug 'uga-rosa/cmp-dictionary'
+Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
@@ -120,11 +131,8 @@ Plug 'ray-x/lsp_signature.nvim'
 Plug 'puremourning/vimspector'
 " Plug 'mfussenegger/nvim-dap'
 Plug 'sindrets/diffview.nvim'
-Plug 'matze/vim-move'
-Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 
 Plug 'folke/trouble.nvim'
-
 
 
 "
@@ -241,7 +249,6 @@ set timeoutlen=500
 " ========= tagbar settings ==========
 let g:tagbar_ctags_bin='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'
 autocmd VimEnter *.go  Tagbar
-"
 
 " ========= nvim-cmp settings ==========
 set completeopt=menu,menuone,noselect
@@ -411,22 +418,9 @@ let g:scrollbar_shape = {
             \ }
 
 " ========= lspsaga.nvim settings ==========
-nnoremap <silent> gf <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
-nnoremap <silent> gx <cmd>Lspsaga code_action<cr>
-nnoremap <silent> gs :Lspsaga signature_help<CR>
-nnoremap <silent> gr :Lspsaga rename<CR>
-vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
-nnoremap <silent> gp :Lspsaga preview_definition<CR>
-nnoremap <silent> go :Lspsaga show_line_diagnostics<CR>
-
-
-nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
-nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
-" show hover doc
-nnoremap <silent> K <cmd>Lspsaga hover_doc<CR>
-
-" highlight link LspSagaFinderSelection Search
-
+highlight link LspSagaFinderSelection Search
+" or
+" highlight link LspSagaFinderSelection guifg='#ff0000' guibg='#00ff00' gui='bold'
 "
 " ========= coc.nvim witelist CocGroup
 " augroup CocGroup

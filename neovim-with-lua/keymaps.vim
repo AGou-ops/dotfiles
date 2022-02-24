@@ -84,11 +84,12 @@ nnoremap P P=`]<C-o>
 " copy to system clipboard
 " vnoremap <leader>y "+y
 vnoremap <C-c> "+y
-vnoremap <C-v> "+p
+" vnoremap <C-v> "+p
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+nnoremap <C-q> <C-w>q
 nnoremap p ]p
 nnoremap P [p
 nnoremap ( %

@@ -45,33 +45,11 @@ tabnine:setup({
 
 -- --------------------------------------
 require("lsp-colors").setup({
-  Error = "#db4b4b",
-  Warning = "#e0af68",
-  Information = "#0db9d7",
-  Hint = "#10B981"
+    Error = "#db4b4b",
+    Warning = "#e0af68",
+    Information = "#0db9d7",
+    Hint = "#10B981"
 })
--- --------------------------------------
-require('distant').setup {
-    -- Applies Chip's personal settings to every machine you connect to
-    --
-    -- 1. Ensures that distant servers terminate with no connections
-    -- 2. Provides navigation bindings for remote directories
-    -- 3. Provides keybinding to jump into a remote file's parent directory
-    ['*'] = require('distant.settings').chip_default()
-}
--- --------------------------------------
--- require("cmp_dictionary").setup({
---     dic = {
---         ["*"] = "~/.vim/dict/american_english",
---         -- ["markdown"] = { "~/.vim/dict/american_english", "~/.vim/dict/american-english" },
---         -- ["javascript,typescript"] = { "path/to/jsdict" },
---     },
---     -- The following are default values, so you don't need to write them if you don't want to change them
---     exact = 1,
---     async = false,
---     capacity = 3,
---     debug = false,
--- })
 -- ----------------------------------------------------------------------
 -- lua, default settings
 -- require("better_escape").setup {
@@ -84,6 +62,14 @@ require('distant').setup {
 --     --   return vim.fn.col '.' - 2 >= 1 and '<esc>l' or '<esc>'
 --     -- end,
 -- }
+require('formatter').setup({
+    vim.api.nvim_exec([[
+    augroup FormatAutogroup
+      autocmd!
+      autocmd BufWritePost *.go,*.lua,*.json Format
+    augroup END
+    ]], true)
+})
 -- ----------------------------------------------------------------------
 require('AGou.nvim-transparent')
 require('AGou.nvim-cmp')
