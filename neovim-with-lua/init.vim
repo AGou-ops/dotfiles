@@ -133,6 +133,7 @@ Plug 'puremourning/vimspector'
 Plug 'sindrets/diffview.nvim'
 
 Plug 'folke/trouble.nvim'
+Plug 'rmagatti/goto-preview'
 
 
 "

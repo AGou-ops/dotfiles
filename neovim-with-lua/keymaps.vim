@@ -30,7 +30,7 @@ nnoremap <C-t>     :tabnew<CR>
 inoremap <C-t>     <Esc>:tabnew<CR>
 
 inoremap jk <ESC>
-inoremap kj <ESC>
+" inoremap kj <ESC>
 
 nnoremap ; :
 " not working on macOS

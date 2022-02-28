@@ -66,5 +66,5 @@ require("twilight").setup {
     "table",
     "if_statement",
 },
-exclude = {}, -- exclude these filetypes
+exclude = {"go"}, -- exclude these filetypes
 }

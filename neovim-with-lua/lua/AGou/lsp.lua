@@ -29,15 +29,21 @@ local on_attach = function(_, bufnr)
     map(bufnr, "n", "gx", "<cmd>Lspsaga code_action<cr>", opts)
     map(bufnr, "x", "gx", ":<c-u>Lspsaga range_code_action<cr>", opts)
 
-    map(bufnr, "n", "gf", "<cmd>lua require'lspsaga.provider'.lsp_finder()<cr>", opts)
+    map(bufnr, "n", "gF", "<cmd>lua require'lspsaga.provider'.lsp_finder()<cr>", opts)
     map(bufnr, "n", "K",  "<cmd>Lspsaga hover_doc<cr>", opts)
     map(bufnr, "n", "go", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
-    map(bufnr, "n", "gp", "<cmd>Lspsaga preview_definition<cr>", opts)
+    -- use goto preview instead as below.
+    -- map(bufnr, "n", "gp", "<cmd>Lspsaga preview_definition<cr>", opts)
     map(bufnr, "n", "gs", "<cmd>Lspsaga signature_help<cr>", opts)
     map(bufnr, "n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
     map(bufnr, "n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
     map(bufnr, "n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1, '<c-u>')<cr>", opts)
     map(bufnr, "n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1, '<c-d>')<cr>", opts)
+    -- goto preview keymappigs
+    map(bufnr, "n", "gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", opts)
+    map(bufnr, "n", "gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>",opts)
+    map(bufnr, "n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>", opts)
+    map(bufnr, "n", "gf", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", opts)
 
 
 end
