@@ -97,6 +97,7 @@ Plug 'voldikss/vim-translator'
 Plug 'folke/lsp-colors.nvim'
 
 Plug 'mhartington/formatter.nvim'
+" Plug 'beauwilliams/focus.nvim'
 
 
 
