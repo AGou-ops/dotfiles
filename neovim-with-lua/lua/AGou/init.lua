@@ -5,7 +5,28 @@ require('AGou.nvim-bufferline')
 -- 好像没什么卵用啊.
 -- require'lspconfig'.bashls.setup{} -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#bashls
 require('AGou.nvim-tree')
--- ----------------------------------------------------------------------
+require('AGou.nvim-transparent')
+require('AGou.nvim-cmp')
+require('AGou.nvim-lsp-installer')
+require('AGou.nvim-treesitter')
+require('AGou.nvim-gitsigns')
+require('AGou.nvim-autopairs')
+require('AGou.nvim-lspsaga')
+require("AGou.nvim-signature")
+require('AGou.nvim-telescope')
+require('AGou.nvim-toggleterm')
+require('AGou.nvim-neoscroll')
+-- require('AGou.nvim-session-manager')
+require('AGou.nvim-whichkey')
+require('AGou.nvim-todo-comments')
+require('AGou.nvim-diffview')
+require('AGou.nvim-dashboard')
+require('AGou.nvim-zen-mode')
+require('AGou.nvim-indent_blankline')
+require('AGou.nvim-trouble')
+require('AGou.nvim-goto-preview')
+
+-- -------------------------- 其他简单lua插件配置项 --------------------------------------------
 -- full hotkeys usage: https://github.com/numToStr/Comment.nvim#-usage
 -- gcc: 当前行行注释
 -- gcb: 当前行块注释
@@ -50,7 +71,7 @@ require("lsp-colors").setup({
     Information = "#0db9d7",
     Hint = "#10B981"
 })
--- ----------------------------------------------------------------------
+-- --------------------------------------
 -- lua, default settings
 -- require("better_escape").setup {
 --     mapping = {"jk", "jj"}, -- a table with mappings to use
@@ -62,6 +83,18 @@ require("lsp-colors").setup({
 --     --   return vim.fn.col '.' - 2 >= 1 and '<esc>l' or '<esc>'
 --     -- end,
 -- }
+-- --------------------------------------
+require("focus").setup({
+    enable = false,
+    autoresize = true,
+    exclued_filetypes = {"toggleterm", "tagbar", "go"},
+    excluded_buftypes = {"help"},
+    width = 120,
+    minwidth = 80,
+    -- height = 40,
+    treewidth = 20,
+})
+-- --------------------------------------
 require('formatter').setup({
     vim.api.nvim_exec([[
     augroup FormatAutogroup
@@ -70,24 +103,10 @@ require('formatter').setup({
     augroup END
     ]], true)
 })
+-- --------------------------------------
+-- --------------------------------------
+-- --------------------------------------
+-- --------------------------------------
+-- --------------------------------------
+-- --------------------------------------
 -- ----------------------------------------------------------------------
-require('AGou.nvim-transparent')
-require('AGou.nvim-cmp')
-require('AGou.nvim-lsp-installer')
-require('AGou.nvim-treesitter')
-require('AGou.nvim-gitsigns')
-require('AGou.nvim-autopairs')
-require('AGou.nvim-lspsaga')
-require("AGou.nvim-signature")
-require('AGou.nvim-telescope')
-require('AGou.nvim-toggleterm')
-require('AGou.nvim-neoscroll')
--- require('AGou.nvim-session-manager')
-require('AGou.nvim-whichkey')
-require('AGou.nvim-todo-comments')
-require('AGou.nvim-diffview')
-require('AGou.nvim-dashboard')
-require('AGou.nvim-zen-mode')
-require('AGou.nvim-indent_blankline')
-require('AGou.nvim-trouble')
-require('AGou.nvim-goto-preview')
