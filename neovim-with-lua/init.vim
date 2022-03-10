@@ -97,11 +97,15 @@ Plug 'voldikss/vim-translator'
 Plug 'folke/lsp-colors.nvim'
 
 Plug 'mhartington/formatter.nvim'
+<<<<<<< HEAD
 " conflict with goto-preview plugin, fuckkkkkk.
 Plug 'beauwilliams/focus.nvim'
 " not working.....
 " Plug 'edluffy/specs.nvim'
 Plug 'danilamihailov/beacon.nvim'
+=======
+" Plug 'beauwilliams/focus.nvim'
+>>>>>>> dce4369904e600cdec917abbfe20ce2338058dbb
 
 
 
