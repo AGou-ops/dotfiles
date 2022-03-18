@@ -66,11 +66,18 @@ nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
 nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
 nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 
+
 " ========= vim-translate settings ========
 " more settings: https://github.com/voldikss/vim-translator
 " Display translation in a window
 nmap <silent> <Leader>ts <Plug>TranslateW
 vmap <silent> <Leader>ts <Plug>TranslateWV
+
+" ========= vim-sneak settings ========
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
 
 " ========= other settings ========
 nnoremap <leader>h :UndotreeToggle <bar> :UndotreeFocus<CR>
@@ -169,9 +176,9 @@ nnoremap <F4> :set wrap! wrap?<CR>
                                 "    paste mode, where you can paste mass data
                                 "    that won't be autoindented
 " F6 turn on|off syntax, speed up read large file
-nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+" nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 " disbale paste mode when leaving insert mode
 " au InsertLeave * set nopaste
 " F8 turn on tagbar
-nmap <F8> :TagbarToggle<CR>
+" nmap <F8> :TagbarToggle<CR>
 

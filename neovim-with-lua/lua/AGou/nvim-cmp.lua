@@ -121,12 +121,12 @@ cmp.setup({
         end,
     },
     sources = {
-        { name = "nvim_lsp", priority = 100 }, -- Keep LSP results on top.
+        { name = "nvim_lsp", priority = 100, group_index = 1}, -- Keep LSP results on top.
         { name = "nvim_lua" },
         -- { name = 'vsnip' }, -- For vsnip users.
         -- { name = "luasnip" },
         -- { name = "buffer" ,keyword_pattern = [[\k]] ,priority = 90},
-        { name = "cmp_tabnine" , priority = 15 },
+        { name = "cmp_tabnine" , priority = 15, group_index = 2},
         { name = "path" },
         {name = 'emoji', insert = true},
         {

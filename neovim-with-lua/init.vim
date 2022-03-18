@@ -102,10 +102,9 @@ Plug 'beauwilliams/focus.nvim'
 " not working.....
 " Plug 'edluffy/specs.nvim'
 Plug 'danilamihailov/beacon.nvim'
-
 Plug 'hrsh7th/vim-searchx'
 
-Plug 'hrsh7th/vim-eft'
+Plug 'justinmk/vim-sneak'
 
 
 
@@ -139,7 +138,12 @@ Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'tami5/lspsaga.nvim'
 " Plug 'ray-x/lsp_signature.nvim'
+
+" debug toools
 Plug 'puremourning/vimspector'
+" Plug 'mfussenegger/nvim-dap'
+" Plug 'rcarriga/nvim-dap-ui'
+
 " Plug 'mfussenegger/nvim-dap'
 Plug 'sindrets/diffview.nvim'
 
@@ -397,6 +401,8 @@ nnoremap <leader>sl <cmd>lua require("persistence").load({ last = true })<CR>
 " stop Persistence => session won't be saved on exit
 nnoremap <leader>s <cmd>lua require("persistence").stop()<CR>
 
+
+
 " ========= vim-visual-multi settings ==========
 let g:VM_maps = {}
 let g:VM_maps['Find Under']         = '<C-m>'           " replace C-n
@@ -518,11 +524,6 @@ let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-go', 'CodeLLDB', 'vscode
 " nmap <Leader>di <Plug>VimspectorBalloonEval
 " " for visual mode, the visually selected text
 " xmap <Leader>di <Plug>VimspectorBalloonEval
-
-" ============= nvim-dap settings ==========
-
-nnoremap <silent><leader>da <Cmd>lua require'dap'.toggle_breakpoint()<CR>
-nnoremap <silent><leader>dc <Cmd>lua require'dap'.continue()<CR>
 
 " ========= floaterm settings[NOT USED] ==========
 " autocmd User FloatermOpen        " triggered after opening a new/existed floaterm
