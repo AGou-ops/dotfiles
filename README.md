@@ -1,3 +1,7 @@
+```diff
+- 提示：如果只想使用Neovim的配置的话，请手动切换到`nvim`分支.
+```
+
 **Neovim及其插件简单视频介绍：https://www.bilibili.com/video/BV1am4y197bR/  
 保姆级安装up主同款Neovim：https://www.bilibili.com/video/BV1YF411i72t/**
 
