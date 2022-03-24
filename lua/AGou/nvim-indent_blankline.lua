@@ -32,6 +32,11 @@ indent_blankline.setup {
     show_current_context_start = true,
     show_end_of_line = false,
 
+
+
+  use_treesitter = true,
+  show_trailing_blankline_indent = false,
+
     -- char_highlight_list = {
     --     "IndentBlanklineIndent1",
     --     "IndentBlanklineIndent2",

@@ -31,7 +31,7 @@ fi
 
 git checkout nvim
 
-rsync -avzP --progress --exclude '%Users*'  .config/nvim/  ~/myWeb/dotfiles/
+rsync -avzP --progress --exclude '%Users*' --exclude 'neovim-with-lua/'  ~/.config/nvim/  ~/myWeb/dotfiles/
 
 lazygit
 

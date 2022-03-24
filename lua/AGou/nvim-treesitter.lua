@@ -12,12 +12,12 @@ configs.setup({
     enable = true, -- false will disable the whole extension
     -- disable = { "css", "html" }, -- list of language that will be disabled
     disable = { "css" }, -- list of language that will be disabled
-    additional_vim_regex_highlighting = true,
+    additional_vim_regex_highlighting = false,
   },
   autopairs = {
     enable = true,
   },
-  indent = { enable = true, disable= { "yaml", "python", "css" } },
+  indent = { enable = false, disable= { "yaml", "python", "css" } },
   context_commentstring = {
     enable = true,
     enable_autocmd = false,
