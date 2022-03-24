@@ -105,6 +105,7 @@ Plug 'danilamihailov/beacon.nvim'
 Plug 'hrsh7th/vim-searchx'
 
 Plug 'justinmk/vim-sneak'
+Plug 'mrjones2014/smart-splits.nvim'
 
 
 
@@ -125,8 +126,8 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-calc'
 Plug 'hrsh7th/cmp-emoji'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
 " Plug 'uga-rosa/cmp-dictionary'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'octaltree/cmp-look'
