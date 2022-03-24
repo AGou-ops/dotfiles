@@ -51,6 +51,7 @@ end
 
 -- Add lspkind
 local lspkind = require('lspkind')
+-- local luasnip = require('luasnip')
 
 local source_mapping = {
     -- buffer = "[Buffer]",
@@ -61,6 +62,7 @@ local source_mapping = {
     emoji = "[Emoji]",
     look = "[Dict]",
     calc = "[Calc]",
+    vsnip = "[vsnip]",
 }
 
 
@@ -76,24 +78,33 @@ cmp.setup({
     },
 
     formatting = {
-        format = function(entry, vim_item)
-            vim_item.kind = lspkind.presets.default[vim_item.kind]
-            local menu = source_mapping[entry.source.name]
-            if entry.source.name == 'cmp_tabnine' then
-                if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-                    menu = entry.completion_item.data.detail .. ' ' .. menu
+            format = lspkind.cmp_format{
+                mode = 'symbol', -- show only symbol annotations
+                maxwidth = 100, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+
+                -- The function below will be called before any actual modifications from lspkind
+                -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+
+
+                before = function(entry, vim_item)
+                    vim_item.kind = lspkind.presets.default[vim_item.kind]
+                    local menu = source_mapping[entry.source.name]
+                    if entry.source.name == 'cmp_tabnine' then
+                        if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+                            menu = entry.completion_item.data.detail .. ' ' .. menu
+                        end
+                        vim_item.kind = ''
+                    end
+                    -- if entry.source.name == 'dictionary' then
+                    --     if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+                    --         menu = entry.completion_item.data.detail .. ' ' .. menu
+                    --     end
+                    --     vim_item.kind = ''
+                    -- end
+                    vim_item.menu = menu
+                    return vim_item
                 end
-                vim_item.kind = ''
-            end
-            -- if entry.source.name == 'dictionary' then
-            --     if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-            --         menu = entry.completion_item.data.detail .. ' ' .. menu
-            --     end
-            --     vim_item.kind = ''
-            -- end
-            vim_item.menu = menu
-            return vim_item
-        end
+            }
     },
     mapping = {
         -- ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
@@ -121,12 +132,12 @@ cmp.setup({
         end,
     },
     sources = {
-        { name = "nvim_lsp", priority = 100, group_index = 1}, -- Keep LSP results on top.
+        { name = "nvim_lsp", priority = 100}, -- Keep LSP results on top.
         { name = "nvim_lua" },
-        -- { name = 'vsnip' }, -- For vsnip users.
+        { name = 'vsnip' }, -- For vsnip users.
         -- { name = "luasnip" },
         -- { name = "buffer" ,keyword_pattern = [[\k]] ,priority = 90},
-        { name = "cmp_tabnine" , priority = 15, group_index = 2},
+        { name = "cmp_tabnine" , priority = 15},
         { name = "path" },
         {name = 'emoji', insert = true},
         {
@@ -142,14 +153,14 @@ cmp.setup({
         { name = 'calc' },
         {name = 'nvim_lsp_signature_help'},
     },
-    -- confirm_opts = {
-    --     behavior = cmp.ConfirmBehavior.Replace,
-    --     select = false,
-    -- },
-    -- documentation = false,
-    -- documentation = {
-    -- 	border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-    -- },
+  confirm_opts = {
+    behavior = cmp.ConfirmBehavior.Replace,
+    select = false,
+  },
+  -- documentation = true,
+  documentation = {
+  	border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  },
     -- ghost_text 用了之后preview box 就无法正常使用了.
     experimental = {
         ghost_text = true,

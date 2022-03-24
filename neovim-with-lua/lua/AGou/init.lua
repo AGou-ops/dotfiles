@@ -25,6 +25,8 @@ require('AGou.nvim-zen-mode')
 require('AGou.nvim-indent_blankline')
 require('AGou.nvim-trouble')
 require('AGou.nvim-goto-preview')
+require('AGou.nvim-smart-splits')
+
 -- require('AGou.nvim-dap-ui')
 
 -- -------------------------- 其他简单lua插件配置项 --------------------------------------------

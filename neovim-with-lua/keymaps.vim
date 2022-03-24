@@ -11,10 +11,14 @@ nnoremap <M-k> <C-w>k
 nnoremap <M-h> <C-w>h
 nnoremap <M-l> <C-w>l
 " =====================
-nnoremap <A-Down> <C-w>j
-nnoremap <A-Up> <C-w>k
-nnoremap <A-Left> <C-w>h
-nnoremap <A-Right> <C-w>l
+" nnoremap <A-Down> <C-w>j
+" nnoremap <A-Up> <C-w>k
+" nnoremap <A-Left> <C-w>h
+" nnoremap <A-Right> <C-w>l
+nmap <A-Left> :lua require('smart-splits').resize_left()<CR>
+nmap <A-Down> :lua require('smart-splits').resize_down()<CR>
+nmap <A-Up> :lua require('smart-splits').resize_up()<CR>
+nmap <A-Right> :lua require('smart-splits').resize_right()<CR>
 " delete something without yank
 nnoremap d "_d
 nnoremap D "_D
