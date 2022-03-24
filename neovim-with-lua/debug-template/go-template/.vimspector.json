@@ -4,7 +4,7 @@
             "adapter": "vscode-go",
             "configuration": {
                 "request": "launch",
-                "program": "${fileDirname}",
+                "program": "${fileDirname}/${fileName}",
                 "mode": "debug",
                 "dlvToolPath": "/Users/agou-ops/go/bin/dlv"     }
         }
