@@ -8,22 +8,16 @@
 # Copyright 2022 by AGou-ops.All Rights Reserved  *
 #**************************************************
 
-rsync -avzP --progress --delete  --exclude '%Users*'  ~/.config/nvim/  ~/myWeb/dotfiles/neovim-with-lua/
+( cd ~/myWeb/dotfiles && git checkout master && rsync -avzP --progress --delete  --exclude '%Users*'  ~/.config/nvim/  ~/myWeb/dotfiles/neovim-with-lua/ )
 
 
-cd ~/myWeb/dotfiles/neovim-with-lua
-
-git checkout nvim
-rsync -avzP --progress --exclude '%Users*'  .config/nvim/  ~/myWeb/dotfiles/
-git checkout master
-cd - 
+cd ~/myWeb/dotfiles/
 
 echo -e "\n"
-
 read -r -p "同步文件夹完成，是否继续？ [Y/n] " response
 response=${response,,} # tolower
 if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
-    cd ~/myWeb/dotfiles/neovim-with-lua
+    cd ~/myWeb/dotfiles/
 
     export http_proxy=127.0.0.1:9870
     export https_proxy=127.0.0.1:9870
@@ -34,3 +28,14 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
 else
     exit -1
 fi
+
+git checkout nvim
+
+rsync -avzP --progress --exclude '%Users*'  .config/nvim/  ~/myWeb/dotfiles/
+
+lazygit
+
+git checkout master
+
+cd - 
+
