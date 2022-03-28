@@ -107,9 +107,13 @@ nnoremap ( %
 nnoremap ) %
 nnoremap <TAB> %
 
+" unset highlight
+" nnoremap <silent>no <cmd>noh<CR>
+
 " use tab/shift tab to switch coc or native lsp cmp
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
 
 " cmdline quickly go to head or tail
 cnoremap <C-a> <Home>
