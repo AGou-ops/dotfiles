@@ -26,7 +26,6 @@ require('AGou.nvim-indent_blankline')
 require('AGou.nvim-trouble')
 require('AGou.nvim-goto-preview')
 require('AGou.nvim-smart-splits')
-
 -- require('AGou.nvim-dap-ui')
 
 -- -------------------------- 其他简单lua插件配置项 --------------------------------------------
@@ -106,6 +105,19 @@ require('formatter').setup({
     augroup END
     ]], true)
 })
+-- --------------------------------------
+require("nvim-gps").setup({
+  icons = {
+    ["class-name"] = ' ',      -- Classes and class-like objects
+    ["function-name"] = ' ',   -- Functions
+    ["method-name"] = ' ',     -- Methods (functions inside class-like objects)
+    ["container-name"] = '⛶ ',  -- Containers (example: lua tables)
+    ["tag-name"] = '炙',         -- Tags (example: html tags)
+    ["object-name"] = ' ',
+
+  }
+})
+-- --------------------------------------
 -- --------------------------------------
 -- --------------------------------------
 -- --------------------------------------

@@ -42,6 +42,8 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'windwp/nvim-autopairs'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+" Plug 'm-demare/hlargs.nvim'
+
 " Plug 'sheerun/vim-polyglot'
 
 " Plug 'voldikss/vim-floaterm'
@@ -72,6 +74,8 @@ Plug 'karb94/neoscroll.nvim'
 " Easily speed up your neovim startup time!
 Plug 'dstein64/vim-startuptime'
 Plug 'nathom/filetype.nvim'
+
+
 
 Plug 'numToStr/Comment.nvim'
 " Plug 'roxma/nvim-yarp'
@@ -104,8 +108,11 @@ Plug 'beauwilliams/focus.nvim'
 Plug 'danilamihailov/beacon.nvim'
 Plug 'hrsh7th/vim-searchx'
 
-Plug 'justinmk/vim-sneak'
+" Plug 'justinmk/vim-sneak'
+" Plug 'ggandor/leap.nvim'
 Plug 'mrjones2014/smart-splits.nvim'
+Plug 'SmiteshP/nvim-gps'
+Plug 'kevinhwang91/nvim-hlslens'
 
 
 
@@ -612,7 +619,7 @@ let g:cursorword_delay = 0
 "
 " ========== nvim-tree.lua settings ===========
 " defalut hotkeys actions: https://github.com/kyazdani42/nvim-tree.lua#default-actions
-let g:nvim_tree_quit_on_open = 1 "0 by default, closes the tree when you open a file
+let g:nvim_tree_quit_on_open = 0 "0 by default, closes the tree when you open a file
 let g:nvim_tree_indent_markers = 0 "0 by default, this option shows indent markers when folders are open
 let g:nvim_tree_git_hl = 0 "0 by default, will enable file highlight for git attributes (can be used without the icons).
 let g:nvim_tree_highlight_opened_files = 0 "0 by default, will enable folder and file icon highlight for opened files/directories.
@@ -720,9 +727,6 @@ let g:NERDToggleCheckAllLines = 1
 
 
 " ============================== Autocmd/Function settings ============================== 
-
-
-
 
 augroup YankHighlight
     autocmd!

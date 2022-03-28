@@ -67,6 +67,7 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
+
 nvim_lsp.sumneko_lua.setup {
     cmd = { vim.fn.getenv 'HOME' .. '/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server' },
     on_attach = on_attach,
@@ -94,4 +95,6 @@ nvim_lsp.sumneko_lua.setup {
         },
     },
 }
+
+
 -- --------------------------------------------------------------
