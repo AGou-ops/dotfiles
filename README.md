@@ -13,7 +13,14 @@
 
 ## 截图
 
+- Neovim dashboard
+
 ![image](https://user-images.githubusercontent.com/57939102/154175393-72f307e2-710d-46b8-930e-0e8f47036ace.png)
+
+
+- Tmux
+
+![image-20220408084010889](https://agou-images.oss-cn-qingdao.aliyuncs.com/others/image-20220408084010889.png)
 
 
 - Golang
@@ -28,8 +35,6 @@
 - Lua
 
 ![image](https://user-images.githubusercontent.com/57939102/148733899-e891a7cf-e0ca-4864-b501-df436ba2f224.png)
-
-
 
 
 ## 仓库内容

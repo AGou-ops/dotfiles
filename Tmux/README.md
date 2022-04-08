@@ -2,6 +2,10 @@
 
 tmux shortcuts & cheatsheet: [https://gist.github.com/MohamedAlaa/2961058](https://gist.github.com/MohamedAlaa/2961058)
 
+- Tmux
+
+![image-20220408084010889](https://agou-images.oss-cn-qingdao.aliyuncs.com/others/image-20220408084010889.png)
+
 
 
 ## Bindings
