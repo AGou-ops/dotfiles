@@ -8,6 +8,7 @@ local trouble = require("trouble.providers.telescope")
 -- only support linux
 -- telescope.load_extension "media_files"
 
+
 telescope.setup {
   defaults = {
 
@@ -100,3 +101,4 @@ telescope.setup {
   --   },
   -- },
 }
+

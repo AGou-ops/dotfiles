@@ -25,7 +25,7 @@
 --     '', -- Operator      = 24;
 --     '', -- TypeParameter = 25;
 -- }
--- 如果不想用lspkind,那么可以用手动进行图标设置
+-- -- 如果不想用lspkind,那么可以用手动进行图标设置
 -- for index, value in ipairs(vim.lsp.protocol.CompletionItemKind) do
 --     -- cmp.lsp.CompletionItemKind[index] = value
 --     cmp.lsp.CompletionItemKind[index] = value .. ' ' ..  cmp.lsp.CompletionItemKind[index]
@@ -76,16 +76,19 @@ cmp.setup({
             -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
         end,
     },
-
+--   formatting = {
+-- format = require'lspkind'.cmp_format({
+--   mode = 'symbol_text',
+--   maxwidth = 50,
+-- })
+-- },
     formatting = {
             format = lspkind.cmp_format{
-                mode = 'symbol', -- show only symbol annotations
+                mode = 'symbol_text', -- show only symbol annotations
                 maxwidth = 100, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 
                 -- The function below will be called before any actual modifications from lspkind
                 -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-
-
                 before = function(entry, vim_item)
                     vim_item.kind = lspkind.presets.default[vim_item.kind]
                     local menu = source_mapping[entry.source.name]
@@ -95,12 +98,6 @@ cmp.setup({
                         end
                         vim_item.kind = ''
                     end
-                    -- if entry.source.name == 'dictionary' then
-                    --     if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-                    --         menu = entry.completion_item.data.detail .. ' ' .. menu
-                    --     end
-                    --     vim_item.kind = ''
-                    -- end
                     vim_item.menu = menu
                     return vim_item
                 end
@@ -156,11 +153,13 @@ cmp.setup({
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
-  },
-  -- documentation = true,
-  documentation = {
-  	border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-  },
+    },
+    preselect = cmp.PreselectMode.Item,
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
+
     -- ghost_text 用了之后preview box 就无法正常使用了.
     experimental = {
         ghost_text = true,
