@@ -13,6 +13,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'ellisonleao/gruvbox.nvim'
+Plug 'EdenEast/nightfox.nvim'
 
 " ========= appearence here. ==========
 
@@ -36,9 +37,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'camspiers/lens.vim'
 Plug '907th/vim-auto-save'
 Plug 'preservim/tagbar'
-" Plug 'simrat39/symbols-outline.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 
 Plug 'windwp/nvim-autopairs'
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -57,7 +58,6 @@ Plug 'akinsho/toggleterm.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-Plug 'akinsho/bufferline.nvim'
 
 " Plug 'Yggdroot/indentLine'
 Plug 'itchyny/vim-cursorword'
@@ -75,23 +75,16 @@ Plug 'karb94/neoscroll.nvim'
 " Easily speed up your neovim startup time!
 Plug 'dstein64/vim-startuptime'
 Plug 'nathom/filetype.nvim'
-
-
-
 Plug 'numToStr/Comment.nvim'
 " Plug 'roxma/nvim-yarp'
 " Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'mbbill/undotree'
-" Plug 'rmagatti/auto-session'
 " session manager
 Plug 'folke/persistence.nvim'
+
 Plug 'folke/which-key.nvim'
 Plug 'folke/todo-comments.nvim'
-
-
-" Plug 'max397574/better-escape.nvim'
-
 Plug 'folke/zen-mode.nvim'
 " works with zen-mode
 Plug 'folke/twilight.nvim'
@@ -114,6 +107,7 @@ Plug 'hrsh7th/vim-searchx'
 Plug 'mrjones2014/smart-splits.nvim'
 Plug 'SmiteshP/nvim-gps'
 Plug 'kevinhwang91/nvim-hlslens'
+Plug 'phaazon/hop.nvim'
 
 
 
@@ -167,6 +161,7 @@ call plug#end()
 " ============================== END Plugin packages ============================== 
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
+let b:copilot_enabled = v:false
 
 " ============================== Pre settings ============================== 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
@@ -242,13 +237,11 @@ colorscheme gruvbox-material
 " original colorscheme gruvbox configuration: https://github.com/morhetz/gruvbox/wiki/Configuration
 " colorscheme gruvbox
 
-
-
 " ============================== END colorscheme settings ============================== 
 "
 "
 " ============================== Plugins settings ============================== 
-
+"
 " ========= indentline settings ==========
 " " let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 " let g:indentLine_char = '┆'
@@ -284,6 +277,10 @@ set timeoutlen=200
 " ========= tagbar settings ==========
 let g:tagbar_ctags_bin='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'
 autocmd VimEnter *.go  Tagbar
+let g:tagbar_show_tag_count = 1
+let g:tagbar_wrap = 1
+let g:tagbar_zoomwidth = 0
+
 
 " ========= nvim-cmp settings ==========
 set completeopt=menu,menuone,noselect
@@ -310,7 +307,6 @@ highlight default link Visual default
 " let g:auto_session_root_dir = '~/.vim/sessions/'
 " nnoremap <leader>ss <cmd>SaveSession<CR>
 nnoremap <leader>sd <cmd>!rm -f ~/.config/nvim/sessions/*<CR>
-
 
 " ========= instant-markdown settings ==========
 " set to 1, nvim will open the preview window after entering the markdown buffer
@@ -420,10 +416,21 @@ let g:VM_maps = {}
 let g:VM_maps['Find Under']         = '<C-m>'           " replace C-n
 let g:VM_maps['Find Subword Under'] = '<C-m>'           " replace visual C-n
 let g:VM_mouse_mappings = 1
-" ========= commandbar settings ==========
+" ========= wilder command bar settings ==========
 " Default keys
 
 call wilder#setup({'modes': [':', '/', '?']})
+call wilder#set_option('pipeline', [
+      \   wilder#branch(
+      \     wilder#python_file_finder_pipeline({
+      \       'file_command': ['rg', '--files'],
+      \       'dir_command': ['find', '.', '-type', 'd', '-printf', '%P\n'],
+      \       'filters': ['fuzzy_filter', 'difflib_sorter'],
+      \     }),
+      \     wilder#cmdline_pipeline(),
+      \     wilder#python_search_pipeline(),
+      \   ),
+      \ ])
 call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
             \ 'border': 'rounded',
             \ 'highlighter': wilder#basic_highlighter(),
@@ -623,9 +630,8 @@ let g:cursorword_delay = 0
 "
 " ========== nvim-tree.lua settings ===========
 " defalut hotkeys actions: https://github.com/kyazdani42/nvim-tree.lua#default-actions
-let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
 let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
-let g:nvim_tree_highlight_opened_files = 1 "0 by default, will enable folder and file icon highlight for opened files/directories.
+let g:nvim_tree_highlight_opened_files = 0 "0 by default, will enable folder and file icon highlight for opened files/directories.
 let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
 let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folder names
 let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
@@ -634,44 +640,14 @@ let g:nvim_tree_symlink_arrow = ' >> ' " defaults to ' ➛ '. used as a separato
 let g:nvim_tree_respect_buf_cwd = 1 "0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
 let g:nvim_tree_create_in_closed_folder = 1 "0 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
 let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
+"if folder is 1, you can also tell folder_arrows 1 to show small arrows next to the folder icons.
+"but this will not work when you set indent_markers (because of UI conflict)
 let g:nvim_tree_show_icons = {
     \ 'git': 1,
     \ 'folders': 1,
     \ 'files': 1,
     \ 'folder_arrows': 1,
     \ }
-"If 0, do not show the icons for one of 'git' 'folder' and 'files'
-"1 by default, notice that if 'files' is 1, it will only display
-"if nvim-web-devicons is installed and on your runtimepath.
-"if folder is 1, you can also tell folder_arrows 1 to show small arrows next to the folder icons.
-"but this will not work when you set indent_markers (because of UI conflict)
-
-" default will show icon by default if no icon is provided
-" default shows no icon by default
-let g:nvim_tree_icons = {
-    \ 'default': "",
-    \ 'symlink': "",
-    \ 'git': {
-    \   'unstaged': "✗",
-    \   'staged': "✓",
-    \   'unmerged': "",
-    \   'renamed': "➜",
-    \   'untracked': "★",
-    \   'deleted': "",
-    \   'ignored': "◌"
-    \   },
-    \ 'folder': {
-    \   'arrow_open': "",
-    \   'arrow_closed': "",
-    \   'default': "",
-    \   'open': "",
-    \   'empty': "",
-    \   'empty_open': "",
-    \   'symlink': "",
-    \   'symlink_open': "",
-    \   }
-    \ }
-
 
 nnoremap <C-n> :NvimTreeToggle<CR>
 " conflict with my vim-go plugin and create new file
@@ -681,8 +657,9 @@ nnoremap <C-n> :NvimTreeToggle<CR>
 
 set termguicolors " this variable must be enabled for colors to be applied properly
 
+
 " a list of groups can be found at `:help nvim_tree_highlight`
-highlight NvimTreeFolderIcon guibg=blue
+" highlight NvimTreeFolderIcon guibg=blue
 
 let g:auto_save = 1  " enable AutoSave on Vim startup
 
@@ -715,6 +692,10 @@ let g:NERDToggleCheckAllLines = 1
 
 
 " ============================== Autocmd/Function settings ============================== 
+"
+
+autocmd ColorScheme * runtime lua/vim/lsp/diagnostic.lua
+
 
 augroup YankHighlight
     autocmd!
@@ -831,6 +812,7 @@ endfun
 autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 autocmd FileType go nmap <Leader>rr :!go run %<CR>
+autocmd FileType go nmap <Leader>r :!go run .<CR>
 autocmd FileType go nmap <Leader>gt :!go test -v .<CR>
 
 " ============================== END Autocmd settings ============================== 
@@ -862,7 +844,5 @@ endif
 if filereadable($HOME . "/.config/nvim/custom.vim")
     source $HOME/.config/nvim/custom.vim
 endif
-
-" ====================================================================== 
 " ============================== THE END. ============================== 
 " ====================================================================== 

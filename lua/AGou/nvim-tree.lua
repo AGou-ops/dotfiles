@@ -13,8 +13,8 @@ vim.g.nvim_tree_icons = {
     ignored = "◌",
   },
   folder = {
-    -- arrow_open = " ",
-    -- arrow_closed = "",
+    arrow_open = "",
+    arrow_closed = "",
     default = "",
     open = "",
     empty = "",
@@ -51,7 +51,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
   sort_by = "name",
   update_cwd = true,
   view = {
-    width = 35,
+    width = 32,
     height = 30,
     side = "left",
     preserve_window_proportions = false,
@@ -74,8 +74,8 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
     auto_open = true,
   },
   update_focused_file = {
-    enable = false,
-    update_cwd = false,
+    enable = true,
+    update_cwd = true,
     ignore_list = {},
   },
   ignore_ft_on_setup = {},
@@ -110,7 +110,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
     },
     open_file = {
       quit_on_open = false,
-      resize_window = false,
+      resize_window = true,
       window_picker = {
         enable = true,
         chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",

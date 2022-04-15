@@ -21,6 +21,10 @@ set showmode                    "Show current mode down the bottom
 " set gcr=a:blnkon0              "Disable cursor blink
 " guicursor settings
 highlight Cursor gui=reverse guifg=NONE guibg=NONE
+" 相匹配成对的符号高亮，比如括号，花括号等。
+" hi MatchParen ctermbg=Yellow guibg=lightblue
+ hi MatchParen guifg=red guibg=#f8f8f8
+
 " default guicursor
 " set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 "       \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor

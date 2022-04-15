@@ -56,8 +56,8 @@ nnoremap <Leader>qd daW"=substitute(@@,"'\\\|\"","","g")<CR>P
 " nmap <leader>s <Plug>(coc-codeaction-selected)
 
 " ========= telescope settings ========
-nnoremap <leader>ff :Telescope find_files<CR>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false}) <CR>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep() <cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>ft <cmd>TodoTelescope<cr>
@@ -70,6 +70,11 @@ nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
 nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
 nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 
+" ========= hop.nvim plugin settings ========
+"
+nnoremap f <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>
+nnoremap F <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>
+nnoremap t <cmd>HopWord<cr>
 
 " ========= vim-translate settings ========
 " more settings: https://github.com/voldikss/vim-translator
@@ -78,10 +83,10 @@ nmap <silent> <Leader>ts <Plug>TranslateW
 vmap <silent> <Leader>ts <Plug>TranslateWV
 
 " ========= vim-sneak settings ========
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
+" map f <Plug>Sneak_f
+" map F <Plug>Sneak_F
+" map t <Plug>Sneak_t
+" map T <Plug>Sneak_T
 
 " ========= other settings ========
 nnoremap <leader>h :UndotreeToggle <bar> :UndotreeFocus<CR>
@@ -189,4 +194,8 @@ nnoremap <F4> :set wrap! wrap?<CR>
 " au InsertLeave * set nopaste
 " F8 turn on tagbar
 " nmap <F8> :TagbarToggle<CR>
+
+
+
+
 
