@@ -62,7 +62,6 @@ Plug 'nvim-telescope/telescope.nvim'
 " Plug 'Yggdroot/indentLine'
 Plug 'itchyny/vim-cursorword'
 
-
 " Vim plugin for automatically highlighting other uses of the current word under the cursor
 " Plug 'rrethy/vim-illuminate'
 Plug 'ryanoasis/vim-devicons'
@@ -162,6 +161,7 @@ call plug#end()
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
 let b:copilot_enabled = v:false
+
 
 " ============================== Pre settings ============================== 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.

@@ -1,15 +1,10 @@
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
-  return
-end
-
 require('goto-preview').setup {
   width = 120; -- Width of the floating window
   height = 15; -- Height of the floating window
   border = {"↖", "─" ,"┐", "│", "┘", "─", "└", "│"}; -- Border characters of the floating window
   default_mappings = false; -- Bind default mappings
   debug = false; -- Print debug information
-  opacity = nil; -- 0-100 opacity level of the floating window where 100 is fully transparent.
+  opacity = 5; -- 0-100 opacity level of the floating window where 100 is fully transparent.
   resizing_mappings = false; -- Binds arrow keys to resizing the floating window.
   post_open_hook = nil; -- A function taking two arguments, a buffer and a window to be ran as a hook.
   -- references = { -- Configure the telescope UI for slowing the references cycling window.

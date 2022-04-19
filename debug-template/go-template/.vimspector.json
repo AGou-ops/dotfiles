@@ -1,12 +1,22 @@
 {
     "configurations": {
-        "run": {
+        "Debug whole project OR single file": {
             "adapter": "vscode-go",
             "configuration": {
                 "request": "launch",
                 "program": "${fileDirname}/${fileName}",
                 "mode": "debug",
-                "dlvToolPath": "/Users/agou-ops/go/bin/dlv"     }
+                "dlvToolPath": "/Users/agou-ops/go/bin/dlv"
+            }
+        },
+        "Debug Test file": {
+            "adapter": "vscode-go",
+            "configuration": {
+                "request": "launch",
+                "program": "${fileDirname}/${fileName}",
+                "mode": "test",
+                "dlvToolPath": "/Users/agou-ops/go/bin/dlv"
+            }
         }
     }
 }
