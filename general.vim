@@ -20,10 +20,10 @@ set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
 " set gcr=a:blnkon0              "Disable cursor blink
 " guicursor settings
-highlight Cursor gui=reverse guifg=NONE guibg=NONE
+" highlight Cursor gui=reverse guifg=black guibg=#AAC689
 " 相匹配成对的符号高亮，比如括号，花括号等。
 " hi MatchParen ctermbg=Yellow guibg=lightblue
- hi MatchParen guifg=red guibg=#f8f8f8
+" hi MatchParen guifg=red guibg=#f8f8f8
 
 " default guicursor
 " set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50

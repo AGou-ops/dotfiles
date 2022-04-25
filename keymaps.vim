@@ -72,9 +72,10 @@ nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 
 " ========= hop.nvim plugin settings ========
 "
-nnoremap f <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>
-nnoremap F <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>
-nnoremap t <cmd>HopWord<cr>
+" nnoremap f <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>
+" nnoremap F <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>
+nnoremap f <cmd>HopWord<cr>
+nnoremap F <cmd>HopWord<cr>
 
 " ========= vim-translate settings ========
 " more settings: https://github.com/voldikss/vim-translator

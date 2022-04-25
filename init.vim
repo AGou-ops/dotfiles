@@ -93,7 +93,8 @@ Plug 'voldikss/vim-translator'
 " lsp-color not support gruvbox_material colorscheme
 Plug 'folke/lsp-colors.nvim'
 
-Plug 'mhartington/formatter.nvim'
+" Plug 'mhartington/formatter.nvim'
+Plug 'sbdchd/neoformat'
 " conflict with goto-preview plugin, fuckkkkkk.
 Plug 'beauwilliams/focus.nvim'
 " not working.....
@@ -108,7 +109,8 @@ Plug 'SmiteshP/nvim-gps'
 Plug 'kevinhwang91/nvim-hlslens'
 Plug 'phaazon/hop.nvim'
 
-
+" auto indent different type of file.
+" Plug 'tpope/vim-sleuth'
 
 " ========= programming tools here. ==========
 
@@ -241,7 +243,21 @@ colorscheme gruvbox-material
 "
 "
 " ============================== Plugins settings ============================== 
+
+" ========= neoformat settings ==========
+" fun! Neoformat()
+"     if &ft =~ 'vim\|txt\|go'
+"         return
+"     endif
+"     undojoin | Neoformat
+" endfun
 "
+" augroup fmt
+"   autocmd!
+" "   autocmd BufWritePre * undojoin | Neoformat
+"   autocmd BufWritePost * call Neoformat()
+" augroup END
+
 " ========= indentline settings ==========
 " " let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 " let g:indentLine_char = '┆'
@@ -277,9 +293,40 @@ set timeoutlen=200
 " ========= tagbar settings ==========
 let g:tagbar_ctags_bin='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'
 autocmd VimEnter *.go  Tagbar
+autocmd VimEnter *.md  Tagbar
 let g:tagbar_show_tag_count = 1
 let g:tagbar_wrap = 1
 let g:tagbar_zoomwidth = 0
+
+let g:tagbar_type_markdown = {
+            \ 'ctagsbin'  : 'mdctags',
+            \ 'ctagsargs' : '',
+            \ 'kinds'     : [
+            \     'a:h1:0:0',
+            \     'b:h2:0:0',
+            \     'c:h3:0:0',
+            \     'd:h4:0:0',
+            \     'e:h5:0:0',
+            \     'f:h6:0:0',
+            \ ],
+            \ 'sro'        : '::',
+            \ 'kind2scope' : {
+            \     'a' : 'h1',
+            \     'b' : 'h2',
+            \     'c' : 'h3',
+            \     'd' : 'h4',
+            \     'e' : 'h5',
+            \     'f' : 'h6',
+            \ },
+            \ 'scope2kind' : {
+            \     'h1' : 'a',
+            \     'h2' : 'b',
+            \     'h3' : 'c',
+            \     'h4' : 'd',
+            \     'h5' : 'e',
+            \     'h6' : 'f',
+            \}
+            \}
 
 
 " ========= nvim-cmp settings ==========
@@ -456,9 +503,9 @@ augroup ScrollbarInit
 augroup end
 
 let g:scrollbar_shape = {
-            \ 'head': '',
+            \ 'head': '█',
             \ 'body': '█',
-            \ 'tail': '',
+            \ 'tail': '█',
             \ }
 
 " ========= lspsaga.nvim settings ==========
@@ -757,10 +804,6 @@ autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 soft
 autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd
 
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
-" autocmd FileType go nmap <leader>t  <Plug>(go-test)
-
 " syntax support
 autocmd Syntax javascript set syntax=jquery   " JQuery syntax support
 " js
@@ -815,13 +858,14 @@ autocmd FileType go nmap <Leader>rr :!go run %<CR>
 autocmd FileType go nmap <Leader>r :!go run .<CR>
 autocmd FileType go nmap <Leader>gt :!go test -v .<CR>
 
+autocmd FileType html nmap <Leader>rh :!npx http-server .<CR>
+
 " ============================== END Autocmd settings ============================== 
 
 
 " ============================== External Lua settings ============================== 
 lua require('AGou')
 " ============================== END External Lua settings ============================== 
-
 
 " ============================== External settings ============================== 
 "
