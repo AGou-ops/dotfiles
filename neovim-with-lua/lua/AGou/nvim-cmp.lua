@@ -67,6 +67,13 @@ local source_mapping = {
 
 
 cmp.setup({
+    enabled = function()
+        if require"cmp.config.context".in_treesitter_capture("comment")==true or require"cmp.config.context".in_syntax_group("Comment") then
+            return false
+        else
+            return true
+        end
+    end,
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)

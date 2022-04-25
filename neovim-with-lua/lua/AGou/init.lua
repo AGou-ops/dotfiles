@@ -97,15 +97,6 @@ require("focus").setup({
     treewidth = 20,
 })
 -- --------------------------------------
-require('formatter').setup({
-    vim.api.nvim_exec([[
-    augroup FormatAutogroup
-      autocmd!
-      autocmd BufWritePost *.go,*.lua,*.json Format
-    augroup END
-    ]], true)
-})
--- --------------------------------------
 require("nvim-gps").setup({
   icons = {
     ["class-name"] = ' ',      -- Classes and class-like objects
