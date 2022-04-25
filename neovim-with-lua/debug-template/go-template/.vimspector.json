@@ -1,6 +1,6 @@
 {
     "configurations": {
-        "run": {
+        "Debug whole project OR single file": {
             "adapter": "vscode-go",
             "configuration": {
                 "request": "launch",
