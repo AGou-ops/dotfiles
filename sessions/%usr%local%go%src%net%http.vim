@@ -3,15 +3,15 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/tmp/gotmp/network
+cd ~/tmp/building-microservices-youtube/product-images/handlers
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
 argglobal
 %argdel
-$argadd ~/tmp/gotmp/panic_recover.go
-edit ~/tmp/gotmp/network/panic_recover_web.go
+$argadd ~/tmp/building-microservices-youtube/product-images/main.go
+edit /usr/local/go/src/net/http/server.go
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -24,34 +24,21 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-wincmd =
 argglobal
-let s:l = 15 - ((14 * winheight(0) + 16) / 32)
+balt ~/tmp/building-microservices-youtube/product-images/handlers/zip_middleware.go
+let s:l = 3499 - ((22 * winheight(0) + 24) / 49)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 15
-normal! 013|
-wincmd w
-argglobal
-if bufexists("/usr/local/go/src/net/http/server.go") | buffer /usr/local/go/src/net/http/server.go | else | edit /usr/local/go/src/net/http/server.go | endif
-if &buftype ==# 'terminal'
-  silent file /usr/local/go/src/net/http/server.go
-endif
-balt ~/tmp/gotmp/network/panic_recover_web.go
-let s:l = 2489 - ((7 * winheight(0) + 7) / 15)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 2489
-normal! 06|
+keepjumps 3499
+normal! 0
 lcd /usr/local/go/src/net/http
-wincmd w
-2wincmd w
-wincmd =
 tabnext 1
-badd +1 ~/tmp/gotmp/panic_recover.go
-badd +15 ~/tmp/gotmp/network/panic_recover_web.go
+badd +46 ~/tmp/building-microservices-youtube/product-images/main.go
+badd +50 ~/tmp/building-microservices-youtube/product-images/handlers/files.go
+badd +48 ~/tmp/building-microservices-youtube/product-images/handlers/zip_middleware.go
+badd +3499 /usr/local/go/src/net/http/server.go
+badd +105 /usr/local/go/src/compress/gzip/gzip.go
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
