@@ -72,16 +72,18 @@ if vim.fn.has "linux" == 1 or vim.fn.has "mac" == 1 then
 else
   plugins = "N/A"
 end
-local handle = io.popen("du -sh $HOME/.vim/plugged | awk '{print $1}'")
-local result = handle:read("*a")
-handle:close()
--- result = result:gsub("^%s*(.-)%s*$", "%1")
-result = string.gsub(result, "\n", "")
+
+-- local handle = io.popen("du -sh $HOME/.vim/plugged | awk '{print $1}'")
+-- local result = handle:read("*a")
+-- handle:close()
+-- -- result = result:gsub("^%s*(.-)%s*$", "%1")
+-- result = string.gsub(result, "\n", "")
 
 
 local pluginCount = {
   type = "text",
-  val = "  " .. plugins .. " plugins in total.".."「" ..  result .. "」",
+  val = "  " .. plugins .. " plugins in total.",
+  -- val = "  " .. plugins .. " plugins in total.".."「" ..  result .. "」",
   opts = {
     position = "center",
     hl = "String",
