@@ -1,3 +1,16 @@
+local status_ok, alpha = pcall(require, "alpha")
+if not status_ok then
+  return
+end
+
+local path_ok, path = pcall(require, "plenary.path")
+if not path_ok then
+  return
+end
+
+local nvim_web_devicons = require "nvim-web-devicons"
+local cdir = vim.fn.getcwd()
+
 local cool = {
     -- "                                                     ",
     -- "                                                     ",
@@ -29,6 +42,7 @@ local cool = {
    "                                                                  ",
 }
 
+
 local dashboard = require("alpha.themes.dashboard")
 local buttons = {
   type = "group",
@@ -43,22 +57,37 @@ local buttons = {
     dashboard.button( "q", "  Quit" , ":qa<CR>"),
     { type = "padding", val = 1 },
     { type = "padding", val = 1 },
-    { type = "text", val = "--- Life Is Fantastic. ---",opts = {position = "center"} },
+    -- { type = "text", val = "--- Life Is Fantastic. ---",opts = {position = "center"} },
   },
   position = "center",
 }
-local status_ok, alpha = pcall(require, "alpha")
-if not status_ok then
-  return
-end
 
-local path_ok, path = pcall(require, "plenary.path")
-if not path_ok then
-  return
-end
+local plugins = ""
+if vim.fn.has "linux" == 1 or vim.fn.has "mac" == 1 then
+  local handle = io.popen('ls  $HOME"/.vim/plugged" | wc -l ')
+  plugins = handle:read("*a")
+  handle:close()
 
-local nvim_web_devicons = require "nvim-web-devicons"
-local cdir = vim.fn.getcwd()
+  plugins = plugins:gsub("^%s*(.-)%s*$", "%1")
+else
+  plugins = "N/A"
+end
+local handle = io.popen("du -sh $HOME/.vim/plugged | awk '{print $1}'")
+local result = handle:read("*a")
+handle:close()
+-- result = result:gsub("^%s*(.-)%s*$", "%1")
+result = string.gsub(result, "\n", "")
+
+
+local pluginCount = {
+  type = "text",
+  val = "  " .. plugins .. " plugins in total.".."「" ..  result .. "」",
+  opts = {
+    position = "center",
+    hl = "String",
+  },
+}
+
 
 local function get_extension(fn)
     local match = fn:match("^.+(%..+)$")
@@ -233,6 +262,7 @@ local opts = {
         section_mru,
         { type = "padding", val = 2 },
         buttons,
+        pluginCount,
     },
     opts = {
         margin = 5,
