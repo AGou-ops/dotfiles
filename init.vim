@@ -160,9 +160,6 @@ Plug 'github/copilot.vim'
 call plug#end()
 
 " ============================== END Plugin packages ============================== 
-imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
-let b:copilot_enabled = v:false
 
 
 " ============================== Pre settings ============================== 
@@ -274,8 +271,14 @@ colorscheme gruvbox-material
 " ========= autopairs settings ==========
 " defalut options
 
-let g:indent_blankline_disable_with_nolist = v:true
+" ========= copilot settings ==========
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+let g:copilot_filetypes = {  '*': v:false, }
+" \ 'python': v:true,
 
+" ========= indent-blankline settings ==========
+let g:indent_blankline_disable_with_nolist = v:true
 
 " ========= beacon settings ==========
 " https://github.com/DanilaMihailov/beacon.nvim
