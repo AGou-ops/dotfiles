@@ -1,5 +1,8 @@
+Neovim 0.7 YES!
+
 ```diff
 - 提示：如果只想使用Neovim的配置的话，请手动切换到`nvim`分支.
+- 修改了一点点配置文件，neovim0.7版本可以直接使用~！！
 ```
 
 **Neovim及其插件简单视频介绍：https://www.bilibili.com/video/BV1am4y197bR/  
