@@ -12,8 +12,8 @@ call plug#begin('~/.vim/plugged')
 " Plug 'EdenEast/nightfox.nvim'
 " Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
-Plug 'ellisonleao/gruvbox.nvim'
-Plug 'EdenEast/nightfox.nvim'
+" Plug 'ellisonleao/gruvbox.nvim'
+" Plug 'EdenEast/nightfox.nvim'
 
 " ========= appearence here. ==========
 
@@ -67,7 +67,8 @@ Plug 'itchyny/vim-cursorword'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sebdah/vim-delve'
 " scroll bar
-Plug 'Xuyuanp/scrollbar.nvim'
+" Plug 'Xuyuanp/scrollbar.nvim'
+Plug 'petertriho/nvim-scrollbar'
 " smmoth scroll: :h scroll.txt  for help
 " Plug 'psliwka/vim-smoothie'
 Plug 'karb94/neoscroll.nvim'
@@ -228,8 +229,11 @@ let g:gruvbox_material_cursor = 'auto'
 let g:gruvbox_material_transparent_background = 0
 let g:gruvbox_material_menu_selection_background = 'green'
 let g:gruvbox_material_ui_contrast = 'high'
-let g:gruvbox_material_diagnostic_text_highlight = 1
 let g:gruvbox_material_better_performance = 1
+
+let g:gruvbox_material_diagnostic_text_highlight = 1
+let g:gruvbox_material_diagnostic_line_highlight = 1
+let g:gruvbox_material_diagnostic_virtual_text = "colored"
 
 colorscheme gruvbox-material
 
@@ -240,6 +244,7 @@ colorscheme gruvbox-material
 "
 "
 " ============================== Plugins settings ============================== 
+
 
 " ========= neoformat settings ==========
 " fun! Neoformat()
@@ -463,9 +468,10 @@ nnoremap <leader>s <cmd>lua require("persistence").stop()<CR>
 
 " ========= vim-visual-multi settings ==========
 let g:VM_maps = {}
-let g:VM_maps['Find Under']         = '<C-m>'           " replace C-n
-let g:VM_maps['Find Subword Under'] = '<C-m>'           " replace visual C-n
+let g:VM_maps['Find Under']         = '<cr>'           " replace C-n
+let g:VM_maps['Find Subword Under'] = '<cr>'           " replace visual C-n
 let g:VM_mouse_mappings = 1
+
 " ========= wilder command bar settings ==========
 " Default keys
 
@@ -814,6 +820,9 @@ let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
+" filetype settings
+let g:do_filetype_lua = 1             " load filetype.lua
+let g:did_load_filetypes = 0          " don't load filetype.vim
 filetype plugin on
 filetype indent on
 filetype on

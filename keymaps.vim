@@ -3,6 +3,9 @@
 " w!! to sudo & write a file
 cmap w!! %!sudo tee >/dev/null %
 
+" ex mode close.
+" map q :quit<CR>
+
 " Quicker window movement
 nnoremap U <C-r>
 " notworking on terminal neovim, only affect on Gvim!!!
