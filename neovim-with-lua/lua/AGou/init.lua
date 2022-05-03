@@ -2,8 +2,6 @@ require('impatient')
 require('AGou.lsp')
 require('AGou.nvim-lualine')
 require('AGou.nvim-bufferline')
--- 好像没什么卵用啊.
--- require'lspconfig'.bashls.setup{} -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#bashls
 require('AGou.nvim-tree')
 require('AGou.nvim-transparent')
 require('AGou.nvim-cmp')
@@ -26,9 +24,12 @@ require('AGou.nvim-indent_blankline')
 require('AGou.nvim-trouble')
 require('AGou.nvim-goto-preview')
 require('AGou.nvim-smart-splits')
-require'hop'.setup{}
+require('AGou.nvim-scrollbar')
 
 -- -------------------------- 其他简单lua插件配置项 --------------------------------------------
+--
+require'hop'.setup{}
+
 -- full hotkeys usage: https://github.com/numToStr/Comment.nvim#-usage
 -- gcc: 当前行行注释
 -- gcb: 当前行块注释
