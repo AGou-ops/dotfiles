@@ -1,29 +1,58 @@
-local lsp_installer = require "nvim-lsp-installer"
+local DEFAULT_SETTINGS = {
+    -- A list of servers to automatically install if they're not already installed. Example: { "rust_analyzer", "sumneko_lua" }
+    ensure_installed = {},
+    -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed.
+    -- Can either be:
+    --   - false: Servers are not automatically installed.
+    --   - true: All servers set up via lspconfig are automatically installed.
+    --   - { exclude: string[] }: All servers set up via lspconfig, except the ones provided in the list, are automatically installed.
+    --       Example: automatic_installation = { exclude = { "rust_analyzer", "solargraph" } }
+    automatic_installation = false,
+    ui = {
+        icons = {
+            -- The list icon to use for installed servers.
+            server_installed = "◍",
+            -- The list icon to use for servers that are pending installation.
+            server_pending = "◍",
+            -- The list icon to use for servers that are not installed.
+            server_uninstalled = "◍",
+        },
+        keymaps = {
+            -- Keymap to expand a server in the UI
+            toggle_server_expand = "<CR>",
+            -- Keymap to install the server under the current cursor position
+            install_server = "i",
+            -- Keymap to reinstall/update the server under the current cursor position
+            update_server = "u",
+            -- Keymap to check for new version for the server under the current cursor position
+            check_server_version = "c",
+            -- Keymap to update all installed servers
+            update_all_servers = "U",
+            -- Keymap to check which installed servers are outdated
+            check_outdated_servers = "C",
+            -- Keymap to uninstall a server
+            uninstall_server = "X",
+        },
+    },
 
--- local function on_attach(client, bufnr)
---   -- Set up buffer-local keymaps (vim.api.nvim_buf_set_keymap()), etc.
--- end
+    -- The directory in which to install all servers.
+    install_root_dir = "~/.local/share/nvim/lsp_servers",
 
-lsp_installer.on_server_ready(function(server)
-  -- Specify the default options which we'll use to setup all servers
-  local default_opts = {
-    on_attach = on_attach,
-  }
+    pip = {
+        -- These args will be added to `pip install` calls. Note that setting extra args might impact intended behavior
+        -- and is not recommended.
+        --
+        -- Example: { "--proxy", "https://proxyserver" }
+        install_args = {},
+    },
 
-  -- Now we'll create a server_opts table where we'll specify our custom LSP server configuration
-  -- local server_opts = {
-  --   -- Provide settings that should only apply to the "eslintls" server
-  --   ["eslintls"] = function()
-  --     default_opts.settings = {
-  --       format = {
-  --         enable = true,
-  --       },
-  --     }
-  --   end,
-  -- }
-  --
-  -- -- Use the server's custom settings, if they exist, otherwise default to the default options
-  -- local server_options = server_opts[server.name] and server_opts[server.name]() or default_opts
-  -- server:setup(server_options)
-  server:setup(default_opts)
-end)
+    -- Controls to which degree logs are written to the log file. It's useful to set this to vim.log.levels.DEBUG when
+    -- debugging issues with server installations.
+    log_level = vim.log.levels.INFO,
+
+    -- Limit for the maximum amount of servers to be installed at the same time. Once this limit is reached, any further
+    -- servers that are requested to be installed will be put in a queue.
+    max_concurrent_installers = 4,
+}
+
+require("nvim-lsp-installer").setup(DEFAULT_SETTINGS)
