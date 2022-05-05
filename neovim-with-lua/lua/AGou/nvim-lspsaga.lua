@@ -45,6 +45,6 @@ lspsaga.setup { -- defaults ...
     server_filetype_map = {},
     diagnostic_prefix_format = "%d. ",
     diagnostic_message_format = "%m %c",
-    highlight_prefix = false,
+    highlight_prefix = true,
 }
 
