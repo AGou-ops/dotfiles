@@ -5,6 +5,7 @@ cmap w!! %!sudo tee >/dev/null %
 
 " ex mode close.
 " map q :quit<CR>
+map q <Nop>
 
 " Quicker window movement
 nnoremap U <C-r>

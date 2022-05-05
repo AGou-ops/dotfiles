@@ -29,7 +29,7 @@ local on_attach = function(_, bufnr)
     map(bufnr, "n", "gx", "<cmd>Lspsaga code_action<cr>", opts)
     map(bufnr, "x", "gx", ":<c-u>Lspsaga range_code_action<cr>", opts)
 
-    map(bufnr, "n", "gF", "<cmd>lua require'lspsaga.provider'.lsp_finder()<cr>", opts)
+    map(bufnr, "n", "gf", "<cmd>lua require'lspsaga.provider'.lsp_finder()<cr>", opts)
     map(bufnr, "n", "K",  "<cmd>Lspsaga hover_doc<cr>", opts)
     map(bufnr, "n", "go", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
     -- use goto preview instead as below.
@@ -43,7 +43,7 @@ local on_attach = function(_, bufnr)
     map(bufnr, "n", "gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", opts)
     map(bufnr, "n", "gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>",opts)
     map(bufnr, "n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>", opts)
-    map(bufnr, "n", "gf", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", opts)
+    map(bufnr, "n", "gF", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", opts)
 end
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -62,8 +62,8 @@ end
 
 -- -------------------- lua lsp settings -- --------------------
 local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
 
 
 nvim_lsp.sumneko_lua.setup {
@@ -72,12 +72,12 @@ nvim_lsp.sumneko_lua.setup {
     capabilities = capabilities,
     settings = {
         Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT',
-                -- Setup your lua path
-                path = runtime_path,
-            },
+            -- runtime = {
+            --     -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+            --     version = 'LuaJIT',
+            --     -- Setup your lua path
+            --     path = runtime_path,
+            -- },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
                 globals = {'vim'},
