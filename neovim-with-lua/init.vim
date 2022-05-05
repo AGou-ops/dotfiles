@@ -44,11 +44,6 @@ Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 Plug 'windwp/nvim-autopairs'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-" Plug 'm-demare/hlargs.nvim'
-
-" Plug 'sheerun/vim-polyglot'
-
-" Plug 'voldikss/vim-floaterm'
 Plug 'akinsho/toggleterm.nvim'
 " not longer use fzf, just use telescope
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -210,25 +205,17 @@ endif
 " ============================
 " ========= gruvbox_material settings =======
 " https://github.com/sainnhe/gruvbox-material/blob/master/doc/gruvbox-material.txt
-" Important!!
+        " Important!!
 if has('termguicolors')
-    set termguicolors
+  set termguicolors
 endif
 " For dark version.
 set background=dark
-" For light version.
-" set background=light
 " Set contrast.
 " This configuration option should be placed before `colorscheme gruvbox-material`.
 " Available values: 'hard', 'medium'(default), 'soft'
 let g:gruvbox_material_background = 'hard'
-let g:gruvbox_material_enable_italic = 1
-let g:gruvbox_material_enable_bold = 1
-" only support GUI client
-let g:gruvbox_material_cursor = 'auto'
-let g:gruvbox_material_transparent_background = 0
-let g:gruvbox_material_menu_selection_background = 'green'
-let g:gruvbox_material_ui_contrast = 'high'
+" For better performance
 let g:gruvbox_material_better_performance = 1
 
 let g:gruvbox_material_diagnostic_text_highlight = 1
