@@ -739,10 +739,10 @@ let g:NERDToggleCheckAllLines = 1
 
 autocmd ColorScheme * runtime lua/vim/lsp/diagnostic.lua
 
-
+" highlight when yank something.
 augroup YankHighlight
     autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=200}
 augroup end
 " auto reload when modified vimrc file (Windows)
 " autocmd! bufwritepost _vimrc source %
