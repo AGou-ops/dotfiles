@@ -20,11 +20,11 @@ require('AGou.nvim-todo-comments')
 require('AGou.nvim-diffview')
 require('AGou.nvim-dashboard')
 require('AGou.nvim-zen-mode')
-require('AGou.nvim-indent_blankline')
+require('AGou.nvim-indent-blankline')
 require('AGou.nvim-trouble')
 require('AGou.nvim-goto-preview')
 require('AGou.nvim-smart-splits')
-require('AGou.nvim-scrollbar')
+-- require('AGou.nvim-scrollbar')
 
 
 -- -------------------------- 其他简单lua插件配置项 --------------------------------------------
@@ -69,13 +69,6 @@ tabnine:setup({
 })
 
 -- --------------------------------------
-require("lsp-colors").setup({
-    Error = "#db4b4b",
-    Warning = "#e0af68",
-    Information = "#0db9d7",
-    Hint = "#10B981"
-})
--- --------------------------------------
 -- lua, default settings
 -- require("better_escape").setup {
 --     mapping = {"jk", "jj"}, -- a table with mappings to use
@@ -110,7 +103,6 @@ require("nvim-gps").setup({
 
   }
 })
-
 -- --------------------------------------
 -- --------------------------------------
 -- --------------------------------------
