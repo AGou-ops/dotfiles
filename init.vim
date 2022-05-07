@@ -125,8 +125,8 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-calc'
 Plug 'hrsh7th/cmp-emoji'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
+" Plug 'hrsh7th/cmp-vsnip'
+" Plug 'hrsh7th/vim-vsnip'
 " Plug 'uga-rosa/cmp-dictionary'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'octaltree/cmp-look'
@@ -489,21 +489,6 @@ call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_bo
                         \ ],
                         \ })))
 
-" ========= scrollbar settings ==========
-" more settings --> :h Scrollbar.nvim
-augroup ScrollbarInit
-    autocmd!
-    autocmd WinScrolled,VimResized,QuitPre * silent! lua require('scrollbar').show()
-    autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
-    autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
-augroup end
-
-let g:scrollbar_shape = {
-            \ 'head': '█',
-            \ 'body': '█',
-            \ 'tail': '█',
-            \ }
-
 " ========= lspsaga.nvim settings ==========
 highlight link LspSagaFinderSelection Search
 " or
@@ -530,25 +515,12 @@ hi illuminatedWord cterm=underline gui=underline
 "     autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
 " augroup END
 
-" ============ echodoc.vim settings =======
-" set cmdheight=2
-
-" Or, you could use neovim's floating text feature.
-" let g:echodoc#enable_at_startup = 1
-" let g:echodoc#type = 'floating'
-" " To use a custom highlight for the float window,
-" " change Pmenu to your highlight group
-" highlight link EchoDocFloat Pmenu
-
 " ============= go.nvim settings ==========
 "
 " autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
 " require('go').setup()
-"
 
-" ============= vim-move settings ==========
-let g:move_key_modifier = 'C'
-"
+
 " ============= vimspector(go) settings ==========
 " 
 let g:vimspector_enable_mappings = 'HUMAN'
@@ -602,18 +574,6 @@ nnoremap <silent><leader>tt <Cmd>exe v:count1 . "ToggleTerm"<CR>
 inoremap <silent><leader>tt <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 nnoremap <silent><leader>gg <Cmd>lua _LAZYGIT_TOGGLE()<CR>
 
-" ========= current cursor settings ==========
-" " Twins of word under cursor:
-" let g:vim_current_word#highlight_twins = 1
-" The word under cursor:
-" let g:vim_current_word#highlight_current_word = 1
-" autocmd BufAdd NERD_tree_*,your_buffer_name.rb,*.js :let b:vim_current_word_disabled_in_this_buffer = 1
-" " hi CurrentWord ctermbg=53
-" " hi CurrentWordTwins ctermbg=237
-" " let g:vim_current_word#highlight_only_in_focused_window = 1
-" " hi CurrentWordTwins guifg=#XXXXXX guibg=#XXXXXX gui=underline,bold,italic ctermfg=XXX ctermbg=XXX cterm=underline,bold,italic
-" hi CurrentWord guifg=0 guibg=163 gui=underline,bold,italic ctermfg=0 ctermbg=163 cterm=underline,bold,italic
-
 " ========== vim-cursor settings ===========
 " let g:cursorword_highlight = 0
 let g:cursorword_delay = 0
@@ -643,34 +603,6 @@ let g:cursorword_delay = 0
 " autocmd BufWritePre *.go lua vim.lsp.buf.formatting()
 " autocmd BufWritePre *.go lua goimports(1000)
 
-
-" autocmd vimenter * NERDTree       " NERDTree automatically when vim starts up
-" map <C-n> :NERDTreeToggle<CR>
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif 
-" " auto refresh nerdtree when file changed
-" autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
-
-" !! 弃用NerdTree 改为下面的nvim-tree.lua
-" ==========
-" map <C-n> :call NERDTreeToggleAndRefresh()<CR>
-" set splitright        " nerdtree split right instead of left
-" 
-" function NERDTreeToggleAndRefresh()
-"   :NERDTreeToggle
-"   if g:NERDTree.IsOpen()
-"     :NERDTreeRefreshRoot
-"   endif
-" endfunction
-" =========
-
-" autoload vim-workspace plugin
-" let g:workspace_autocreate = 1
-" nnoremap <leader>f :ToggleWorkspace<CR>
-" let g:workspace_session_name = 'Session.vim'
-" let g:workspace_autosave_always = 1
-" let g:workspace_session_directory = $HOME . '/.vim/sessions/'
-"
 " ========== nvim-tree.lua settings ===========
 " defalut hotkeys actions: https://github.com/kyazdani42/nvim-tree.lua#default-actions
 let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
@@ -680,7 +612,7 @@ let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folde
 let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
 let g:nvim_tree_icon_padding = ' ' "one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
 let g:nvim_tree_symlink_arrow = ' >> ' " defaults to ' ➛ '. used as a separator between symlinks' source and target.
-let g:nvim_tree_respect_buf_cwd = 1 "0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
+let g:nvim_tree_respect_buf_cwd = 0 "0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
 let g:nvim_tree_create_in_closed_folder = 1 "0 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
 let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
 "if folder is 1, you can also tell folder_arrows 1 to show small arrows next to the folder icons.
@@ -700,7 +632,6 @@ nnoremap <C-n> :NvimTreeToggle<CR>
 
 set termguicolors " this variable must be enabled for colors to be applied properly
 
-
 " a list of groups can be found at `:help nvim_tree_highlight`
 " highlight NvimTreeFolderIcon guibg=blue
 
@@ -709,27 +640,6 @@ let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:instant_markdown_slow = 1
 
 set t_Co=256
-
-" --------- nerdcommenter plguin settings
-" Create default mappings
-let g:NERDCreateDefaultMappings = 1
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-
-let g:NERDCompactSexyComs = 1
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
-" Set a language to use its alternate delimiters by default
-let g:NERDAltDelims_java = 1
-" Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
-let g:NERDToggleCheckAllLines = 1
-
 
 " ============================== END Plugins settings ============================== 
 

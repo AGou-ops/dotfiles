@@ -62,7 +62,7 @@ local source_mapping = {
     emoji = "[Emoji]",
     look = "[Dict]",
     calc = "[Calc]",
-    vsnip = "[vsnip]",
+    -- vsnip = "[vsnip]",
 }
 
 
@@ -138,7 +138,7 @@ cmp.setup({
     sources = {
         { name = "nvim_lsp", priority = 100}, -- Keep LSP results on top.
         { name = "nvim_lua" },
-        { name = 'vsnip' }, -- For vsnip users.
+        -- { name = 'vsnip' }, -- For vsnip users.
         -- { name = "luasnip" },
         -- { name = "buffer" ,keyword_pattern = [[\k]] ,priority = 90},
         { name = "cmp_tabnine" , priority = 15},
