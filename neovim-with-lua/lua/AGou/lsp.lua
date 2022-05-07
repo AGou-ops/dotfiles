@@ -61,38 +61,46 @@ end
 
 
 -- -------------------- lua lsp settings -- --------------------
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, "lua/?.lua")
-table.insert(runtime_path, "lua/?/init.lua")
-
-
-nvim_lsp.sumneko_lua.setup {
-    cmd = { vim.fn.getenv 'HOME' .. '/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server' },
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            -- runtime = {
-            --     -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-            --     version = 'LuaJIT',
-            --     -- Setup your lua path
-            --     path = runtime_path,
-            -- },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = {'vim'},
-              },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file('', true),
+local settings = {
+    Lua = {
+        runtime = {
+            version = "LuaJIT",
+        },
+        diagnostics = {
+            globals = {
+                "vim",
+                "use",
+                "describe",
+                "it",
+                "assert",
+                "before_each",
+                "after_each",
             },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-                enable = false,
-            },
+        },
+        disable = {
+            "lowercase-global",
+            "undefined-global",
+            "unused-local",
+            "unused-function",
+            "unused-vararg",
+            "trailing-space",
         },
     },
 }
+
+nvim_lsp.sumneko_lua.setup {
+    on_attach = function(client, bufnr)
+        client.server_capabilities.document_formatting = false
+        client.server_capabilities.document_range_formatting = false
+        on_attach(client, bufnr)
+    end,
+    settings = settings,
+    flags = {
+        debounce_text_changes = 150,
+    },
+    capabilities = capabilities,
+}
+
 
 
 -- --------------------------------------------------------------
