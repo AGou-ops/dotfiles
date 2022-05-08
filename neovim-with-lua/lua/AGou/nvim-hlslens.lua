@@ -32,3 +32,4 @@ local config = {
 require('hlslens').setup(config)
 
 require("scrollbar.handlers.search").setup()
+
