@@ -36,7 +36,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " windows size auto resize
 Plug 'camspiers/lens.vim'
 Plug '907th/vim-auto-save'
-Plug 'preservim/tagbar', { 'for': 'go' }
+Plug 'preservim/tagbar', { 'for': ['go', 'md'] }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
@@ -63,7 +63,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'sebdah/vim-delve'
 " scroll bar
 " Plug 'Xuyuanp/scrollbar.nvim'
-" Plug 'petertriho/nvim-scrollbar'
+Plug 'petertriho/nvim-scrollbar'
 " smmoth scroll: :h scroll.txt  for help
 " Plug 'psliwka/vim-smoothie'
 Plug 'karb94/neoscroll.nvim'
@@ -86,9 +86,11 @@ Plug 'folke/twilight.nvim'
 
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'voldikss/vim-translator'
-
+"
 " Plug 'mhartington/formatter.nvim'
 Plug 'sbdchd/neoformat'
+" Plug 'jose-elias-alvarez/null-ls.nvim'
+
 " conflict with goto-preview plugin, fuckkkkkk.
 Plug 'beauwilliams/focus.nvim'
 " not working.....
@@ -102,6 +104,10 @@ Plug 'mrjones2014/smart-splits.nvim'
 Plug 'SmiteshP/nvim-gps'
 Plug 'kevinhwang91/nvim-hlslens'
 Plug 'phaazon/hop.nvim'
+
+Plug 'haya14busa/vim-asterisk'
+Plug 'matbme/JABS.nvim'
+
 
 " auto indent different type of file.
 " Plug 'tpope/vim-sleuth'
@@ -117,14 +123,14 @@ Plug 'onsails/lspkind-nvim'
 " hrsh7th👍：https://github.com/hrsh7th
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
+" Plug 'hrsh7th/cmp-path'
 " Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-calc'
 Plug 'hrsh7th/cmp-emoji'
-Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
+" Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+" Plug 'hrsh7th/cmp-vsnip'
+" Plug 'hrsh7th/vim-vsnip'
 " Plug 'uga-rosa/cmp-dictionary'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'octaltree/cmp-look'
@@ -142,7 +148,6 @@ Plug 'puremourning/vimspector', { 'for': ['go'] }
 " Plug 'mfussenegger/nvim-dap'
 " Plug 'rcarriga/nvim-dap-ui'
 
-" Plug 'mfussenegger/nvim-dap'
 Plug 'sindrets/diffview.nvim'
 
 Plug 'folke/trouble.nvim'
@@ -260,6 +265,9 @@ colorscheme gruvbox-material
 
 " ========= autopairs settings ==========
 " defalut options
+
+" ========= vim-translator settings ==========
+let g:translator_target_lang = 'zh'
 
 " ========= copilot settings ==========
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
@@ -675,7 +683,7 @@ let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folde
 let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
 let g:nvim_tree_icon_padding = ' ' "one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
 let g:nvim_tree_symlink_arrow = ' >> ' " defaults to ' ➛ '. used as a separator between symlinks' source and target.
-let g:nvim_tree_respect_buf_cwd = 1 "0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
+let g:nvim_tree_respect_buf_cwd = 0 "0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
 let g:nvim_tree_create_in_closed_folder = 1 "0 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
 let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
 "if folder is 1, you can also tell folder_arrows 1 to show small arrows next to the folder icons.
@@ -743,6 +751,14 @@ augroup end
 " autocmd! bufwritepost _vimrc source %
 " auto reload when modified vimrc file (Linux)
 autocmd! bufwritepost $HOME/.config/nvim/init.vim source %
+
+" vim-visual-mutil hlslens setting
+aug VMlens
+    au!
+    au User visual_multi_start lua require('AGou.nvim-vmlens').start()
+    au User visual_multi_exit lua require('AGou.nvim-vmlens').exit()
+aug END
+
 
 " some error occur
 " au CursorHold * checktime  
