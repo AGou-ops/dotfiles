@@ -1,11 +1,13 @@
 " general settings
 syntax on
+" language en_US
 " --------------------------
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
 " The mapleader has to be set before vundle starts loading all
 " the plugins.
 let mapleader=","
+set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
 " --------------------------
 "
 set number                      "Line numbers are good
@@ -129,3 +131,12 @@ set ignorecase      " Ignore case when searching...
 set wildignorecase
 set smartcase       " ...unless we type a capital
 hi Search cterm=NONE ctermfg=black ctermbg=red
+
+
+" ================ netrw ===========================
+let g:netrw_winsize=10
+let g:netrw_liststyle = 3
+" let g:netrw_banner = 0
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+
