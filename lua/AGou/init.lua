@@ -10,11 +10,9 @@ require('AGou.nvim-treesitter')
 require('AGou.nvim-gitsigns')
 require('AGou.nvim-autopairs')
 require('AGou.nvim-lspsaga')
--- require("AGou.nvim-signature")
 require('AGou.nvim-telescope')
 require('AGou.nvim-toggleterm')
 require('AGou.nvim-neoscroll')
--- require('AGou.nvim-session-manager')
 require('AGou.nvim-whichkey')
 require('AGou.nvim-todo-comments')
 require('AGou.nvim-diffview')
@@ -24,7 +22,9 @@ require('AGou.nvim-indent-blankline')
 require('AGou.nvim-trouble')
 require('AGou.nvim-goto-preview')
 require('AGou.nvim-smart-splits')
--- require('AGou.nvim-scrollbar')
+require('AGou.nvim-scrollbar')
+-- require('AGou.nvim-lsp_signature')
+require('AGou.nvim-jabs')
 
 
 -- -------------------------- 其他简单lua插件配置项 --------------------------------------------
@@ -103,7 +103,8 @@ require("nvim-gps").setup({
 
   }
 })
--- --------------------------------------
+
+
 -- --------------------------------------
 -- --------------------------------------
 -- --------------------------------------

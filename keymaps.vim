@@ -55,9 +55,23 @@ nnoremap <Leader>q' ciw''<Esc>P
 nnoremap <Leader>q( ciw()<Esc>P
 nnoremap <Leader>q{ ciw{}<Esc>P
 nnoremap <Leader>qd daW"=substitute(@@,"'\\\|\"","","g")<CR>P
+
 " ========= coc.spelling settings ========
 " vmap <leader>s <Plug>(coc-codeaction-selected)
 " nmap <leader>s <Plug>(coc-codeaction-selected)
+
+" ========= vim-asterisk settings ========
+map *   <Plug>(asterisk-*)
+map #   <Plug>(asterisk-#)
+map g*  <Plug>(asterisk-g*)
+map g#  <Plug>(asterisk-g#)
+map z*  <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z#  <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)
+
+" ========= jabs settings ========
+nnoremap <leader>ob <cmd>JABSOpen<cr>
 
 " ========= telescope settings ========
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false}) <CR>
@@ -124,20 +138,9 @@ nnoremap <TAB> %
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-
 " cmdline quickly go to head or tail
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
-
-" netrw
-
-" nnoremap - :Explore<CR>
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
-autocmd FileType netrw setl bufhidden=delete
-
-"-- netrw END
 
 " turn off direction keyboard, force yourself use `hjkl` !!!
 map <Left> <Nop>
@@ -199,8 +202,6 @@ nnoremap <F4> :set wrap! wrap?<CR>
 " au InsertLeave * set nopaste
 " F8 turn on tagbar
 " nmap <F8> :TagbarToggle<CR>
-
-
 
 
 
