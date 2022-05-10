@@ -60,7 +60,8 @@ require("which-key").setup {
     -- this is mostly relevant for key maps that start with a native binding
     -- most people should not need to change this
     i = { "j", "k", "," },
-    v = { "j", "k" },
-    n = { "v", "V", "d" },
+    v = { "j", "k", "w" },
+    n = { "v", "V", "d", "w" },
+    c = { "w" },
   },
 }
