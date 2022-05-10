@@ -7,6 +7,7 @@ local actions = require "telescope.actions"
 local trouble = require("trouble.providers.telescope")
 -- only support linux
 -- telescope.load_extension "media_files"
+require('telescope').extensions.dap.configurations()
 
 
 telescope.setup {
