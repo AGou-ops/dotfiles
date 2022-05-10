@@ -25,7 +25,9 @@ require('AGou.nvim-smart-splits')
 require('AGou.nvim-scrollbar')
 -- require('AGou.nvim-lsp_signature')
 require('AGou.nvim-jabs')
-
+require('AGou.nvim-dap')
+-- require('AGou.nvim-go')
+-- --------------------------------------
 
 -- -------------------------- 其他简单lua插件配置项 --------------------------------------------
 --
@@ -103,7 +105,6 @@ require("nvim-gps").setup({
 
   }
 })
-
 
 -- --------------------------------------
 -- --------------------------------------
