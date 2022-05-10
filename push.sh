@@ -8,7 +8,7 @@
 # Copyright 2022 by AGou-ops.All Rights Reserved  *
 #**************************************************
 
-( cd ~/myWeb/dotfiles && git checkout master && rsync -avzP --progress --delete  --exclude '%Users*'  ~/.config/nvim/  ~/myWeb/dotfiles/neovim-with-lua/ )
+cd ~/myWeb/dotfiles && git checkout master && rsync -avzP --progress --exclude '%Users*'  ~/.config/nvim/  ~/myWeb/dotfiles/neovim-with-lua/ 
 
 
 cd ~/myWeb/dotfiles/
@@ -24,14 +24,13 @@ if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
 
     lazygit
 
-    cd -
 else
     exit -1
 fi
 
 git checkout nvim
 
-rsync -avzP --progress --exclude '%Users*' --exclude 'neovim-with-lua/'  ~/.config/nvim/  ~/myWeb/dotfiles/
+rsync -avzP --progress --exclude '%Users*' --exclude '.git/'  ~/.config/nvim/  ~/myWeb/dotfiles/
 
 lazygit
 

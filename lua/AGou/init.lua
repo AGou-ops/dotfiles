@@ -25,7 +25,9 @@ require('AGou.nvim-smart-splits')
 require('AGou.nvim-scrollbar')
 -- require('AGou.nvim-lsp_signature')
 require('AGou.nvim-jabs')
-
+require('AGou.nvim-dap')
+-- require('AGou.nvim-go')
+-- --------------------------------------
 
 -- -------------------------- 其他简单lua插件配置项 --------------------------------------------
 --
@@ -63,11 +65,10 @@ tabnine:setup({
     run_on_every_keystroke = true;
     snippet_placeholder = '..';
     ignored_file_types = { -- default is not to ignore
-        -- uncomment to ignore in lua:
-        -- lua = true
+        TelescopePrompt = true,
     };
 })
-
+--
 -- --------------------------------------
 -- lua, default settings
 -- require("better_escape").setup {
@@ -103,7 +104,6 @@ require("nvim-gps").setup({
 
   }
 })
-
 
 -- --------------------------------------
 -- --------------------------------------

@@ -1,8 +1,7 @@
 " ================ Hotkey ReMap =====================
 
-" w!! to sudo & write a file
-cmap w!! %!sudo tee >/dev/null %
-
+" disable leader key in insert mode.
+iunmap <leader>tt
 " ex mode close.
 " map q :quit<CR>
 map q <Nop>
@@ -27,7 +26,7 @@ nmap <A-Right> :lua require('smart-splits').resize_right()<CR>
 nnoremap d "_d
 nnoremap D "_D
 noremap H ^
-noremap L $
+noremap L g_
 nnoremap / /\v
 vnoremap / /\v
 vnoremap // y/<c-r>"<cr>
@@ -48,7 +47,7 @@ noremap <leader>3 3gt
 " ================
 noremap <leader>0 :tablast<cr>
 " nnoremap <leader>tt :FloatermNew<CR>
-nnoremap <leader>d ::bufdo! bd!<CR>
+nnoremap <leader>dd ::bufdo! bd!<CR>
 " add quote for current word
 nnoremap <Leader>q" ciw""<Esc>P
 nnoremap <Leader>q' ciw''<Esc>P
@@ -59,6 +58,10 @@ nnoremap <Leader>qd daW"=substitute(@@,"'\\\|\"","","g")<CR>P
 " ========= coc.spelling settings ========
 " vmap <leader>s <Plug>(coc-codeaction-selected)
 " nmap <leader>s <Plug>(coc-codeaction-selected)
+
+" ========= Suda settings ========
+" force write a file using Suda.vim (sudo)
+nnoremap <leader>fw <cmd>SudaWrite<CR>
 
 " ========= vim-asterisk settings ========
 map *   <Plug>(asterisk-*)
@@ -73,12 +76,32 @@ map gz# <Plug>(asterisk-gz#)
 " ========= jabs settings ========
 nnoremap <leader>ob <cmd>JABSOpen<cr>
 
+" ========= dap/dapui settings ========
+nnoremap <silent> <F4> :lua require'dapui'.toggle()<CR>
+
+nnoremap <silent> <F5> <Cmd>lua require'dap'.continue()<CR>
+nnoremap <silent> <F9> <Cmd>lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <F10> <Cmd>lua require'dap'.step_over()<CR>
+nnoremap <silent> <F11> <Cmd>lua require'dap'.step_into()<CR>
+nnoremap <silent> <F12> <Cmd>lua require'dap'.step_out()<CR>
+nnoremap <silent> <Leader><F9> <Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
+" nnoremap <silent> <Leader>lp <Cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
+" nnoremap <silent> <Leader>dr <Cmd>lua require'dap'.repl.open()<CR>
+" nnoremap <silent> <Leader>dl <Cmd>lua require'dap'.run_last()<CR>
+
 " ========= telescope settings ========
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false}) <CR>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep() <cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>ft <cmd>TodoTelescope<cr>
+
+" telescope-dap 
+nnoremap <leader>dcc <cmd>Telescope dap commands<CR>
+nnoremap <leader>dcf <cmd>Telescope dap configurations<CR>
+nnoremap <leader>dl <cmd>Telescope dap list_breakpoints<CR>
+nnoremap <leader>dv <cmd>Telescope dap variables<CR>
+nnoremap <leader>df <cmd>Telescope dap frames<CR>
 
 " ========= Trouble plugin settings ========
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
@@ -125,6 +148,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-q> <C-w>q
+
 nnoremap p ]p
 nnoremap P [p
 nnoremap ( %
@@ -137,7 +161,6 @@ nnoremap <TAB> %
 " use tab/shift tab to switch coc or native lsp cmp
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
 " cmdline quickly go to head or tail
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
@@ -170,11 +193,12 @@ command WQ wq
 command Wq wq
 command QA qa
 " 用户自定义命令首字母必须大写
-command DebugGolang execute "!cp -a ~/.config/nvim/debug-template/go-template/.vimspector.json ."
+" vimspector template file, not use anymore.
+" command DebugGolang execute "!cp -a ~/.config/nvim/debug-template/go-template/.vimspector.json ."
 
 " ================ F1-F12 Hotkey Settings =====================
 " trun off F1 help page, just use `:help`.
-noremap <F1> <Esc>"
+" noremap <F1> <Esc>"
 " F2 show line number or not
 function! HideNumber()
   if(&relativenumber == &number)
@@ -192,7 +216,7 @@ nnoremap <F2> :call HideNumber()<CR>
 " F3 transparent terminal
 nnoremap <F3> :TransparentToggle<CR>
 " F4 wrap line on|off
-nnoremap <F4> :set wrap! wrap?<CR>
+nnoremap <F1> :set wrap! wrap?<CR>
 " set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
                                 "    paste mode, where you can paste mass data
                                 "    that won't be autoindented
@@ -202,6 +226,4 @@ nnoremap <F4> :set wrap! wrap?<CR>
 " au InsertLeave * set nopaste
 " F8 turn on tagbar
 " nmap <F8> :TagbarToggle<CR>
-
-
 

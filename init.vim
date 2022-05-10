@@ -1,4 +1,4 @@
-" AGou-ops VIMRC FILE         -- Update Date: 2022年02月15日17:12:52
+" AGou-ops VIMRC FILE         -- Update Date: 2022年05月09日21:06:28
 set nocompatible              " be iMproved, required
 
 " ============================== Plugin packages ============================== 
@@ -34,12 +34,17 @@ Plug 'lewis6991/impatient.nvim'
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " windows size auto resize
+
+" :w !sudo tee % > /dev/null not working in neovim, fuckkkkk.
+Plug 'lambdalisue/suda.vim'
 Plug 'camspiers/lens.vim'
 Plug '907th/vim-auto-save'
 Plug 'preservim/tagbar', { 'for': ['go', 'md'] }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
+
 Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
+Plug 'famiu/bufdelete.nvim'
 
 Plug 'windwp/nvim-autopairs'
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -51,14 +56,14 @@ Plug 'akinsho/toggleterm.nvim'
 
 " All the lua functions.
 Plug 'nvim-lua/plenary.nvim'
+
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-dap.nvim', { 'for': 'go' }
 
-
-" Plug 'Yggdroot/indentLine'
 Plug 'itchyny/vim-cursorword'
-
 " Vim plugin for automatically highlighting other uses of the current word under the cursor
 " Plug 'rrethy/vim-illuminate'
+
 Plug 'ryanoasis/vim-devicons'
 Plug 'sebdah/vim-delve'
 " scroll bar
@@ -108,7 +113,6 @@ Plug 'phaazon/hop.nvim'
 Plug 'haya14busa/vim-asterisk'
 Plug 'matbme/JABS.nvim'
 
-
 " auto indent different type of file.
 " Plug 'tpope/vim-sleuth'
 
@@ -135,18 +139,16 @@ Plug 'hrsh7th/cmp-emoji'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'octaltree/cmp-look'
 
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-
 Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'tami5/lspsaga.nvim'
 " Plug 'ray-x/lsp_signature.nvim'
+" Plug 'ray-x/go.nvim'
 
 " debug toools
-Plug 'puremourning/vimspector', { 'for': ['go'] }
-" Plug 'mfussenegger/nvim-dap'
-" Plug 'rcarriga/nvim-dap-ui'
+" Plug 'puremourning/vimspector', { 'for': ['go'] }
+Plug 'mfussenegger/nvim-dap', { 'for': ['go'] }
+Plug 'rcarriga/nvim-dap-ui', { 'for': ['go'] }
 
 Plug 'sindrets/diffview.nvim'
 
@@ -155,7 +157,6 @@ Plug 'rmagatti/goto-preview'
 Plug 'github/copilot.vim'
 
 
-"
 call plug#end()
 
 " ============================== END Plugin packages ============================== 
@@ -222,7 +223,7 @@ let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_better_performance = 1
 
 let g:gruvbox_material_diagnostic_text_highlight = 1
-let g:gruvbox_material_diagnostic_line_highlight = 1
+" let g:gruvbox_material_diagnostic_line_highlight = 1
 let g:gruvbox_material_diagnostic_virtual_text = "colored"
 
 colorscheme gruvbox-material
@@ -461,6 +462,8 @@ let g:VM_maps = {}
 let g:VM_maps['Find Under']         = '<cr>'           " replace C-n
 let g:VM_maps['Find Subword Under'] = '<cr>'           " replace visual C-n
 let g:VM_mouse_mappings = 1
+let g:VM_theme = 'iceblue'
+let g:VM_highlight_matches = 'underline'
 
 " ========= wilder command bar settings ==========
 " Default keys
@@ -546,49 +549,47 @@ hi illuminatedWord cterm=underline gui=underline
 " ============= go.nvim settings ==========
 "
 " autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
-" require('go').setup()
-"
 
 " ============= vim-move settings ==========
 let g:move_key_modifier = 'C'
 "
 " ============= vimspector(go) settings ==========
 " 
-let g:vimspector_enable_mappings = 'HUMAN'
-" default keymap below
-" | KEY          | FUNCTION                                                  | API                                                          |
-" | :----------- | :-------------------------------------------------------- | :----------------------------------------------------------- |
-" | `F5`         | When debugging, continue. Otherwise start debugging.      | `vimspector#Continue()`                                      |
-" | `F3`         | Stop debugging.                                           | `vimspector#Stop()`                                          |
-" | `F4`         | Restart debugging with the same configuration.            | `vimspector#Restart()`                                       |
-" | `F6`         | Pause debuggee.                                           | `vimspector#Pause()`                                         |
-" | `F9`         | Toggle line breakpoint on the current line.               | `vimspector#ToggleBreakpoint()`                              |
-" | `<leader>F9` | Toggle conditional line breakpoint on the current line.   | `vimspector#ToggleBreakpoint( { trigger expr, hit count expr } )` |
-" | `F8`         | Add a function breakpoint for the expression under cursor | `vimspector#AddFunctionBreakpoint( '<cexpr>' )`              |
-" | `<leader>F8` | Run to Cursor                                             | `vimspector#RunToCursor()`                                   |
-" | `F10`        | Step Over                                                 | `vimspector#StepOver()`                                      |
-" | `F11`        | Step Into                                                 | `vimspector#StepInto()`                                      |
-" | `F12`        | Step out of current function scope                        | `vimspector#StepOut()`                                       |
-nmap <leader>vl :call vimspector#Launch()<CR>
-nmap <leader>vr :VimspectorReset<CR>
-nmap <leader>ve :VimspectorEval
-nmap <leader>vw :VimspectorWatch
-nmap <leader>vo :VimspectorShowOutput
-nmap <leader>vi <Plug>VimspectorBalloonEval
-xmap <leader>vi <Plug>VimspectorBalloonEval
-setlocal nobuflisted
-
-" for normal mode - the word under the cursor
-nmap <Leader>di <Plug>VimspectorBalloonEval
-" for visual mode, the visually selected text
-xmap <Leader>di <Plug>VimspectorBalloonEval
-
-let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-go', 'CodeLLDB', 'vscode-node-debug2' ]
-
-" for normal mode - the word under the cursor
-nmap <Leader>di <Plug>VimspectorBalloonEval
-" for visual mode, the visually selected text
-xmap <Leader>di <Plug>VimspectorBalloonEval
+" let g:vimspector_enable_mappings = 'HUMAN'
+" " default keymap below
+" " | KEY          | FUNCTION                                                  | API                                                          |
+" " | :----------- | :-------------------------------------------------------- | :----------------------------------------------------------- |
+" " | `F5`         | When debugging, continue. Otherwise start debugging.      | `vimspector#Continue()`                                      |
+" " | `F3`         | Stop debugging.                                           | `vimspector#Stop()`                                          |
+" " | `F4`         | Restart debugging with the same configuration.            | `vimspector#Restart()`                                       |
+" " | `F6`         | Pause debuggee.                                           | `vimspector#Pause()`                                         |
+" " | `F9`         | Toggle line breakpoint on the current line.               | `vimspector#ToggleBreakpoint()`                              |
+" " | `<leader>F9` | Toggle conditional line breakpoint on the current line.   | `vimspector#ToggleBreakpoint( { trigger expr, hit count expr } )` |
+" " | `F8`         | Add a function breakpoint for the expression under cursor | `vimspector#AddFunctionBreakpoint( '<cexpr>' )`              |
+" " | `<leader>F8` | Run to Cursor                                             | `vimspector#RunToCursor()`                                   |
+" " | `F10`        | Step Over                                                 | `vimspector#StepOver()`                                      |
+" " | `F11`        | Step Into                                                 | `vimspector#StepInto()`                                      |
+" " | `F12`        | Step out of current function scope                        | `vimspector#StepOut()`                                       |
+" nmap <leader>vl :call vimspector#Launch()<CR>
+" nmap <leader>vr :VimspectorReset<CR>
+" nmap <leader>ve :VimspectorEval
+" nmap <leader>vw :VimspectorWatch
+" nmap <leader>vo :VimspectorShowOutput
+" nmap <leader>vi <Plug>VimspectorBalloonEval
+" xmap <leader>vi <Plug>VimspectorBalloonEval
+" setlocal nobuflisted
+"
+" " for normal mode - the word under the cursor
+" nmap <Leader>di <Plug>VimspectorBalloonEval
+" " for visual mode, the visually selected text
+" xmap <Leader>di <Plug>VimspectorBalloonEval
+"
+" let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-go', 'CodeLLDB', 'vscode-node-debug2' ]
+"
+" " for normal mode - the word under the cursor
+" nmap <Leader>di <Plug>VimspectorBalloonEval
+" " for visual mode, the visually selected text
+" xmap <Leader>di <Plug>VimspectorBalloonEval
 
 " ========= floaterm settings[NOT USED] ==========
 " autocmd User FloatermOpen        " triggered after opening a new/existed floaterm
