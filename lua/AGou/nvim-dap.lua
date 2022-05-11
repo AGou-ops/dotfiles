@@ -7,7 +7,8 @@ dap.adapters.go = function(callback, config)
   local stdout = vim.loop.new_pipe(false)
   local handle
   local pid_or_err
-  local port = 38697
+  -- 使用随机端口以运行多个dap实例.
+  local port = math.random(30000,40000)
   local opts = {
     stdio = { nil, stdout },
     args = { "dap", "-l", "127.0.0.1:" .. port },
