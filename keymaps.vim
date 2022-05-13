@@ -47,7 +47,7 @@ noremap <leader>3 3gt
 " ================
 noremap <leader>0 :tablast<cr>
 " nnoremap <leader>tt :FloatermNew<CR>
-nnoremap <leader>dd ::bufdo! bd!<CR>
+nnoremap <leader>dd :%bdelete<CR>
 " add quote for current word
 nnoremap <Leader>q" ciw""<Esc>P
 nnoremap <Leader>q' ciw''<Esc>P
@@ -90,9 +90,26 @@ nnoremap <silent> <Leader><F9> <Cmd>lua require'dap'.set_breakpoint(vim.fn.input
 " nnoremap <silent> <Leader>dl <Cmd>lua require'dap'.run_last()<CR>
 
 " ========= telescope settings ========
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false}) <CR>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep() <cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
+" use Leaderf instead 
+" nnoremap <leader>fF <cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false}) <CR>
+" keymapping here：https://github.com/nvim-telescope/telescope-file-browser.nvim#mappings
+nnoremap <leader>fF <cmd>Telescope file_browser<CR>
+
+function! s:find_files()
+    let git_dir = system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+    if git_dir != ''
+        execute "Telescope live_grep cwd=" . git_dir
+    else
+        execute 'Telescope live_grep'
+    endif
+endfunction
+command! ProjectFiles execute s:find_files()
+" nnoremap <leader>fG <cmd>Telescope find_files cwd=s:find_git_root()<cr>
+nnoremap <leader>fg <cmd>ProjectFiles<cr>
+
+nnoremap <leader>fB <cmd>Telescope buffers<cr>
+nnoremap <leader>fG <cmd>LeaderfRgInteractive<CR>
+nnoremap <leader>fb <cmd><C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>ft <cmd>TodoTelescope<cr>
 

@@ -65,6 +65,8 @@ local source_mapping = {
   vsnip = "[vsnip]",
 }
 
+cmp.setup.filetype({ 'TelescopePrompt'},{})
+
 cmp.setup({
   enabled = function()
     if

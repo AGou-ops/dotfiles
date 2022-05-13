@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 " Plug 'ellisonleao/gruvbox.nvim'
-" Plug 'EdenEast/nightfox.nvim'
+" Plug 'catppuccin/nvim'
 
 " ========= appearence here. ==========
 
@@ -57,6 +57,7 @@ Plug 'akinsho/toggleterm.nvim'
 " All the lua functions.
 Plug 'nvim-lua/plenary.nvim'
 
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-dap.nvim', { 'for': 'go' }
 
@@ -112,6 +113,8 @@ Plug 'phaazon/hop.nvim'
 
 Plug 'haya14busa/vim-asterisk'
 Plug 'matbme/JABS.nvim'
+
+Plug 'Yggdroot/LeaderF'
 
 " auto indent different type of file.
 " Plug 'tpope/vim-sleuth'
@@ -236,6 +239,28 @@ colorscheme gruvbox-material
 "
 " ============================== Plugins settings ============================== 
 
+" ========= LeaderF settings ==========
+let g:Lf_HideHelp = 1
+let g:Lf_UseCache = 0
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_IgnoreCurrentBufferName = 1
+" Show icons, icons are shown by default
+let g:Lf_ShowDevIcons = 1
+" popup mode
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+let g:Lf_WildIgnore = {
+        \ 'dir': ['.git', 'node_modules'],
+        \ 'file': []
+        \}
+
+let g:Lf_RootMarkers = ['.git', '.gitignore', 'node_modules']
+" mode explain: https://github.com/Yggdroot/LeaderF/blob/master/doc/leaderf.txt#L485-L497
+let g:Lf_WorkingDirectoryMode = 'A'
+
+let g:Lf_ShortcutF = "<leader>ff"
 
 " ========= neoformat settings ==========
 " fun! Neoformat()
@@ -296,6 +321,7 @@ let g:tagbar_ctags_bin='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'
 let g:tagbar_show_tag_count = 1
 let g:tagbar_wrap = 1
 let g:tagbar_zoomwidth = 0
+let g:tagbar_show_linenumbers = 0
 
 let g:tagbar_type_markdown = {
             \ 'ctagsbin'  : 'mdctags',
@@ -743,7 +769,11 @@ let g:NERDToggleCheckAllLines = 1
 
 autocmd ColorScheme * runtime lua/vim/lsp/diagnostic.lua
 
+" don't add comment char when using o mode
+autocmd FileType * setlocal formatoptions-=c formatoptions-=o
+
 " highlight when yank something.
+
 augroup YankHighlight
     autocmd!
     au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=200}
