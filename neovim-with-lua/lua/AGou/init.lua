@@ -1,4 +1,5 @@
 require('impatient')
+require('AGou.themes')
 require('AGou.lsp')
 require('AGou.nvim-lualine')
 require('AGou.nvim-bufferline')
@@ -59,14 +60,14 @@ require("persistence").setup {
 -- --------------------------------------
 local tabnine = require('cmp_tabnine.config')
 tabnine:setup({
-    max_lines = 1000;
-    max_num_results = 20;
-    sort = true;
-    run_on_every_keystroke = true;
-    snippet_placeholder = '..';
+    max_lines = 1000,
+    max_num_results = 20,
+    sort = true,
+    run_on_every_keystroke = true,
+    snippet_placeholder = '..',
     ignored_file_types = { -- default is not to ignore
         TelescopePrompt = true,
-    };
+    },
 })
 --
 -- --------------------------------------
