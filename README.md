@@ -6,6 +6,21 @@
 + 建议先将所有插件更新到最新.
 ```
 
+## TL;DR
+
+快速安装(需自己提前安装好`neovim`)：
+
+```bash
+git clone https://github.com/AGou-ops/dotfiles.git
+cp -a dotfiles/neovim-with-lua ~/.config/nvim
+# 如果没有.config/nvim，需要提前创建，mkdir -pv ~/.config/nvim
+# 快速安装vim-plug
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+# 执行插件安装
+nvim +PlugInstall       # 等待安装完毕即可.
+```
+
 **Neovim及其插件简单视频介绍：https://www.bilibili.com/video/BV1am4y197bR/  
 保姆级安装up主同款Neovim：https://www.bilibili.com/video/BV1YF411i72t/**
 
