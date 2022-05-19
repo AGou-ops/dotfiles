@@ -31,7 +31,7 @@ Plug 'lewis6991/impatient.nvim'
 
 " ========= useful tools here. ==========
 
-Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown', { 'for': 'md' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " windows size auto resize
 
@@ -82,7 +82,8 @@ Plug 'numToStr/Comment.nvim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'mbbill/undotree'
 " session manager
-Plug 'folke/persistence.nvim'
+" Plug 'folke/persistence.nvim'
+" Plug 'rmagatti/auto-session'
 
 Plug 'folke/which-key.nvim'
 Plug 'folke/todo-comments.nvim'
@@ -123,18 +124,18 @@ Plug 'Yggdroot/LeaderF'
 
 Plug 'dense-analysis/ale'
 " lsp server
-Plug 'neovim/nvim-lspconfig'
+Plug 'neovim/nvim-lspconfig', { 'for': ['go','lua','sh'] }
 Plug 'williamboman/nvim-lsp-installer'
-Plug 'onsails/lspkind-nvim'
+Plug 'onsails/lspkind-nvim', { 'for': ['go','lua','sh'] }
 
 " hrsh7th👍：https://github.com/hrsh7th
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-nvim-lsp', { 'for': ['go','lua','sh'] }
+Plug 'hrsh7th/cmp-buffer', { 'for': ['go','lua','sh'] }
 " Plug 'hrsh7th/cmp-path'
 " Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-calc'
-Plug 'hrsh7th/cmp-emoji'
+Plug 'hrsh7th/nvim-cmp', { 'for': ['go','lua','sh'] }
+Plug 'hrsh7th/cmp-calc', { 'for': ['go','lua','sh'] }
+Plug 'hrsh7th/cmp-emoji', { 'for': ['go','lua','sh'] }
 " Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 " Plug 'hrsh7th/cmp-vsnip'
 " Plug 'hrsh7th/vim-vsnip'
@@ -155,9 +156,9 @@ Plug 'rcarriga/nvim-dap-ui', { 'for': ['go'] }
 
 Plug 'sindrets/diffview.nvim'
 
-Plug 'folke/trouble.nvim'
-Plug 'rmagatti/goto-preview'
-Plug 'github/copilot.vim'
+Plug 'folke/trouble.nvim', { 'for': ['go'] }
+Plug 'rmagatti/goto-preview', { 'for': ['go'] }
+Plug 'github/copilot.vim', { 'for': ['go'] }
 
 
 call plug#end()
@@ -234,6 +235,12 @@ colorscheme gruvbox-material
 " original colorscheme gruvbox configuration: https://github.com/morhetz/gruvbox/wiki/Configuration
 " colorscheme gruvbox
 
+" custom highlight group(buildin & Treesitter)
+hi Comment cterm=NONE ctermfg=245 gui=NONE guifg=#928374
+hi TSKeywordFunction ctermfg=167 gui=italic guifg=#ea6962
+hi TSConditional ctermfg=167 gui=italic guifg=#ea6962
+hi TSKeywordReturn ctermfg=167 gui=italic guifg=#ea6962
+
 " ============================== END colorscheme settings ============================== 
 "
 "
@@ -276,6 +283,8 @@ let g:Lf_ShortcutF = "<leader>ff"
 "   autocmd BufWritePost * call Neoformat()
 " augroup END
 
+" autocmd BufWritePre *.go :Neoformat
+
 " ========= indentline settings ==========
 " " let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 " let g:indentLine_char = '┆'
@@ -306,7 +315,6 @@ let g:copilot_filetypes = {  '*': v:false, }
 " highight Beacon guibg=white ctermbg=15l
 let g:beacon_size = 80
 " let g:beacon_show_jumps = 0
-
 
 " ========= startuptime settings ==========
 let g:startuptime_tries = 3
@@ -378,12 +386,12 @@ highlight default link Visual default
 " ========= auto-session settings ==========
 " let g:auto_session_root_dir = '~/.vim/sessions/'
 " nnoremap <leader>ss <cmd>SaveSession<CR>
-nnoremap <leader>sd <cmd>!rm -f ~/.config/nvim/sessions/*<CR>
+" nnoremap <leader>sd <cmd>!rm -f ~/.config/nvim/sessions/*<CR>
 
 " ========= instant-markdown settings ==========
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
-let g:mkdp_auto_start = 1
+let g:mkdp_auto_start = 0
 
 " set to 1, the nvim will auto close current preview window when change
 " from markdown buffer to another buffer
@@ -470,17 +478,18 @@ let g:mkdp_page_title = '「${name}」'
 
 " recognized filetypes
 " these filetypes will have MarkdownPreview... commands
-let g:mkdp_filetypes = ['markdown']
+let g:mkdp_filetypes = ['markdown.mkd']
+
+autocmd BufRead *.md nnoremap <leader>mp <Plug>MarkdownPreview
 
 " ========= persistence(auto session) settings ==========
 
 " restore the session for the current directory
-nnoremap <leader>ss <cmd>lua require("persistence").load()<CR>
-" restore the last session
-nnoremap <leader>sl <cmd>lua require("persistence").load({ last = true })<CR>
-" stop Persistence => session won't be saved on exit
-nnoremap <leader>s <cmd>lua require("persistence").stop()<CR>
-
+" nnoremap <leader>ss <cmd>lua require("persistence").load()<CR>
+" " restore the last session
+" nnoremap <leader>sl <cmd>lua require("persistence").load({ last = true })<CR>
+" " stop Persistence => session won't be saved on exit
+" nnoremap <leader>s <cmd>lua require("persistence").stop()<CR>
 
 
 " ========= vim-visual-multi settings ==========
@@ -523,18 +532,18 @@ call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_bo
 
 " ========= scrollbar settings ==========
 " more settings --> :h Scrollbar.nvim
-augroup ScrollbarInit
-    autocmd!
-    autocmd WinScrolled,VimResized,QuitPre * silent! lua require('scrollbar').show()
-    autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
-    autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
-augroup end
-
-let g:scrollbar_shape = {
-            \ 'head': '█',
-            \ 'body': '█',
-            \ 'tail': '█',
-            \ }
+" augroup ScrollbarInit
+"     autocmd!
+"     autocmd WinScrolled,VimResized,QuitPre * silent! lua require('scrollbar').show()
+"     autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
+"     autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
+" augroup end
+"
+" let g:scrollbar_shape = {
+"             \ 'head': '█',
+"             \ 'body': '█',
+"             \ 'tail': '█',
+"             \ }
 
 " ========= lspsaga.nvim settings ==========
 highlight link LspSagaFinderSelection Search
@@ -574,7 +583,6 @@ hi illuminatedWord cterm=underline gui=underline
 
 " ============= go.nvim settings ==========
 "
-" autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
 
 " ============= vim-move settings ==========
 let g:move_key_modifier = 'C'
@@ -622,8 +630,8 @@ let g:move_key_modifier = 'C'
 " hi FloatermNC guibg=gray
 
 " ========= toggleterm settings ==========
-autocmd TermEnter term://*toggleterm#*
-            \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+" autocmd TermEnter term://*toggleterm#*
+"             \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 
 " By applying the mappings this way you can pass a count to your
 " mapping to open a specific window.
