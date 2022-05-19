@@ -1,4 +1,6 @@
 local nvim_lsp = require("lspconfig")
+local configs = require 'lspconfig/configs'
+
 
 local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -99,4 +101,23 @@ nvim_lsp.sumneko_lua.setup({
   },
   capabilities = capabilities,
 })
+
+
+nvim_lsp.sqls.setup{
+  settings = {
+    sqls = {
+      connections = {
+        {
+          driver = 'mysql',
+          dataSourceName = 'root:root@tcp(127.0.0.1:13306)/world',
+        },
+        {
+          driver = 'postgresql',
+          dataSourceName = 'host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable',
+        },
+      },
+    },
+  },
+}
 -- -- --------------------------------------------------------------
+
