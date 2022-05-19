@@ -44,6 +44,9 @@ nvim +PlugInstall       # 等待安装完毕即可.
 
 - Golang
 
+![image](https://user-images.githubusercontent.com/57939102/169196637-252f0727-768c-437e-a019-4f0cedef4136.png)
+
+
 ![image](https://user-images.githubusercontent.com/57939102/148733814-f00d0566-b364-4f86-8bb9-b894a324f0f1.png)
 
 ![image](https://user-images.githubusercontent.com/57939102/148733939-c4b1c808-d7dc-484c-ac74-5b6ccdf2ea55.png)
