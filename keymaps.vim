@@ -40,6 +40,7 @@ inoremap jk <ESC>
 " inoremap kj <ESC>
 
 nnoremap ; :
+vmap ; :
 " not working on macOS
 noremap <leader>1 1gt
 noremap <leader>2 2gt
@@ -58,6 +59,11 @@ nnoremap <Leader>qd daW"=substitute(@@,"'\\\|\"","","g")<CR>P
 " ========= coc.spelling settings ========
 " vmap <leader>s <Plug>(coc-codeaction-selected)
 " nmap <leader>s <Plug>(coc-codeaction-selected)
+
+" ========= build-in mksession settings ========
+nnoremap <leader>ms <cmd>mks! ~/.config/nvim/sessions/Session.vim<CR>
+nnoremap <leader>ls <cmd>source ~/.config/nvim/sessions/Session.vim<CR>
+
 
 " ========= Suda settings ========
 " force write a file using Suda.vim (sudo)
@@ -109,7 +115,7 @@ nnoremap <leader>fg <cmd>ProjectFiles<cr>
 
 nnoremap <leader>fB <cmd>Telescope buffers<cr>
 nnoremap <leader>fG <cmd>LeaderfRgInteractive<CR>
-nnoremap <leader>fb <cmd><C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+nnoremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>ft <cmd>TodoTelescope<cr>
 
@@ -159,12 +165,15 @@ nnoremap P P=`]<C-o>
 " copy to system clipboard
 " vnoremap <leader>y "+y
 vnoremap <C-c> "+y
+vnoremap y "+y
+nnoremap y "+y
 " vnoremap <C-v> "+p
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-q> <C-w>q
+nnoremap <C-\> <C-w><bar>
 
 nnoremap p ]p
 nnoremap P [p
@@ -212,6 +221,7 @@ command QA qa
 " 用户自定义命令首字母必须大写
 " vimspector template file, not use anymore.
 " command DebugGolang execute "!cp -a ~/.config/nvim/debug-template/go-template/.vimspector.json ."
+command Source execute ":source ~/.config/nvim/init.vim"
 
 " ================ F1-F12 Hotkey Settings =====================
 " trun off F1 help page, just use `:help`.

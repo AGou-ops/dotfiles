@@ -7,7 +7,7 @@ local DEFAULT_SETTINGS = {
     --   - true: All servers set up via lspconfig are automatically installed.
     --   - { exclude: string[] }: All servers set up via lspconfig, except the ones provided in the list, are automatically installed.
     --       Example: automatic_installation = { exclude = { "rust_analyzer", "solargraph" } }
-    automatic_installation = false,
+    automatic_installation = { exclude = { "sqlls" } },
     ui = {
         icons = {
             -- The list icon to use for installed servers.
