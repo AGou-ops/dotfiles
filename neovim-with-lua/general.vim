@@ -8,6 +8,8 @@ syntax on
 " the plugins.
 let mapleader=","
 set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
+
+
 " --------------------------
 "
 set number                      "Line numbers are good
@@ -35,6 +37,14 @@ set gcr=i:ver25-blinkon5,v:blinkon1
 
 
 " set ttimeoutlen=10            " key delay time
+
+" make signcolumn background color transparent
+set signcolumn=yes
+augroup transparent_signs
+  au!
+  autocmd ColorScheme * highlight SignColumn guibg=NONE
+augroup END
+
 set novisualbell                "No sounds
 set noerrorbells
 set laststatus=2
@@ -139,4 +149,5 @@ let g:netrw_liststyle = 3
 " let g:netrw_banner = 0
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
+
 
