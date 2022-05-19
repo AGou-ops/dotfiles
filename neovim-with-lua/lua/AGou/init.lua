@@ -53,10 +53,10 @@ require 'colorizer'.setup {
   -- Exclusion Only makes sense if '*' is specified!
 }
 -- --------------------------------------
-require("persistence").setup {
-    dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
-    options = { "buffers", "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
-}
+-- require("persistence").setup {
+--     dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
+--     options = { "buffers", "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
+-- }
 -- --------------------------------------
 local tabnine = require('cmp_tabnine.config')
 tabnine:setup({
@@ -105,6 +105,22 @@ require("nvim-gps").setup({
 
   }
 })
+
+-- -------------------------------------- Just use :mksession and :source Session
+-- local opts = {
+--   log_level = 'info',
+--   auto_session_enable_last_session = false,
+--   auto_session_root_dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
+--   auto_session_enabled = false,
+--   auto_save_enabled = nil,
+--   auto_restore_enabled = nil,
+--   auto_session_suppress_dirs = nil,
+--   auto_session_use_git_branch = nil,
+--   -- the configs below are lua only
+--   bypass_session_save_file_types = nil
+-- }
+--
+-- require('auto-session').setup(opts)
 
 -- --------------------------------------
 -- --------------------------------------
