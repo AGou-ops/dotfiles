@@ -229,6 +229,8 @@ let g:gruvbox_material_better_performance = 1
 let g:gruvbox_material_diagnostic_text_highlight = 1
 " let g:gruvbox_material_diagnostic_line_highlight = 1
 let g:gruvbox_material_diagnostic_virtual_text = "colored"
+let g:gruvbox_material_sign_column_background = 'none'
+
 
 colorscheme gruvbox-material
 
@@ -237,9 +239,12 @@ colorscheme gruvbox-material
 
 " custom highlight group(buildin & Treesitter)
 hi Comment cterm=NONE ctermfg=245 gui=NONE guifg=#928374
+hi GitSignsCurrentLineBlame ctermfg=245 gui=italic guifg=#928374
+
 hi TSKeywordFunction ctermfg=167 gui=italic guifg=#ea6962
 hi TSConditional ctermfg=167 gui=italic guifg=#ea6962
 hi TSKeywordReturn ctermfg=167 gui=italic guifg=#ea6962
+
 
 " ============================== END colorscheme settings ============================== 
 "
@@ -776,6 +781,7 @@ let g:NERDToggleCheckAllLines = 1
 "
 
 autocmd ColorScheme * runtime lua/vim/lsp/diagnostic.lua
+
 
 " don't add comment char when using o mode
 autocmd FileType * setlocal formatoptions-=c formatoptions-=o

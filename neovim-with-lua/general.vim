@@ -42,7 +42,8 @@ set gcr=i:ver25-blinkon5,v:blinkon1
 set signcolumn=yes
 augroup transparent_signs
   au!
-  autocmd ColorScheme * highlight SignColumn guibg=NONE
+  " autocmd ColorScheme * highlight SignColumn guibg=NONE
+    autocmd ColorScheme * highlight! link SignColumn LineNr
 augroup END
 
 set novisualbell                "No sounds
