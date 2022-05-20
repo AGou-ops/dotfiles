@@ -11,10 +11,10 @@ lspsaga.setup { -- defaults ...
     -- code action title icon
     code_action_icon = " ",
     code_action_prompt = {
-        enable = false,
+        enable = true,
         sign = false,
         sign_priority = 40,
-        virtual_text = false,
+        virtual_text = true,
     },
     finder_definition_icon = "  ",
     finder_reference_icon = "  ",
