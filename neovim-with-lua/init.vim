@@ -35,6 +35,9 @@ Plug 'plasticboy/vim-markdown', { 'for': 'md' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " windows size auto resize
 
+" neovim notify tool
+" Plug 'rcarriga/nvim-notify'
+
 " :w !sudo tee % > /dev/null not working in neovim, fuckkkkk.
 Plug 'lambdalisue/suda.vim'
 Plug 'camspiers/lens.vim'
@@ -116,6 +119,8 @@ Plug 'haya14busa/vim-asterisk'
 Plug 'matbme/JABS.nvim'
 
 Plug 'Yggdroot/LeaderF'
+
+Plug 'b0o/incline.nvim'
 
 " auto indent different type of file.
 " Plug 'tpope/vim-sleuth'
@@ -244,6 +249,8 @@ hi GitSignsCurrentLineBlame ctermfg=245 gui=italic guifg=#928374
 hi TSKeywordFunction ctermfg=167 gui=italic guifg=#ea6962
 hi TSConditional ctermfg=167 gui=italic guifg=#ea6962
 hi TSKeywordReturn ctermfg=167 gui=italic guifg=#ea6962
+hi NormalFloat ctermfg=223 ctermbg=237 guifg=#ddc7a1 guibg=#3c3836 gui=italic
+
 
 
 " ============================== END colorscheme settings ============================== 
