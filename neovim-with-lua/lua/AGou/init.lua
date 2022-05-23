@@ -27,6 +27,7 @@ require('AGou.nvim-scrollbar')
 -- require('AGou.nvim-lsp_signature')
 require('AGou.nvim-jabs')
 require('AGou.nvim-dap')
+require('AGou.nvim-incline')
 -- require('AGou.nvim-go')
 -- --------------------------------------
 
@@ -61,13 +62,14 @@ require 'colorizer'.setup {
 local tabnine = require('cmp_tabnine.config')
 tabnine:setup({
     max_lines = 1000,
-    max_num_results = 20,
+    max_num_results = 5,
     sort = true,
     run_on_every_keystroke = true,
     snippet_placeholder = '..',
     ignored_file_types = { -- default is not to ignore
         TelescopePrompt = true,
     },
+    show_prediction_strength = false;
 })
 --
 -- --------------------------------------
@@ -121,6 +123,29 @@ require("nvim-gps").setup({
 -- }
 --
 -- require('auto-session').setup(opts)
+
+-- local plugin = "My Awesome Plugin"
+--
+-- vim.notify = require("notify")
+-- vim.notify("This is an error message.\nSomething went wrong!", "error", {
+--   title = plugin,
+--   on_open = function()
+--     vim.notify("Attempting recovery.", vim.lsp.log_levels.WARN, {
+--       title = plugin,
+--     })
+--     local timer = vim.loop.new_timer()
+--     timer:start(2000, 0, function()
+--       vim.notify({ "Fixing problem.", "Please wait..." }, "info", {
+--         title = plugin,
+--         timeout = 3000,
+--         on_close = function()
+--           vim.notify("Problem solved", nil, { title = plugin })
+--           vim.notify("Error code 0x0395AF", 1, { title = plugin })
+--         end,
+--       })
+--     end)
+--   end,
+-- })
 
 -- --------------------------------------
 -- --------------------------------------
