@@ -23,12 +23,14 @@ require('AGou.nvim-indent-blankline')
 require('AGou.nvim-trouble')
 require('AGou.nvim-goto-preview')
 require('AGou.nvim-smart-splits')
-require('AGou.nvim-scrollbar')
--- require('AGou.nvim-lsp_signature')
+-- require('AGou.nvim-scrollbar')
 require('AGou.nvim-jabs')
 require('AGou.nvim-dap')
-require('AGou.nvim-incline')
+require('AGou.nvim-gomove')
+-- require('AGou.nvim-incline')
 -- require('AGou.nvim-go')
+-- require('AGou.nvim-symbols-outline')
+-- require('AGou.nvim-lsp_signature')
 -- --------------------------------------
 
 -- -------------------------- 其他简单lua插件配置项 --------------------------------------------
@@ -107,6 +109,7 @@ require("nvim-gps").setup({
 
   }
 })
+-- --------------------------------------
 
 -- -------------------------------------- Just use :mksession and :source Session
 -- local opts = {
@@ -146,7 +149,6 @@ require("nvim-gps").setup({
 --     end)
 --   end,
 -- })
-
 -- --------------------------------------
 -- --------------------------------------
 -- --------------------------------------
