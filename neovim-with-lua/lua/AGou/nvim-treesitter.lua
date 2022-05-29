@@ -15,7 +15,7 @@ configs.setup({
         additional_vim_regex_highlighting = false,
     },
     autopairs = {
-        enable = true,
+        enable = false,
     },
     indent = { enable = false, disable= { "yaml", "python", "css" } },
     context_commentstring = {
