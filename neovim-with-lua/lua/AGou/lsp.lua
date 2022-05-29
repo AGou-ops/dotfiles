@@ -51,8 +51,8 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
--- -------------------------- lsp server ----------------------
-local servers = { "gopls", "bashls", "sqls" }
+-- -------------------------- common lsp server ----------------------
+local servers = { "bashls", "sqls" }
 ---------------------------------------------------------------
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup({
@@ -60,6 +60,16 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   })
 end
+
+-- -------------------- go lsp settings -- --------------------
+nvim_lsp.gopls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    root_dir = nvim_lsp.util.root_pattern('.git', 'go.mod'),
+    init_options = {
+        usePlaceholders = false,
+    },
+})
 
 -- -------------------- lua lsp settings -- --------------------
 local settings = {
@@ -102,22 +112,22 @@ nvim_lsp.sumneko_lua.setup({
   capabilities = capabilities,
 })
 
-
-nvim_lsp.sqls.setup{
-  settings = {
-    sqls = {
-      connections = {
-        {
-          driver = 'mysql',
-          dataSourceName = 'root:root@tcp(127.0.0.1:13306)/world',
-        },
-        {
-          driver = 'postgresql',
-          dataSourceName = 'host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable',
-        },
-      },
-    },
-  },
-}
+-- -------------------- sql lsp settings -- --------------------
+-- nvim_lsp.sqls.setup{
+--   settings = {
+--     sqls = {
+--       connections = {
+--         {
+--           driver = 'mysql',
+--           dataSourceName = 'root:root@tcp(127.0.0.1:13306)/world',
+--         },
+--         {
+--           driver = 'postgresql',
+--           dataSourceName = 'host=127.0.0.1 port=15432 user=postgres password=mysecretpassword1234 dbname=dvdrental sslmode=disable',
+--         },
+--       },
+--     },
+--   },
+-- }
 -- -- --------------------------------------------------------------
 
