@@ -43,6 +43,7 @@ Plug 'lambdalisue/suda.vim'
 Plug 'camspiers/lens.vim'
 Plug '907th/vim-auto-save'
 Plug 'preservim/tagbar', { 'for': ['go', 'md'] }
+" Plug 'simrat39/symbols-outline.nvim', { 'for': ['go', 'md', 'lua'] }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 
@@ -71,7 +72,6 @@ Plug 'itchyny/vim-cursorword'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sebdah/vim-delve'
 " scroll bar
-" Plug 'Xuyuanp/scrollbar.nvim'
 Plug 'petertriho/nvim-scrollbar'
 " smmoth scroll: :h scroll.txt  for help
 " Plug 'psliwka/vim-smoothie'
@@ -120,7 +120,11 @@ Plug 'matbme/JABS.nvim'
 
 Plug 'Yggdroot/LeaderF'
 
-Plug 'b0o/incline.nvim'
+" quickly move selected line or block.
+Plug 'booperlv/nvim-gomove'
+
+" 临时不用，有点bug出现，原因未明。
+" Plug 'b0o/incline.nvim'
 
 " auto indent different type of file.
 " Plug 'tpope/vim-sleuth'
@@ -163,7 +167,7 @@ Plug 'sindrets/diffview.nvim'
 
 Plug 'folke/trouble.nvim', { 'for': ['go'] }
 Plug 'rmagatti/goto-preview', { 'for': ['go'] }
-Plug 'github/copilot.vim', { 'for': ['go'] }
+" Plug 'github/copilot.vim', { 'for': ['go'] }
 
 
 call plug#end()
@@ -249,8 +253,8 @@ hi GitSignsCurrentLineBlame ctermfg=245 gui=italic guifg=#928374
 hi TSKeywordFunction ctermfg=167 gui=italic guifg=#ea6962
 hi TSConditional ctermfg=167 gui=italic guifg=#ea6962
 hi TSKeywordReturn ctermfg=167 gui=italic guifg=#ea6962
-hi NormalFloat ctermfg=223 ctermbg=237 guifg=#ddc7a1 guibg=#3c3836 gui=italic
-
+hi NormalFloat ctermfg=223 ctermbg=237 guifg=#ddc7a1 guibg=#3c3836
+" hi FocusedSymbol cterm=italic ctermfg=4 ctermbg=11 gui=bold,italic guifg=#181A1A guibg=#77814C
 
 
 " ============================== END colorscheme settings ============================== 
@@ -342,6 +346,11 @@ let g:tagbar_show_tag_count = 1
 let g:tagbar_wrap = 1
 let g:tagbar_zoomwidth = 0
 let g:tagbar_show_linenumbers = 0
+let g:tagbar_autofocus = 0
+let g:tagbar_sort = 0
+let g:tagbar_help_visibility = 0
+let g:tagbar_show_data_type = 1
+let g:tagbar_autopreview = 0
 
 let g:tagbar_type_markdown = {
             \ 'ctagsbin'  : 'mdctags',
@@ -721,33 +730,6 @@ let g:cursorword_delay = 0
 " let g:workspace_autosave_always = 1
 " let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 "
-" ========== nvim-tree.lua settings ===========
-" defalut hotkeys actions: https://github.com/kyazdani42/nvim-tree.lua#default-actions
-let g:nvim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
-let g:nvim_tree_highlight_opened_files = 0 "0 by default, will enable folder and file icon highlight for opened files/directories.
-let g:nvim_tree_root_folder_modifier = ':~' "This is the default. See :help filename-modifiers for more options
-let g:nvim_tree_add_trailing = 1 "0 by default, append a trailing slash to folder names
-let g:nvim_tree_group_empty = 1 " 0 by default, compact folders that only contain a single folder into one node in the file tree
-let g:nvim_tree_icon_padding = ' ' "one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
-let g:nvim_tree_symlink_arrow = ' >> ' " defaults to ' ➛ '. used as a separator between symlinks' source and target.
-let g:nvim_tree_respect_buf_cwd = 0 "0 by default, will change cwd of nvim-tree to that of new buffer's when opening nvim-tree.
-let g:nvim_tree_create_in_closed_folder = 1 "0 by default, When creating files, sets the path of a file when cursor is on a closed folder to the parent folder when 0, and inside the folder when 1.
-let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
-"if folder is 1, you can also tell folder_arrows 1 to show small arrows next to the folder icons.
-"but this will not work when you set indent_markers (because of UI conflict)
-let g:nvim_tree_show_icons = {
-    \ 'git': 1,
-    \ 'folders': 1,
-    \ 'files': 1,
-    \ 'folder_arrows': 1,
-    \ }
-
-nnoremap <C-n> :NvimTreeToggle<CR>
-" conflict with my vim-go plugin and create new file
-" nnoremap <leader>r :NvimTreeRefresh<CR>
-" nnoremap <leader>n :NvimTreeFindFile<CR>
-" NvimTreeOpen, NvimTreeClose, NvimTreeFocus, NvimTreeFindFileToggle, and NvimTreeResize are also available if you need them
-
 set termguicolors " this variable must be enabled for colors to be applied properly
 
 
@@ -873,10 +855,9 @@ let g:html_indent_style1 = "inc"
 " filetype settings
 let g:do_filetype_lua = 1             " load filetype.lua
 let g:did_load_filetypes = 0          " don't load filetype.vim
-filetype plugin on
-filetype indent on
+" filetype plugin on
+" filetype indent on
 filetype on
-filetype plugin indent on
 
 
 if has("autocmd")

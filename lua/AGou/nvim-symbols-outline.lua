@@ -1,11 +1,10 @@
--- init.lua
 vim.g.symbols_outline = {
     highlight_hovered_item = true,
     show_guides = true,
     auto_preview = true,
     position = 'right',
     relative_width = true,
-    width = 25,
+    width = 15,
     auto_close = false,
     show_numbers = false,
     show_relative_numbers = false,
