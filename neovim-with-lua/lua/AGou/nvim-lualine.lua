@@ -49,7 +49,7 @@ require("lualine").setup({
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     -- "dapui_watches", "dapui_stacks", "dapui_scopes", "dapui_breakpoints"
-    disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline", },
+    disabled_filetypes = { "alpha", "dashboard", "NvimTree" },
     always_divide_middle = true,
 },
   sections = {
