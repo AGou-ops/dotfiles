@@ -37,6 +37,7 @@ nnoremap <C-t>     :tabnew<CR>
 inoremap <C-t>     <Esc>:tabnew<CR>
 
 inoremap jk <ESC>
+inoremap <C-d> <DEL>
 " inoremap kj <ESC>
 
 nnoremap ; :
@@ -64,6 +65,8 @@ nnoremap <Leader>qd daW"=substitute(@@,"'\\\|\"","","g")<CR>P
 nnoremap <leader>ms <cmd>mks! ~/.config/nvim/sessions/Session.vim<CR>
 nnoremap <leader>ls <cmd>source ~/.config/nvim/sessions/Session.vim<CR>
 
+" ========= nvimtree settings ========
+nnoremap <C-n> :NvimTreeToggle<CR>
 
 " ========= Suda settings ========
 " force write a file using Suda.vim (sudo)
