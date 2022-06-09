@@ -1,4 +1,5 @@
 require('impatient')
+require('Agou.autocmd')
 require('AGou.themes')
 require('AGou.lsp')
 require('AGou.nvim-lualine')
@@ -23,10 +24,12 @@ require('AGou.nvim-indent-blankline')
 require('AGou.nvim-trouble')
 require('AGou.nvim-goto-preview')
 require('AGou.nvim-smart-splits')
--- require('AGou.nvim-scrollbar')
+require('AGou.nvim-scrollbar')
 require('AGou.nvim-jabs')
 require('AGou.nvim-dap')
 require('AGou.nvim-gomove')
+-- require('AGou.nvim-possession')
+
 -- require('AGou.nvim-incline')
 -- require('AGou.nvim-go')
 -- require('AGou.nvim-symbols-outline')
@@ -69,7 +72,8 @@ tabnine:setup({
     run_on_every_keystroke = true,
     snippet_placeholder = '..',
     ignored_file_types = { -- default is not to ignore
-        TelescopePrompt = true,
+        -- TelescopePrompt = true,
+        -- yaml = true
     },
     show_prediction_strength = false;
 })
@@ -110,6 +114,18 @@ require("nvim-gps").setup({
   }
 })
 -- --------------------------------------
+
+-- require("neotest").setup({
+--   adapters = {
+--     -- require("neotest-python")({
+--     --   dap = { justMyCode = false },
+--     -- }),
+--     -- require("neotest-plenary"),
+--     require("neotest-vim-test")({
+--       ignore_file_types = { "python", "vim", "lua" },
+--     }),
+--   },
+-- })
 
 -- -------------------------------------- Just use :mksession and :source Session
 -- local opts = {

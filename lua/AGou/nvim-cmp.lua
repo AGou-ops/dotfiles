@@ -63,9 +63,9 @@ local source_mapping = {
   emoji = "[Emoji]",
   -- look = "[Dict]",
   calc = "[Calc]",
-  vsnip = "[vsnip]",
+  -- vsnip = "[vsnip]",
+  luasnip = "[luasnip]",
 }
-
 
 cmp.setup({
   enabled = function()
@@ -81,8 +81,8 @@ cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
       -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
       -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     end,
@@ -94,6 +94,11 @@ cmp.setup({
   -- })
   -- },
   formatting = {
+      fields = {
+          cmp.ItemField.Abbr,
+          cmp.ItemField.Kind,
+          cmp.ItemField.Menu,
+      },
       format = lspkind.cmp_format({
           mode = "symbol_text", -- show only symbol annotations
           maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
@@ -149,8 +154,8 @@ cmp.setup({
   sources = {
     { name = "nvim_lsp", priority = 100 }, -- Keep LSP results on top.
     { name = "nvim_lua" },
-    { name = "vsnip" }, -- For vsnip users.
-    -- { name = "luasnip" },
+    -- { name = 'vsnip' },
+    { name = "luasnip" },
     -- { name = "buffer" ,keyword_pattern = [[\k]] ,priority = 90},
     { name = "cmp_tabnine", priority = 15 },
     { name = "path" },
@@ -190,14 +195,6 @@ cmp.setup({
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
-    -- documentation = {
-    --   border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-    --   winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
-    -- },
-    -- completion = {
-    --   border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-    --   winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
-    -- },
   },
 
   -- ghost_text 用了之后preview box 就无法正常使用了.
@@ -207,21 +204,24 @@ cmp.setup({
   },
 })
 
-cmp.setup.filetype({ 'TelescopePrompt'},{})
+cmp.setup.filetype({ 'TelescopePrompt'},{
+    sources = {}
+})
 
+cmp.setup.filetype({ 'yaml' }, {
+    sources = {
+        { name = "nvim_lsp", priority = 100 }, -- Keep LSP results on top.
+        { name = "path" },
+        {
+            name = "look",
+            priority = 101,
+            keyword_length = 5,
+            option = {
+                convert_case = true,
+                loud = true,
+                --dict = '/usr/share/dict/words'
+            },
+        },
 
--- 这个地方视频上讲的有些错误,下面这些东西只需在lsp.lua中设置即可,无需重复设置.
--- Setup lspconfig.
--- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- local servers = {
--- "bashls",
--- -- "pyright",
--- "pylsp",
--- -- "gopls",
--- }
---
--- for _, name in pairs(servers) do
---   require('lspconfig')[name].setup {
---   capabilities = capabilities
--- }
--- end
+    }
+})
