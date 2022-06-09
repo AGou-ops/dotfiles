@@ -6,6 +6,10 @@ iunmap <leader>tt
 " map q :quit<CR>
 map q <Nop>
 
+nmap y <Plug>YAMotion
+xmap y <Plug>YAVisual
+nmap yy <Plug>YALine
+
 " Quicker window movement
 nnoremap U <C-r>
 " notworking on terminal neovim, only affect on Gvim!!!
@@ -62,8 +66,10 @@ nnoremap <Leader>qd daW"=substitute(@@,"'\\\|\"","","g")<CR>P
 " nmap <leader>s <Plug>(coc-codeaction-selected)
 
 " ========= build-in mksession settings ========
-nnoremap <leader>ms <cmd>mks! ~/.config/nvim/sessions/Session.vim<CR>
-nnoremap <leader>ls <cmd>source ~/.config/nvim/sessions/Session.vim<CR>
+nnoremap <leader>ms <cmd>wa<CR>:mksession! ~/.config/nvim/sessions/
+nnoremap <leader>ls <cmd>wa<CR>:source ~/.config/nvim/sessions/
+
+" nnoremap <leader>sl <cmd>lua require('telescope').extensions.possession.list()<CR>
 
 " ========= nvimtree settings ========
 nnoremap <C-n> :NvimTreeToggle<CR>
@@ -99,7 +105,7 @@ nnoremap <silent> <Leader><F9> <Cmd>lua require'dap'.set_breakpoint(vim.fn.input
 " nnoremap <silent> <Leader>dl <Cmd>lua require'dap'.run_last()<CR>
 
 " ========= telescope settings ========
-" use Leaderf instead 
+" use Leaderf instead
 " nnoremap <leader>fF <cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false}) <CR>
 " keymapping here：https://github.com/nvim-telescope/telescope-file-browser.nvim#mappings
 nnoremap <leader>fF <cmd>Telescope file_browser<CR>
@@ -122,7 +128,7 @@ nnoremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>ft <cmd>TodoTelescope<cr>
 
-" telescope-dap 
+" telescope-dap
 nnoremap <leader>dcc <cmd>Telescope dap commands<CR>
 nnoremap <leader>dcf <cmd>Telescope dap configurations<CR>
 nnoremap <leader>dl <cmd>Telescope dap list_breakpoints<CR>
@@ -256,4 +262,3 @@ nnoremap <F1> :set wrap! wrap?<CR>
 " au InsertLeave * set nopaste
 " F8 turn on tagbar
 " nmap <F8> :TagbarToggle<CR>
-
