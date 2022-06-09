@@ -9,7 +9,6 @@ local trouble = require("trouble.providers.telescope")
 -- telescope.load_extension "media_files"
 require('telescope').extensions.dap.configurations()
 
-
 telescope.setup {
   defaults = {
 

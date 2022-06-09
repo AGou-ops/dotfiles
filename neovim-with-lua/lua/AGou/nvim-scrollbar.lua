@@ -3,14 +3,13 @@ require("scrollbar").setup({
     set_highlights = true,
     folds = 1000, -- handle folds, set to number to disable folds if no. of lines in buffer exceeds this
     max_lines = false, -- disables if no. of lines in buffer exceeds this
-    handle = {
-        text = " ",
-        -- color = '#7E7567',
-        color = "",
-        cterm = nil,
-        highlight = "CursorColumn",
-        hide_if_all_visible = true, -- Hides handle if all lines are visible
-    },
+    -- handle = {
+    --     text = " ",
+    --     -- color = '#7E7567',
+    --     cterm = nil,
+    --     highlight = "CursorColumn",
+    --     hide_if_all_visible = true, -- Hides handle if all lines are visible
+    -- },
     marks = {
         Search = {
             text = { "-", "=" },
