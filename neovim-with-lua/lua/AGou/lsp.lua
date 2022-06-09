@@ -70,6 +70,18 @@ nvim_lsp.gopls.setup({
         usePlaceholders = false,
     },
 })
+-- -------------------- yaml lsp settings -- --------------------
+-- install yaml-language-server first!!! --  yarn global add yaml-language-server
+nvim_lsp.yamlls.setup {
+    settings = {
+        yaml = {
+            schemas = {
+                ["file:///Users/agou-ops/.k8s/master-local/all.json"] = "/*.yaml",
+            },
+        },
+    },
+    single_file_support = true,
+}
 
 -- -------------------- lua lsp settings -- --------------------
 local settings = {
@@ -130,4 +142,3 @@ nvim_lsp.sumneko_lua.setup({
 --   },
 -- }
 -- -- --------------------------------------------------------------
-
