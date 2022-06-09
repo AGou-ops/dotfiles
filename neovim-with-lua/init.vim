@@ -1,7 +1,7 @@
 " AGou-ops VIMRC FILE         -- Update Date: 2022年05月09日21:06:28
 set nocompatible              " be iMproved, required
 
-" ============================== Plugin packages ============================== 
+" ============================== Plugin packages ==============================
 " Begin Plug, Depends On https://github.com/junegunn/vim-plug
 
 call plug#begin('~/.vim/plugged')
@@ -53,6 +53,7 @@ Plug 'famiu/bufdelete.nvim'
 Plug 'windwp/nvim-autopairs'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'akinsho/toggleterm.nvim'
 " not longer use fzf, just use telescope
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -78,7 +79,7 @@ Plug 'petertriho/nvim-scrollbar'
 Plug 'karb94/neoscroll.nvim'
 " Easily speed up your neovim startup time!
 Plug 'dstein64/vim-startuptime'
-Plug 'nathom/filetype.nvim'
+" Plug 'nathom/filetype.nvim'
 Plug 'numToStr/Comment.nvim'
 " Plug 'roxma/nvim-yarp'
 " Plug 'roxma/vim-hug-neovim-rpc'
@@ -87,6 +88,7 @@ Plug 'mbbill/undotree'
 " session manager
 " Plug 'folke/persistence.nvim'
 " Plug 'rmagatti/auto-session'
+" Plug 'jedrzejboczar/possession.nvim'
 
 Plug 'folke/which-key.nvim'
 Plug 'folke/todo-comments.nvim'
@@ -122,6 +124,7 @@ Plug 'Yggdroot/LeaderF'
 
 " quickly move selected line or block.
 Plug 'booperlv/nvim-gomove'
+Plug 'svban/YankAssassin.vim'
 
 " 临时不用，有点bug出现，原因未明。
 " Plug 'b0o/incline.nvim'
@@ -133,21 +136,23 @@ Plug 'booperlv/nvim-gomove'
 
 Plug 'dense-analysis/ale'
 " lsp server
-Plug 'neovim/nvim-lspconfig', { 'for': ['go','lua','sh'] }
+Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
-Plug 'onsails/lspkind-nvim', { 'for': ['go','lua','sh'] }
+Plug 'onsails/lspkind-nvim'
 
 " hrsh7th👍：https://github.com/hrsh7th
-Plug 'hrsh7th/cmp-nvim-lsp', { 'for': ['go','lua','sh'] }
-Plug 'hrsh7th/cmp-buffer', { 'for': ['go','lua','sh'] }
-" Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-nvim-lsp'
+" Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
 " Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp', { 'for': ['go','lua','sh'] }
-Plug 'hrsh7th/cmp-calc', { 'for': ['go','lua','sh'] }
-Plug 'hrsh7th/cmp-emoji', { 'for': ['go','lua','sh'] }
-" Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
-" Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-calc'
+Plug 'hrsh7th/cmp-emoji'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 " Plug 'hrsh7th/vim-vsnip'
+" Plug 'hrsh7th/cmp-vsnip'
 " Plug 'uga-rosa/cmp-dictionary'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'octaltree/cmp-look'
@@ -157,11 +162,13 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'tami5/lspsaga.nvim'
 " Plug 'ray-x/lsp_signature.nvim'
 " Plug 'ray-x/go.nvim'
+Plug 'buoto/gotests-vim'
 
 " debug toools
 " Plug 'puremourning/vimspector', { 'for': ['go'] }
 Plug 'mfussenegger/nvim-dap', { 'for': ['go'] }
 Plug 'rcarriga/nvim-dap-ui', { 'for': ['go'] }
+" Plug 'rcarriga/neotest'
 
 Plug 'sindrets/diffview.nvim'
 
@@ -172,10 +179,10 @@ Plug 'rmagatti/goto-preview', { 'for': ['go'] }
 
 call plug#end()
 
-" ============================== END Plugin packages ============================== 
+" ============================== END Plugin packages ==============================
 
 
-" ============================== Pre settings ============================== 
+" ============================== Pre settings ==============================
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
@@ -191,16 +198,16 @@ if (empty($TMUX))
         set termguicolors
     endif
 endif
-" ============================== END Pre settings ============================== 
+" ============================== END Pre settings ==============================
 
-" ============================== General settings ============================== 
+" ============================== General settings ==============================
 " 为了避免出错,我把通用配置项放在前面,一般来说你不需要更改这个文件.
 if filereadable($HOME . "/.config/nvim/general.vim")
     source $HOME/.config/nvim/general.vim
 endif
-" ============================== END General settings ============================== 
+" ============================== END General settings ==============================
 
-" ============================== Colorscheme settings ============================== 
+" ============================== Colorscheme settings ==============================
 " colorscheme gruvbox
 " colorscheme onedark
 " set bg=dark
@@ -210,7 +217,7 @@ endif
 " let g:tokyonight_style = "night"
 " let g:tokyonight_italic_functions = 1
 " let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
-" 
+"
 "  Change the "hint" color to the "orange" color, and make the "error" color bright red
 " let g:tokyonight_colors = {
 "   \ 'hint': 'orange',
@@ -257,10 +264,10 @@ hi NormalFloat ctermfg=223 ctermbg=237 guifg=#ddc7a1 guibg=#3c3836
 " hi FocusedSymbol cterm=italic ctermfg=4 ctermbg=11 gui=bold,italic guifg=#181A1A guibg=#77814C
 
 
-" ============================== END colorscheme settings ============================== 
+" ============================== END colorscheme settings ==============================
 "
 "
-" ============================== Plugins settings ============================== 
+" ============================== Plugins settings ==============================
 
 " ========= LeaderF settings ==========
 let g:Lf_HideHelp = 1
@@ -312,7 +319,7 @@ let g:Lf_ShortcutF = "<leader>ff"
 " " not working on macOS, change color for indentLine
 " let g:indentLine_setColors = 0
 " more simple method to achieve indentline
-" set list lcs=tab:\┆\ 
+" set list lcs=tab:\┆\
 
 " ========= autopairs settings ==========
 " defalut options
@@ -397,108 +404,12 @@ set completeopt=menu,menuone,noselect
 "   set guifont=Fira_Code:h30
 " end
 
-" ========= gitblame settings ==========
-let g:gitblame_enabled = 1
-let g:gitblame_message_template = '     ◆ <summary> • <date> • <author>     '
-let g:gitblame_date_format = '%r'
-" let g:gitblame_highlight_group = "Question"
-highlight default link Visual default
-
 " ========= auto-session settings ==========
 " let g:auto_session_root_dir = '~/.vim/sessions/'
 " nnoremap <leader>ss <cmd>SaveSession<CR>
 " nnoremap <leader>sd <cmd>!rm -f ~/.config/nvim/sessions/*<CR>
 
 " ========= instant-markdown settings ==========
-" set to 1, nvim will open the preview window after entering the markdown buffer
-" default: 0
-let g:mkdp_auto_start = 0
-
-" set to 1, the nvim will auto close current preview window when change
-" from markdown buffer to another buffer
-" default: 1
-let g:mkdp_auto_close = 1
-
-" set to 1, the vim will refresh markdown when save the buffer or
-" leave from insert mode, default 0 is auto refresh markdown as you edit or
-" move the cursor
-" default: 0
-let g:mkdp_refresh_slow = 0
-
-" set to 1, the MarkdownPreview command can be use for all files,
-" by default it can be use in markdown file
-" default: 0
-let g:mkdp_command_for_global = 0
-
-" set to 1, preview server available to others in your network
-" by default, the server listens on localhost (127.0.0.1)
-" default: 0
-let g:mkdp_open_to_the_world = 0
-
-" use custom IP to open preview page
-" useful when you work in remote vim and preview on local browser
-" more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
-" default empty
-let g:mkdp_open_ip = ''
-
-" specify browser to open preview page
-" default: ''
-let g:mkdp_browser = ''
-
-" set to 1, echo preview page url in command line when open preview page
-" default is 0
-let g:mkdp_echo_preview_url = 0
-
-" a custom vim function name to open preview page
-" this function will receive url as param
-" default is empty
-let g:mkdp_browserfunc = ''
-
-" options for markdown render
-" mkit: markdown-it options for render
-" katex: katex options for math
-" uml: markdown-it-plantuml options
-" maid: mermaid options
-" disable_sync_scroll: if disable sync scroll, default 0
-" sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
-"   middle: mean the cursor position alway show at the middle of the preview page
-"   top: mean the vim top viewport alway show at the top of the preview page
-"   relative: mean the cursor position alway show at the relative positon of the preview page
-" hide_yaml_meta: if hide yaml metadata, default is 1
-" sequence_diagrams: js-sequence-diagrams options
-" content_editable: if enable content editable for preview page, default: v:false
-" disable_filename: if disable filename header for preview page, default: 0
-let g:mkdp_preview_options = {
-    \ 'mkit': {},
-    \ 'katex': {},
-    \ 'uml': {},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'sequence_diagrams': {},
-    \ 'flowchart_diagrams': {},
-    \ 'content_editable': v:false,
-    \ 'disable_filename': 0
-    \ }
-
-" use a custom markdown style must be absolute path
-" like '/Users/username/markdown.css' or expand('~/markdown.css')
-let g:mkdp_markdown_css = ''
-
-" use a custom highlight style must absolute path
-" like '/Users/username/highlight.css' or expand('~/highlight.css')
-let g:mkdp_highlight_css = ''
-
-" use a custom port to start server or random for empty
-let g:mkdp_port = ''
-
-" preview page title
-" ${name} will be replace with the file name
-let g:mkdp_page_title = '「${name}」'
-
-" recognized filetypes
-" these filetypes will have MarkdownPreview... commands
 let g:mkdp_filetypes = ['markdown.mkd']
 
 autocmd BufRead *.md nnoremap <leader>mp <Plug>MarkdownPreview
@@ -511,7 +422,6 @@ autocmd BufRead *.md nnoremap <leader>mp <Plug>MarkdownPreview
 " nnoremap <leader>sl <cmd>lua require("persistence").load({ last = true })<CR>
 " " stop Persistence => session won't be saved on exit
 " nnoremap <leader>s <cmd>lua require("persistence").stop()<CR>
-
 
 " ========= vim-visual-multi settings ==========
 let g:VM_maps = {}
@@ -609,7 +519,7 @@ hi illuminatedWord cterm=underline gui=underline
 let g:move_key_modifier = 'C'
 "
 " ============= vimspector(go) settings ==========
-" 
+"
 " let g:vimspector_enable_mappings = 'HUMAN'
 " " default keymap below
 " " | KEY          | FUNCTION                                                  | API                                                          |
@@ -684,10 +594,10 @@ let g:cursorword_delay = 0
 "   autocmd!
 "   autocmd VimEnter,ColorScheme * call MyHighlight()
 " augroup END
-" 
+"
 " function! MyHighlight() abort
 "   highlight CursorWord0 cterm=bold,underline gui=bold,underline
-" 
+"
 "   redir => out
 "     silent! highlight CursorLine
 "   redir END
@@ -698,7 +608,7 @@ let g:cursorword_delay = 0
 
 " ========== vim-cursor settings ===========
 " lua require("lsp_config")
-" 
+"
 " autocmd BufWritePre *.go lua vim.lsp.buf.formatting()
 " autocmd BufWritePre *.go lua goimports(1000)
 
@@ -706,7 +616,7 @@ let g:cursorword_delay = 0
 " autocmd vimenter * NERDTree       " NERDTree automatically when vim starts up
 " map <C-n> :NERDTreeToggle<CR>
 " autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif 
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " " auto refresh nerdtree when file changed
 " autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
 
@@ -714,7 +624,7 @@ let g:cursorword_delay = 0
 " ==========
 " map <C-n> :call NERDTreeToggleAndRefresh()<CR>
 " set splitright        " nerdtree split right instead of left
-" 
+"
 " function NERDTreeToggleAndRefresh()
 "   :NERDTreeToggle
 "   if g:NERDTree.IsOpen()
@@ -742,45 +652,23 @@ let g:instant_markdown_slow = 1
 
 set t_Co=256
 
-" --------- nerdcommenter plguin settings
-" Create default mappings
-let g:NERDCreateDefaultMappings = 1
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-
-let g:NERDCompactSexyComs = 1
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
-" Set a language to use its alternate delimiters by default
-let g:NERDAltDelims_java = 1
-" Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
-let g:NERDToggleCheckAllLines = 1
+" ============================== END Plugins settings ==============================
 
 
-" ============================== END Plugins settings ============================== 
-
-
-" ============================== Autocmd/Function settings ============================== 
+" ============================== Autocmd/Function settings ==============================
 "
 
 autocmd ColorScheme * runtime lua/vim/lsp/diagnostic.lua
 
-
 " don't add comment char when using o mode
 autocmd FileType * setlocal formatoptions-=c formatoptions-=o
 
+" disable edit action in man pages.
+autocmd FileType man nnoremap a <nop>
+autocmd FileType man nnoremap o <nop>
+
 " highlight when yank something.
 
-augroup YankHighlight
-    autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=200}
-augroup end
 " auto reload when modified vimrc file (Windows)
 " autocmd! bufwritepost _vimrc source %
 " auto reload when modified vimrc file (Linux)
@@ -795,7 +683,7 @@ aug END
 
 
 " some error occur
-" au CursorHold * checktime  
+" au CursorHold * checktime
 " autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
 " notification after file change
 autocmd FileChangedShellPost *
@@ -837,7 +725,7 @@ endif
 
 " indent for different filetype
 autocmd FileType php,ruby,yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
-autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
 autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
@@ -899,25 +787,24 @@ autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,pe
 
 autocmd FileType go nmap <Leader>rr :!go run %<CR>
 autocmd FileType go nmap <Leader>r :!go run .<CR>
-autocmd FileType go nmap <Leader>gt :!go test -v .<CR>
-
+autocmd FileType go nmap <Leader>gt :!go test .<CR>
 autocmd FileType html nmap <Leader>rh :!npx http-server .<CR>
 
-" ============================== END Autocmd settings ============================== 
+" ============================== END Autocmd settings ==============================
 
 
-" ============================== External Lua settings ============================== 
+" ============================== External Lua settings ==============================
 lua require('AGou')
-" ============================== END External Lua settings ============================== 
+" ============================== END External Lua settings ==============================
 
-" ============================== External settings ============================== 
+" ============================== External settings ==============================
 "
 " =========  external keymap settings ==========
 if filereadable($HOME . "/.config/nvim/keymaps.vim")
     source $HOME/.config/nvim/keymaps.vim
 endif
 
-" 
+"
 if filereadable($HOME . "/.config/nvim/shpy-autoheader.vim")
     source $HOME/.config/nvim/shpy-autoheader.vim
 endif
@@ -931,5 +818,5 @@ endif
 if filereadable($HOME . "/.config/nvim/custom.vim")
     source $HOME/.config/nvim/custom.vim
 endif
-" ============================== THE END. ============================== 
-" ====================================================================== 
+" ============================== THE END. ==============================
+" ======================================================================
