@@ -15,41 +15,34 @@ Plug 'sainnhe/gruvbox-material'
 " Plug 'ellisonleao/gruvbox.nvim'
 " Plug 'catppuccin/nvim'
 
-" ========= appearence here. ==========
+" ========= appearence/performance here. ==========
 
 Plug 'nvim-lualine/lualine.nvim'
-" Plug 'feline-nvim/feline.nvim'
 Plug 'xiyaowong/nvim-transparent'
-" Plug 'junegunn/goyo.vim'
+" -- cmdline beauty
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
-" welcome page
-" Plug 'mhinz/vim-startify'
-" dashboard
+" -- dashboard
 Plug 'goolord/alpha-nvim'
-" Speed up Neovim.
+
+" -- Easily speed up your neovim startup time!
+Plug 'dstein64/vim-startuptime'
+" -- Speed up Neovim.
 Plug 'lewis6991/impatient.nvim'
 
 " ========= useful tools here. ==========
 
-Plug 'plasticboy/vim-markdown', { 'for': 'md' }
+" Plug 'plasticboy/vim-markdown', { 'for': 'md' }
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-" windows size auto resize
-
-" neovim notify tool
-" Plug 'rcarriga/nvim-notify'
 
 " :w !sudo tee % > /dev/null not working in neovim, fuckkkkk.
+" -- force write a file use root.
 Plug 'lambdalisue/suda.vim'
-Plug 'camspiers/lens.vim'
 Plug '907th/vim-auto-save'
 Plug 'preservim/tagbar', { 'for': ['go', 'md'] }
-" Plug 'simrat39/symbols-outline.nvim', { 'for': ['go', 'md', 'lua'] }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
-
 Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 Plug 'famiu/bufdelete.nvim'
-
 Plug 'windwp/nvim-autopairs'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
@@ -59,33 +52,23 @@ Plug 'akinsho/toggleterm.nvim'
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
 
-" All the lua functions.
+" -- All the lua functions.
 Plug 'nvim-lua/plenary.nvim'
 
-Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 Plug 'nvim-telescope/telescope-dap.nvim', { 'for': 'go' }
 
-Plug 'itchyny/vim-cursorword'
-" Vim plugin for automatically highlighting other uses of the current word under the cursor
-" Plug 'rrethy/vim-illuminate'
-
+" -- show curosr underline.
+Plug 'yamatsum/nvim-cursorline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sebdah/vim-delve'
-" scroll bar
 Plug 'petertriho/nvim-scrollbar'
-" smmoth scroll: :h scroll.txt  for help
-" Plug 'psliwka/vim-smoothie'
 Plug 'karb94/neoscroll.nvim'
-" Easily speed up your neovim startup time!
-Plug 'dstein64/vim-startuptime'
-" Plug 'nathom/filetype.nvim'
 Plug 'numToStr/Comment.nvim'
-" Plug 'roxma/nvim-yarp'
-" Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'mbbill/undotree'
-" session manager
+" -- session manager, not used, just use build-in :mks
 " Plug 'folke/persistence.nvim'
 " Plug 'rmagatti/auto-session'
 " Plug 'jedrzejboczar/possession.nvim'
@@ -93,44 +76,33 @@ Plug 'mbbill/undotree'
 Plug 'folke/which-key.nvim'
 Plug 'folke/todo-comments.nvim'
 Plug 'folke/zen-mode.nvim'
-" works with zen-mode
+" -- works with zen-mode
 Plug 'folke/twilight.nvim'
-
-Plug 'norcalli/nvim-colorizer.lua'
 Plug 'voldikss/vim-translator'
-"
-" Plug 'mhartington/formatter.nvim'
+" -- color highlighter
+Plug 'norcalli/nvim-colorizer.lua'
+" -- format file
 Plug 'sbdchd/neoformat'
-" Plug 'jose-elias-alvarez/null-ls.nvim'
-
-" conflict with goto-preview plugin, fuckkkkkk.
-Plug 'beauwilliams/focus.nvim'
-" not working.....
-" Plug 'edluffy/specs.nvim'
-Plug 'danilamihailov/beacon.nvim'
+" -- Show where your cursor moves when jumping large distances
+Plug 'edluffy/specs.nvim'
+" -- cursor jump plugin
 Plug 'hrsh7th/vim-searchx'
-
-" Plug 'justinmk/vim-sneak'
-" Plug 'ggandor/leap.nvim'
 Plug 'mrjones2014/smart-splits.nvim'
 Plug 'SmiteshP/nvim-gps'
 Plug 'kevinhwang91/nvim-hlslens'
 Plug 'phaazon/hop.nvim'
-
+" -- improved * motions.
 Plug 'haya14busa/vim-asterisk'
+" -- Another Buffer Switcher
 Plug 'matbme/JABS.nvim'
-
+" -- An efficient fuzzy finder that helps to locate files, buffers, mrus, gtags, etc. on the fly.
 Plug 'Yggdroot/LeaderF'
-
-" quickly move selected line or block.
+" -- quickly move selected line or block.
 Plug 'booperlv/nvim-gomove'
+" -- highlight when using yank
 Plug 'svban/YankAssassin.vim'
-
-" 临时不用，有点bug出现，原因未明。
+" -- BUG....
 " Plug 'b0o/incline.nvim'
-
-" auto indent different type of file.
-" Plug 'tpope/vim-sleuth'
 
 " ========= programming tools here. ==========
 
@@ -138,8 +110,10 @@ Plug 'dense-analysis/ale'
 " lsp server
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
+" -- lsp beauty.
 Plug 'onsails/lspkind-nvim'
 
+" -- nvim-cmp and its plugins.
 " hrsh7th👍：https://github.com/hrsh7th
 Plug 'hrsh7th/cmp-nvim-lsp'
 " Plug 'hrsh7th/cmp-buffer'
@@ -158,24 +132,17 @@ Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'octaltree/cmp-look'
 
 Plug 'lewis6991/gitsigns.nvim'
-
 Plug 'tami5/lspsaga.nvim'
-" Plug 'ray-x/lsp_signature.nvim'
-" Plug 'ray-x/go.nvim'
+" -- quickly generate go test file.
 Plug 'buoto/gotests-vim'
 
-" debug toools
-" Plug 'puremourning/vimspector', { 'for': ['go'] }
+" -- debug tools
 Plug 'mfussenegger/nvim-dap', { 'for': ['go'] }
 Plug 'rcarriga/nvim-dap-ui', { 'for': ['go'] }
-" Plug 'rcarriga/neotest'
 
 Plug 'sindrets/diffview.nvim'
-
 Plug 'folke/trouble.nvim', { 'for': ['go'] }
 Plug 'rmagatti/goto-preview', { 'for': ['go'] }
-" Plug 'github/copilot.vim', { 'for': ['go'] }
-
 
 call plug#end()
 
@@ -308,22 +275,6 @@ let g:Lf_ShortcutF = "<leader>ff"
 
 " autocmd BufWritePre *.go :Neoformat
 
-" ========= indentline settings ==========
-" " let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-" let g:indentLine_char = '┆'
-" let g:indentLine_concealcursor = 'inc'
-" let g:indentLine_conceallevel = 2
-"
-" " disable by default
-" let g:transparent_enabled = v:false
-" " not working on macOS, change color for indentLine
-" let g:indentLine_setColors = 0
-" more simple method to achieve indentline
-" set list lcs=tab:\┆\
-
-" ========= autopairs settings ==========
-" defalut options
-
 " ========= vim-translator settings ==========
 let g:translator_target_lang = 'zh'
 
@@ -333,15 +284,10 @@ let g:copilot_no_tab_map = v:true
 let g:copilot_filetypes = {  '*': v:false, }
 " \ 'python': v:true,
 
-" ========= beacon settings ==========
-" https://github.com/DanilaMihailov/beacon.nvim
-" highight Beacon guibg=white ctermbg=15l
-let g:beacon_size = 80
-" let g:beacon_show_jumps = 0
-
 " ========= startuptime settings ==========
 let g:startuptime_tries = 3
 
+" ========= which-key settings ==========
 " which-key plugin timeout delay.
 set timeoutlen=200
 
@@ -393,35 +339,10 @@ let g:tagbar_type_markdown = {
 " ========= nvim-cmp settings ==========
 set completeopt=menu,menuone,noselect
 
-" ========= goyo settings ==========
-" let g:goyo_width = '60%'
-" let g:goyo_height = '85%'
-" " line number
-" let g:goyo_linenr = 0
-
-" ========= firenvim settings ==========
-" if exists('g:started_by_firenvim')
-"   set guifont=Fira_Code:h30
-" end
-
-" ========= auto-session settings ==========
-" let g:auto_session_root_dir = '~/.vim/sessions/'
-" nnoremap <leader>ss <cmd>SaveSession<CR>
-" nnoremap <leader>sd <cmd>!rm -f ~/.config/nvim/sessions/*<CR>
-
 " ========= instant-markdown settings ==========
 let g:mkdp_filetypes = ['markdown.mkd']
 
 autocmd BufRead *.md nnoremap <leader>mp <Plug>MarkdownPreview
-
-" ========= persistence(auto session) settings ==========
-
-" restore the session for the current directory
-" nnoremap <leader>ss <cmd>lua require("persistence").load()<CR>
-" " restore the last session
-" nnoremap <leader>sl <cmd>lua require("persistence").load({ last = true })<CR>
-" " stop Persistence => session won't be saved on exit
-" nnoremap <leader>s <cmd>lua require("persistence").stop()<CR>
 
 " ========= vim-visual-multi settings ==========
 let g:VM_maps = {}
@@ -461,104 +382,13 @@ call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_bo
                         \ ],
                         \ })))
 
-" ========= scrollbar settings ==========
-" more settings --> :h Scrollbar.nvim
-" augroup ScrollbarInit
-"     autocmd!
-"     autocmd WinScrolled,VimResized,QuitPre * silent! lua require('scrollbar').show()
-"     autocmd WinEnter,FocusGained           * silent! lua require('scrollbar').show()
-"     autocmd WinLeave,BufLeave,BufWinLeave,FocusLost            * silent! lua require('scrollbar').clear()
-" augroup end
-"
-" let g:scrollbar_shape = {
-"             \ 'head': '█',
-"             \ 'body': '█',
-"             \ 'tail': '█',
-"             \ }
-
 " ========= lspsaga.nvim settings ==========
 highlight link LspSagaFinderSelection Search
 " or
 " highlight link LspSagaFinderSelection guifg='#ff0000' guibg='#00ff00' gui='bold'
-"
-" ========= coc.nvim witelist CocGroup
-" augroup CocGroup
-"   autocmd!
-"   " disable coc.nvim
-"   autocmd BufNew,BufRead,BufReadPost * execute "CocDisable"
-"   " witelist below
-"   autocmd BufNew,BufEnter,BufRead,BufReadPost *.go execute "CocDisable"
-" augroup end
-" ========= END coc.nvim witelist settings ==========
-
-
-" ========= illuminate settings ==========
-" Time in milliseconds (default 0)
-let g:Illuminate_delay = 3000
-hi illuminatedWord cterm=underline gui=underline
-" hi illuminatedCurWord cterm=italic gui=italic
-" augroup illuminate_augroup
-"     autocmd!
-"     autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
-" augroup END
-
-" ============ echodoc.vim settings =======
-" set cmdheight=2
-
-" Or, you could use neovim's floating text feature.
-" let g:echodoc#enable_at_startup = 1
-" let g:echodoc#type = 'floating'
-" " To use a custom highlight for the float window,
-" " change Pmenu to your highlight group
-" highlight link EchoDocFloat Pmenu
-
-" ============= go.nvim settings ==========
-"
 
 " ============= vim-move settings ==========
 let g:move_key_modifier = 'C'
-"
-" ============= vimspector(go) settings ==========
-"
-" let g:vimspector_enable_mappings = 'HUMAN'
-" " default keymap below
-" " | KEY          | FUNCTION                                                  | API                                                          |
-" " | :----------- | :-------------------------------------------------------- | :----------------------------------------------------------- |
-" " | `F5`         | When debugging, continue. Otherwise start debugging.      | `vimspector#Continue()`                                      |
-" " | `F3`         | Stop debugging.                                           | `vimspector#Stop()`                                          |
-" " | `F4`         | Restart debugging with the same configuration.            | `vimspector#Restart()`                                       |
-" " | `F6`         | Pause debuggee.                                           | `vimspector#Pause()`                                         |
-" " | `F9`         | Toggle line breakpoint on the current line.               | `vimspector#ToggleBreakpoint()`                              |
-" " | `<leader>F9` | Toggle conditional line breakpoint on the current line.   | `vimspector#ToggleBreakpoint( { trigger expr, hit count expr } )` |
-" " | `F8`         | Add a function breakpoint for the expression under cursor | `vimspector#AddFunctionBreakpoint( '<cexpr>' )`              |
-" " | `<leader>F8` | Run to Cursor                                             | `vimspector#RunToCursor()`                                   |
-" " | `F10`        | Step Over                                                 | `vimspector#StepOver()`                                      |
-" " | `F11`        | Step Into                                                 | `vimspector#StepInto()`                                      |
-" " | `F12`        | Step out of current function scope                        | `vimspector#StepOut()`                                       |
-" nmap <leader>vl :call vimspector#Launch()<CR>
-" nmap <leader>vr :VimspectorReset<CR>
-" nmap <leader>ve :VimspectorEval
-" nmap <leader>vw :VimspectorWatch
-" nmap <leader>vo :VimspectorShowOutput
-" nmap <leader>vi <Plug>VimspectorBalloonEval
-" xmap <leader>vi <Plug>VimspectorBalloonEval
-" setlocal nobuflisted
-"
-" " for normal mode - the word under the cursor
-" nmap <Leader>di <Plug>VimspectorBalloonEval
-" " for visual mode, the visually selected text
-" xmap <Leader>di <Plug>VimspectorBalloonEval
-"
-" let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-go', 'CodeLLDB', 'vscode-node-debug2' ]
-"
-" " for normal mode - the word under the cursor
-" nmap <Leader>di <Plug>VimspectorBalloonEval
-" " for visual mode, the visually selected text
-" xmap <Leader>di <Plug>VimspectorBalloonEval
-
-" ========= floaterm settings[NOT USED] ==========
-" autocmd User FloatermOpen        " triggered after opening a new/existed floaterm
-" hi FloatermNC guibg=gray
 
 " ========= toggleterm settings ==========
 " autocmd TermEnter term://*toggleterm#*
@@ -571,77 +401,7 @@ nnoremap <silent><leader>tt <Cmd>exe v:count1 . "ToggleTerm"<CR>
 inoremap <silent><leader>tt <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 nnoremap <silent><leader>gg <Cmd>lua _LAZYGIT_TOGGLE()<CR>
 
-" ========= current cursor settings ==========
-" " Twins of word under cursor:
-" let g:vim_current_word#highlight_twins = 1
-" The word under cursor:
-" let g:vim_current_word#highlight_current_word = 1
-" autocmd BufAdd NERD_tree_*,your_buffer_name.rb,*.js :let b:vim_current_word_disabled_in_this_buffer = 1
-" " hi CurrentWord ctermbg=53
-" " hi CurrentWordTwins ctermbg=237
-" " let g:vim_current_word#highlight_only_in_focused_window = 1
-" " hi CurrentWordTwins guifg=#XXXXXX guibg=#XXXXXX gui=underline,bold,italic ctermfg=XXX ctermbg=XXX cterm=underline,bold,italic
-" hi CurrentWord guifg=0 guibg=163 gui=underline,bold,italic ctermfg=0 ctermbg=163 cterm=underline,bold,italic
-
-" ========== vim-cursor settings ===========
-" let g:cursorword_highlight = 0
-let g:cursorword_delay = 0
-" autocmd Colorscheme * highlight CursorWord0 cterm=underline gui=underline ctermbg=52 guibg=#303030
-" autocmd Colorscheme * highlight CursorWord1 cterm=underline gui=underline ctermbg=52 guibg=#303030
-" highlight CursorWord0 cterm=underline gui=underline guisp=#ebcb8b
-" highlight CursorWord1 cterm=underline gui=underline guisp=#ebcb8b
-" augroup cursorword
-"   autocmd!
-"   autocmd VimEnter,ColorScheme * call MyHighlight()
-" augroup END
-"
-" function! MyHighlight() abort
-"   highlight CursorWord0 cterm=bold,underline gui=bold,underline
-"
-"   redir => out
-"     silent! highlight CursorLine
-"   redir END
-"   execute 'highlight CursorWord1 cterm=underline gui=underline'
-"     \ matchstr(out, 'ctermbg=#\?\w\+')
-"     \ matchstr(out, 'guibg=#\?\w\+')
-" endfunction
-
-" ========== vim-cursor settings ===========
-" lua require("lsp_config")
-"
-" autocmd BufWritePre *.go lua vim.lsp.buf.formatting()
-" autocmd BufWritePre *.go lua goimports(1000)
-
-
-" autocmd vimenter * NERDTree       " NERDTree automatically when vim starts up
-" map <C-n> :NERDTreeToggle<CR>
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" " auto refresh nerdtree when file changed
-" autocmd BufWritePost * NERDTreeFocus | execute 'normal R' | wincmd p
-
-" !! 弃用NerdTree 改为下面的nvim-tree.lua
-" ==========
-" map <C-n> :call NERDTreeToggleAndRefresh()<CR>
-" set splitright        " nerdtree split right instead of left
-"
-" function NERDTreeToggleAndRefresh()
-"   :NERDTreeToggle
-"   if g:NERDTree.IsOpen()
-"     :NERDTreeRefreshRoot
-"   endif
-" endfunction
-" =========
-
-" autoload vim-workspace plugin
-" let g:workspace_autocreate = 1
-" nnoremap <leader>f :ToggleWorkspace<CR>
-" let g:workspace_session_name = 'Session.vim'
-" let g:workspace_autosave_always = 1
-" let g:workspace_session_directory = $HOME . '/.vim/sessions/'
-"
 set termguicolors " this variable must be enabled for colors to be applied properly
-
 
 " a list of groups can be found at `:help nvim_tree_highlight`
 " highlight NvimTreeFolderIcon guibg=blue
@@ -789,6 +549,8 @@ autocmd FileType go nmap <Leader>rr :!go run %<CR>
 autocmd FileType go nmap <Leader>r :!go run .<CR>
 autocmd FileType go nmap <Leader>gt :!go test .<CR>
 autocmd FileType html nmap <Leader>rh :!npx http-server .<CR>
+autocmd FileType markdown nnoremap <C-b> ciw****<left><Esc>P
+autocmd FileType markdown vnoremap <C-b> c****<left><Esc>P
 
 " ============================== END Autocmd settings ==============================
 

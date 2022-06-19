@@ -8,7 +8,7 @@ map q <Nop>
 
 nmap y <Plug>YAMotion
 xmap y <Plug>YAVisual
-nmap yy <Plug>YALine
+" nmap yy <Plug>YALine
 
 " Quicker window movement
 nnoremap U <C-r>
@@ -22,13 +22,11 @@ nnoremap <M-l> <C-w>l
 " nnoremap <A-Up> <C-w>k
 " nnoremap <A-Left> <C-w>h
 " nnoremap <A-Right> <C-w>l
-nmap <A-Left> :lua require('smart-splits').resize_left()<CR>
-nmap <A-Down> :lua require('smart-splits').resize_down()<CR>
-nmap <A-Up> :lua require('smart-splits').resize_up()<CR>
-nmap <A-Right> :lua require('smart-splits').resize_right()<CR>
 " delete something without yank
 nnoremap d "_d
 nnoremap D "_D
+vnoremap d "_d
+vnoremap D "_D
 noremap H ^
 noremap L g_
 nnoremap / /\v
@@ -43,6 +41,8 @@ inoremap <C-t>     <Esc>:tabnew<CR>
 inoremap jk <ESC>
 inoremap <C-d> <DEL>
 " inoremap kj <ESC>
+
+nnoremap <C-o> o<C-u>
 
 nnoremap ; :
 vmap ; :
@@ -59,6 +59,7 @@ nnoremap <Leader>q" ciw""<Esc>P
 nnoremap <Leader>q' ciw''<Esc>P
 nnoremap <Leader>q( ciw()<Esc>P
 nnoremap <Leader>q{ ciw{}<Esc>P
+nnoremap <Leader>q[ ciw[]<Esc>P
 nnoremap <Leader>qd daW"=substitute(@@,"'\\\|\"","","g")<CR>P
 
 " ========= coc.spelling settings ========
@@ -73,6 +74,15 @@ nnoremap <leader>ls <cmd>wa<CR>:source ~/.config/nvim/sessions/
 
 " ========= nvimtree settings ========
 nnoremap <C-n> :NvimTreeToggle<CR>
+
+" ========= smart-splits settings ========
+" recommended mappings
+" resizing splits
+nmap <A-Left> :lua require('smart-splits').resize_left()<CR>
+nmap <A-Down> :lua require('smart-splits').resize_down()<CR>
+nmap <A-Up> :lua require('smart-splits').resize_up()<CR>
+nmap <A-Right> :lua require('smart-splits').resize_right()<CR>
+nmap <A-r> :lua require('smart-splits').start_resize_mode()<CR>
 
 " ========= Suda settings ========
 " force write a file using Suda.vim (sudo)
