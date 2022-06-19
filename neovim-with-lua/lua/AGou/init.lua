@@ -28,18 +28,12 @@ require('AGou.nvim-scrollbar')
 require('AGou.nvim-jabs')
 require('AGou.nvim-dap')
 require('AGou.nvim-gomove')
--- require('AGou.nvim-possession')
-
--- require('AGou.nvim-incline')
--- require('AGou.nvim-go')
--- require('AGou.nvim-symbols-outline')
--- require('AGou.nvim-lsp_signature')
 -- --------------------------------------
 
 -- -------------------------- 其他简单lua插件配置项 --------------------------------------------
 --
 require'hop'.setup{}
-
+-- --------------------------------------
 -- full hotkeys usage: https://github.com/numToStr/Comment.nvim#-usage
 -- gcc: 当前行行注释
 -- gcb: 当前行块注释
@@ -53,16 +47,39 @@ require('Comment').setup{
     },
 }
 -- --------------------------------------
+require('specs').setup{
+    show_jumps  = true,
+    min_jump = 30,
+    popup = {
+        delay_ms = 0, -- delay before popup displays
+        inc_ms = 5, -- time increments used for fade/resize effects
+        blend = 0, -- starting blend, between 0-100 (fully transparent), see :h winblend
+        width = 70,
+        winhl = "PMenu",
+        -- Faders:
+        -- linear_fader ▁▂▂▃▃▄▄▅▅▆▆▇▇██
+        -- exp_fader ▁▁▁▁▂▂▂▃▃▃▄▄▅▆▇
+        -- pulse_fader ▁▂▃▄▅▆▇█▇▆▅▄▃▂▁
+        -- empty_fader ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+        fader = require('specs').exp_fader,
+        -- Resizers:
+        -- shrink_resizer ░░▒▒▓█████▓▒▒░░
+        -- slide_resizer ████▓▓▓▒▒▒▒░░░░
+        -- empty_resizer ███████████████
+        resizer = require('specs').shrink_resizer,
+    },
+    ignore_filetypes = {"NvimTree"},
+    ignore_buftypes = {
+        nofile = true,
+        "NvimTree"
+    },
+}
+-- --------------------------------------
 require 'colorizer'.setup {
   '*'; -- Highlight all files, but customize some others.
   '!vim'; -- Exclude vim from highlighting.
   -- Exclusion Only makes sense if '*' is specified!
 }
--- --------------------------------------
--- require("persistence").setup {
---     dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
---     options = { "buffers", "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
--- }
 -- --------------------------------------
 local tabnine = require('cmp_tabnine.config')
 tabnine:setup({
@@ -77,30 +94,6 @@ tabnine:setup({
     },
     show_prediction_strength = false;
 })
---
--- --------------------------------------
--- lua, default settings
--- require("better_escape").setup {
---     mapping = {"jk", "jj"}, -- a table with mappings to use
---     timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
---     clear_empty_lines = false, -- clear line after escaping if there is only whitespace
---     keys = "<Esc>", -- keys used for escaping, if it is a function will use the result everytime
---     -- example
---     -- keys = function()
---     --   return vim.fn.col '.' - 2 >= 1 and '<esc>l' or '<esc>'
---     -- end,
--- }
--- --------------------------------------
-require("focus").setup({
-    enable = false,
-    autoresize = true,
-    exclued_filetypes = {"toggleterm", "tagbar", "go"},
-    excluded_buftypes = {"help"},
-    width = 120,
-    minwidth = 80,
-    -- height = 40,
-    treewidth = 20,
-})
 -- --------------------------------------
 require("nvim-gps").setup({
   icons = {
@@ -114,57 +107,18 @@ require("nvim-gps").setup({
   }
 })
 -- --------------------------------------
-
--- require("neotest").setup({
---   adapters = {
---     -- require("neotest-python")({
---     --   dap = { justMyCode = false },
---     -- }),
---     -- require("neotest-plenary"),
---     require("neotest-vim-test")({
---       ignore_file_types = { "python", "vim", "lua" },
---     }),
---   },
--- })
-
--- -------------------------------------- Just use :mksession and :source Session
--- local opts = {
---   log_level = 'info',
---   auto_session_enable_last_session = false,
---   auto_session_root_dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
---   auto_session_enabled = false,
---   auto_save_enabled = nil,
---   auto_restore_enabled = nil,
---   auto_session_suppress_dirs = nil,
---   auto_session_use_git_branch = nil,
---   -- the configs below are lua only
---   bypass_session_save_file_types = nil
--- }
---
--- require('auto-session').setup(opts)
-
--- local plugin = "My Awesome Plugin"
---
--- vim.notify = require("notify")
--- vim.notify("This is an error message.\nSomething went wrong!", "error", {
---   title = plugin,
---   on_open = function()
---     vim.notify("Attempting recovery.", vim.lsp.log_levels.WARN, {
---       title = plugin,
---     })
---     local timer = vim.loop.new_timer()
---     timer:start(2000, 0, function()
---       vim.notify({ "Fixing problem.", "Please wait..." }, "info", {
---         title = plugin,
---         timeout = 3000,
---         on_close = function()
---           vim.notify("Problem solved", nil, { title = plugin })
---           vim.notify("Error code 0x0395AF", 1, { title = plugin })
---         end,
---       })
---     end)
---   end,
--- })
+require('nvim-cursorline').setup {
+  cursorline = {
+    enable = false,
+    timeout = 300,
+    number = false,
+  },
+  cursorword = {
+    enable = true,
+    min_length = 3,
+    hl = { underline = true },
+  }
+}
 -- --------------------------------------
 -- --------------------------------------
 -- --------------------------------------
