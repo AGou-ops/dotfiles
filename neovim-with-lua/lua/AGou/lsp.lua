@@ -52,7 +52,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 -- -------------------------- common lsp server ----------------------
-local servers = { "bashls", "sqls" }
+local servers = { "bashls", "sqls", "dockerls" }
 ---------------------------------------------------------------
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup({
