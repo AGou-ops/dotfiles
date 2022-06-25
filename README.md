@@ -34,7 +34,7 @@ nvim +PlugInstall       # 等待安装完毕即可.
 
 - Neovim dashboard
 
-![image](https://user-images.githubusercontent.com/57939102/154175393-72f307e2-710d-46b8-930e-0e8f47036ace.png)
+<img width="1548" alt="image" src="https://user-images.githubusercontent.com/57939102/175773276-d3e45689-44f6-4b24-ba9a-2747226eb2ab.png">
 
 
 - Tmux
