@@ -31,7 +31,8 @@ local on_attach = function(_, bufnr)
   map(bufnr, "n", "gx", "<cmd>Lspsaga code_action<cr>", opts)
   map(bufnr, "x", "gx", ":<c-u>Lspsaga range_code_action<cr>", opts)
 
-  map(bufnr, "n", "gf", "<cmd>lua require'lspsaga.provider'.lsp_finder()<cr>", opts)
+  map(bufnr, "n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts)
+  -- map(bufnr, "n", "gf", "<cmd>lua require'lspsaga.provider'.lsp_finder()<cr>", opts)
   map(bufnr, "n", "K", "<cmd>Lspsaga hover_doc<cr>", opts)
   map(bufnr, "n", "go", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
   -- use goto preview instead as below.

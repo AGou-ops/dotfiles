@@ -14,7 +14,7 @@ require('AGou.nvim-autopairs')
 require('AGou.nvim-lspsaga')
 require('AGou.nvim-telescope')
 require('AGou.nvim-toggleterm')
-require('AGou.nvim-neoscroll')
+require('AGou.nvim-cinnamon')
 require('AGou.nvim-whichkey')
 require('AGou.nvim-todo-comments')
 require('AGou.nvim-diffview')
@@ -120,6 +120,23 @@ require('nvim-cursorline').setup {
   }
 }
 -- --------------------------------------
+require("autosave").setup(
+    {
+        enabled = true,
+        execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
+        events = {"InsertLeave", "TextChanged"},
+        conditions = {
+            exists = true,
+            filename_is_not = {},
+            filetype_is_not = {},
+            modifiable = true
+        },
+        write_all_buffers = false,
+        on_off_commands = true,
+        clean_command_line_interval = 0,
+        debounce_delay = 135
+    }
+)
 -- --------------------------------------
 -- --------------------------------------
 -- --------------------------------------

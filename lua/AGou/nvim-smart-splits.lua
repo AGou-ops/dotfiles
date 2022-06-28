@@ -1,34 +1,45 @@
-require('smart-splits').setup({
+require("smart-splits").setup({
   -- Ignored filetypes (only while resizing)
   ignored_filetypes = {
-    'nofile',
-    'quickfix',
-    'prompt',
+    "nofile",
+    "quickfix",
+    "prompt",
   },
   -- Ignored buffer types (only while resizing)
-  ignored_buftypes = { 'NvimTree' },
+  ignored_buftypes = { "NvimTree" },
   -- when moving cursor between splits left or right,
   -- place the cursor on the same row of the *screen*
   -- regardless of line numbers. False by default.
   -- Can be overridden via function parameter, see Usage.
   move_cursor_same_row = false,
-  -- key to exit persistent resize mode
-  resize_mode_quit_key = '<ESC>',
+  -- resize mode options
+  resize_mode = {
+    -- key to exit persistent resize mode
+    quit_key = "<ESC>",
+    -- set to true to silence the notifications
+    -- when entering/exiting persistent resize mode
+    silent = false,
+    -- must be functions, they will be executed when
+    -- entering or exiting the resize mode
+    hooks = {
+      on_enter = nil,
+      on_leave = nil,
+    },
+  },
   -- set to true to silence the notifications
   -- when entering/exiting persistent resize mode
   resize_mode_silent = false,
 })
-
 
 local amount = 2
 -- local same_row = 2
 -- resizing splits
 -- amount defaults to 3 if not specified
 -- use absolute values, no + or -
-require('smart-splits').resize_up(amount)
-require('smart-splits').resize_down(amount)
-require('smart-splits').resize_left(amount)
-require('smart-splits').resize_right(amount)
+require("smart-splits").resize_up(amount)
+require("smart-splits").resize_down(amount)
+require("smart-splits").resize_left(amount)
+require("smart-splits").resize_right(amount)
 -- moving between splits
 -- pass same_row as a boolean to override the default
 -- for the move_cursor_same_row config option.
