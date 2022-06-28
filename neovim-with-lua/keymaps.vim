@@ -42,7 +42,7 @@ inoremap jk <ESC>
 inoremap <C-d> <DEL>
 " inoremap kj <ESC>
 
-nnoremap <C-o> o<C-u>
+nnoremap <C-i> o<C-u>
 
 nnoremap ; :
 vmap ; :
@@ -157,8 +157,8 @@ nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 "
 " nnoremap f <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>
 " nnoremap F <cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>
-nnoremap f <cmd>HopWord<cr>
-nnoremap F <cmd>HopWord<cr>
+nnoremap t <cmd>HopWord<cr>
+nnoremap T <cmd>HopWord<cr>
 
 " ========= vim-translate settings ========
 " more settings: https://github.com/voldikss/vim-translator
