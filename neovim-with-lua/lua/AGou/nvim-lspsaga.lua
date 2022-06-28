@@ -47,3 +47,38 @@ lspsaga.setup { -- defaults ...
     diagnostic_message_format = "%m %c",
     highlight_prefix = true,
 }
+
+
+
+-- local saga = require 'lspsaga'
+--
+-- saga.init_lsp_saga{
+--     -- Error,Warn,Info,Hint
+--     diagnostic_header_icon = {' ',' ',' ','ﴞ '},
+--     -- use emoji lightbulb in default
+--     code_action_icon = '💡',
+--     -- if true can press number to execute the codeaction in codeaction window
+--     code_action_num_shortcut = true,
+--     -- same as nvim-lightbulb but async
+--     code_action_lightbulb = {
+--         enable = true,
+--         sign = true,
+--         sign_priority = 20,
+--         virtual_text = true,
+--     },
+--     finder_definition_icon = '  ',
+--     finder_reference_icon = '  ',
+--     max_preview_lines = 10, -- preview lines of lsp_finder and definition preview
+--     finder_action_keys = {
+--         open = 'o', vsplit = 's',split = 'i',quit = 'q',scroll_down = '<C-f>', scroll_up = '<C-b>' -- quit can be a table
+--     },
+--     code_action_keys = {
+--         quit = 'q',exec = '<CR>'
+--     },
+--     -- rename_action_keys = {
+--     --     quit = 'q',exec = '<CR>'  -- quit can be a table
+--     -- },
+--     definition_preview_icon = '  ',
+--     border_style = "single", -- "single" "double" "round" "plus"
+--     rename_prompt_prefix = '➤',
+-- }
