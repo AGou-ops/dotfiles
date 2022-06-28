@@ -22,7 +22,8 @@ Plug 'xiyaowong/nvim-transparent'
 " -- cmdline beauty
 Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 " -- dashboard
-Plug 'goolord/alpha-nvim'
+" Plug 'goolord/alpha-nvim'
+Plug 'AGou-ops/dashboard-nvim'
 
 " -- Easily speed up your neovim startup time!
 Plug 'dstein64/vim-startuptime'
@@ -37,7 +38,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " :w !sudo tee % > /dev/null not working in neovim, fuckkkkk.
 " -- force write a file use root.
 Plug 'lambdalisue/suda.vim'
-Plug '907th/vim-auto-save'
+Plug 'Pocco81/AutoSave.nvim'
 Plug 'preservim/tagbar', { 'for': ['go', 'md'] }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
@@ -64,7 +65,8 @@ Plug 'yamatsum/nvim-cursorline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sebdah/vim-delve'
 Plug 'petertriho/nvim-scrollbar'
-Plug 'karb94/neoscroll.nvim'
+" -- Smooth scrolling, all keymaps here: https://github.com/declancm/cinnamon.nvim#keymaps
+Plug 'declancm/cinnamon.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'mbbill/undotree'
@@ -129,10 +131,12 @@ Plug 'saadparwaiz1/cmp_luasnip'
 " Plug 'hrsh7th/cmp-vsnip'
 " Plug 'uga-rosa/cmp-dictionary'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+" Plug 'github/copilot.vim'
 Plug 'octaltree/cmp-look'
 
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tami5/lspsaga.nvim'
+" Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 " -- quickly generate go test file.
 Plug 'buoto/gotests-vim'
 
@@ -551,6 +555,7 @@ autocmd FileType go nmap <Leader>gt :!go test .<CR>
 autocmd FileType html nmap <Leader>rh :!npx http-server .<CR>
 autocmd FileType markdown nnoremap <C-b> ciw****<left><Esc>P
 autocmd FileType markdown vnoremap <C-b> c****<left><Esc>P
+autocmd FileType tex nmap <Leader>rr :!miktex-xelatex resume_photo.tex && open -a "Google Chrome" resume_photo.pdf<CR>
 
 " ============================== END Autocmd settings ==============================
 
