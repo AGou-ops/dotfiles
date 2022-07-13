@@ -68,7 +68,12 @@ nnoremap <Leader>qd daW"=substitute(@@,"'\\\|\"","","g")<CR>P
 
 " ========= build-in mksession settings ========
 nnoremap <leader>ms <cmd>wa<CR>:mksession! ~/.config/nvim/sessions/
-nnoremap <leader>ls <cmd>wa<CR>:source ~/.config/nvim/sessions/
+" nnoremap <leader>ls <cmd>wa<CR>:source ~/.config/nvim/sessions/
+
+" ========= auto-sessions settings ========
+nnoremap <leader>ss <cmd>SaveSession<CR>
+nnoremap <leader>ls <cmd>RestoreSession<CR>
+nnoremap <leader>ds <cmd>DeleteSession<CR>
 
 " nnoremap <leader>sl <cmd>lua require('telescope').extensions.possession.list()<CR>
 
@@ -131,6 +136,7 @@ endfunction
 command! ProjectFiles execute s:find_files()
 " nnoremap <leader>fG <cmd>Telescope find_files cwd=s:find_git_root()<cr>
 nnoremap <leader>fg <cmd>ProjectFiles<cr>
+" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 
 nnoremap <leader>fB <cmd>Telescope buffers<cr>
 nnoremap <leader>fG <cmd>LeaderfRgInteractive<CR>
