@@ -66,7 +66,7 @@ augroups.prose = {
 augroups.quit = {
   quit_with_q = {
     event = "FileType",
-    pattern = {"checkhealth", "fugitive", "git*", "help", "lspinfo"},
+    pattern = {"checkhealth", "fugitive", "git*", "help", "lspinfo", "startuptime"},
     callback = function ()
       -- vim.api.nvim_win_close(0, true) -- TODO: Replace vim command with this
       vim.api.nvim_buf_set_keymap(0, "n", "q", "<cmd>close!<cr>", {noremap = true, silent = true})

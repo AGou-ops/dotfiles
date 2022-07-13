@@ -81,8 +81,8 @@ cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
       -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
       -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     end,
@@ -130,10 +130,9 @@ cmp.setup({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
-    ["<CR>"] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+   ['<CR>'] = cmp.mapping.confirm {
+        select = true,
+    },
     ["<Tab>"] = function(fallback) -- see GH-231, GH-286
       if cmp.visible() then
         cmp.select_next_item()
@@ -155,7 +154,7 @@ cmp.setup({
     { name = "nvim_lsp", priority = 100 }, -- Keep LSP results on top.
     { name = "nvim_lua" },
     -- { name = 'vsnip' },
-    { name = "luasnip" },
+    -- { name = "luasnip" },
     -- { name = "buffer" ,keyword_pattern = [[\k]] ,priority = 90},
     { name = "cmp_tabnine", priority = 15 },
     { name = "path" },
