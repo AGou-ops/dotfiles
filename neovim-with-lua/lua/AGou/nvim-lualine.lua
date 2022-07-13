@@ -64,6 +64,7 @@ require("lualine").setup({
         -- for other components. Terrible name any suggestions?
       },
       { gps.get_location, cond = gps.is_available },
+      { require('auto-session-library').current_session_name },
     },
     lualine_x = {
       "encoding",
@@ -97,6 +98,7 @@ require("lualine").setup({
         shorting_target = 30, -- Shortens path to leave 40 space in the window
         -- for other components. Terrible name any suggestions?
       },
+      { require('auto-session-library').current_session_name },
     },
     lualine_x = { "location" },
     lualine_y = {},
