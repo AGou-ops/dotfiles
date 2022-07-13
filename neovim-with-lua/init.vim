@@ -24,6 +24,7 @@ Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 " -- dashboard
 " Plug 'goolord/alpha-nvim'
 Plug 'AGou-ops/dashboard-nvim'
+" Plug 'glepnir/dashboard-nvim'
 
 " -- Easily speed up your neovim startup time!
 Plug 'dstein64/vim-startuptime'
@@ -58,7 +59,7 @@ Plug 'nvim-lua/plenary.nvim'
 
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
-Plug 'nvim-telescope/telescope-dap.nvim', { 'for': 'go' }
+Plug 'nvim-telescope/telescope-dap.nvim'
 
 " -- show curosr underline.
 Plug 'yamatsum/nvim-cursorline'
@@ -72,7 +73,7 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'mbbill/undotree'
 " -- session manager, not used, just use build-in :mks
 " Plug 'folke/persistence.nvim'
-" Plug 'rmagatti/auto-session'
+Plug 'rmagatti/auto-session'
 " Plug 'jedrzejboczar/possession.nvim'
 
 Plug 'folke/which-key.nvim'
@@ -105,6 +106,7 @@ Plug 'booperlv/nvim-gomove'
 Plug 'svban/YankAssassin.vim'
 " -- BUG....
 " Plug 'b0o/incline.nvim'
+Plug 'kylechui/nvim-surround'
 
 " ========= programming tools here. ==========
 
@@ -122,12 +124,12 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
 " Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-calc'
+" Plug 'hrsh7th/cmp-calc'
 Plug 'hrsh7th/cmp-emoji'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
-Plug 'L3MON4D3/LuaSnip'
-Plug 'saadparwaiz1/cmp_luasnip'
-" Plug 'hrsh7th/vim-vsnip'
+" Plug 'L3MON4D3/LuaSnip'
+" Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'hrsh7th/vim-vsnip'
 " Plug 'hrsh7th/cmp-vsnip'
 " Plug 'uga-rosa/cmp-dictionary'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
@@ -141,17 +143,18 @@ Plug 'tami5/lspsaga.nvim'
 Plug 'buoto/gotests-vim'
 
 " -- debug tools
-Plug 'mfussenegger/nvim-dap', { 'for': ['go'] }
-Plug 'rcarriga/nvim-dap-ui', { 'for': ['go'] }
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
 
 Plug 'sindrets/diffview.nvim'
-Plug 'folke/trouble.nvim', { 'for': ['go'] }
+Plug 'folke/trouble.nvim'
 Plug 'rmagatti/goto-preview', { 'for': ['go'] }
+" --  async run a command
+Plug 'skywind3000/asyncrun.vim'
 
 call plug#end()
 
 " ============================== END Plugin packages ==============================
-
 
 " ============================== Pre settings ==============================
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
@@ -549,13 +552,15 @@ fun! <SID>StripTrailingWhitespaces()
 endfun
 autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
-autocmd FileType go nmap <Leader>rr :!go run %<CR>
-autocmd FileType go nmap <Leader>r :!go run .<CR>
-autocmd FileType go nmap <Leader>gt :!go test .<CR>
-autocmd FileType html nmap <Leader>rh :!npx http-server .<CR>
+" use async terminal instead
+autocmd FileType go nmap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=10 go run %<CR>
+autocmd FileType go nmap <Leader>r :AsyncRun -mode=term -pos=bottom -rows=10 go run .<CR>
+autocmd FileType go nmap <Leader>gt :AsyncRun -mode=term -pos=bottom -rows=10 go test .<CR>
+autocmd FileType go nmap <Leader>gb :AsyncRun -mode=term -pos=bottom -rows=10 go build .<CR>
+autocmd FileType html nmap <Leader>rh :AsyncRun -mode=term -pos=bottom -rows=10 npx http-server .<CR>
 autocmd FileType markdown nnoremap <C-b> ciw****<left><Esc>P
 autocmd FileType markdown vnoremap <C-b> c****<left><Esc>P
-autocmd FileType tex nmap <Leader>rr :!miktex-xelatex resume_photo.tex && open -a "Google Chrome" resume_photo.pdf<CR>
+autocmd FileType tex nmap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=10 miktex-xelatex resume_photo.tex && open -a "Google Chrome" resume_photo.pdf<CR>
 
 " ============================== END Autocmd settings ==============================
 
