@@ -87,7 +87,7 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 set completeopt=longest,menu
-" 
+"
 " au FileType c,cpp,python,vim,go set textwidth=80
 " set colorcolumn=81
 
@@ -150,5 +150,3 @@ let g:netrw_liststyle = 3
 " let g:netrw_banner = 0
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-
-
