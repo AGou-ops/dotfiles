@@ -44,19 +44,16 @@ nvim +PlugInstall       # 等待安装完毕即可.
 
 - Golang
 
+<img width="1548" alt="image" src="https://user-images.githubusercontent.com/57939102/180121935-82d55af5-4488-4d2d-a927-d8b08a9459fb.png">
+
 ![image](https://user-images.githubusercontent.com/57939102/169196637-252f0727-768c-437e-a019-4f0cedef4136.png)
 
 
-![image](https://user-images.githubusercontent.com/57939102/148733814-f00d0566-b364-4f86-8bb9-b894a324f0f1.png)
 
 ![image](https://user-images.githubusercontent.com/57939102/148733939-c4b1c808-d7dc-484c-ac74-5b6ccdf2ea55.png)
 
 ![image](https://user-images.githubusercontent.com/57939102/148733986-49d660a8-6570-421e-8afe-1503c94b6fef.png)
 
-
-- Lua
-
-![image](https://user-images.githubusercontent.com/57939102/148733899-e891a7cf-e0ca-4864-b501-df436ba2f224.png)
 
 
 ## 仓库内容
