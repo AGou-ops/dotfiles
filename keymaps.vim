@@ -110,6 +110,7 @@ nnoremap <leader>ob <cmd>JABSOpen<cr>
 nnoremap <silent> <F4> :lua require'dapui'.toggle()<CR>
 
 nnoremap <silent> <F5> <Cmd>lua require'dap'.continue()<CR>
+nnoremap <silent> <F5> <Cmd>lua require'dap'.terminate()<CR>
 nnoremap <silent> <F9> <Cmd>lua require'dap'.toggle_breakpoint()<CR>
 nnoremap <silent> <F10> <Cmd>lua require'dap'.step_over()<CR>
 nnoremap <silent> <F11> <Cmd>lua require'dap'.step_into()<CR>
@@ -212,8 +213,8 @@ nnoremap <TAB> %
 " nnoremap <silent>no <cmd>noh<CR>
 
 " use tab/shift tab to switch coc or native lsp cmp
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 " cmdline quickly go to head or tail
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
