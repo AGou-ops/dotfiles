@@ -1,4 +1,4 @@
-" AGou-ops VIMRC FILE         -- Update Date: 2022年05月09日21:06:28
+" AGou-ops VIMRC FILE         -- Update Date: 2022-07-21 11:02:19
 set nocompatible              " be iMproved, required
 
 " ============================== Plugin packages ==============================
@@ -39,7 +39,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " :w !sudo tee % > /dev/null not working in neovim, fuckkkkk.
 " -- force write a file use root.
 Plug 'lambdalisue/suda.vim'
-Plug 'Pocco81/AutoSave.nvim'
+" -- some bug here.
+" Plug 'Pocco81/AutoSave.nvim'
+Plug '907th/vim-auto-save'
 Plug 'preservim/tagbar', { 'for': ['go', 'md'] }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
@@ -63,8 +65,8 @@ Plug 'nvim-telescope/telescope-dap.nvim'
 
 " -- show curosr underline.
 Plug 'yamatsum/nvim-cursorline'
-Plug 'ryanoasis/vim-devicons'
-Plug 'sebdah/vim-delve'
+" Plug 'ryanoasis/vim-devicons'
+" Plug 'sebdah/vim-delve'
 Plug 'petertriho/nvim-scrollbar'
 " -- Smooth scrolling, all keymaps here: https://github.com/declancm/cinnamon.nvim#keymaps
 Plug 'declancm/cinnamon.nvim'
@@ -127,9 +129,9 @@ Plug 'hrsh7th/nvim-cmp'
 " Plug 'hrsh7th/cmp-calc'
 Plug 'hrsh7th/cmp-emoji'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
-" Plug 'L3MON4D3/LuaSnip'
+Plug 'L3MON4D3/LuaSnip'
 " Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'hrsh7th/vim-vsnip'
+" Plug 'hrsh7th/vim-vsnip'
 " Plug 'hrsh7th/cmp-vsnip'
 " Plug 'uga-rosa/cmp-dictionary'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
@@ -137,8 +139,7 @@ Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'octaltree/cmp-look'
 
 Plug 'lewis6991/gitsigns.nvim'
-Plug 'tami5/lspsaga.nvim'
-" Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
+Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 " -- quickly generate go test file.
 Plug 'buoto/gotests-vim'
 
@@ -156,7 +157,7 @@ call plug#end()
 
 " ============================== END Plugin packages ==============================
 
-" ============================== Pre settings ==============================
+" " ============================== Pre settings ==============================
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
@@ -204,9 +205,6 @@ endif
 " ========= gruvbox_material settings =======
 " https://github.com/sainnhe/gruvbox-material/blob/master/doc/gruvbox-material.txt
         " Important!!
-if has('termguicolors')
-  set termguicolors
-endif
 " For dark version.
 set background=dark
 " Set contrast.
@@ -220,7 +218,6 @@ let g:gruvbox_material_diagnostic_text_highlight = 1
 " let g:gruvbox_material_diagnostic_line_highlight = 1
 let g:gruvbox_material_diagnostic_virtual_text = "colored"
 let g:gruvbox_material_sign_column_background = 'none'
-
 
 colorscheme gruvbox-material
 
@@ -237,11 +234,15 @@ hi TSKeywordReturn ctermfg=167 gui=italic guifg=#ea6962
 hi NormalFloat ctermfg=223 ctermbg=237 guifg=#ddc7a1 guibg=#3c3836
 " hi FocusedSymbol cterm=italic ctermfg=4 ctermbg=11 gui=bold,italic guifg=#181A1A guibg=#77814C
 
-
 " ============================== END colorscheme settings ==============================
 "
 "
 " ============================== Plugins settings ==============================
+
+" ========= autosave settings ==========
+let g:auto_save = 1  " enable AutoSave on Vim startup
+let g:auto_save_events = ["InsertLeave", "TextChanged"]
+let g:auto_save_write_all_buffers = 1  " write all open buffers as if you would use :wa
 
 " ========= LeaderF settings ==========
 let g:Lf_HideHelp = 1
@@ -299,8 +300,8 @@ let g:startuptime_tries = 3
 set timeoutlen=200
 
 " ========= tagbar settings ==========
-let g:tagbar_ctags_bin='/opt/homebrew/Cellar/ctags/5.8_2/bin/ctags'
-" autocmd VimEnter *.go  Tagbar
+let g:tagbar_ctags_bin='/opt/homebrew/Cellar/universal-ctags/p5.9.20220717.0/bin/ctags'
+autocmd VimEnter *.go  Tagbar
 " autocmd VimEnter *.md  Tagbar
 let g:tagbar_show_tag_count = 1
 let g:tagbar_wrap = 1
@@ -413,8 +414,6 @@ set termguicolors " this variable must be enabled for colors to be applied prope
 " a list of groups can be found at `:help nvim_tree_highlight`
 " highlight NvimTreeFolderIcon guibg=blue
 
-let g:auto_save = 1  " enable AutoSave on Vim startup
-
 let g:instant_markdown_slow = 1
 
 set t_Co=256
@@ -457,29 +456,24 @@ autocmd FileChangedShellPost *
             \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 " --------------------------------------------------------------------------------------------
 
-" au FocusLost * :set norelativenumber number
-" au FocusGained * :set relativenumber
+" augroup numberToggle
+"     autocmd!
+"     autocmd InsertEnter,CmdlineEnter,FocusLost * :set norelativenumber number    " use absolute line number.
+"     autocmd InsertLeave,CmdLineLeave,FocusGained * :set relativenumber
+"     au CmdlineEnter * :redraw!
+" augroup END
 autocmd InsertEnter * :set norelativenumber number    " use absolute line number.
 autocmd InsertLeave * :set relativenumber
-" function! NumberToggle()
-"     if(&relativenumber == 1)
-"         set norelativenumber number
-"     else
-"         set relativenumber
-"     endif
-" endfunc
-" remap <C-n> to switch between relative and absolute line number.
-" nnoremap <C-n> :call NumberToggle()<cr>
 
 " ============= Vundle Initialization ===============
 " This loads all the plugins specified in ~/.vim/vundles.vim
 " Use Vundle plugin to manage all other plugins
-if filereadable(expand("~/.vimrc.bundles"))
-    source ~/.vimrc.bundles
-elseif filereadable(expand("~/.config/nvim/vimrc.bundles")) " neovim
-    source ~/.config/nvim/vimrc.bundles
-endif
-au BufNewFile,BufRead *.vundle set filetype=vim
+" if filereadable(expand("~/.vimrc.bundles"))
+"     source ~/.vimrc.bundles
+" elseif filereadable(expand("~/.config/nvim/vimrc.bundles")) " neovim
+"     source ~/.config/nvim/vimrc.bundles
+" endif
+" au BufNewFile,BufRead *.vundle set filetype=vim
 
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
@@ -554,6 +548,7 @@ autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,pe
 
 " use async terminal instead
 autocmd FileType go nmap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=10 go run %<CR>
+autocmd FileType go nmap <Leader>rR :AsyncRun -mode=term -pos=bottom -rows=85 go run %<CR>
 autocmd FileType go nmap <Leader>r :AsyncRun -mode=term -pos=bottom -rows=10 go run .<CR>
 autocmd FileType go nmap <Leader>gt :AsyncRun -mode=term -pos=bottom -rows=10 go test .<CR>
 autocmd FileType go nmap <Leader>gb :AsyncRun -mode=term -pos=bottom -rows=10 go build .<CR>
