@@ -79,6 +79,7 @@ nnoremap <leader>ds <cmd>DeleteSession<CR>
 
 " ========= nvimtree settings ========
 nnoremap <C-n> :NvimTreeToggle<CR>
+" nnoremap <C-n> :Neotree<CR>
 
 " ========= smart-splits settings ========
 " recommended mappings
@@ -207,7 +208,7 @@ nnoremap p ]p
 nnoremap P [p
 nnoremap ( %
 nnoremap ) %
-nnoremap <TAB> %
+" nnoremap <TAB> %
 
 " unset highlight
 " nnoremap <silent>no <cmd>noh<CR>

@@ -165,6 +165,7 @@ cmp.setup({
       name = "look",
       priority = 101,
       keyword_length = 5,
+      max_item_count = 5,
       option = {
         convert_case = true,
         loud = true,
@@ -205,7 +206,7 @@ cmp.setup({
   },
 })
 
-cmp.setup.filetype({ 'TelescopePrompt'},{
+cmp.setup.filetype({ 'TelescopePrompt', 'neo-tree'},{
     sources = {}
 })
 

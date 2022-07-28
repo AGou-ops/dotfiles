@@ -28,8 +28,9 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
   reload_on_bufenter = true,
   respect_buf_cwd = false,
   view = {
-    width = 32,
-    height = 30,
+    -- width = 32,
+    -- height = 30,
+    adaptive_size = true,
     hide_root_folder = false,
     side = "left",
     preserve_window_proportions = false,
@@ -44,6 +45,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
         { key = "s", cb = tree_cb("split") },
         { key = "h", cb = tree_cb "close_node" },
         { key = "o", cb = tree_cb("system_open") },
+        -- { key = "u", action = "dir_up" },
       },
     },
   },
@@ -54,12 +56,13 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
     highlight_opened_files = "none",
     root_folder_modifier = ":~",
     indent_markers = {
-      enable = true,
-      icons = {
-        corner = "└ ",
-        edge = "│ ",
-        none = "  ",
-      },
+        enable = true,
+        icons = {
+            corner = "└",
+            edge = "│",
+            item = "│",
+            none = " ",
+        },
     },
     icons = {
       webdev_colors = true,

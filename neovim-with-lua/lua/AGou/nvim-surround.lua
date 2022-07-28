@@ -1,6 +1,6 @@
 require("nvim-surround").setup({
     keymaps = { -- vim-surround style keymaps
-        insert = "ys",
+        -- insert = "ys",
         visual = "Q",
         delete = "ds",
         change = "cs",
