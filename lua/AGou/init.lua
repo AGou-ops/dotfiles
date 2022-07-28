@@ -14,7 +14,7 @@ require('AGou.nvim-autopairs')
 require('AGou.nvim-lspsaga')
 require('AGou.nvim-telescope')
 require('AGou.nvim-toggleterm')
-require('AGou.nvim-cinnamon')
+require('AGou.nvim-neoscroll')
 require('AGou.nvim-whichkey')
 require('AGou.nvim-todo-comments')
 require('AGou.nvim-diffview')
@@ -72,9 +72,11 @@ require('specs').setup{
     ignore_filetypes = {"NvimTree"},
     ignore_buftypes = {
         nofile = true,
-        "NvimTree"
+        "NvimTree",
+        "go"
     },
 }
+
 -- --------------------------------------
 require 'colorizer'.setup {
   '*'; -- Highlight all files, but customize some others.
@@ -92,6 +94,7 @@ tabnine:setup({
     ignored_file_types = { -- default is not to ignore
         -- TelescopePrompt = true,
         -- yaml = true
+        NvimTree = true,
     },
     show_prediction_strength = false;
 })
@@ -120,6 +123,11 @@ require('nvim-cursorline').setup {
     hl = { underline = true },
   }
 }
+-- --------------------------------------
+-- require("lsp_lines").setup()
+-- vim.diagnostic.config({
+--   virtual_text = false,
+-- })
 -- --------------------------------------
 -- require("autosave").setup(
 --     {

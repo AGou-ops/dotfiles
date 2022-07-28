@@ -1,6 +1,5 @@
 " AGou-ops VIMRC FILE         -- Update Date: 2022-07-21 11:02:19
 set nocompatible              " be iMproved, required
-
 " ============================== Plugin packages ==============================
 " Begin Plug, Depends On https://github.com/junegunn/vim-plug
 
@@ -45,6 +44,8 @@ Plug '907th/vim-auto-save'
 Plug 'preservim/tagbar', { 'for': ['go', 'md'] }
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
+" Plug 'MunifTanjim/nui.nvim'
+" Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
 Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 Plug 'famiu/bufdelete.nvim'
 Plug 'windwp/nvim-autopairs'
@@ -68,8 +69,7 @@ Plug 'yamatsum/nvim-cursorline'
 " Plug 'ryanoasis/vim-devicons'
 " Plug 'sebdah/vim-delve'
 Plug 'petertriho/nvim-scrollbar'
-" -- Smooth scrolling, all keymaps here: https://github.com/declancm/cinnamon.nvim#keymaps
-Plug 'declancm/cinnamon.nvim'
+Plug 'karb94/neoscroll.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'mbbill/undotree'
@@ -149,6 +149,7 @@ Plug 'rcarriga/nvim-dap-ui'
 
 Plug 'sindrets/diffview.nvim'
 Plug 'folke/trouble.nvim'
+" Plug 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
 Plug 'rmagatti/goto-preview', { 'for': ['go'] }
 " --  async run a command
 Plug 'skywind3000/asyncrun.vim'
@@ -301,7 +302,7 @@ set timeoutlen=200
 
 " ========= tagbar settings ==========
 let g:tagbar_ctags_bin='/opt/homebrew/Cellar/universal-ctags/p5.9.20220717.0/bin/ctags'
-autocmd VimEnter *.go  Tagbar
+" autocmd VimEnter *.go  Tagbar
 " autocmd VimEnter *.md  Tagbar
 let g:tagbar_show_tag_count = 1
 let g:tagbar_wrap = 1
@@ -552,10 +553,11 @@ autocmd FileType go nmap <Leader>rR :AsyncRun -mode=term -pos=bottom -rows=85 go
 autocmd FileType go nmap <Leader>r :AsyncRun -mode=term -pos=bottom -rows=10 go run .<CR>
 autocmd FileType go nmap <Leader>gt :AsyncRun -mode=term -pos=bottom -rows=10 go test .<CR>
 autocmd FileType go nmap <Leader>gb :AsyncRun -mode=term -pos=bottom -rows=10 go build .<CR>
+autocmd FileType * nmap <Leader>ta :AsyncRun -mode=term -pos=bottom -rows=10 zsh<CR>
 autocmd FileType html nmap <Leader>rh :AsyncRun -mode=term -pos=bottom -rows=10 npx http-server .<CR>
 autocmd FileType markdown nnoremap <C-b> ciw****<left><Esc>P
 autocmd FileType markdown vnoremap <C-b> c****<left><Esc>P
-autocmd FileType tex nmap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=10 miktex-xelatex resume_photo.tex && open -a "Google Chrome" resume_photo.pdf<CR>
+autocmd FileType tex nmap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=10 miktex-xelatex % && open -a "Google Chrome" resume_photo.pdf<CR>
 
 " ============================== END Autocmd settings ==============================
 
