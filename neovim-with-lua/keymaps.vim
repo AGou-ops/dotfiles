@@ -209,6 +209,8 @@ nnoremap P [p
 nnoremap ( %
 nnoremap ) %
 " nnoremap <TAB> %
+" ???
+inoremap <TAB> <TAB>
 
 " unset highlight
 " nnoremap <silent>no <cmd>noh<CR>
