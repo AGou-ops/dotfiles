@@ -62,7 +62,7 @@ Plug 'nvim-lua/plenary.nvim'
 
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
-Plug 'nvim-telescope/telescope-dap.nvim'
+" Plug 'nvim-telescope/telescope-dap.nvim'
 
 " -- show curosr underline.
 Plug 'yamatsum/nvim-cursorline'
@@ -115,7 +115,8 @@ Plug 'kylechui/nvim-surround'
 Plug 'dense-analysis/ale'
 " lsp server
 Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/nvim-lsp-installer'
+" Plug 'williamboman/nvim-lsp-installer'
+Plug 'williamboman/mason.nvim'
 " -- lsp beauty.
 Plug 'onsails/lspkind-nvim'
 
@@ -149,7 +150,7 @@ Plug 'rcarriga/nvim-dap-ui'
 
 Plug 'sindrets/diffview.nvim'
 Plug 'folke/trouble.nvim'
-" Plug 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
+Plug 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
 Plug 'rmagatti/goto-preview', { 'for': ['go'] }
 " --  async run a command
 Plug 'skywind3000/asyncrun.vim'
@@ -243,7 +244,7 @@ hi NormalFloat ctermfg=223 ctermbg=237 guifg=#ddc7a1 guibg=#3c3836
 " ========= autosave settings ==========
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
-let g:auto_save_write_all_buffers = 1  " write all open buffers as if you would use :wa
+let g:auto_save_write_all_buffers = 0  " write all open buffers as if you would use :wa
 
 " ========= LeaderF settings ==========
 let g:Lf_HideHelp = 1
@@ -281,8 +282,6 @@ let g:Lf_ShortcutF = "<leader>ff"
 " "   autocmd BufWritePre * undojoin | Neoformat
 "   autocmd BufWritePost * call Neoformat()
 " augroup END
-
-" autocmd BufWritePre *.go :Neoformat
 
 " ========= vim-translator settings ==========
 let g:translator_target_lang = 'zh'
