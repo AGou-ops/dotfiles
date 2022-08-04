@@ -30,10 +30,12 @@ require("AGou.nvim-jabs")
 require("AGou.nvim-dap")
 require("AGou.nvim-gomove")
 require("AGou.nvim-surround")
+require("AGou.nvim-incline")
 -- --------------------------------------
 
 -- -------------------------- 其他简单lua插件配置项 --------------------------------------------
 --
+require("lsp_lines").setup()
 require("hop").setup({})
 -- --------------------------------------
 -- full hotkeys usage: https://github.com/numToStr/Comment.nvim#-usage
@@ -124,11 +126,6 @@ require("nvim-cursorline").setup({
   },
 })
 -- --------------------------------------
-require("lsp_lines").setup()
--- Disable virtual_text since it's redundant due to lsp_lines.
-vim.diagnostic.config({
-  virtual_text = false,
-})
 -- --------------------------------------
 -- require("auto-save").setup({
 --

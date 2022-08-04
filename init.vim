@@ -19,7 +19,7 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'xiyaowong/nvim-transparent'
 " -- cmdline beauty
-Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 " -- dashboard
 " Plug 'goolord/alpha-nvim'
 Plug 'AGou-ops/dashboard-nvim'
@@ -106,8 +106,7 @@ Plug 'Yggdroot/LeaderF'
 Plug 'booperlv/nvim-gomove'
 " -- highlight when using yank
 Plug 'svban/YankAssassin.vim'
-" -- BUG....
-" Plug 'b0o/incline.nvim'
+Plug 'b0o/incline.nvim'
 Plug 'kylechui/nvim-surround'
 
 " ========= programming tools here. ==========
@@ -118,23 +117,18 @@ Plug 'neovim/nvim-lspconfig'
 " Plug 'williamboman/nvim-lsp-installer'
 Plug 'williamboman/mason.nvim'
 " -- lsp beauty.
-Plug 'onsails/lspkind-nvim'
+" Plug 'onsails/lspkind-nvim'
 
 " -- nvim-cmp and its plugins.
 " hrsh7th👍：https://github.com/hrsh7th
-Plug 'hrsh7th/cmp-nvim-lsp'
-" Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-" Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-" Plug 'hrsh7th/cmp-calc'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-emoji'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'L3MON4D3/LuaSnip'
-" Plug 'saadparwaiz1/cmp_luasnip'
-" Plug 'hrsh7th/vim-vsnip'
-" Plug 'hrsh7th/cmp-vsnip'
-" Plug 'uga-rosa/cmp-dictionary'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 " Plug 'github/copilot.vim'
 Plug 'octaltree/cmp-look'
@@ -234,6 +228,7 @@ hi TSKeywordFunction ctermfg=167 gui=italic guifg=#ea6962
 hi TSConditional ctermfg=167 gui=italic guifg=#ea6962
 hi TSKeywordReturn ctermfg=167 gui=italic guifg=#ea6962
 hi NormalFloat ctermfg=223 ctermbg=237 guifg=#ddc7a1 guibg=#3c3836
+hi InclineNormal ctermfg=223 ctermbg=237 gui=italic guifg=#ddc7a1 guibg=#3c3836
 " hi FocusedSymbol cterm=italic ctermfg=4 ctermbg=11 gui=bold,italic guifg=#181A1A guibg=#77814C
 
 " ============================== END colorscheme settings ==============================
@@ -359,10 +354,11 @@ let g:VM_maps['Find Subword Under'] = '<cr>'           " replace visual C-n
 let g:VM_mouse_mappings = 1
 let g:VM_theme = 'iceblue'
 let g:VM_highlight_matches = 'underline'
-
-" ========= wilder command bar settings ==========
-" Default keys
-call wilder#setup({'modes': [':', '/', '?']})
+"
+" " ========= wilder command bar settings ==========
+" " Default keys
+" 这行配置有毒，敲了！
+" call wilder#setup({'modes': [':', '/', '?']})
 " warnning: 增加以下配置会增加nvim启动时间（大概60ms）
 " call wilder#set_option('pipeline', [
 "       \   wilder#branch(
@@ -375,20 +371,20 @@ call wilder#setup({'modes': [':', '/', '?']})
 "       \     wilder#python_search_pipeline(),
 "       \   ),
 "       \ ])
-call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
-            \ 'border': 'rounded',
-            \ 'highlighter': wilder#basic_highlighter(),
-            \ 'highlights': {
-                \   'border': 'Normal',
-                \   'accent': wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#f4468f'}]),
-                \ },
-                \ 'left': [
-                    \   ' ', wilder#popupmenu_devicons(),
-                    \ ],
-                    \ 'right': [
-                        \   ' ', wilder#popupmenu_scrollbar(),
-                        \ ],
-                        \ })))
+" call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
+"             \ 'border': 'rounded',
+"             \ 'highlighter': wilder#basic_highlighter(),
+"             \ 'highlights': {
+"                 \   'border': 'Normal',
+"                 \   'accent': wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#f4468f'}]),
+"                 \ },
+"                 \ 'left': [
+"                     \   ' ', wilder#popupmenu_devicons(),
+"                     \ ],
+"                     \ 'right': [
+"                         \   ' ', wilder#popupmenu_scrollbar(),
+"                         \ ],
+"                         \ })))
 
 " ========= lspsaga.nvim settings ==========
 highlight link LspSagaFinderSelection Search
