@@ -52,6 +52,26 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
+-- -------------------- general settings -- --------------------
+local signs = {
+  Error = ' ',
+  Warn = ' ',
+  Info = ' ',
+  Hint = 'ﴞ ',
+}
+for type, icon in pairs(signs) do
+  local hl = 'DiagnosticSign' .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+vim.diagnostic.config({
+    signs = true,
+    update_in_insert = false,
+    underline = true,
+    severity_sort = true,
+    virtual_text = false,
+})
+
 -- -------------------------- common lsp server ----------------------
 local servers = { "bashls", "sqls", "dockerls" }
 ---------------------------------------------------------------
@@ -67,9 +87,10 @@ nvim_lsp.gopls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
     root_dir = nvim_lsp.util.root_pattern('.git', 'go.mod'),
-    init_options = {
-        usePlaceholders = false,
-    },
+	  init_options = {
+    usePlaceholders = true,
+    completeUnimported = true,
+  },
 })
 -- -------------------- yaml lsp settings -- --------------------
 -- install yaml-language-server first!!! --  yarn global add yaml-language-server
