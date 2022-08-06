@@ -111,7 +111,7 @@ nnoremap <leader>ob <cmd>JABSOpen<cr>
 nnoremap <silent> <F4> :lua require'dapui'.toggle()<CR>
 
 nnoremap <silent> <F5> <Cmd>lua require'dap'.continue()<CR>
-nnoremap <silent> <F5> <Cmd>lua require'dap'.terminate()<CR>
+nnoremap <silent> <F6> <Cmd>lua require'dap'.terminate()<CR>
 nnoremap <silent> <F9> <Cmd>lua require'dap'.toggle_breakpoint()<CR>
 nnoremap <silent> <F10> <Cmd>lua require'dap'.step_over()<CR>
 nnoremap <silent> <F11> <Cmd>lua require'dap'.step_into()<CR>

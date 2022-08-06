@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'EdenEast/nightfox.nvim'
 " Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
+" Plug 'luisiacc/gruvbox-baby'
 " Plug 'ellisonleao/gruvbox.nvim'
 " Plug 'catppuccin/nvim'
 
@@ -39,7 +40,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 " -- force write a file use root.
 Plug 'lambdalisue/suda.vim'
 " -- some bug here.
-" Plug 'Pocco81/AutoSave.nvim'
+" Plug 'Pocco81/AutoSave.nvim', { 'branch': 'dev' }
 Plug '907th/vim-auto-save'
 Plug 'preservim/tagbar', { 'for': ['go', 'md'] }
 Plug 'kyazdani42/nvim-web-devicons'
@@ -80,9 +81,9 @@ Plug 'rmagatti/auto-session'
 
 Plug 'folke/which-key.nvim'
 Plug 'folke/todo-comments.nvim'
-Plug 'folke/zen-mode.nvim'
+" Plug 'folke/zen-mode.nvim'
 " -- works with zen-mode
-Plug 'folke/twilight.nvim'
+" Plug 'folke/twilight.nvim'
 Plug 'voldikss/vim-translator'
 " -- color highlighter
 Plug 'norcalli/nvim-colorizer.lua'
@@ -230,6 +231,7 @@ hi TSKeywordReturn ctermfg=167 gui=italic guifg=#ea6962
 hi NormalFloat ctermfg=223 ctermbg=237 guifg=#ddc7a1 guibg=#3c3836
 hi InclineNormal ctermfg=223 ctermbg=237 gui=italic guifg=#ddc7a1 guibg=#3c3836
 " hi FocusedSymbol cterm=italic ctermfg=4 ctermbg=11 gui=bold,italic guifg=#181A1A guibg=#77814C
+" hi ErrorText cterm=undercurl ctermbg=52 gui=italic guibg=#442e2d guisp=#ea6962
 
 " ============================== END colorscheme settings ==============================
 "
@@ -239,7 +241,7 @@ hi InclineNormal ctermfg=223 ctermbg=237 gui=italic guifg=#ddc7a1 guibg=#3c3836
 " ========= autosave settings ==========
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
-let g:auto_save_write_all_buffers = 0  " write all open buffers as if you would use :wa
+" let g:auto_save_write_all_buffers = 0  " write all open buffers as if you would use :wa
 
 " ========= LeaderF settings ==========
 let g:Lf_HideHelp = 1
@@ -272,11 +274,13 @@ let g:Lf_ShortcutF = "<leader>ff"
 "     undojoin | Neoformat
 " endfun
 "
-" augroup fmt
-"   autocmd!
-" "   autocmd BufWritePre * undojoin | Neoformat
-"   autocmd BufWritePost * call Neoformat()
-" augroup END
+augroup fmt
+  autocmd!
+"   autocmd BufWritePre * undojoin | Neoformat
+  autocmd BufWritePre *.go Neoformat gofumpt
+augroup END
+" ignore error
+let g:neoformat_only_msg_on_error = 1
 
 " ========= vim-translator settings ==========
 let g:translator_target_lang = 'zh'
