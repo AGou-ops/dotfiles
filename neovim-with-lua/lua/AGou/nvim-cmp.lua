@@ -31,31 +31,31 @@ cmp.setup({
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
       local lspkind_icons = {
-          Text = "",
-          Method = "",
-          Function = "",
-          Constructor = "",
-          Field = "ﰠ",
-          Variable = "",
-          Class = "ﴯ",
-          Interface = "",
-          Module = "",
-          Property = "ﰠ",
-          Unit = "塞",
-          Value = "",
-          Enum = "",
-          Keyword = "",
-          Snippet = "",
-          Color = "",
-          File = "",
-          Reference = "",
-          Folder = "",
-          EnumMember = "",
-          Constant = "",
-          Struct = "פּ",
-          Event = "",
-          Operator = "",
-          TypeParameter = " ",
+        Text = "",
+        Method = "",
+        Function = "",
+        Constructor = "",
+        Field = "ﰠ",
+        Variable = "",
+        Class = "ﴯ",
+        Interface = "",
+        Module = "",
+        Property = "ﰠ",
+        Unit = "塞",
+        Value = "",
+        Enum = "",
+        Keyword = "",
+        Snippet = "",
+        Color = "",
+        File = "",
+        Reference = "",
+        Folder = "",
+        EnumMember = "",
+        Constant = "",
+        Struct = "פּ",
+        Event = "",
+        Operator = "",
+        TypeParameter = " ",
       }
       local meta_type = vim_item.kind
       -- load lspkind icons
@@ -66,28 +66,47 @@ cmp.setup({
         nvim_lsp = meta_type,
         path = " Path",
         luasnip = " LuaSnip",
-        cmp_tabnine = " Tabnine",
-        emoji = "Emoji",
-        look = "Dict",
+        cmp_tabnine = " Tabnine",
+        emoji = " Emoji",
+        look = " Dict",
       })[entry.source.name]
 
       return vim_item
     end,
   },
-    mapping = {
+  mapping = {
     -- ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     -- ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
     -- ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
     ["<C-b>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    ["<C-f>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    -- ["<C-f>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
     ["<C-e>"] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
-   ['<CR>'] = cmp.mapping.confirm {
-        select = true,
-    },
+    -- ["<C-d>"] = cmp.mapping(function()
+    --     cmp.close()
+    -- end, { "i", "s" }),
+    ["<C-d>"] = cmp.mapping(function(fallback)
+      -- cmp.close()
+      if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ["<C-f>"] = cmp.mapping(function(fallback)
+     -- cmp.close()
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ["<CR>"] = cmp.mapping.confirm({
+      select = true,
+    }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -109,7 +128,7 @@ cmp.setup({
         fallback()
       end
     end, { "i", "s" }),
-    },
+  },
   -- You can set mappings if you want
   -- mapping = insert_map,
   snippet = {
@@ -118,34 +137,52 @@ cmp.setup({
     end,
   },
   sources = {
-    { name = "nvim_lsp" },
-    { name = "cmp_tabnine" },
-    { name = "luasnip" },
-    { name = "path" },
-    { name = "buffer" },
-    { name = "emoji" },
-    { name = 'nvim_lsp_signature_help' },
+    { name = "nvim_lsp", priority = 50 },
+    { name = "cmp_tabnine", priority = 90 },
+    { name = "luasnip", priority = 50 },
+    { name = "path", priority = 99 },
+    { name = "buffer", priority = 50, max_item_count = 5 },
+    { name = "emoji", priority = 50 },
+    { name = "nvim_lsp_signature_help", priority = 50 },
     {
-        name = 'look',
+      name = "look",
+      keyword_length = 5,
+      max_item_count = 5,
+      option = {
+        convert_case = true,
+        loud = true,
+        --dict = '/usr/share/dict/words'
+      },
+    },
+  },
+})
+
+cmp.setup.filetype({ 'TelescopePrompt' }, {
+      sources = {
+    }
+})
+cmp.setup.filetype({ 'vim', 'markdown' }, {
+      sources = {
+      {
+        name = "look",
         keyword_length = 5,
         max_item_count = 5,
         option = {
-            convert_case = true,
-            loud = true
-            --dict = '/usr/share/dict/words'
-        }
-    },
-    { name = 'path' }
+          convert_case = true,
+          loud = true,
+          --dict = '/usr/share/dict/words'
+        },
+    }
 }
 })
 
-require'cmp'.setup.cmdline(':', {
+require("cmp").setup.cmdline(":", {
   sources = {
-    { name = 'cmdline' }
-  }
+    { name = "cmdline", max_item_count = 10 },
+  },
 })
-require'cmp'.setup.cmdline('/', {
+require("cmp").setup.cmdline("/", {
   sources = {
-    { name = 'buffer' }
-  }
+    { name = "buffer" },
+  },
 })
