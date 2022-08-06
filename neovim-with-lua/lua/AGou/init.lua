@@ -20,7 +20,7 @@ require("AGou.nvim-whichkey")
 require("AGou.nvim-todo-comments")
 require("AGou.nvim-diffview")
 require("AGou.nvim-dashboard")
-require("AGou.nvim-zen-mode")
+-- require("AGou.nvim-zen-mode")
 require("AGou.nvim-indent-blankline")
 require("AGou.nvim-trouble")
 require("AGou.nvim-goto-preview")
@@ -31,6 +31,7 @@ require("AGou.nvim-dap")
 require("AGou.nvim-gomove")
 require("AGou.nvim-surround")
 require("AGou.nvim-incline")
+-- require("AGou.nvim-auto-save")
 -- --------------------------------------
 
 -- -------------------------- 其他简单lua插件配置项 --------------------------------------------
@@ -95,9 +96,10 @@ tabnine:setup({
   run_on_every_keystroke = true,
   snippet_placeholder = "..",
   ignored_file_types = { -- default is not to ignore
-    -- TelescopePrompt = true,
+    TelescopePrompt = true,
     -- yaml = true
     NvimTree = true,
+    vim = true,
   },
   show_prediction_strength = false,
 })
@@ -127,9 +129,6 @@ require("nvim-cursorline").setup({
 })
 -- --------------------------------------
 -- --------------------------------------
--- require("auto-save").setup({
---
--- })
 -- --------------------------------------
 local opts = {
   log_level = "info",
