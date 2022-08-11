@@ -56,19 +56,36 @@ cmp.setup({
         Event = "",
         Operator = "",
         TypeParameter = " ",
+        Robot = "ﮧ",
+        Smiley = "ﲃ",
+        Note = " ",
+
       }
       local meta_type = vim_item.kind
       -- load lspkind icons
       vim_item.kind = lspkind_icons[vim_item.kind] .. ""
+      if entry.source.name == "cmp_tabnine" then
+        vim_item.kind = lspkind_icons["Robot"]
+        -- vim_item.kind_hl_group = "CmpItemKindTabnine"
+      end
 
+      if entry.source.name == "emoji" then
+        vim_item.kind = lspkind_icons["Smiley"]
+        vim_item.kind_hl_group = "CmpItemKindEmoji"
+      end
+
+    if entry.source.name == "look" then
+      vim_item.kind = lspkind_icons["Note"]
+      -- vim_item.kind_hl_group = "CmpItemKindEmoji"
+    end
       vim_item.menu = ({
-        buffer = " Buffer",
+          buffer = "[Buffer]",
         nvim_lsp = meta_type,
-        path = " Path",
-        luasnip = " LuaSnip",
-        cmp_tabnine = " Tabnine",
-        emoji = " Emoji",
-        look = " Dict",
+        path = "[Path]",
+        -- luasnip = " LuaSnip",
+        cmp_tabnine = "[TN]",
+        emoji = "[Emoji]",
+        look = "[Dict]",
       })[entry.source.name]
 
       return vim_item
@@ -92,12 +109,14 @@ cmp.setup({
       -- cmp.close()
       if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
+        -- if luasnip.jumpable(1) then
+        --   luasnip.jump(1)
       else
         fallback()
       end
     end, { "i", "s" }),
     ["<C-f>"] = cmp.mapping(function(fallback)
-     -- cmp.close()
+      -- cmp.close()
       if luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else
@@ -106,6 +125,7 @@ cmp.setup({
     end, { "i", "s" }),
     ["<CR>"] = cmp.mapping.confirm({
       select = true,
+      -- cmp.close()
     }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -139,7 +159,7 @@ cmp.setup({
   sources = {
     { name = "nvim_lsp", priority = 50 },
     { name = "cmp_tabnine", priority = 90 },
-    { name = "luasnip", priority = 50 },
+    -- { name = "luasnip", priority = 50 },
     { name = "path", priority = 99 },
     { name = "buffer", priority = 50, max_item_count = 5 },
     { name = "emoji", priority = 50 },
@@ -157,32 +177,31 @@ cmp.setup({
   },
 })
 
-cmp.setup.filetype({ 'TelescopePrompt' }, {
-      sources = {
-    }
+cmp.setup.filetype({ "TelescopePrompt" }, {
+  sources = {},
 })
-cmp.setup.filetype({ 'vim', 'markdown' }, {
-      sources = {
-      {
-        name = "look",
-        keyword_length = 5,
-        max_item_count = 5,
-        option = {
-          convert_case = true,
-          loud = true,
-          --dict = '/usr/share/dict/words'
-        },
-    }
-}
+cmp.setup.filetype({ "vim", "markdown" }, {
+  sources = {
+    {
+      name = "look",
+      keyword_length = 5,
+      max_item_count = 5,
+      option = {
+        convert_case = true,
+        loud = true,
+        --dict = '/usr/share/dict/words'
+      },
+    },
+  },
 })
 
-require("cmp").setup.cmdline(":", {
-  sources = {
-    { name = "cmdline", max_item_count = 10 },
-  },
-})
-require("cmp").setup.cmdline("/", {
-  sources = {
-    { name = "buffer" },
-  },
-})
+-- require("cmp").setup.cmdline(":", {
+--   sources = {
+--     { name = "cmdline", max_item_count = 10 },
+--   },
+-- })
+-- require("cmp").setup.cmdline("/", {
+--   sources = {
+--     { name = "buffer" },
+--   },
+-- })
