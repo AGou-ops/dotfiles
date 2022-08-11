@@ -13,20 +13,20 @@ xmap y <Plug>YAVisual
 " Quicker window movement
 nnoremap U <C-r>
 " notworking on terminal neovim, only affect on Gvim!!!
-nnoremap <M-j> <C-w>j
-nnoremap <M-k> <C-w>k
-nnoremap <M-h> <C-w>h
-nnoremap <M-l> <C-w>l
+" nnoremap <M-j> <C-w>j
+" nnoremap <M-k> <C-w>k
+" nnoremap <M-h> <C-w>h
+" nnoremap <M-l> <C-w>l
 " =====================
 " nnoremap <A-Down> <C-w>j
 " nnoremap <A-Up> <C-w>k
 " nnoremap <A-Left> <C-w>h
 " nnoremap <A-Right> <C-w>l
 " delete something without yank
-nnoremap d "_d
-nnoremap D "_D
-vnoremap d "_d
-vnoremap D "_D
+" nnoremap d "_d
+" nnoremap D "_D
+" vnoremap d "_d
+" vnoremap D "_D
 noremap H ^
 noremap L g_
 nnoremap / /\v
@@ -39,7 +39,7 @@ nnoremap <C-t>     :tabnew<CR>
 inoremap <C-t>     <Esc>:tabnew<CR>
 
 inoremap jk <ESC>
-inoremap <C-d> <DEL>
+" inoremap <C-d> <DEL>
 " inoremap kj <ESC>
 
 nnoremap <C-i> o<C-u>
