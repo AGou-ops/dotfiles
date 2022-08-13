@@ -130,6 +130,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-emoji'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 " Plug 'github/copilot.vim'
 Plug 'octaltree/cmp-look'
@@ -299,7 +300,7 @@ let g:startuptime_tries = 3
 set timeoutlen=200
 
 " ========= tagbar settings ==========
-let g:tagbar_ctags_bin='/opt/homebrew/Cellar/universal-ctags/p5.9.20220717.0/bin/ctags'
+" let g:tagbar_ctags_bin='/opt/homebrew/Cellar/universal-ctags/p5.9.20220717.0/bin/ctags'
 " autocmd VimEnter *.go  Tagbar
 " autocmd VimEnter *.md  Tagbar
 let g:tagbar_show_tag_count = 1
