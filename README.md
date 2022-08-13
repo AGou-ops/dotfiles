@@ -59,6 +59,17 @@ nvim +PlugInstall       # 等待安装完毕即可.
 
 ![image](https://user-images.githubusercontent.com/57939102/148733986-49d660a8-6570-421e-8afe-1503c94b6fef.png)
 
+## neovim 统计
+
+共计插件`69个`。
+
+启动速度平均`127ms`
+
+
+![image](https://user-images.githubusercontent.com/57939102/184500448-0fc4a73f-f9cf-4404-8c37-a68326048a47.png)
+
+
+
 
 
 ## 仓库内容
