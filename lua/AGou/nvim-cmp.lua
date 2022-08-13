@@ -10,6 +10,9 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+require("luasnip.loaders.from_vscode").lazy_load({paths = "~/.config/nvim/my_snippets"})
+
+
 cmp.setup({
   enabled = function()
     if
@@ -58,7 +61,7 @@ cmp.setup({
         TypeParameter = " ",
         Robot = "ﮧ",
         Smiley = "ﲃ",
-        Note = " ",
+        Note = " ",
 
       }
       local meta_type = vim_item.kind
@@ -82,7 +85,7 @@ cmp.setup({
           buffer = "[Buffer]",
         nvim_lsp = meta_type,
         path = "[Path]",
-        -- luasnip = " LuaSnip",
+        luasnip = "[LuaSnip]",
         cmp_tabnine = "[TN]",
         emoji = "[Emoji]",
         look = "[Dict]",
@@ -159,7 +162,7 @@ cmp.setup({
   sources = {
     { name = "nvim_lsp", priority = 50 },
     { name = "cmp_tabnine", priority = 90 },
-    -- { name = "luasnip", priority = 50 },
+    { name = "luasnip", priority = 50 },
     { name = "path", priority = 99 },
     { name = "buffer", priority = 50, max_item_count = 5 },
     { name = "emoji", priority = 50 },
