@@ -1,0 +1,19 @@
+{
+	"name": "AGou's snippets",
+	"contributes": {
+		"snippets": [
+			{
+				"language": [
+					"all"
+				],
+				"path": "./all.json"
+			},
+			{
+				"language": [
+					"go"
+				],
+				"path": "./golang.json"
+			}
+		]
+	}
+}
