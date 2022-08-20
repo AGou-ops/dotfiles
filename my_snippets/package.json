@@ -6,14 +6,50 @@
 				"language": [
 					"all"
 				],
-				"path": "./all.json"
+				"path": "./global.json"
 			},
 			{
 				"language": [
 					"go"
 				],
 				"path": "./golang.json"
-			}
+			},
+      {
+        "language": [
+          "html"
+        ],
+        "path": "./html.json"
+      },
+      {
+        "language": [
+          "yaml","yml"
+        ],
+        "path": "./kubernetes.json"
+      },
+      {
+        "language": [
+          "markdown","md"
+        ],
+        "path": "./markdown.json"
+      },
+      {
+        "language": [
+          "lua"
+        ],
+        "path": "./lua.json"
+      },
+      {
+        "language": [
+          "sh"
+        ],
+        "path": "./shell.json"
+      },
+      {
+        "language": [
+          "sql"
+        ],
+        "path": "./sql.json"
+      },
 		]
 	}
 }
