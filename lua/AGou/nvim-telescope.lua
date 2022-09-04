@@ -140,17 +140,17 @@ telescope.setup {
   --     filetypes = { "png", "webp", "jpg", "jpeg" },
   --     find_cmd = "rg", -- find command (defaults to `fd`)
   --   },
-  file_browser = {
-      theme = "ivy",
-      mappings = {
-        ["i"] = {
-          -- your custom insert mode mappings
-        },
-        ["n"] = {
-          -- your custom normal mode mappings
-        },
-      },
-    },
+  -- file_browser = {
+  --     theme = "ivy",
+  --     mappings = {
+  --       ["i"] = {
+  --         -- your custom insert mode mappings
+  --       },
+  --       ["n"] = {
+  --         -- your custom normal mode mappings
+  --       },
+  --     },
+  --   },
   },
 }
-require("telescope").load_extension "file_browser"
+-- require("telescope").load_extension "file_browser"

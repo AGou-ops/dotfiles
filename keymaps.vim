@@ -81,6 +81,10 @@ nnoremap <leader>ds <cmd>DeleteSession<CR>
 nnoremap <C-n> :NvimTreeToggle<CR>
 " nnoremap <C-n> :Neotree<CR>
 
+" ========= Neogen settings ========
+nnoremap gG <cmd>Neogen func<CR>
+nnoremap gT <cmd>Neogen type<CR>
+
 " ========= smart-splits settings ========
 " recommended mappings
 " resizing splits
@@ -125,7 +129,8 @@ nnoremap <silent> <Leader><F9> <Cmd>lua require'dap'.set_breakpoint(vim.fn.input
 " use Leaderf instead
 " nnoremap <leader>fF <cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false}) <CR>
 " keymapping here：https://github.com/nvim-telescope/telescope-file-browser.nvim#mappings
-nnoremap <leader>fF <cmd>Telescope file_browser<CR>
+" nnoremap <leader>fF <cmd>Telescope file_browser<CR>
+nnoremap <leader>fF <cmd>RnvimrToggle<CR>
 
 function! s:find_files()
     let git_dir = system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
@@ -142,9 +147,13 @@ nnoremap <leader>fg <cmd>ProjectFiles<cr>
 
 nnoremap <leader>fB <cmd>Telescope buffers<cr>
 nnoremap <leader>fG <cmd>LeaderfRgInteractive<CR>
+nnoremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 nnoremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
+noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>ft <cmd>TodoTelescope<cr>
+" nnoremap <leader>ft <cmd>TodoTelescope<cr>
 
 " telescope-dap
 nnoremap <leader>dcc <cmd>Telescope dap commands<CR>

@@ -7,7 +7,6 @@ require("AGou.nvim-bufferline")
 require("AGou.nvim-tree")
 require("AGou.nvim-transparent")
 require("AGou.nvim-cmp")
--- require('AGou.nvim-lsp-installer')
 require("AGou.nvim-mason")
 require("AGou.nvim-treesitter")
 require("AGou.nvim-gitsigns")
@@ -17,10 +16,8 @@ require("AGou.nvim-telescope")
 require("AGou.nvim-toggleterm")
 require("AGou.nvim-neoscroll")
 require("AGou.nvim-whichkey")
-require("AGou.nvim-todo-comments")
 require("AGou.nvim-diffview")
 require("AGou.nvim-dashboard")
--- require("AGou.nvim-zen-mode")
 require("AGou.nvim-indent-blankline")
 require("AGou.nvim-trouble")
 require("AGou.nvim-goto-preview")
@@ -31,7 +28,7 @@ require("AGou.nvim-dap")
 require("AGou.nvim-gomove")
 require("AGou.nvim-surround")
 require("AGou.nvim-incline")
--- require("AGou.nvim-auto-save")
+require("AGou.nvim-zen-mode")
 -- --------------------------------------
 
 -- -------------------------- 其他简单lua插件配置项 --------------------------------------------
@@ -146,6 +143,29 @@ local opts = {
 }
 
 require("auto-session").setup(opts)
+-- --------------------------------------
+require('better-comment').Setup({
+    tags = {
+        -- TODO: I wanna go home.
+        -- FIX: FIX something
+        -- WARNING: example comment
+        -- !
+        -- {
+        --     name = "TODO",
+        --     fg = "white",
+        --     bg = "#0a7aca",
+        --     bold = true,
+        --     virtual_text = "something here",
+        -- },
+    }
+})
+-- --------------------------------------
+require('neogen').setup({
+    snippet_engine = "luasnip",
+    enabled = true,             --if you want to disable Neogen
+    input_after_comment = true, -- (default: true) automatic jump (with insert mode) on inserted annotation
+
+})
 -- --------------------------------------
 -- --------------------------------------
 -- --------------------------------------
