@@ -1,4 +1,4 @@
-" AGou-ops VIMRC FILE         -- Update Date: 2022-07-21 11:02:19
+" AGou-ops VIMRC FILE         -- Update Date: 2022-08-23 23:55:18
 set nocompatible              " be iMproved, required
 " ============================== Plugin packages ==============================
 " Begin Plug, Depends On https://github.com/junegunn/vim-plug
@@ -53,6 +53,7 @@ Plug 'windwp/nvim-autopairs'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'danymat/neogen'
 Plug 'akinsho/toggleterm.nvim'
 " not longer use fzf, just use telescope
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -62,8 +63,7 @@ Plug 'akinsho/toggleterm.nvim'
 Plug 'nvim-lua/plenary.nvim'
 
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-file-browser.nvim'
-" Plug 'nvim-telescope/telescope-dap.nvim'
+Plug 'kevinhwang91/rnvimr'
 
 " -- show curosr underline.
 Plug 'yamatsum/nvim-cursorline'
@@ -80,8 +80,9 @@ Plug 'rmagatti/auto-session'
 " Plug 'jedrzejboczar/possession.nvim'
 
 Plug 'folke/which-key.nvim'
-Plug 'folke/todo-comments.nvim'
-" Plug 'folke/zen-mode.nvim'
+" Plug 'folke/todo-comments.nvim'
+Plug 'Djancyp/better-comments.nvim'
+Plug 'folke/zen-mode.nvim'
 " -- works with zen-mode
 " Plug 'folke/twilight.nvim'
 Plug 'voldikss/vim-translator'
@@ -92,7 +93,7 @@ Plug 'sbdchd/neoformat'
 " -- Show where your cursor moves when jumping large distances
 Plug 'edluffy/specs.nvim'
 " -- cursor jump plugin
-Plug 'hrsh7th/vim-searchx'
+" Plug 'hrsh7th/vim-searchx'
 Plug 'mrjones2014/smart-splits.nvim'
 Plug 'SmiteshP/nvim-gps'
 Plug 'kevinhwang91/nvim-hlslens'
@@ -266,6 +267,44 @@ let g:Lf_RootMarkers = ['.git', '.gitignore', 'node_modules']
 let g:Lf_WorkingDirectoryMode = 'A'
 
 let g:Lf_ShortcutF = "<leader>ff"
+
+" ========= rnvimr settings ==========
+" Hide the files included in gitignore
+let g:rnvimr_hide_gitignore = 0
+" Change the border's color
+let g:rnvimr_border_attr = {'fg': 14, 'bg': -1}
+" Add a shadow window, value is equal to 100 will disable shadow
+let g:rnvimr_shadow_winblend = 70
+" Draw border with both
+let g:rnvimr_ranger_cmd = ['ranger', '--cmd=set draw_borders both']
+" Link CursorLine into RnvimrNormal highlight in the Floating window
+highlight link RnvimrNormal CursorLine
+
+" Map Rnvimr action
+let g:rnvimr_action = {
+            \ '<C-t>': 'NvimEdit tabedit',
+            \ '<C-x>': 'NvimEdit split',
+            \ '<C-v>': 'NvimEdit vsplit',
+            \ 'gw': 'JumpNvimCwd',
+            \ 'yw': 'EmitRangerCwd'
+            \ }
+
+" Add views for Ranger to adapt the size of floating window
+let g:rnvimr_ranger_views = [
+            \ {'minwidth': 90, 'ratio': []},
+            \ {'minwidth': 50, 'maxwidth': 89, 'ratio': [1,1]},
+            \ {'maxwidth': 49, 'ratio': [1]}
+            \ ]
+
+" Customize the initial layout
+let g:rnvimr_layout = {
+            \ 'relative': 'editor',
+            \ 'width': float2nr(round(0.75 * &columns)),
+            \ 'height': float2nr(round(0.75 * &lines)),
+            \ 'col': float2nr(round(0.15 * &columns)),
+            \ 'row': float2nr(round(0.15 * &lines)),
+            \ 'style': 'minimal'
+            \ }
 
 " ========= neoformat settings ==========
 " fun! Neoformat()
@@ -508,13 +547,6 @@ let g:did_load_filetypes = 0          " don't load filetype.vim
 " filetype plugin on
 " filetype indent on
 filetype on
-
-
-if has("autocmd")
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-    autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|DONE\|XXX\|BUG\|HACK\)')
-    autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|NOTICE\)')
-endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RENAME CURRENT FILE
