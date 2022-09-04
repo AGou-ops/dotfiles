@@ -27,7 +27,7 @@ require("zen-mode").setup {
             ruler = false, -- disables the ruler text in the cmd line area
             showcmd = false, -- disables the command in the last line of the screen
         },
-        twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+        twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
         gitsigns = { enabled = false }, -- disables git signs
         tmux = { enabled = false }, -- disables the tmux statusline
         -- this will change the font size on kitty when in zen mode
@@ -49,22 +49,22 @@ require("zen-mode").setup {
 
 
 
-require("twilight").setup {
-    dimming = {
-        alpha = 0.25, -- amount of dimming
-        -- we try to get the foreground from the highlight groups or fallback color
-        color = { "Normal", "#ffffff" },
-        inactive = false, -- when true, other windows will be fully dimmed (unless they contain the same buffer)
-    },
-    context = 10, -- amount of lines we will try to show around the current line
-    treesitter = true, -- use treesitter when available for the filetype
-    -- treesitter is used to automatically expand the visible text,
-    -- but you can further control the types of nodes that should always be fully expanded
-    expand = { -- for treesitter, we we always try to expand to the top-most ancestor with these types
-    "function",
-    "method",
-    "table",
-    "if_statement",
-},
-exclude = {"go"}, -- exclude these filetypes
-}
+-- require("twilight").setup {
+--     dimming = {
+--         alpha = 0.25, -- amount of dimming
+--         -- we try to get the foreground from the highlight groups or fallback color
+--         color = { "Normal", "#ffffff" },
+--         inactive = false, -- when true, other windows will be fully dimmed (unless they contain the same buffer)
+--     },
+--     context = 10, -- amount of lines we will try to show around the current line
+--     treesitter = true, -- use treesitter when available for the filetype
+--     -- treesitter is used to automatically expand the visible text,
+--     -- but you can further control the types of nodes that should always be fully expanded
+--     expand = { -- for treesitter, we we always try to expand to the top-most ancestor with these types
+--     "function",
+--     "method",
+--     "table",
+--     "if_statement",
+-- },
+-- exclude = {"go"}, -- exclude these filetypes
+-- }
