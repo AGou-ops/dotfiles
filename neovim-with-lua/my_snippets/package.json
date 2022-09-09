@@ -1,55 +1,38 @@
 {
-	"name": "AGou's snippets",
-	"contributes": {
-		"snippets": [
-			{
-				"language": [
-					"all"
-				],
-				"path": "./global.json"
-			},
-			{
-				"language": [
-					"go"
-				],
-				"path": "./golang.json"
-			},
+  "name": "AGou's snippets",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
       {
-        "language": [
-          "html"
-        ],
+        "language": "all",
+        "path": "./global.json"
+      },{
+        "language": "go",
+        "path": "./golang.json"
+      },{
+        "language": "css",
+        "path": "./css.json"
+      },{
+        "language": "html",
         "path": "./html.json"
-      },
-      {
-        "language": [
-          "yaml","yml"
-        ],
+      },{
+        "language": "yaml",
         "path": "./kubernetes.json"
-      },
-      {
-        "language": [
-          "markdown","md"
-        ],
-        "path": "./markdown.json"
-      },
-      {
-        "language": [
-          "lua"
-        ],
+      },{
+        "language": "lua",
         "path": "./lua.json"
-      },
-      {
-        "language": [
-          "sh"
-        ],
+      },{
+        "language": "md",
+        "path": "./markdown.json"
+      },{
+        "language": "sh",
         "path": "./shell.json"
-      },
-      {
-        "language": [
-          "sql"
-        ],
+      },{
+        "language": "sql",
         "path": "./sql.json"
-      },
-		]
-	}
+      }
+    ]
+  }
 }
