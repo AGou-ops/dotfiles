@@ -4,7 +4,6 @@ set nocompatible              " be iMproved, required
 " Begin Plug, Depends On https://github.com/junegunn/vim-plug
 
 call plug#begin('~/.vim/plugged')
-
 " ========= colorscheme here. ==========
 " Plug 'joshdick/onedark.vim'
 " Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
@@ -63,6 +62,7 @@ Plug 'akinsho/toggleterm.nvim'
 Plug 'nvim-lua/plenary.nvim'
 
 Plug 'nvim-telescope/telescope.nvim'
+" -- ranger file browser
 Plug 'kevinhwang91/rnvimr'
 
 " -- show curosr underline.
@@ -227,9 +227,9 @@ colorscheme gruvbox-material
 hi Comment cterm=NONE ctermfg=245 gui=NONE guifg=#928374
 hi GitSignsCurrentLineBlame ctermfg=245 gui=italic guifg=#928374
 
+hi TSKeyword ctermfg=167 gui=italic guifg=#ea6962
 hi TSKeywordFunction ctermfg=167 gui=italic guifg=#ea6962
 hi TSConditional ctermfg=167 gui=italic guifg=#ea6962
-hi TSKeywordReturn ctermfg=167 gui=italic guifg=#ea6962
 hi NormalFloat ctermfg=223 ctermbg=237 guifg=#ddc7a1 guibg=#3c3836
 hi InclineNormal ctermfg=223 ctermbg=237 gui=italic guifg=#ddc7a1 guibg=#3c3836
 " hi FocusedSymbol cterm=italic ctermfg=4 ctermbg=11 gui=bold,italic guifg=#181A1A guibg=#77814C
