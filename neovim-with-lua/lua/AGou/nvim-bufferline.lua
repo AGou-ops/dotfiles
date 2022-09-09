@@ -8,9 +8,7 @@ require('bufferline').setup {
     end,
     right_mouse_command = nil, -- can be a string | function, see "Mouse actions"
     -- left_mouse_command = "buffer %d",    -- can be a string | function, see "Mouse actions"
-    left_mouse_command = function(bufnum)
-        require('bufdelete').bufdelete(bufnum, true)
-    end,
+    left_mouse_command = nil,
     middle_mouse_command = nil,          -- can be a string | function, see "Mouse actions"
     -- NOTE: this plugin is designed with this icon in mind,
     -- and so changing this is NOT recommended, this is intended
