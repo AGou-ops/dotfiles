@@ -82,7 +82,7 @@ cmp.setup({
       -- vim_item.kind_hl_group = "CmpItemKindEmoji"
     end
       vim_item.menu = ({
-          buffer = "[Buffer]",
+        buffer = "[Buffer]",
         nvim_lsp = meta_type,
         path = "[Path]",
         luasnip = "[LuaSnip]",

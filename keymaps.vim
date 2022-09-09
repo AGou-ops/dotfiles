@@ -44,6 +44,7 @@ inoremap jk <ESC>
 
 nnoremap <C-i> o<C-u>
 
+inoremap <S-CR> <ESC>O
 nnoremap ; :
 vmap ; :
 " not working on macOS
