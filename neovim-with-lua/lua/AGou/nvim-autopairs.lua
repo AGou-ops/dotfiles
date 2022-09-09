@@ -13,7 +13,6 @@ npairs.setup {
     },
     disable_filetype = { "TelescopePrompt", "markdown.mkd" },
     fast_wrap = {
-    fast_wrap = {
       map = '<M-e>',
       chars = { '{', '[', '(', '"', "'" },
       pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], '%s+', ''),
@@ -22,7 +21,6 @@ npairs.setup {
       check_comma = true,
       highlight = 'Search',
       highlight_grey='Comment'
-    },
     },
     disable_in_macro = false,  -- disable when recording or executing a macro
     disable_in_visualblock = false, -- disable when insert after visual block mode
