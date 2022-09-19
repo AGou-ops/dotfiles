@@ -112,6 +112,9 @@ Plug 'booperlv/nvim-gomove'
 Plug 'svban/YankAssassin.vim'
 Plug 'b0o/incline.nvim'
 Plug 'kylechui/nvim-surround'
+" -- fold
+Plug 'kevinhwang91/promise-async'
+Plug 'kevinhwang91/nvim-ufo'
 
 " ========= programming tools here. ==========
 
