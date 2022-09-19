@@ -27,7 +27,7 @@ configs.setup({
         disable = { "xml" },
     },
     rainbow = {
-        enable = true,
+        enable = false,
         colors = {
             "Gold",
             "Orchid",
@@ -39,7 +39,7 @@ configs.setup({
         disable = { "html" },
     },
     playground = {
-        enable = true,
+        enable = false,
     },
 })
 
