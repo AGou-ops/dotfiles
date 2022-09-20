@@ -29,6 +29,7 @@ Plug 'AGou-ops/dashboard-nvim'
 Plug 'dstein64/vim-startuptime'
 " -- Speed up Neovim.
 Plug 'lewis6991/impatient.nvim'
+Plug 'nathom/filetype.nvim'
 
 " ========= useful tools here. ==========
 
