@@ -115,6 +115,10 @@ Plug 'kylechui/nvim-surround'
 " -- fold
 Plug 'kevinhwang91/promise-async'
 Plug 'kevinhwang91/nvim-ufo'
+" -- window resize
+Plug 'anuvyklack/middleclass'
+Plug 'anuvyklack/windows.nvim'
+Plug 'anuvyklack/animation.nvim'
 
 " ========= programming tools here. ==========
 
