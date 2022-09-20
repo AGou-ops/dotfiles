@@ -82,6 +82,9 @@ nnoremap <leader>ds <cmd>DeleteSession<CR>
 nnoremap <C-n> :NvimTreeToggle<CR>
 " nnoremap <C-n> :Neotree<CR>
 
+" ========= window-auto-size plugin settings =======
+nnoremap <C-w>z :WindowsMaximize<CR>
+
 " ========= Neogen settings ========
 nnoremap gG <cmd>Neogen func<CR>
 nnoremap gT <cmd>Neogen type<CR>
