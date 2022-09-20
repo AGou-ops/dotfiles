@@ -50,8 +50,7 @@ nvim +PlugInstall       # 等待安装完毕即可.
 <img width="1548" alt="image" src="https://user-images.githubusercontent.com/57939102/182982646-3abdb806-9f24-442d-add3-50bbedca931c.png">
 
 
-
-![image](https://user-images.githubusercontent.com/57939102/169196637-252f0727-768c-437e-a019-4f0cedef4136.png)
+<img width="1548" alt="image" src="https://user-images.githubusercontent.com/57939102/191188081-1dafc614-caec-47fd-9b67-a7779a53bf8b.png">
 
 
 
