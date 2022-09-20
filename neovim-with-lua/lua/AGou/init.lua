@@ -30,6 +30,7 @@ require("AGou.nvim-surround")
 require("AGou.nvim-incline")
 require("AGou.nvim-zen-mode")
 require("AGou.nvim-ufo")
+require("AGou.nvim-filetype")
 -- --------------------------------------
 
 -- -------------------------- 其他简单lua插件配置项 --------------------------------------------
