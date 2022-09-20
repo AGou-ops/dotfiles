@@ -191,5 +191,24 @@ require('neogen').setup({
 --  },
 --}
 -- --------------------------------------
+require("windows").setup({
+    autowidth = {      --         |windows.autowidth|
+    enable = true,
+    winwidth = 10,     --          |windows.winwidth|
+    filetype = {      --      |windows.autowidth.filetype|
+    help = 2,
+},
+    },
+    ignore = {       --      |windows.ignore|
+    buftype = { "quickfix" },
+    filetype = { "NvimTree", "neo-tree", "undotree", "gundo" }
+},
+animation = {
+    enable = true,
+    duration = 200,
+    fps = 60,
+    easing = "in_out_sine"
+}
+})
 -- --------------------------------------
 -- ----------------------------------------------------------------------
