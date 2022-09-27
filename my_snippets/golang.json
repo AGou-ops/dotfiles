@@ -4,6 +4,11 @@
     "body": "import \"${1:package}\"",
     "description": "Snippet for import statement"
   },
+  "String Repeat": {
+    "prefix": "sp",
+    "body": "fmt.Println(strings.Repeat(\"${1:string}\",99))",
+    "description": "Print some divider"
+  },
   "multiple imports": {
     "prefix": "ims",
     "body": "import (\n\t\"${1:package}\"\n)",

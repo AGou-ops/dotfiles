@@ -9,6 +9,8 @@ syntax on
 let mapleader=","
 set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
 
+set synmaxcol=200
+set lazyredraw
 
 " --------------------------
 "
@@ -145,8 +147,24 @@ hi Search cterm=NONE ctermfg=black ctermbg=red
 
 
 " ================ netrw ===========================
-let g:netrw_winsize=10
-let g:netrw_liststyle = 3
-" let g:netrw_banner = 0
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
+" let g:netrw_winsize=10
+" let g:netrw_liststyle = 3
+" " let g:netrw_banner = 0
+" let g:netrw_browse_split = 4
+" let g:netrw_altv = 1
+
+let g:loaded_matchparen        = 1
+let g:loaded_matchit           = 1
+let g:loaded_logiPat           = 1
+let g:loaded_rrhelper          = 1
+let g:loaded_tarPlugin         = 1
+" let g:loaded_man               = 1
+let g:loaded_gzip              = 1
+let g:loaded_zipPlugin         = 1
+let g:loaded_2html_plugin      = 1
+let g:loaded_shada_plugin      = 1
+let g:loaded_spellfile_plugin  = 1
+let g:loaded_netrw             = 1
+let g:loaded_netrwPlugin       = 1
+let g:loaded_tutor_mode_plugin = 1
+let g:loaded_remote_plugins    = 1

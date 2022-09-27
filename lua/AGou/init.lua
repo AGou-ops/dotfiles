@@ -21,16 +21,15 @@ require("AGou.nvim-dashboard")
 require("AGou.nvim-indent-blankline")
 require("AGou.nvim-trouble")
 require("AGou.nvim-goto-preview")
-require("AGou.nvim-smart-splits")
+-- require("AGou.nvim-smart-splits")
 require("AGou.nvim-scrollbar")
 require("AGou.nvim-jabs")
 require("AGou.nvim-dap")
 require("AGou.nvim-gomove")
 require("AGou.nvim-surround")
 require("AGou.nvim-incline")
-require("AGou.nvim-zen-mode")
+-- require("AGou.nvim-zen-mode")
 require("AGou.nvim-ufo")
-require("AGou.nvim-filetype")
 -- --------------------------------------
 
 -- -------------------------- 其他简单lua插件配置项 --------------------------------------------
@@ -192,24 +191,38 @@ require('neogen').setup({
 --  },
 --}
 -- --------------------------------------
-require("windows").setup({
-    autowidth = {      --         |windows.autowidth|
-    enable = true,
-    winwidth = 10,     --          |windows.winwidth|
-    filetype = {      --      |windows.autowidth.filetype|
-    help = 2,
-},
-    },
-    ignore = {       --      |windows.ignore|
-    buftype = { "quickfix" },
-    filetype = { "NvimTree", "neo-tree", "undotree", "gundo" }
-},
-animation = {
-    enable = true,
-    duration = 200,
-    fps = 60,
-    easing = "in_out_sine"
-}
-})
+-- require("windows").setup({
+--     autowidth = {      --         |windows.autowidth|
+--     enable = true,
+--     winwidth = 10,     --          |windows.winwidth|
+--     filetype = {      --      |windows.autowidth.filetype|
+--     help = 2,
+-- },
+--     },
+--     ignore = {       --      |windows.ignore|
+--     buftype = { "quickfix" },
+--     filetype = { "NvimTree", "neo-tree", "undotree", "gundo" }
+-- },
+-- animation = {
+--     enable = true,
+--     duration = 200,
+--     fps = 60,
+--     easing = "in_out_sine"
+-- }
+-- })
+-- --------------------------------------
+vim.cmd([[
+hi BqfPreviewBorder guifg=#50a14f ctermfg=71
+hi link BqfPreviewRange Search
+]])
+
+require('bqf').setup({})
+-- --------------------------------------
+-- --------------------------------------
+-- --------------------------------------
+-- --------------------------------------
+-- --------------------------------------
+-- --------------------------------------
+-- --------------------------------------
 -- --------------------------------------
 -- ----------------------------------------------------------------------
