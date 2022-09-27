@@ -1,4 +1,4 @@
-" AGou-ops VIMRC FILE         -- Update Date: 2022-08-23 23:55:18
+"g:gruvbox_material_better_performance AGou-ops VIMRC FILE         -- Update Date: 2022-08-23 23:55:18
 set nocompatible              " be iMproved, required
 " ============================== Plugin packages ==============================
 " Begin Plug, Depends On https://github.com/junegunn/vim-plug
@@ -29,7 +29,6 @@ Plug 'AGou-ops/dashboard-nvim'
 Plug 'dstein64/vim-startuptime'
 " -- Speed up Neovim.
 Plug 'lewis6991/impatient.nvim'
-Plug 'nathom/filetype.nvim'
 
 " ========= useful tools here. ==========
 
@@ -85,7 +84,7 @@ Plug 'rmagatti/auto-session'
 Plug 'folke/which-key.nvim'
 " Plug 'folke/todo-comments.nvim'
 Plug 'Djancyp/better-comments.nvim'
-Plug 'folke/zen-mode.nvim'
+" Plug 'folke/zen-mode.nvim'
 " -- works with zen-mode
 " Plug 'folke/twilight.nvim'
 Plug 'voldikss/vim-translator'
@@ -97,7 +96,7 @@ Plug 'sbdchd/neoformat'
 Plug 'edluffy/specs.nvim'
 " -- cursor jump plugin
 " Plug 'hrsh7th/vim-searchx'
-Plug 'mrjones2014/smart-splits.nvim'
+" Plug 'mrjones2014/smart-splits.nvim'
 Plug 'SmiteshP/nvim-gps'
 Plug 'kevinhwang91/nvim-hlslens'
 Plug 'phaazon/hop.nvim'
@@ -116,10 +115,12 @@ Plug 'kylechui/nvim-surround'
 " -- fold
 Plug 'kevinhwang91/promise-async'
 Plug 'kevinhwang91/nvim-ufo'
+" -- better quickfix window
+Plug 'kevinhwang91/nvim-bqf'
 " -- window resize
-Plug 'anuvyklack/middleclass'
-Plug 'anuvyklack/windows.nvim'
-Plug 'anuvyklack/animation.nvim'
+" Plug 'anuvyklack/middleclass'
+" Plug 'anuvyklack/windows.nvim'
+" Plug 'anuvyklack/animation.nvim'
 
 " ========= programming tools here. ==========
 
@@ -338,9 +339,9 @@ let g:neoformat_only_msg_on_error = 1
 let g:translator_target_lang = 'zh'
 
 " ========= copilot settings ==========
-imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
-let g:copilot_filetypes = {  '*': v:false, }
+" imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+" let g:copilot_no_tab_map = v:true
+" let g:copilot_filetypes = {  '*': v:false, }
 " \ 'python': v:true,
 
 " ========= startuptime settings ==========
@@ -563,16 +564,16 @@ filetype on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RENAME CURRENT FILE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
-    endif
-endfunction
-map <leader>n :call RenameFile()<cr>
+" function! RenameFile()
+"     let old_name = expand('%')
+"     let new_name = input('New file name: ', expand('%'), 'file')
+"     if new_name != '' && new_name != old_name
+"         exec ':saveas ' . new_name
+"         exec ':silent !rm ' . old_name
+"         redraw!
+"     endif
+" endfunction
+" map <leader>n :call RenameFile()<cr>
 
 " Automatically set paste mode in Vim when pasting in insert mode
 function! XTermPasteBegin()
@@ -594,6 +595,7 @@ autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,pe
 " use async terminal instead
 autocmd FileType go nmap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=10 go run %<CR>
 autocmd FileType go nmap <Leader>rR :AsyncRun -mode=term -pos=bottom -rows=85 go run %<CR>
+autocmd FileType go nmap <Leader>rt :AsyncRun -mode=term -pos=toggleterm go run %<CR>
 autocmd FileType go nmap <Leader>r :AsyncRun -mode=term -pos=bottom -rows=10 go run .<CR>
 autocmd FileType go nmap <Leader>gt :AsyncRun -mode=term -pos=bottom -rows=10 go test .<CR>
 autocmd FileType go nmap <Leader>gb :AsyncRun -mode=term -pos=bottom -rows=10 go build .<CR>
