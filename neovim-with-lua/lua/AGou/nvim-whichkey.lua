@@ -61,7 +61,7 @@ require("which-key").setup({
     -- most people should not need to change this
     i = { "j", "k", "," },
     v = { "j", "k", "w" },
-    n = { "v", "V", "d", "w" },
+    n = { "v", "V", "d", "w"},
     c = { "w" },
   },
 })
