@@ -2,8 +2,9 @@ vim.o.foldcolumn = '1'
 vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+---@diagnostic disable: unused-local, unused-function, undefined-field
 
 local handler = function(virtText, lnum, endLnum, width, truncate)
     local newVirtText = {}
@@ -33,12 +34,22 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
     return newVirtText
 end
 
--- global handler
+local function customizeFoldText()
+    -- global handler
+    require('ufo').setup({
+        fold_virt_text_handler = handler
+    })
+end
+
 require('ufo').setup({
-    fold_virt_text_handler = handler
+    provider_selector = function(bufnr, filetype, buftype)
+        return {'treesitter', 'indent'}
+    end
 })
 
--- buffer scope handler
--- will override global handler if it is existed
-local bufnr = vim.api.nvim_get_current_buf()
-require('ufo').setFoldVirtTextHandler(bufnr, handler)
+local function customizeBufFoldText()
+    -- buffer scope handler
+    -- will override global handler if it is existed
+    local bufnr = vim.api.nvim_get_current_buf()
+    require('ufo').setFoldVirtTextHandler(bufnr, handler)
+end
