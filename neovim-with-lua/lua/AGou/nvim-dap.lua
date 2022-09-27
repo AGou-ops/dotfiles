@@ -69,7 +69,7 @@ dap.configurations.go = {
 -- nvim-dap-ui settings.
 
 require("dapui").setup({
-  icons = { expanded = "▾", collapsed = "▸" },
+  icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
   mappings = {
     -- Use a table to apply multiple mappings
     expand = { "<CR>", "<2-LeftMouse>" },
@@ -109,6 +109,21 @@ require("dapui").setup({
       size = 0.25, -- 25% of total lines
       position = "bottom",
     },
+  },
+  controls = {
+      enabled = true,
+      -- Display controls in this element
+      element = "repl",
+      icons = {
+          pause = "",
+          play = "",
+          step_into = "",
+          step_over = "",
+          step_out = "",
+          step_back = "",
+          run_last = "↻",
+          terminate = "□",
+      },
   },
   floating = {
     max_height = nil, -- These can be integers or a float between 0 and 1.
