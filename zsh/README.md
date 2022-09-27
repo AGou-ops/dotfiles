@@ -1,3 +1,10 @@
 # 使用方法
 
-将`.zshrc`放到家目录，将`zsh`目录放到`~/.config/zsh`。
+```bash
+mv lsd ~/.config/lsd
+mv vivid ~/.config/vivid
+mv zim ~/.config/zim
+mv zsh.dot ~/.config/zsh
+mv zimrc ~/.zimrc
+mv zshrc ~/.zshrc
+```
