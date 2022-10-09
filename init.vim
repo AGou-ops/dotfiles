@@ -1,4 +1,4 @@
-"g:gruvbox_material_better_performance AGou-ops VIMRC FILE         -- Update Date: 2022-08-23 23:55:18
+"AGou-ops VIMRC FILE         -- Update Date: 2022-08-23 23:55:18
 set nocompatible              " be iMproved, required
 " ============================== Plugin packages ==============================
 " Begin Plug, Depends On https://github.com/junegunn/vim-plug
@@ -91,13 +91,14 @@ Plug 'voldikss/vim-translator'
 " -- color highlighter
 Plug 'norcalli/nvim-colorizer.lua'
 " -- format file
-Plug 'sbdchd/neoformat'
+" Plug 'sbdchd/neoformat'
+" -- format file using lsp(async).
+Plug 'lukas-reineke/lsp-format.nvim'
 " -- Show where your cursor moves when jumping large distances
 Plug 'edluffy/specs.nvim'
 " -- cursor jump plugin
 " Plug 'hrsh7th/vim-searchx'
 " Plug 'mrjones2014/smart-splits.nvim'
-Plug 'SmiteshP/nvim-gps'
 Plug 'kevinhwang91/nvim-hlslens'
 Plug 'phaazon/hop.nvim'
 " -- improved * motions.
@@ -110,7 +111,7 @@ Plug 'Yggdroot/LeaderF'
 Plug 'booperlv/nvim-gomove'
 " -- highlight when using yank
 Plug 'svban/YankAssassin.vim'
-Plug 'b0o/incline.nvim'
+" Plug 'b0o/incline.nvim'
 Plug 'kylechui/nvim-surround'
 " -- fold
 Plug 'kevinhwang91/promise-async'
@@ -127,6 +128,7 @@ Plug 'kevinhwang91/nvim-bqf'
 " Plug 'dense-analysis/ale'
 " lsp server
 Plug 'neovim/nvim-lspconfig'
+Plug 'SmiteshP/nvim-navic'
 " Plug 'williamboman/nvim-lsp-installer'
 Plug 'williamboman/mason.nvim'
 " -- lsp beauty.
@@ -162,6 +164,7 @@ Plug 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
 Plug 'rmagatti/goto-preview', { 'for': ['go'] }
 " --  async run a command
 Plug 'skywind3000/asyncrun.vim'
+
 
 call plug#end()
 
@@ -244,7 +247,8 @@ hi TSConditional ctermfg=167 gui=italic guifg=#ea6962
 hi TreesitterContext ctermfg=223 ctermbg=237 guifg=#ddc7a1 guibg=#3c3836
 hi NormalFloat ctermfg=223 ctermbg=237 guifg=#ddc7a1 guibg=#1E2021
 hi FloatBorder  ctermfg=142 guifg=#a9b665 guibg=#1E2021
-hi InclineNormal ctermfg=223 ctermbg=237 gui=italic guifg=#ddc7a1 guibg=#3c3836
+" hi InclineNormal ctermfg=223 ctermbg=237 gui=italic guifg=#ddc7a1 guibg=#3c3836
+hi lualine_c_inactive ctermfg=223 ctermbg=237 gui=italic guifg=#ddc7a1 guibg=#3c3836
 " hi FocusedSymbol cterm=italic ctermfg=4 ctermbg=11 gui=bold,italic guifg=#181A1A guibg=#77814C
 " hi ErrorText cterm=undercurl ctermbg=52 gui=italic guibg=#442e2d guisp=#ea6962
 
@@ -255,7 +259,8 @@ hi InclineNormal ctermfg=223 ctermbg=237 gui=italic guifg=#ddc7a1 guibg=#3c3836
 
 " ========= autosave settings ==========
 let g:auto_save = 1  " enable AutoSave on Vim startup
-let g:auto_save_events = ["InsertLeave", "TextChanged"]
+" let g:auto_save_events = ["InsertLeave", "TextChanged"]
+let g:auto_save_events = ["ExitPre", "BufLeave"]
 " let g:auto_save_write_all_buffers = 0  " write all open buffers as if you would use :wa
 
 " ========= LeaderF settings ==========
@@ -327,13 +332,13 @@ let g:rnvimr_layout = {
 "     undojoin | Neoformat
 " endfun
 "
-augroup fmt
-  autocmd!
-"   autocmd BufWritePre * undojoin | Neoformat
-  autocmd BufWritePre *.go Neoformat gofumpt
-augroup END
-" ignore error
-let g:neoformat_only_msg_on_error = 1
+" augroup fmt
+"   autocmd!
+" "   autocmd BufWritePre * undojoin | Neoformat
+"   autocmd BufWritePre *.go Neoformat gofumpt
+" augroup END
+" " ignore error
+" let g:neoformat_only_msg_on_error = 1
 
 " ========= vim-translator settings ==========
 let g:translator_target_lang = 'zh'
@@ -411,37 +416,6 @@ let g:VM_maps['Find Subword Under'] = '<cr>'           " replace visual C-n
 let g:VM_mouse_mappings = 1
 let g:VM_theme = 'iceblue'
 let g:VM_highlight_matches = 'underline'
-"
-" " ========= wilder command bar settings ==========
-" " Default keys
-" 这行配置有毒，敲了！
-" call wilder#setup({'modes': [':', '/', '?']})
-" warnning: 增加以下配置会增加nvim启动时间（大概60ms）
-" call wilder#set_option('pipeline', [
-"       \   wilder#branch(
-"       \     wilder#python_file_finder_pipeline({
-"       \       'file_command': ['rg', '--files'],
-"       \       'dir_command': ['find', '.', '-type', 'd', '-printf', '%P\n'],
-"       \       'filters': ['fuzzy_filter', 'difflib_sorter'],
-"       \     }),
-"       \     wilder#cmdline_pipeline(),
-"       \     wilder#python_search_pipeline(),
-"       \   ),
-"       \ ])
-" call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
-"             \ 'border': 'rounded',
-"             \ 'highlighter': wilder#basic_highlighter(),
-"             \ 'highlights': {
-"                 \   'border': 'Normal',
-"                 \   'accent': wilder#make_hl('WilderAccent', 'Pmenu', [{}, {}, {'foreground': '#f4468f'}]),
-"                 \ },
-"                 \ 'left': [
-"                     \   ' ', wilder#popupmenu_devicons(),
-"                     \ ],
-"                     \ 'right': [
-"                         \   ' ', wilder#popupmenu_scrollbar(),
-"                         \ ],
-"                         \ })))
 
 " ========= lspsaga.nvim settings ==========
 highlight link LspSagaFinderSelection Search
@@ -450,19 +424,6 @@ highlight link LspSagaFinderSelection Search
 
 " ============= vim-move settings ==========
 let g:move_key_modifier = 'C'
-
-" ========= toggleterm settings ==========
-" autocmd TermEnter term://*toggleterm#*
-"             \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
-
-" By applying the mappings this way you can pass a count to your
-" mapping to open a specific window.
-" For example: 2<C-t> will open terminal 2
-nnoremap <silent><leader>tt <Cmd>exe v:count1 . "ToggleTerm"<CR>
-inoremap <silent><leader>tt <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
-nnoremap <silent><leader>gg <Cmd>lua _LAZYGIT_TOGGLE()<CR>
-
-set termguicolors " this variable must be enabled for colors to be applied properly
 
 " a list of groups can be found at `:help nvim_tree_highlight`
 " highlight NvimTreeFolderIcon guibg=blue
@@ -475,9 +436,8 @@ set t_Co=256
 
 
 " ============================== Autocmd/Function settings ==============================
-"
 
-autocmd ColorScheme * runtime lua/vim/lsp/diagnostic.lua
+" autocmd ColorScheme * runtime lua/vim/lsp/diagnostic.lua
 
 " don't add comment char when using o mode
 autocmd FileType * setlocal formatoptions-=c formatoptions-=o
@@ -555,8 +515,8 @@ let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
 " filetype settings
-let g:do_filetype_lua = 1             " load filetype.lua
-let g:did_load_filetypes = 0          " don't load filetype.vim
+" let g:do_filetype_lua = 1             " load filetype.lua
+" let g:did_load_filetypes = 0          " don't load filetype.vim
 " filetype plugin on
 " filetype indent on
 filetype on

@@ -9,6 +9,8 @@ syntax on
 let mapleader=","
 set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾
 
+set termguicolors " this variable must be enabled for colors to be applied properly
+
 set synmaxcol=200
 set lazyredraw
 

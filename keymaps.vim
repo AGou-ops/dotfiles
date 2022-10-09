@@ -1,7 +1,7 @@
 " ================ Hotkey ReMap =====================
 
 " disable leader key in insert mode.
-iunmap <leader>tt
+" iunmap <leader>t <nop>
 " ex mode close.
 " map q :quit<CR>
 map q <Nop>
@@ -35,8 +35,8 @@ vnoremap // y/<c-r>"<cr>
 noremap <C-left> :bp<CR>
 noremap <C-right> :bn<CR>
 " noremap <C-h> :Goyo<CR>
-nnoremap <C-t>     :tabnew<CR>
-inoremap <C-t>     <Esc>:tabnew<CR>
+nnoremap <C-t> :tabnew<CR>
+inoremap <C-t> <Esc>:tabnew<CR>
 
 inoremap jk <ESC>
 " inoremap <C-d> <DEL>
@@ -62,6 +62,17 @@ nnoremap <Leader>q( ciw()<Esc>P
 nnoremap <Leader>q{ ciw{}<Esc>P
 nnoremap <Leader>q[ ciw[]<Esc>P
 nnoremap <Leader>qd daW"=substitute(@@,"'\\\|\"","","g")<CR>P
+
+" ========= toggleterm settings ==========
+" autocmd TermEnter term://*toggleterm#*
+"             \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+
+" By applying the mappings this way you can pass a count to your
+" mapping to open a specific window.
+" For example: 2<C-t> will open terminal 2
+nnoremap <silent><leader>tt <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <silent><leader>tt <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
+nnoremap <silent><leader>gg <Cmd>lua _LAZYGIT_TOGGLE()<CR>
 
 " ========= coc.spelling settings ========
 " vmap <leader>s <Plug>(coc-codeaction-selected)

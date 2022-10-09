@@ -27,7 +27,7 @@ require("AGou.nvim-jabs")
 require("AGou.nvim-dap")
 require("AGou.nvim-gomove")
 require("AGou.nvim-surround")
-require("AGou.nvim-incline")
+-- require("AGou.nvim-incline")
 -- require("AGou.nvim-zen-mode")
 require("AGou.nvim-ufo")
 -- --------------------------------------
@@ -36,6 +36,8 @@ require("AGou.nvim-ufo")
 --
 require("lsp_lines").setup()
 require("hop").setup({})
+require("lsp-format").setup {}
+
 -- --------------------------------------
 -- full hotkeys usage: https://github.com/numToStr/Comment.nvim#-usage
 -- gcc: 当前行行注释
@@ -44,103 +46,88 @@ require("hop").setup({})
 -- `gco` - Insert comment to the next line and enters INSERT mode
 -- `gcO` - Insert comment to the previous line and enters INSERT mode
 -- `gcA` - Insert comment to end of the current line and enters INSERT mode
-require("Comment").setup({
-  mappings = {
-    extended = true,
-  },
-})
+require("Comment").setup({})
 -- --------------------------------------
 require("specs").setup({
-  show_jumps = true,
-  min_jump = 30,
-  popup = {
-    delay_ms = 0, -- delay before popup displays
-    inc_ms = 5, -- time increments used for fade/resize effects
-    blend = 0, -- starting blend, between 0-100 (fully transparent), see :h winblend
-    width = 70,
-    winhl = "PMenu",
-    -- Faders:
-    -- linear_fader ▁▂▂▃▃▄▄▅▅▆▆▇▇██
-    -- exp_fader ▁▁▁▁▂▂▂▃▃▃▄▄▅▆▇
-    -- pulse_fader ▁▂▃▄▅▆▇█▇▆▅▄▃▂▁
-    -- empty_fader ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
-    fader = require("specs").exp_fader,
-    -- Resizers:
-    -- shrink_resizer ░░▒▒▓█████▓▒▒░░
-    -- slide_resizer ████▓▓▓▒▒▒▒░░░░
-    -- empty_resizer ███████████████
-    resizer = require("specs").shrink_resizer,
-  },
-  ignore_filetypes = { "NvimTree" },
-  ignore_buftypes = {
-    nofile = true,
-    "NvimTree",
-    "go",
-  },
+    show_jumps = true,
+    min_jump = 30,
+    popup = {
+        delay_ms = 0, -- delay before popup displays
+        inc_ms = 5, -- time increments used for fade/resize effects
+        blend = 0, -- starting blend, between 0-100 (fully transparent), see :h winblend
+        width = 70,
+        winhl = "PMenu",
+        -- Faders:
+        -- linear_fader ▁▂▂▃▃▄▄▅▅▆▆▇▇██
+        -- exp_fader ▁▁▁▁▂▂▂▃▃▃▄▄▅▆▇
+        -- pulse_fader ▁▂▃▄▅▆▇█▇▆▅▄▃▂▁
+        -- empty_fader ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+        fader = require("specs").exp_fader,
+        -- Resizers:
+        -- shrink_resizer ░░▒▒▓█████▓▒▒░░
+        -- slide_resizer ████▓▓▓▒▒▒▒░░░░
+        -- empty_resizer ███████████████
+        resizer = require("specs").shrink_resizer,
+    },
+    ignore_filetypes = { "NvimTree" },
+    ignore_buftypes = {
+        nofile = true,
+        "NvimTree",
+        "go",
+    },
 })
 
 -- --------------------------------------
 require("colorizer").setup({
-  "*", -- Highlight all files, but customize some others.
-  "!vim", -- Exclude vim from highlighting.
-  -- Exclusion Only makes sense if '*' is specified!
+    "*", -- Highlight all files, but customize some others.
+    "!vim", -- Exclude vim from highlighting.
+    -- Exclusion Only makes sense if '*' is specified!
 })
 -- --------------------------------------
 local tabnine = require("cmp_tabnine.config")
 tabnine:setup({
-  max_lines = 1000,
-  max_num_results = 5,
-  sort = true,
-  run_on_every_keystroke = true,
-  snippet_placeholder = "..",
-  ignored_file_types = { -- default is not to ignore
-    TelescopePrompt = true,
-    -- yaml = true
-    NvimTree = true,
-    vim = true,
-  },
-  show_prediction_strength = false,
+    max_lines = 1000,
+    max_num_results = 5,
+    sort = true,
+    run_on_every_keystroke = true,
+    snippet_placeholder = "..",
+    ignored_file_types = { -- default is not to ignore
+        TelescopePrompt = true,
+        -- yaml = true
+        NvimTree = true,
+        vim = true,
+    },
+    show_prediction_strength = false,
 })
 -- --------------------------------------
-require("nvim-gps").setup({
-  icons = {
-    ["class-name"] = " ", -- Classes and class-like objects
-    ["function-name"] = " ", -- Functions
-    ["method-name"] = " ", -- Methods (functions inside class-like objects)
-    ["container-name"] = "⛶ ", -- Containers (example: lua tables)
-    ["tag-name"] = "炙", -- Tags (example: html tags)
-    ["object-name"] = " ",
-  },
-})
--- --------------------------------------
-require("nvim-cursorline").setup({
-  cursorline = {
-    enable = false,
-    timeout = 300,
-    number = false,
-  },
-  cursorword = {
-    enable = true,
-    min_length = 3,
-    hl = { underline = true },
-  },
-})
+require('nvim-cursorline').setup {
+    cursorline = {
+        enable = false,
+        timeout = 1000,
+        number = false,
+    },
+    cursorword = {
+        enable = true,
+        min_length = 3,
+        hl = { underline = true },
+    }
+}
 -- --------------------------------------
 -- --------------------------------------
 -- --------------------------------------
 local opts = {
-  log_level = "info",
-  auto_session_enable_last_session = false,
-  auto_session_root_dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
-  auto_session_enabled = false,
-  auto_save_enabled = nil,
-  auto_restore_enabled = nil,
-  auto_session_suppress_dirs = nil,
-  auto_session_use_git_branch = nil,
-  -- the configs below are lua only
-  bypass_session_save_file_types = {
-    "NvimTree",
-  },
+    log_level = "info",
+    auto_session_enable_last_session = false,
+    auto_session_root_dir = vim.fn.expand(vim.fn.stdpath("config") .. "/sessions/"), -- directory where session files are saved
+    auto_session_enabled = false,
+    auto_save_enabled = nil,
+    auto_restore_enabled = nil,
+    auto_session_suppress_dirs = nil,
+    auto_session_use_git_branch = nil,
+    -- the configs below are lua only
+    bypass_session_save_file_types = {
+        "NvimTree",
+    },
 }
 
 require("auto-session").setup(opts)
@@ -163,7 +150,7 @@ require('better-comment').Setup({
 -- --------------------------------------
 require('neogen').setup({
     snippet_engine = "luasnip",
-    enabled = true,             --if you want to disable Neogen
+    enabled = true, --if you want to disable Neogen
     input_after_comment = true, -- (default: true) automatic jump (with insert mode) on inserted annotation
 
 })
@@ -218,6 +205,7 @@ hi link BqfPreviewRange Search
 
 require('bqf').setup({})
 -- --------------------------------------
+
 -- --------------------------------------
 -- --------------------------------------
 -- --------------------------------------
