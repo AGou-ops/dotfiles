@@ -32,7 +32,7 @@ fi
 
 git checkout nvim
 
-rsync -avzP --progress --exclude '%Users*' --exclude '.git/'  ~/.config/nvim/  ~/myWeb/dotfiles/
+rsync -avzP --progress --exclude '%Users*' --exclude '.git/' --exclude 'zsh/'  ~/.config/nvim/  ~/myWeb/dotfiles/
 
 find . -name ".DS_Store" -exec rm -f {} \;
 
