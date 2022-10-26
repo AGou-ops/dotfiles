@@ -1,4 +1,4 @@
-"AGou-ops VIMRC FILE         -- Update Date: 2022-08-23 23:55:18
+"AGou-ops VIMRC FILE         -- Update Date: 2022-10-18 22:37:11
 set nocompatible              " be iMproved, required
 " ============================== Plugin packages ==============================
 " Begin Plug, Depends On https://github.com/junegunn/vim-plug
@@ -29,6 +29,8 @@ Plug 'AGou-ops/dashboard-nvim'
 Plug 'dstein64/vim-startuptime'
 " -- Speed up Neovim.
 Plug 'lewis6991/impatient.nvim'
+
+Plug 'max397574/better-escape.nvim'
 
 " ========= useful tools here. ==========
 
@@ -82,8 +84,7 @@ Plug 'rmagatti/auto-session'
 " Plug 'jedrzejboczar/possession.nvim'
 
 Plug 'folke/which-key.nvim'
-" Plug 'folke/todo-comments.nvim'
-Plug 'Djancyp/better-comments.nvim'
+Plug 'folke/todo-comments.nvim'
 " Plug 'folke/zen-mode.nvim'
 " -- works with zen-mode
 " Plug 'folke/twilight.nvim'
@@ -122,6 +123,10 @@ Plug 'kevinhwang91/nvim-bqf'
 " Plug 'anuvyklack/middleclass'
 " Plug 'anuvyklack/windows.nvim'
 " Plug 'anuvyklack/animation.nvim'
+
+" Plug 'MunifTanjim/nui.nvim'
+" Plug 'rcarriga/nvim-notify'
+" Plug 'folke/noice.nvim'
 
 " ========= programming tools here. ==========
 
@@ -405,7 +410,7 @@ let g:tagbar_type_markdown = {
 set completeopt=menu,menuone,noselect
 
 " ========= instant-markdown settings ==========
-let g:mkdp_filetypes = ['markdown.mkd']
+let g:mkdp_filetypes = ['markdown']
 
 autocmd BufRead *.md nnoremap <leader>mp <Plug>MarkdownPreview
 
@@ -505,7 +510,7 @@ autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
 autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
 autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
-autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd
+autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown
 
 " syntax support
 autocmd Syntax javascript set syntax=jquery   " JQuery syntax support
