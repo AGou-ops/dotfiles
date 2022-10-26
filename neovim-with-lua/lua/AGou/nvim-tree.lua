@@ -23,7 +23,6 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
     open_on_setup = true,
     open_on_setup_file = true,
     open_on_tab = false,
-    focus_empty_on_setup = true,
     ignore_buf_on_tab_change = {},
     sort_by = "name",
     root_dirs = {},
@@ -33,7 +32,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
     respect_buf_cwd = false,
     on_attach = "disable",
     remove_keymaps = false,
-    select_prompts = false,
+    select_prompts = true,
     view = {
         adaptive_size = true,
         centralize_selection = false,
@@ -48,7 +47,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
             custom_only = false,
             list = {
                 -- user mappings go here
-                { key = { "<CR>", "l", "<2-LeftMouse>" }, cb = tree_cb("edit") },
+                { key = { "<cr>", "l", "<2-leftmouse>" }, cb = tree_cb("edit") },
                 { key = "v", cb = tree_cb("vsplit") },
                 { key = "s", cb = tree_cb("split") },
                 { key = "h", cb = tree_cb "close_node" },
@@ -57,6 +56,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
         },
         float = {
             enable = false,
+            quit_on_focus_loss = true,
             open_win_config = {
                 relative = "editor",
                 border = "rounded",
@@ -70,13 +70,13 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
     renderer = {
         add_trailing = false,
         group_empty = false,
-        highlight_git = true,
+        highlight_git = false,
         full_name = false,
         highlight_opened_files = "none",
         root_folder_modifier = ":~",
         indent_width = 2,
         indent_markers = {
-            enable = true,
+            enable = false,
             inline_arrows = true,
             icons = {
                 corner = "└",
@@ -122,7 +122,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
                 },
             },
         },
-        special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
+        special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md", "config.toml" },
         symlink_destination = true,
     },
     hijack_directories = {
@@ -130,7 +130,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
         auto_open = true,
     },
     update_focused_file = {
-        enable = false,
+        enable = true,
         update_root = false,
         ignore_list = {},
     },
@@ -140,7 +140,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
         args = {},
     },
     diagnostics = {
-        enable = false,
+        enable = true,
         show_on_dirs = false,
         debounce_delay = 50,
         icons = {
@@ -202,7 +202,7 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
         },
     },
     trash = {
-        cmd = "gio trash",
+        cmd = "trash-put",
         require_confirm = true,
     },
     live_filter = {
