@@ -30,6 +30,7 @@ require("AGou.nvim-surround")
 -- require("AGou.nvim-incline")
 -- require("AGou.nvim-zen-mode")
 require("AGou.nvim-ufo")
+require("AGou.nvim-todo")
 -- --------------------------------------
 
 -- -------------------------- 其他简单lua插件配置项 --------------------------------------------
@@ -132,22 +133,6 @@ local opts = {
 
 require("auto-session").setup(opts)
 -- --------------------------------------
-require('better-comment').Setup({
-    tags = {
-        -- TODO: I wanna go home.
-        -- FIX: FIX something
-        -- WARNING: example comment
-        -- !
-        -- {
-        --     name = "TODO",
-        --     fg = "white",
-        --     bg = "#0a7aca",
-        --     bold = true,
-        --     virtual_text = "something here",
-        -- },
-    }
-})
--- --------------------------------------
 require('neogen').setup({
     snippet_engine = "luasnip",
     enabled = true, --if you want to disable Neogen
@@ -205,7 +190,17 @@ hi link BqfPreviewRange Search
 
 require('bqf').setup({})
 -- --------------------------------------
-
+-- lua, default settings
+require("better_escape").setup {
+    mapping = { "jk" }, -- a table with mappings to use
+    timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
+    clear_empty_lines = false, -- clear line after escaping if there is only whitespace
+    keys = "<Esc>", -- keys used for escaping, if it is a function will use the result everytime
+    -- example(recommended)
+    -- keys = function()
+    --   return vim.api.nvim_win_get_cursor(0)[2] > 1 and '<esc>l' or '<esc>'
+    -- end,
+}
 -- --------------------------------------
 -- --------------------------------------
 -- --------------------------------------
