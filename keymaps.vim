@@ -38,7 +38,8 @@ noremap <C-right> :bn<CR>
 nnoremap <C-t> :tabnew<CR>
 inoremap <C-t> <Esc>:tabnew<CR>
 
-inoremap jk <ESC>
+" use better-escape instead
+" inoremap jk <ESC>
 " inoremap <C-d> <DEL>
 " inoremap kj <ESC>
 
@@ -103,11 +104,11 @@ nnoremap gT <cmd>Neogen type<CR>
 " ========= smart-splits settings ========
 " recommended mappings
 " resizing splits
-nmap <A-Left> :lua require('smart-splits').resize_left()<CR>
-nmap <A-Down> :lua require('smart-splits').resize_down()<CR>
-nmap <A-Up> :lua require('smart-splits').resize_up()<CR>
-nmap <A-Right> :lua require('smart-splits').resize_right()<CR>
-nmap <A-r> :lua require('smart-splits').start_resize_mode()<CR>
+" nmap <A-Left> :lua require('smart-splits').resize_left()<CR>
+" nmap <A-Down> :lua require('smart-splits').resize_down()<CR>
+" nmap <A-Up> :lua require('smart-splits').resize_up()<CR>
+" nmap <A-Right> :lua require('smart-splits').resize_right()<CR>
+" nmap <A-r> :lua require('smart-splits').start_resize_mode()<CR>
 
 " ========= Suda settings ========
 " force write a file using Suda.vim (sudo)
