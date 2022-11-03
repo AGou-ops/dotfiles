@@ -92,9 +92,9 @@ Plug 'voldikss/vim-translator'
 " -- color highlighter
 Plug 'norcalli/nvim-colorizer.lua'
 " -- format file
-" Plug 'sbdchd/neoformat'
+Plug 'sbdchd/neoformat'
 " -- format file using lsp(async).
-Plug 'lukas-reineke/lsp-format.nvim'
+" Plug 'lukas-reineke/lsp-format.nvim'
 " -- Show where your cursor moves when jumping large distances
 Plug 'edluffy/specs.nvim'
 " -- cursor jump plugin
@@ -105,7 +105,7 @@ Plug 'phaazon/hop.nvim'
 " -- improved * motions.
 Plug 'haya14busa/vim-asterisk'
 " -- Another Buffer Switcher
-Plug 'matbme/JABS.nvim'
+" Plug 'matbme/JABS.nvim'
 " -- An efficient fuzzy finder that helps to locate files, buffers, mrus, gtags, etc. on the fly.
 Plug 'Yggdroot/LeaderF'
 " -- quickly move selected line or block.
@@ -165,10 +165,12 @@ Plug 'rcarriga/nvim-dap-ui'
 
 Plug 'sindrets/diffview.nvim'
 Plug 'folke/trouble.nvim'
-Plug 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
+" Plug 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
 Plug 'rmagatti/goto-preview', { 'for': ['go'] }
 " --  async run a command
 Plug 'skywind3000/asyncrun.vim'
+
+" -- tmp plugins below
 
 
 call plug#end()
@@ -337,13 +339,13 @@ let g:rnvimr_layout = {
 "     undojoin | Neoformat
 " endfun
 "
-" augroup fmt
-"   autocmd!
-" "   autocmd BufWritePre * undojoin | Neoformat
-"   autocmd BufWritePre *.go Neoformat gofumpt
-" augroup END
+augroup fmt
+  autocmd!
+  autocmd BufWritePre *.go Neoformat gofumpt
+  autocmd BufWritePre *.sh Neoformat
+augroup END
 " " ignore error
-" let g:neoformat_only_msg_on_error = 1
+let g:neoformat_only_msg_on_error = 1
 
 " ========= vim-translator settings ==========
 let g:translator_target_lang = 'zh'
@@ -558,9 +560,9 @@ endfun
 autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 " use async terminal instead
-autocmd FileType go nmap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=10 go run %<CR>
-autocmd FileType go nmap <Leader>rR :AsyncRun -mode=term -pos=bottom -rows=85 go run %<CR>
-autocmd FileType go nmap <Leader>rt :AsyncRun -mode=term -pos=toggleterm go run %<CR>
+autocmd FileType go nmap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=10 go run $(VIM_FILEPATH)<CR>
+autocmd FileType go nmap <Leader>rR :AsyncRun -mode=term -pos=bottom -rows=85 go run $(VIM_FILEPATH)<CR>
+autocmd FileType go nmap <Leader>rt :AsyncRun -mode=term -pos=toggleterm go run $(VIM_FILEPATH)<CR>
 autocmd FileType go nmap <Leader>r :AsyncRun -mode=term -pos=bottom -rows=10 go run .<CR>
 autocmd FileType go nmap <Leader>gt :AsyncRun -mode=term -pos=bottom -rows=10 go test .<CR>
 autocmd FileType go nmap <Leader>gb :AsyncRun -mode=term -pos=bottom -rows=10 go build .<CR>

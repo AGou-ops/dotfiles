@@ -4,7 +4,7 @@ local nvim_lsp = require("lspconfig")
 local navic_ok, navic = pcall(require, 'nvim-navic')
 
 local on_attach = function(client, bufnr)
-    require("lsp-format").on_attach(client)
+    -- require("lsp-format").on_attach(client)
 
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -66,18 +66,19 @@ capabilities.textDocument.foldingRange = {
 }
 
 -- -------------------- general settings -- --------------------
-vim.fn.sign_define("DiagnosticSignError", { texthl = "DiagnosticSignError", text = "✖", numhl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { texthl = "DiagnosticSignWarn", text = "❢", numhl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignHint", { texthl = "DiagnosticSignHint", text = "", numhl = "DiagnosticSignHint" })
-vim.fn.sign_define("DiagnosticSignInfo", { texthl = "DiagnosticSignInfo", text = "𝓲", numhl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignError", { texthl = "DiagnosticSignError", text = " ✗", numhl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { texthl = "DiagnosticSignWarn", text = " ❢", numhl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignHint", { texthl = "DiagnosticSignHint", text = " ", numhl = "DiagnosticSignHint" })
+vim.fn.sign_define("DiagnosticSignInfo", { texthl = "DiagnosticSignInfo", text = " 𝓲", numhl = "DiagnosticSignInfo" })
 
 vim.diagnostic.config({
     signs = true,
     update_in_insert = false,
     underline = true,
     severity_sort = true,
-    virtual_text = false,
+    virtual_text = true,
 })
+
 
 -- -------------------------- common lsp server ----------------------
 local servers = { "bashls", "sqls", "dockerls" }

@@ -23,7 +23,7 @@ require("AGou.nvim-trouble")
 require("AGou.nvim-goto-preview")
 -- require("AGou.nvim-smart-splits")
 require("AGou.nvim-scrollbar")
-require("AGou.nvim-jabs")
+-- require("AGou.nvim-jabs")
 require("AGou.nvim-dap")
 require("AGou.nvim-gomove")
 require("AGou.nvim-surround")
@@ -35,9 +35,9 @@ require("AGou.nvim-todo")
 
 -- -------------------------- 其他简单lua插件配置项 --------------------------------------------
 --
-require("lsp_lines").setup()
+-- require("lsp_lines").setup()
 require("hop").setup({})
-require("lsp-format").setup {}
+-- require("lsp-format").setup {}
 
 -- --------------------------------------
 -- full hotkeys usage: https://github.com/numToStr/Comment.nvim#-usage
