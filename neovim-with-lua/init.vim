@@ -447,7 +447,7 @@ set t_Co=256
 " autocmd ColorScheme * runtime lua/vim/lsp/diagnostic.lua
 
 " don't add comment char when using o mode
-autocmd FileType * setlocal formatoptions-=c formatoptions-=o
+autocmd FileType * set formatoptions-=c formatoptions-=o
 
 " disable edit action in man pages.
 autocmd FileType man nnoremap a <nop>
@@ -505,13 +505,13 @@ if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
 endif
 
 " indent for different filetype
-autocmd FileType php,ruby,yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
-autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
-autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
-autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
-autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
-autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType php,ruby,yaml set tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd BufNewFile,BufRead *.go set noexpandtab tabstop=4 shiftwidth=4
+autocmd FileType php set tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
+autocmd FileType coffee,javascript set tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+autocmd FileType python set tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
+autocmd FileType html,html,django,xhtml,haml set tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
+autocmd FileType sass,scss,css set tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown
 
 " syntax support
@@ -597,8 +597,8 @@ endif
 " endif
 
 " ========= Other custom external setting config(Optional) ==========
-if filereadable($HOME . "/.config/nvim/custom.vim")
-    source $HOME/.config/nvim/custom.vim
-endif
+" if filereadable($HOME . "/.config/nvim/custom.vim")
+"     source $HOME/.config/nvim/custom.vim
+" endif
 " ============================== THE END. ==============================
 " ======================================================================
