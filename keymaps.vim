@@ -279,6 +279,8 @@ command QA qa
 " command DebugGolang execute "!cp -a ~/.config/nvim/debug-template/go-template/.vimspector.json ."
 command Source execute ":source ~/.config/nvim/init.vim"
 
+nnoremap <leader>cp :let @+=expand('%:p')<CR>
+
 " ================ F1-F12 Hotkey Settings =====================
 " trun off F1 help page, just use `:help`.
 " noremap <F1> <Esc>"
