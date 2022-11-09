@@ -32,9 +32,10 @@ require('bufferline').setup {
                 return vim.fn.fnamemodify(buf.name, ':t:r')
             end
         end,
-        max_name_length = 30,
-        max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
-        tab_size = 20,
+        max_name_length = 18,
+        max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
+        tab_size = 18,
+        truncate_names = true, -- whether or not tab names should be truncated
         diagnostics = "nvim_lsp", -- | false | "nvim_lsp" | "coc",
         diagnostics_update_in_insert = false,
         diagnostics_indicator = function(count, level)
