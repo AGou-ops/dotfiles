@@ -43,7 +43,7 @@ Plug 'lambdalisue/suda.vim'
 " -- some bug here.
 " Plug 'Pocco81/AutoSave.nvim', { 'branch': 'dev' }
 Plug '907th/vim-auto-save'
-Plug 'preservim/tagbar', { 'for': ['go', 'md'] }
+Plug 'preservim/tagbar'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 " Plug 'MunifTanjim/nui.nvim'
@@ -341,7 +341,7 @@ let g:rnvimr_layout = {
 "
 augroup fmt
   autocmd!
-  autocmd BufWritePre *.go Neoformat gofumpt
+  autocmd BufWritePre *.go Neoformat goimports | Neoformat gofumpt
   autocmd BufWritePre *.sh Neoformat
 augroup END
 " " ignore error
@@ -368,11 +368,13 @@ set timeoutlen=200
 " autocmd VimEnter *.go  Tagbar
 " autocmd VimEnter *.md  Tagbar
 let g:tagbar_show_tag_count = 1
+let g:tagbar_autoshowtag = 1
 let g:tagbar_wrap = 1
 let g:tagbar_zoomwidth = 0
 let g:tagbar_show_linenumbers = 0
 let g:tagbar_autofocus = 0
 let g:tagbar_sort = 0
+let g:tagbar_map_togglesort = "r"
 let g:tagbar_help_visibility = 0
 let g:tagbar_show_data_type = 1
 let g:tagbar_autopreview = 0
