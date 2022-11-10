@@ -62,8 +62,8 @@ set mousehide                   " hide the mouse cursor when typing.
 set hidden
 set vb
 set ruler
-set nowrap                     "Don't wrap lines
-set linebreak                 "Wrap lines at convenient points
+set wrap                        " wrap lines
+set linebreak                   " Wrap lines at convenient points
 set spelllang=en_us
 set fileformats=unix,dos
 set report=0                    " always report number of lines changed

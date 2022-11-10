@@ -44,13 +44,13 @@ require('gitsigns').setup {
   current_line_blame_opts = {
     virt_text = true,
     virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-    delay = 200,
+    delay = 0,
     ignore_whitespace = false,
   },
   current_line_blame_formatter_opts = {
     relative_time = true
   },
- current_line_blame_formatter = '       <author>, <author_time> - <summary>',
+ current_line_blame_formatter = '      <author>, <author_time:%R> - <summary>',
  -- current_line_blame_formatter = function(name, blame_info,opts)
  --        if blame_info.author == name then blame_info.author = 'You' end
  --        local text

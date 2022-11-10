@@ -85,3 +85,13 @@ for group, commands in pairs(augroups) do
         vim.api.nvim_create_autocmd(event, opts)
     end
 end
+
+
+-- auto toggle wrap when split mutil window or goto single window.
+vim.api.nvim_create_autocmd({ "WinNew", "WinClosed", "WinEnter" }, {
+    group = vim.api.nvim_create_augroup("on_demand_wrap", {}),
+    callback = function()
+        local should_wrap = vim.api.nvim_win_get_width(0) ~= vim.o.columns
+        vim.api.nvim_win_set_option(0, "wrap", should_wrap)
+    end,
+})
