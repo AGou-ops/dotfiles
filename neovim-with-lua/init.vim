@@ -267,7 +267,7 @@ hi lualine_c_inactive ctermfg=223 ctermbg=237 gui=italic guifg=#ddc7a1 guibg=#3c
 " ========= autosave settings ==========
 let g:auto_save = 1  " enable AutoSave on Vim startup
 " let g:auto_save_events = ["InsertLeave", "TextChanged"]
-let g:auto_save_events = ["ExitPre", "BufLeave"]
+let g:auto_save_events = ["ExitPre", "BufLeave", "WinLeave"]
 " let g:auto_save_write_all_buffers = 0  " write all open buffers as if you would use :wa
 
 " ========= LeaderF settings ==========
