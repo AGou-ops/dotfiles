@@ -28,7 +28,10 @@ nnoremap U <C-r>
 " vnoremap d "_d
 " vnoremap D "_D
 noremap H ^
-noremap L g_
+" noremap L g_
+noremap L g$
+noremap k gk
+noremap j gj
 nnoremap / /\v
 vnoremap / /\v
 vnoremap // y/<c-r>"<cr>
