@@ -2,7 +2,7 @@
 
 ```diff
 - 提示：如果只想使用Neovim的配置的话，请手动切换到`nvim`分支！！！
-+ 修改了一点点配置文件，neovim0.7版本可以直接使用~！！
++ 修改了一点点配置文件，neovim0.8版本可以直接使用~！！
 + 建议先将所有插件更新到最新.
 ```
 
@@ -20,6 +20,11 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 # 执行插件安装
 nvim +PlugInstall       # 等待安装完毕即可.
 ```
+
+🟥 特别注意：如果安装好之后发现有报错，八成是因为有的软件没有安装，比如`npm`、`node`、`TabNine`等等，你可以在nvim的命令行模式输入`:checkhealth`来进行检查，根据检查信息来手动安装缺少的东西，如果还是有问题，就提个[issue](https://github.com/AGou-ops/dotfiles/issues)吧.
+
+---
+
 
 **Neovim及其插件简单视频介绍：https://www.bilibili.com/video/BV1am4y197bR/  
 保姆级安装up主同款Neovim：https://www.bilibili.com/video/BV1YF411i72t/**
