@@ -22,6 +22,7 @@ nnoremap U <C-r>
 " nnoremap <A-Up> <C-w>k
 " nnoremap <A-Left> <C-w>h
 " nnoremap <A-Right> <C-w>l
+
 " delete something without yank
 " nnoremap d "_d
 " nnoremap D "_D
