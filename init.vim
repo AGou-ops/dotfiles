@@ -1,4 +1,4 @@
-"AGou-ops VIMRC FILE         -- Update Date: 2022-10-18 22:37:11
+"AGou-ops VIMRC FILE         -- Update Date: 2022-11-21 09:48:39
 set nocompatible              " be iMproved, required
 " ============================== Plugin packages ==============================
 " Begin Plug, Depends On https://github.com/junegunn/vim-plug
@@ -119,6 +119,7 @@ Plug 'kevinhwang91/promise-async'
 Plug 'kevinhwang91/nvim-ufo'
 " -- better quickfix window
 Plug 'kevinhwang91/nvim-bqf'
+Plug 'kevinhwang91/nvim-fundo'
 " -- window resize
 " Plug 'anuvyklack/middleclass'
 " Plug 'anuvyklack/windows.nvim'
@@ -486,6 +487,8 @@ autocmd FileChangedShellPost *
 " augroup END
 autocmd InsertEnter * :set norelativenumber number    " use absolute line number.
 autocmd InsertLeave * :set relativenumber
+
+autocmd FileType zsh set nowrap
 
 " ============= Vundle Initialization ===============
 " This loads all the plugins specified in ~/.vim/vundles.vim
