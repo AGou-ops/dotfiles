@@ -40,6 +40,9 @@ require("hop").setup({})
 -- require("lsp-format").setup {}
 
 -- --------------------------------------
+vim.o.undofile = true
+require('fundo').setup()
+-- --------------------------------------
 -- full hotkeys usage: https://github.com/numToStr/Comment.nvim#-usage
 -- gcc: 当前行行注释
 -- gcb: 当前行块注释
