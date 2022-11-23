@@ -13,7 +13,7 @@
 依赖软件包等安装（以Debian系为例）：
 
 ```bash
-sudo apt install wget curl git python3-pip ripgrep lolcat -y
+sudo apt install wget curl git python3-pip ripgrep ranger lolcat -y
 pip3 install pynvim
 echo "export PATH=~/.local/share/nvim/lsp_servers/bin:$PATH" >> ~/.bashrc
 source ~/.bashrc
