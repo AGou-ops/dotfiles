@@ -151,7 +151,7 @@ Plug 'hrsh7th/cmp-emoji'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+" Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 " Plug 'github/copilot.vim'
 Plug 'octaltree/cmp-look'
 
