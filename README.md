@@ -8,7 +8,18 @@
 
 ## TL;DR
 
-快速安装(需自己提前安装好`neovim`)：
+### 快速安装(**需自己提前安装好`neovim`和`nodejs`**)：
+
+依赖软件包等安装（以Debian系为例）：
+
+```bash
+sudo apt install wget curl git python3-pip ripgrep lolcat -y
+pip3 install pynvim
+echo "export PATH=~/.local/share/nvim/lsp_servers/bin:$PATH" >> ~/.bashrc
+source ~/.bashrc
+```
+
+安装配置文件及插件：
 
 ```bash
 git clone https://github.com/AGou-ops/dotfiles.git
