@@ -35,7 +35,7 @@ local DEFAULT_SETTINGS = {
     },
 
     -- The directory in which to install packages.
-    install_root_dir = "/Users/agou-ops/.local/share/nvim/lsp_servers",
+    install_root_dir = os.getenv("HOME") .. "/.local/share/nvim/lsp_servers",
 
     pip = {
         -- These args will be added to `pip install` calls. Note that setting extra args might impact intended behavior
