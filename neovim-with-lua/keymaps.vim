@@ -8,8 +8,8 @@ map q <Nop>
 
 nmap y <Plug>YAMotion
 xmap y <Plug>YAVisual
-" nmap yy <Plug>YALine
 
+" nmap yy <Plug>YALine
 " Quicker window movement
 nnoremap U <C-r>
 " notworking on terminal neovim, only affect on Gvim!!!
