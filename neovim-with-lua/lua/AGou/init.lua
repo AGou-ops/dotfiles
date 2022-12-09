@@ -31,6 +31,7 @@ require("AGou.nvim-surround")
 -- require("AGou.nvim-zen-mode")
 require("AGou.nvim-ufo")
 require("AGou.nvim-todo")
+require("AGou.nvim-cursorword")
 -- --------------------------------------
 
 -- -------------------------- 其他简单lua插件配置项 --------------------------------------------
@@ -104,18 +105,18 @@ tabnine:setup({
     show_prediction_strength = false,
 })
 -- --------------------------------------
-require('nvim-cursorline').setup {
-    cursorline = {
-        enable = false,
-        timeout = 1000,
-        number = false,
-    },
-    cursorword = {
-        enable = true,
-        min_length = 3,
-        hl = { underline = true },
-    }
-}
+-- require('nvim-cursorline').setup {
+--     cursorline = {
+--         enable = false,
+--         timeout = 1000,
+--         number = false,
+--     },
+--     cursorword = {
+--         enable = true,
+--         min_length = 3,
+--         hl = { underline = true },
+--     }
+-- }
 -- --------------------------------------
 -- --------------------------------------
 -- --------------------------------------
