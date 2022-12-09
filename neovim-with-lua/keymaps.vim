@@ -98,6 +98,19 @@ nnoremap <leader>ds <cmd>DeleteSession<CR>
 nnoremap <C-n> :NvimTreeToggle<CR>
 " nnoremap <C-n> :Neotree<CR>
 
+" ========= fundo settings ========
+function! s:clear_fundo()
+    let current_filepath = expand('%:p')
+    execute '!find ~/.cache/nvim/fundo/ -name "$(echo "' . current_filepath . '" | \tr "/" "\%")" | xargs rm -f {} && echo -e "\nFile undoTree cache has Removed\!" || echo -e "\nNo such undoTree file\."'
+    " execute '!rm -f ~/.cache/nvim/fundo/$(echo "' . current_filepath . '" | \tr "/" "\%") && echo -e "\nFile undoTree cache has Removed\!" || echo -e "\nNo such undoTree file\."'
+endfunction
+command! ClearUndoTree execute s:clear_fundo()
+
+function! s:clear_all_fundo()
+    execute '!\rm -rf ~/.cache/nvim/fundo/*'
+endfunction
+command! ClearAllUndoTree execute s:clear_all_fundo()
+
 " ========= window-auto-size plugin settings =======
 nnoremap <C-w>z :WindowsMaximize<CR>
 
@@ -127,9 +140,6 @@ map z*  <Plug>(asterisk-z*)
 map gz* <Plug>(asterisk-gz*)
 map z#  <Plug>(asterisk-z#)
 map gz# <Plug>(asterisk-gz#)
-
-" ========= jabs settings ========
-nnoremap <leader>ob <cmd>JABSOpen<cr>
 
 " ========= dap/dapui settings ========
 nnoremap <silent> <F4> :lua require'dapui'.toggle()<CR>
@@ -165,7 +175,7 @@ command! ProjectFiles execute s:find_files()
 nnoremap <leader>fg <cmd>ProjectFiles<cr>
 " nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 
-nnoremap <leader>fB <cmd>Telescope buffers<cr>
+nnoremap <leader>ob <cmd>Telescope buffers<cr>
 nnoremap <leader>fG <cmd>LeaderfRgInteractive<CR>
 nnoremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
@@ -215,10 +225,6 @@ vmap <silent> <Leader>ts <Plug>TranslateWV
 nnoremap <leader>h :UndotreeToggle <bar> :UndotreeFocus<CR>
 
 " =========================================
-" Auto indent pasted text
-nnoremap p p=`]<C-o>
-nnoremap P P=`]<C-o>
-
 
 " copy to system clipboard
 " vnoremap <leader>y "+y
@@ -232,6 +238,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-q> <C-w>q
 nnoremap <C-\> <C-w><bar>
+
+" Auto indent pasted text
+nnoremap p p=`]<C-o>
+nnoremap P P=`]<C-o>
 
 nnoremap p ]p
 nnoremap P [p
