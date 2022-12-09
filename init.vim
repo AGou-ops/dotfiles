@@ -68,7 +68,8 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'kevinhwang91/rnvimr'
 
 " -- show curosr underline.
-Plug 'yamatsum/nvim-cursorline'
+" Plug 'yamatsum/nvim-cursorline'
+Plug 'nyngwang/murmur.lua'
 " Plug 'ryanoasis/vim-devicons'
 " Plug 'sebdah/vim-delve'
 Plug 'petertriho/nvim-scrollbar'
@@ -158,7 +159,8 @@ Plug 'octaltree/cmp-look'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 " -- quickly generate go test file.
-Plug 'buoto/gotests-vim'
+" Plug 'buoto/gotests-vim'
+Plug 'hiroyaonoe/gotests-vim'
 
 " -- debug tools
 Plug 'mfussenegger/nvim-dap'
