@@ -67,6 +67,9 @@ nvim +PlugInstall       # 等待安装完毕即可.
 <img width="1548" alt="image" src="https://user-images.githubusercontent.com/57939102/182982646-3abdb806-9f24-442d-add3-50bbedca931c.png">
 
 
+<img width="1534" alt="image" src="https://user-images.githubusercontent.com/57939102/208004153-bcf41ea5-c5ac-4227-aa94-cd72dfc39174.png">
+
+
 <img width="1548" alt="image" src="https://user-images.githubusercontent.com/57939102/191188081-1dafc614-caec-47fd-9b67-a7779a53bf8b.png">
 
 <img width="1534" alt="image" src="https://user-images.githubusercontent.com/57939102/203007772-002c7ca7-b26f-44e2-a998-176a3db3870f.png">
