@@ -42,6 +42,8 @@ noremap <C-right> :bn<CR>
 nnoremap <C-t> :tabnew<CR>
 inoremap <C-t> <Esc>:tabnew<CR>
 
+nnoremap <ESC> :noh<CR>
+
 " use better-escape instead
 " inoremap jk <ESC>
 " inoremap <C-d> <DEL>
@@ -93,6 +95,10 @@ nnoremap <leader>ls <cmd>RestoreSession<CR>
 nnoremap <leader>ds <cmd>DeleteSession<CR>
 
 " nnoremap <leader>sl <cmd>lua require('telescope').extensions.possession.list()<CR>
+
+" ========= neotests settings ========
+nnoremap <leader>gt <cmd>lua require("neotest").summary.open() <CR> <cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>
+nnoremap <leader>tp <cmd>lua require("neotest").output_panel.toggle()<CR>
 
 " ========= nvimtree settings ========
 nnoremap <C-n> :NvimTreeToggle<CR>
@@ -277,7 +283,7 @@ map <leader>tl :tablast<cr>
 map <leader>tj :tabnext<cr>
 map <leader>tk :tabprev<cr>
 map <leader>tn :tabnext<cr>
-map <leader>tp :tabprev<cr>
+" map <leader>tp :tabprev<cr>
 map <leader>te :tabedit<cr>
 map <leader>td :tabclose<cr>
 map <leader>tm :tabm<cr>
@@ -313,7 +319,7 @@ nnoremap <F2> :call HideNumber()<CR>
 " F3 show print char
 " nnoremap <F3> :set list! list?<CR>
 " F3 transparent terminal
-nnoremap <F3> :TransparentToggle<CR>
+" nnoremap <F3> :TransparentToggle<CR>
 " F4 wrap line on|off
 nnoremap <F1> :set wrap! wrap?<CR>
 " set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
