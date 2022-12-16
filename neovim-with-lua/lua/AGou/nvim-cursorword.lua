@@ -9,7 +9,7 @@ require('murmur').setup {
         -- to trigger the close_events of vim.diagnostic.open_float.
         function ()
             -- Close floating diag. and make it triggerable again.
-            vim.cmd('doautocmd InsertEnter')
+            -- vim.cmd('doautocmd InsertEnter')
             vim.w.diag_shown = false
         end,
     }
