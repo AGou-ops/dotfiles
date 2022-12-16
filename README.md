@@ -60,17 +60,23 @@ nvim +PlugInstall       # 等待安装完毕即可.
 
 - Golang
 
+代码补全、代码提示、函数签名、诊断报错信息：
+
 <img width="1534" alt="image" src="https://user-images.githubusercontent.com/57939102/203007534-4eb72a21-a77e-482a-8c95-5dd66a65ca9d.png">
 
-
+单文件/项目debug（参考``keymap.vim`）：
 
 <img width="1548" alt="image" src="https://user-images.githubusercontent.com/57939102/182982646-3abdb806-9f24-442d-add3-50bbedca931c.png">
 
+代码单元/性能测试（\<leader\>gt,\<leader\>tp）：
 
 <img width="1534" alt="image" src="https://user-images.githubusercontent.com/57939102/208004153-bcf41ea5-c5ac-4227-aa94-cd72dfc39174.png">
 
+源代码小窗查看（gd）：
 
 <img width="1548" alt="image" src="https://user-images.githubusercontent.com/57939102/191188081-1dafc614-caec-47fd-9b67-a7779a53bf8b.png">
+
+代码引用（gf）：
 
 <img width="1534" alt="image" src="https://user-images.githubusercontent.com/57939102/203007772-002c7ca7-b26f-44e2-a998-176a3db3870f.png">
 
