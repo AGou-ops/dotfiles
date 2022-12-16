@@ -17,7 +17,7 @@ Plug 'sainnhe/gruvbox-material'
 " ========= appearence/performance here. ==========
 
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'xiyaowong/nvim-transparent'
+" Plug 'xiyaowong/nvim-transparent'
 " -- cmdline beauty
 " Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
 " -- dashboard
@@ -161,6 +161,9 @@ Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
 " -- quickly generate go test file.
 " Plug 'buoto/gotests-vim'
 Plug 'hiroyaonoe/gotests-vim'
+Plug 'antoinemadec/FixCursorHold.nvim'
+Plug 'nvim-neotest/neotest'
+Plug 'nvim-neotest/neotest-go'
 
 " -- debug tools
 Plug 'mfussenegger/nvim-dap'
@@ -487,8 +490,9 @@ autocmd FileChangedShellPost *
 "     autocmd InsertLeave,CmdLineLeave,FocusGained * :set relativenumber
 "     au CmdlineEnter * :redraw!
 " augroup END
-autocmd InsertEnter * :set norelativenumber number    " use absolute line number.
-autocmd InsertLeave * :set relativenumber
+
+autocmd InsertEnter * set norelativenumber number    " use absolute line number.
+autocmd InsertLeave * set relativenumber
 
 autocmd FileType zsh set nowrap
 
@@ -571,7 +575,7 @@ autocmd FileType go nmap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=10 go
 autocmd FileType go nmap <Leader>rR :AsyncRun -mode=term -pos=bottom -rows=85 go run $(VIM_FILEPATH)<CR>
 autocmd FileType go nmap <Leader>rt :AsyncRun -mode=term -pos=toggleterm go run $(VIM_FILEPATH)<CR>
 autocmd FileType go nmap <Leader>r :AsyncRun -mode=term -pos=bottom -rows=10 go run .<CR>
-autocmd FileType go nmap <Leader>gt :AsyncRun -mode=term -pos=bottom -rows=10 go test .<CR>
+" autocmd FileType go nmap <Leader>gt :AsyncRun -mode=term -pos=bottom -rows=10 go test .<CR>
 autocmd FileType go nmap <Leader>gb :AsyncRun -mode=term -pos=bottom -rows=10 go build .<CR>
 autocmd FileType * nmap <Leader>ta :AsyncRun -mode=term -pos=bottom -rows=10 zsh<CR>
 autocmd FileType html nmap <Leader>rh :AsyncRun -mode=term -pos=bottom -rows=10 npx http-server .<CR>
