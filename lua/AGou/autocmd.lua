@@ -66,14 +66,16 @@ augroups.prose = {
 augroups.quit = {
     quit_with_q = {
         event = "FileType",
-        pattern = { "checkhealth", "fugitive", "git*", "help", "lspinfo", "startuptime", "qf", "TelescopePrompt" },
+        pattern = {
+            "checkhealth", "fugitive", "git*", "help", "lspinfo", "startuptime", "qf", "TelescopePrompt",
+            "neotest-output-panel", "neotest-summary"
+        },
         callback = function()
             -- vim.api.nvim_win_close(0, true) -- TODO: Replace vim command with this
             vim.api.nvim_buf_set_keymap(0, "n", "q", "<cmd>close!<cr>", { noremap = true, silent = true })
         end
     }
 }
-
 
 for group, commands in pairs(augroups) do
     local augroup = vim.api.nvim_create_augroup("AU_" .. group, { clear = true })
