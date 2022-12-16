@@ -5,7 +5,7 @@ require("AGou.lsp")
 require("AGou.nvim-lualine")
 require("AGou.nvim-bufferline")
 require("AGou.nvim-tree")
-require("AGou.nvim-transparent")
+-- require("AGou.nvim-transparent")
 require("AGou.nvim-cmp")
 require("AGou.nvim-mason")
 require("AGou.nvim-treesitter")
@@ -206,6 +206,16 @@ require("better_escape").setup {
     -- end,
 }
 -- --------------------------------------
+require("neotest").setup({
+  adapters = {
+    require("neotest-go")({
+      experimental = {
+        test_table = true,
+      },
+      args = { "-count=1", "-timeout=60s" }
+    })
+  }
+})
 -- --------------------------------------
 -- --------------------------------------
 -- --------------------------------------
