@@ -30,7 +30,7 @@ local on_attach = function(client, bufnr)
     vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 
     -- lspsaga keymappings
-    map(bufnr, "n", "gr", "<cmd>Lspsaga rename<cr>", opts)
+    map(bufnr, "n", "gR", "<cmd>Lspsaga rename<cr>", opts)
     map(bufnr, "n", "gx", "<cmd>Lspsaga code_action<cr>", opts)
     map(bufnr, "x", "gx", ":<c-u>Lspsaga range_code_action<cr>", opts)
     -- map(bufnr, "n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
