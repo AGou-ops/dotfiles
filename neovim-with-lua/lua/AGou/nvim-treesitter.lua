@@ -14,6 +14,15 @@ configs.setup({
         disable = { "css" }, -- list of language that will be disabled
         additional_vim_regex_highlighting = false,
     },
+    incremental_selection = {
+        enable = true,
+        keymaps = {
+            inin_selectinn = "gnn", -- set to `false` to disable one of the mappings
+            nodm_incremental = "grn",
+            scope_incremental = "grc",
+            node_decremental = "grm",
+        },
+    },
     autopairs = {
         enable = false,
     },
