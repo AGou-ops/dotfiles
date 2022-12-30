@@ -4,7 +4,9 @@ set nocompatible              " be iMproved, required
 " Begin Plug, Depends On https://github.com/junegunn/vim-plug
 
 call plug#begin('~/.vim/plugged')
+
 " ========= colorscheme here. ==========
+
 " Plug 'joshdick/onedark.vim'
 " Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 " Plug 'EdenEast/nightfox.nvim'
@@ -17,91 +19,80 @@ Plug 'sainnhe/gruvbox-material'
 " ========= appearence/performance here. ==========
 
 Plug 'nvim-lualine/lualine.nvim'
-" Plug 'xiyaowong/nvim-transparent'
-" -- cmdline beauty
-" Plug 'gelguy/wilder.nvim', { 'do': ':UpdateRemotePlugins' }
-" -- dashboard
-" Plug 'goolord/alpha-nvim'
 Plug 'AGou-ops/dashboard-nvim'
-" Plug 'glepnir/dashboard-nvim'
 
 " -- Easily speed up your neovim startup time!
 Plug 'dstein64/vim-startuptime'
 " -- Speed up Neovim.
 Plug 'lewis6991/impatient.nvim'
 
-Plug 'max397574/better-escape.nvim'
+Plug 'antoinemadec/FixCursorHold.nvim'
 
 " ========= useful tools here. ==========
 
-" Plug 'plasticboy/vim-markdown', { 'for': 'md' }
+Plug 'max397574/better-escape.nvim'
+" -- markdown preview tool
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-
-" :w !sudo tee % > /dev/null not working in neovim, fuckkkkk.
 " -- force write a file use root.
 Plug 'lambdalisue/suda.vim'
-" -- some bug here.
-" Plug 'Pocco81/AutoSave.nvim', { 'branch': 'dev' }
+" -- auto save file when buffer/event change.
 Plug '907th/vim-auto-save'
+" -- Vim plugin that displays tags in a window, ordered by scope
 Plug 'preservim/tagbar'
+" -- just icons, used for nvim-tree, lsp, etc...
 Plug 'kyazdani42/nvim-web-devicons'
+" -- a slide bar style file broswer.
 Plug 'kyazdani42/nvim-tree.lua'
-" Plug 'MunifTanjim/nui.nvim'
-" Plug 'nvim-neo-tree/neo-tree.nvim', { 'branch': 'v2.x' }
+" -- show buffers on the top.
 Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 Plug 'famiu/bufdelete.nvim'
+" -- auto symbol pairs tool
 Plug 'windwp/nvim-autopairs'
+" -- beautiful indent
 Plug 'lukas-reineke/indent-blankline.nvim'
+
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvim-treesitter/nvim-treesitter-context'
-Plug 'danymat/neogen'
-Plug 'akinsho/toggleterm.nvim'
-" not longer use fzf, just use telescope
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
 
+" -- A better annotation generator. Supports multiple languages and annotation conventions.
+Plug 'danymat/neogen'
+" -- A neovim lua plugin to help easily manage multiple terminal windows
+Plug 'akinsho/toggleterm.nvim'
 " -- All the lua functions.
 Plug 'nvim-lua/plenary.nvim'
-
 Plug 'nvim-telescope/telescope.nvim'
 " -- ranger file browser
 Plug 'kevinhwang91/rnvimr'
-
 " -- show curosr underline.
-" Plug 'yamatsum/nvim-cursorline'
 Plug 'nyngwang/murmur.lua'
-" Plug 'ryanoasis/vim-devicons'
-" Plug 'sebdah/vim-delve'
+" -- just a scrollbar, xd
 Plug 'petertriho/nvim-scrollbar'
-" -- require neovim nightlighly, 暂时不用.
-" Plug 'lewis6991/satellite.nvim'
+" -- smooth scroll
 Plug 'karb94/neoscroll.nvim'
+" -- A comment plugin that support mutilple languages
 Plug 'numToStr/Comment.nvim'
+" -- powerful multi visual cursor
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+" -- undo history tree
 Plug 'mbbill/undotree'
-" -- session manager, not used, just use build-in :mks
-" Plug 'folke/persistence.nvim'
+" -- auto session manager
 Plug 'rmagatti/auto-session'
-" Plug 'jedrzejboczar/possession.nvim'
 
+" -- displays a popup with possible keybindings of the command you started typing.
 Plug 'folke/which-key.nvim'
+" -- Highlight, list and search todo comments in your projects
 Plug 'folke/todo-comments.nvim'
-" Plug 'folke/zen-mode.nvim'
-" -- works with zen-mode
-" Plug 'folke/twilight.nvim'
+" -- just a translator plugin
 Plug 'voldikss/vim-translator'
 " -- color highlighter
 Plug 'norcalli/nvim-colorizer.lua'
 " -- format file
 Plug 'sbdchd/neoformat'
-" -- format file using lsp(async).
-" Plug 'lukas-reineke/lsp-format.nvim'
 " -- Show where your cursor moves when jumping large distances
 Plug 'edluffy/specs.nvim'
-" -- cursor jump plugin
-" Plug 'hrsh7th/vim-searchx'
-" Plug 'mrjones2014/smart-splits.nvim'
+" -- highlight your search result
 Plug 'kevinhwang91/nvim-hlslens'
+" -- jump to wherever you want
 Plug 'phaazon/hop.nvim'
 " -- improved * motions.
 Plug 'haya14busa/vim-asterisk'
@@ -113,36 +104,28 @@ Plug 'Yggdroot/LeaderF'
 Plug 'booperlv/nvim-gomove'
 " -- highlight when using yank
 Plug 'svban/YankAssassin.vim'
+" -- show file name in corner
 " Plug 'b0o/incline.nvim'
+" Surround selections, stylishly
 Plug 'kylechui/nvim-surround'
-" -- fold
+" -- fold like vscode
 Plug 'kevinhwang91/promise-async'
 Plug 'kevinhwang91/nvim-ufo'
 " -- better quickfix window
 Plug 'kevinhwang91/nvim-bqf'
+" -- forever undo history
 Plug 'kevinhwang91/nvim-fundo'
-" -- window resize
-" Plug 'anuvyklack/middleclass'
-" Plug 'anuvyklack/windows.nvim'
-" Plug 'anuvyklack/animation.nvim'
-
-" Plug 'MunifTanjim/nui.nvim'
-" Plug 'rcarriga/nvim-notify'
-" Plug 'folke/noice.nvim'
 
 " ========= programming tools here. ==========
 
-" Plug 'dense-analysis/ale'
-" lsp server
+" -- lsp server
 Plug 'neovim/nvim-lspconfig'
+" -- Simple winbar/statusline plugin that shows your current code context
 Plug 'SmiteshP/nvim-navic'
-" Plug 'williamboman/nvim-lsp-installer'
+" -- A powerful lsp/lint/format... manager
 Plug 'williamboman/mason.nvim'
-" -- lsp beauty.
-" Plug 'onsails/lspkind-nvim'
 
 " -- nvim-cmp and its plugins.
-" hrsh7th👍：https://github.com/hrsh7th
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
@@ -153,31 +136,33 @@ Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
-" Plug 'github/copilot.vim'
+" -- dictionary cmp plugin
 Plug 'octaltree/cmp-look'
-
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
-" -- quickly generate go test file.
-" Plug 'buoto/gotests-vim'
-Plug 'hiroyaonoe/gotests-vim'
-Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'nvim-neotest/neotest'
-Plug 'nvim-neotest/neotest-go'
 
 " -- debug tools
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 
+" Git integration for buffers
+Plug 'lewis6991/gitsigns.nvim'
+" powerful lsp tools
+Plug 'glepnir/lspsaga.nvim', { 'branch': 'main' }
+" -- quickly generate go test file.
+Plug 'hiroyaonoe/gotests-vim'
+" -- Automatically generate test files
+Plug 'nvim-neotest/neotest'
+Plug 'nvim-neotest/neotest-go'
+" -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
 Plug 'sindrets/diffview.nvim'
+" -- Displays all diagnostic information in one window
 Plug 'folke/trouble.nvim'
-" Plug 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
+" -- preview code definition in a float window
 Plug 'rmagatti/goto-preview', { 'for': ['go'] }
 " --  async run a command
 Plug 'skywind3000/asyncrun.vim'
 
-" -- tmp plugins below
-
+" ==== tmp test plugins below ===
+"
 
 call plug#end()
 
@@ -209,25 +194,7 @@ endif
 " ============================== END General settings ==============================
 
 " ============================== Colorscheme settings ==============================
-" colorscheme gruvbox
-" colorscheme onedark
-" set bg=dark
-" let g:onedark_termcolors=256
-" ===========================
-" Example config in VimScript
-" let g:tokyonight_style = "night"
-" let g:tokyonight_italic_functions = 1
-" let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
-"
-"  Change the "hint" color to the "orange" color, and make the "error" color bright red
-" let g:tokyonight_colors = {
-"   \ 'hint': 'orange',
-"   \ 'error': '#ff0000'
-" \ }
-" colorscheme tokyonight
-" ============================
-" colorscheme Duskfox
-" ============================
+
 " ========= gruvbox_material settings =======
 " https://github.com/sainnhe/gruvbox-material/blob/master/doc/gruvbox-material.txt
         " Important!!
@@ -247,10 +214,7 @@ let g:gruvbox_material_sign_column_background = 'none'
 
 colorscheme gruvbox-material
 
-" original colorscheme gruvbox configuration: https://github.com/morhetz/gruvbox/wiki/Configuration
-" colorscheme gruvbox
-
-" custom highlight group(buildin & Treesitter)
+" ========= custom highlight group(buildin & Treesitter) settings =======
 hi Comment cterm=NONE ctermfg=245 gui=NONE guifg=#928374
 hi GitSignsCurrentLineBlame ctermfg=245 gui=italic guifg=#928374
 
@@ -268,7 +232,7 @@ hi lualine_c_inactive ctermfg=223 ctermbg=237 gui=italic guifg=#ddc7a1 guibg=#3c
 " ============================== END colorscheme settings ==============================
 "
 "
-" ============================== Plugins settings ==============================
+" ============================== Plugins(simple) vimL settings ==============================
 
 " ========= autosave settings ==========
 let g:auto_save = 1  " enable AutoSave on Vim startup
@@ -422,8 +386,6 @@ set completeopt=menu,menuone,noselect
 " ========= instant-markdown settings ==========
 let g:mkdp_filetypes = ['markdown']
 
-autocmd BufRead *.md nnoremap <leader>mp <Plug>MarkdownPreview
-
 " ========= vim-visual-multi settings ==========
 let g:VM_maps = {}
 let g:VM_maps['Find Under']         = '<cr>'           " replace C-n
@@ -437,22 +399,12 @@ highlight link LspSagaFinderSelection Search
 " or
 " highlight link LspSagaFinderSelection guifg='#ff0000' guibg='#00ff00' gui='bold'
 
-" ============= vim-move settings ==========
-let g:move_key_modifier = 'C'
-
-" a list of groups can be found at `:help nvim_tree_highlight`
-" highlight NvimTreeFolderIcon guibg=blue
-
-let g:instant_markdown_slow = 1
-
-set t_Co=256
-
 " ============================== END Plugins settings ==============================
-
 
 " ============================== Autocmd/Function settings ==============================
 
-" autocmd ColorScheme * runtime lua/vim/lsp/diagnostic.lua
+" autocmd keymap for MarkdownPreview
+autocmd BufRead *.md nnoremap <leader>mp <Plug>MarkdownPreview
 
 " don't add comment char when using o mode
 autocmd FileType * set formatoptions-=c formatoptions-=o
@@ -460,8 +412,6 @@ autocmd FileType * set formatoptions-=c formatoptions-=o
 " disable edit action in man pages.
 autocmd FileType man nnoremap a <nop>
 autocmd FileType man nnoremap o <nop>
-
-" highlight when yank something.
 
 " auto reload when modified vimrc file (Windows)
 " autocmd! bufwritepost _vimrc source %
@@ -475,14 +425,9 @@ aug VMlens
     au User visual_multi_exit lua require('AGou.nvim-vmlens').exit()
 aug END
 
-
-" some error occur
-" au CursorHold * checktime
-" autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
 " notification after file change
 autocmd FileChangedShellPost *
             \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
-" --------------------------------------------------------------------------------------------
 
 " augroup numberToggle
 "     autocmd!
@@ -491,31 +436,13 @@ autocmd FileChangedShellPost *
 "     au CmdlineEnter * :redraw!
 " augroup END
 
+" toggle number style when input mode changed.
 autocmd InsertEnter * set norelativenumber number    " use absolute line number.
 autocmd InsertLeave * set relativenumber
 
 autocmd FileType zsh set nowrap
 
-" ============= Vundle Initialization ===============
-" This loads all the plugins specified in ~/.vim/vundles.vim
-" Use Vundle plugin to manage all other plugins
-" if filereadable(expand("~/.vimrc.bundles"))
-"     source ~/.vimrc.bundles
-" elseif filereadable(expand("~/.config/nvim/vimrc.bundles")) " neovim
-"     source ~/.config/nvim/vimrc.bundles
-" endif
-" au BufNewFile,BufRead *.vundle set filetype=vim
-
-" ================ Persistent Undo ==================
-" Keep undo history across sessions, by storing in file.
-" Only works all the time.
-if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
-    silent !mkdir ~/.vim/backups > /dev/null 2>&1
-    set undodir=~/.vim/backups
-    set undofile
-endif
-
-" indent for different filetype
+" manual indent for different filetype
 autocmd FileType php,ruby,yaml set tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd BufNewFile,BufRead *.go set noexpandtab tabstop=4 shiftwidth=4
 autocmd FileType php set tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
@@ -525,13 +452,6 @@ autocmd FileType html,html,django,xhtml,haml set tabstop=2 shiftwidth=2 softtabs
 autocmd FileType sass,scss,css set tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown
 
-" syntax support
-autocmd Syntax javascript set syntax=jquery   " JQuery syntax support
-" js
-let g:html_indent_inctags = "html,body,head,tbody"
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
-
 " filetype settings
 " let g:do_filetype_lua = 1             " load filetype.lua
 " let g:did_load_filetypes = 0          " don't load filetype.vim
@@ -540,7 +460,7 @@ let g:html_indent_style1 = "inc"
 filetype on
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" RENAME CURRENT FILE
+" RENAME CURRENT FILE(NOT USED!!!)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " function! RenameFile()
 "     let old_name = expand('%')
@@ -585,7 +505,6 @@ autocmd FileType tex nmap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=10 m
 
 " ============================== END Autocmd settings ==============================
 
-
 " ============================== External Lua settings ==============================
 lua require('AGou')
 " ============================== END External Lua settings ==============================
@@ -597,19 +516,14 @@ if filereadable($HOME . "/.config/nvim/keymaps.vim")
     source $HOME/.config/nvim/keymaps.vim
 endif
 
-"
+" ========= Other custom external setting config(Optional) ==========
 if filereadable($HOME . "/.config/nvim/shpy-autoheader.vim")
     source $HOME/.config/nvim/shpy-autoheader.vim
 endif
 
-" =========== load coc-go plug config ===========
-" if filereadable($HOME . ".config/nvim/coc-go.vim")
-"     source ~/.config/nvim/coc-go.vim
-" endif
-
-" ========= Other custom external setting config(Optional) ==========
 " if filereadable($HOME . "/.config/nvim/custom.vim")
 "     source $HOME/.config/nvim/custom.vim
 " endif
+
 " ============================== THE END. ==============================
 " ======================================================================
