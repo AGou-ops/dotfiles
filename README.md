@@ -42,7 +42,7 @@ git clone -b nvim https://github.com/AGou-ops/dotfiles.git ~/.config/nvim
 ---
 
 
-**Neovim及其插件简单视频介绍：https://www.bilibili.com/video/BV1am4y197bR/  
+**Neovim及其插件简单视频介绍：https://www.bilibili.com/video/BV1am4y197bR/
 保姆级安装up主同款Neovim：https://www.bilibili.com/video/BV1YF411i72t/**
 
 ## 该仓库用于备份我的dotfiles.
@@ -112,4 +112,3 @@ git clone -b nvim https://github.com/AGou-ops/dotfiles.git ~/.config/nvim
 * vim
 * pycharm 2020.1
 * Windows Terminal
-
