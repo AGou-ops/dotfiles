@@ -17,8 +17,7 @@ bind('n', 'L', 'g_')
 bind('n', 'L', 'g$')
 bind('n', 'k', 'gk')
 bind('n', 'j', 'gj')
-bind('n', '/', '/\v')
-bind('n', '/', '/\v')
+bind('n', '/', '/\\v')
 bind('n', '//', 'y/<c-r>"<cr>')
 bind('n', '<C-left>', '<CMD>bp<CR>')
 bind('n', '<C-right>', '<CMD>bn<CR>')
@@ -77,25 +76,15 @@ bind('n', '<leader>te', '<CMD>tabedit<CR>')
 bind('n', '<leader>td', '<CMD>tabclose<CR>')
 bind('n', '<leader>tm', '<CMD>tabm<CR>')
 
-
 bind('n', '<leader>tt', '<CMD>exe v:count1 . "ToggleTerm"<CR>')
 bind('n', '<leader>gg', '<CMD>lua _LAZYGIT_TOGGLE()<CR>')
 
-
-bind('n', '<leader>fF', '<CMD>RnvimrToggle<CR>')
-
-bind('n', '<leader>fg', '<CMD>Telescope live_grep<CR>')
--- bind('n', '<leader>fg', '<CMD>Telescope live_grep<cr>')
-
-bind('n', '<leader>ob', '<CMD>Telescope buffers<cr>')
 bind('n', '<leader>fG', '<CMD>LeaderfRgInteractive<CR>')
 bind('n', '<leader>fm', '<CMD><C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>')
 bind('n', '<leader>fl', '<CMD><C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>')
 bind('n', '<leader>fb', '<CMD><C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>')
 bind('n', '<C-B>', '<CMD><C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>')
 bind('n', '<C-F>', '<CMD><C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>')
-bind('n', '<leader>fh', '<CMD>Telescope help_tags<cr>')
--- bind('n', '<leader>ft', '<CMD>TodoTelescope<cr>')
 
 -- telescope-dap
 bind('n', '<leader>dcc', '<CMD>Telescope dap commands<CR>')

@@ -1,6 +1,7 @@
 local M = {
 	'nvim-tree/nvim-tree.lua',
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
+	-- event = "VeryLazy"
 	lazy = false
 }
 
@@ -27,10 +28,10 @@ function M.config()
 		open_on_setup_file = true,
 		sort_by = "name",
 		root_dirs = {},
-		prefer_startup_root = false,
-		sync_root_with_cwd = true,
+		prefer_startup_root = true,
+		sync_root_with_cwd = false,
 		reload_on_bufenter = false,
-		respect_buf_cwd = false,
+		respect_buf_cwd = true,
 		on_attach = "disable",
 		remove_keymaps = false,
 		select_prompts = false,
@@ -135,7 +136,7 @@ function M.config()
 		update_focused_file = {
 			enable = true,
 			debounce_delay = 15,
-			update_root = false,
+			update_root = true,
 			ignore_list = {}
 		},
 		ignore_ft_on_setup = {},
