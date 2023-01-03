@@ -32,7 +32,8 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 # 执行插件安装
 nvim +PlugInstall       # 等待安装完毕即可.
 - 新lazy.nvim安装方法
-cp -a dotfiles/neovim ~/.config/nvim
+mv ~/.config/nvim{,.bak}
+git clone -b nvim https://github.com/AGou-ops/dotfiles.git ~/.config/nvim
 + 其他步骤暂无，安装完配置文件后首次会会自动安装
 ```
 
