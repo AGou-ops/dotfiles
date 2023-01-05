@@ -8,6 +8,10 @@ local function clock()
 end
 
 function M.config()
+	if vim.g.started_by_firenvim then
+		return
+	end
+
 
 	local hide_in_width = function()
 		return vim.fn.winwidth(0) > 80
@@ -24,46 +28,8 @@ function M.config()
 		always_visible = true,
 	}
 
-	local navic_ok, navic = pcall(require, 'nvim-navic')
-	navic.setup {
-		highlight = false,
-		separator = " > ",
-		depth_limit = 0,
-		depth_limit_indicator = "..",
-	}
-
 	local winbar_cfg = {}
 	local inactive_winbar_cfg = {}
-	if navic_ok then
-		winbar_cfg = {
-			lualine_a = {},
-			lualine_b = {},
-			lualine_c = {
-				{
-					'filename',
-					path = 1,
-					cond = navic.is_available,
-					color = { gui = 'italic,bold' },
-				},
-				{ navic.get_location, cond = navic.is_available },
-			},
-			lualine_x = {},
-			lualine_y = {},
-			lualine_z = {}
-		}
-		inactive_winbar_cfg = {
-			lualine_a = {},
-			lualine_b = {},
-			lualine_c = {
-				{ 'filename', path = 1, cond = navic.is_available },
-			},
-			lualine_x = {},
-			lualine_y = {},
-			lualine_z = {}
-		}
-	end
-
-
 
 	local diff = {
 		"diff",
