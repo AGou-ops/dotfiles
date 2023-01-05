@@ -8,7 +8,7 @@ return {
 			"<leader>ff",
 			function()
 				require("telescope.builtin").find_files({
-					cwd = require("lazy.core.config").options.root
+					-- cwd = require("lazy.core.config").options.root
 				})
 			end,
 			desc = "Find Plugin File"
@@ -17,7 +17,7 @@ return {
 			"<leader>fg",
 			function()
 				require("telescope.builtin").live_grep({
-					cwd = require("lazy.core.config").options.root
+					-- cwd = require("lazy.core.config").options.root
 				})
 			end,
 			desc = "Live grep file content"

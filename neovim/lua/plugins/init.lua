@@ -46,10 +46,11 @@ return {
 	}, {
 		"907th/vim-auto-save",
 		lazy = false,
+		enabled = true,
 		config = function()
 			vim.cmd([[
-				let g:auto_save = 1
-				let g:auto_save_events = ["InsertLeave", "TextChanged"]
+		let g:auto_save = 1
+		let g:auto_save_events = ["ExitPre", "BufLeave", "WinLeave"]
 			]])
 		end
 	},
@@ -82,14 +83,15 @@ return {
 		config = function() require('Comment').setup() end
 	}, {
 		"mg979/vim-visual-multi",
+		lazy = false,
 		config = function()
 			vim.cmd([[
-            let g:VM_maps = {}
-            let g:VM_maps['Find Under']         = '<cr>'           " replace C-n
-            let g:VM_maps['Find Subword Under'] = '<cr>'           " replace visual C-n
-            let g:VM_mouse_mappings = 1
-            let g:VM_theme = 'iceblue'
-            let g:VM_highlight_matches = 'underline'
+			let g:VM_maps = {}
+			let g:VM_maps['Find Under']         = '<CR>'           " replace C-n
+			let g:VM_maps['Find Subword Under'] = '<CR>'           " replace visual C-n
+			let g:VM_mouse_mappings = 1
+			let g:VM_theme = 'iceblue'
+			let g:VM_highlight_matches = 'underline'
             ]])
 		end
 	}, {
@@ -97,6 +99,7 @@ return {
 		lazy = false
 	}, {
 		"voldikss/vim-translator",
+		event = "VeryLazy",
 		config = function()
 			vim.cmd([[
             let g:translator_target_lang = 'zh'
@@ -110,13 +113,13 @@ return {
 		ft = { "go", "lua" },
 		config = function()
 			vim.cmd([[
-        augroup fmt
-        autocmd!
-        autocmd BufWritePre *.go Neoformat goimports | Neoformat gofumpt
-        autocmd BufWritePre *.sh Neoformat
-        augroup END
-        " " ignore error
-        let g:neoformat_only_msg_on_error = 1
+			augroup fmt
+			autocmd!
+			autocmd BufWritePre *.go Neoformat goimports | Neoformat gofumpt
+			autocmd BufWritePre *.sh Neoformat
+			augroup END
+			" " ignore error
+			let g:neoformat_only_msg_on_error = 1
         ]])
 		end
 	}, {
@@ -150,17 +153,6 @@ return {
                 let g:Lf_ShortcutF = "<leader>ff"
             ]])
 		end
-	}, {
-		"SmiteshP/nvim-navic",
-		ft = { "go", "lua" },
-		config = function()
-			vim.g.navic_silence = true
-			require("nvim-navic").setup({
-				separator = " ",
-				highlight = true,
-				depth_limit = 5
-			})
-		end
 	}, { "williamboman/mason-lspconfig.nvim" }, {
 		"rmagatti/goto-preview",
 		config = function()
@@ -185,7 +177,10 @@ return {
 				bufhidden = "wipe" -- the bufhidden option to set on the floating window. See :h bufhidden
 			}
 		end
-	}, { "skywind3000/asyncrun.vim" },
+	}, {
+		"skywind3000/asyncrun.vim",
+		ft = { "go", "lua" }
+	},
 	{
 		"xiyaowong/nvim-cursorword",
 		lazy = false,
@@ -196,5 +191,13 @@ return {
 			let g:cursorword_min_width = 3
 			]])
 		end
+	},
+	{
+		"folke/drop.nvim",
+		event = "VimEnter",
+		ft = { "dashboard" },
+		config = function()
+			require("drop").setup()
+		end,
 	}
 }

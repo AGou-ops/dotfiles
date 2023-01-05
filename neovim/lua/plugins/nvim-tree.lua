@@ -6,6 +6,11 @@ local M = {
 }
 
 function M.config()
+
+	if vim.g.started_by_firenvim then
+		return
+	end
+
 	local status_ok, nvim_tree = pcall(require, "nvim-tree")
 	if not status_ok then return end
 
@@ -231,7 +236,7 @@ function M.config()
 		}
 	} -- END_DEFAULT_OPTS
 
-	vim.keymap.set("n", "<C-n>", "<Cmd>NvimTreeToggle<CR>")
+	vim.keymap.set("n", "<C-m>", "<Cmd>NvimTreeToggle<CR>")
 
 end
 

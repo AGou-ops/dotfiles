@@ -13,7 +13,7 @@ function M.config()
 
 	local on_attach = function(client, bufnr)
 		-- require("lsp-format").on_attach(client)
-		require("nvim-navic").attach(client, bufnr)
+		-- require("nvim-navic").attach(client, bufnr)
 
 		vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
