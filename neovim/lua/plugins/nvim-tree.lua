@@ -34,12 +34,12 @@ function M.config()
 		sort_by = "name",
 		root_dirs = {},
 		prefer_startup_root = true,
-		sync_root_with_cwd = false,
-		reload_on_bufenter = false,
+		sync_root_with_cwd = true,
+		reload_on_bufenter = true,
 		respect_buf_cwd = true,
 		on_attach = "disable",
 		remove_keymaps = false,
-		select_prompts = false,
+		select_prompts = true,
 		view = {
 			adaptive_size = true,
 			centralize_selection = false,
@@ -79,7 +79,7 @@ function M.config()
 			add_trailing = false,
 			group_empty = false,
 			highlight_git = false,
-			full_name = false,
+			full_name = true,
 			highlight_opened_files = "none",
 			highlight_modified = "none",
 			root_folder_label = ":~:s?$?/..?",
@@ -147,7 +147,7 @@ function M.config()
 		ignore_ft_on_setup = {},
 		system_open = { cmd = "", args = {} },
 		diagnostics = {
-			enable = false,
+			enable = true,
 			show_on_dirs = false,
 			show_on_open_dirs = true,
 			debounce_delay = 50,
@@ -216,7 +216,7 @@ function M.config()
 			},
 			remove_file = { close_window = true }
 		},
-		trash = { cmd = "gio trash", require_confirm = true },
+		trash = { cmd = "trash-put", require_confirm = true },
 		live_filter = { prefix = "[FILTER]: ", always_show_folders = true },
 		tab = { sync = { open = false, close = false, ignore = {} } },
 		notify = { threshold = vim.log.levels.INFO },
@@ -236,7 +236,7 @@ function M.config()
 		}
 	} -- END_DEFAULT_OPTS
 
-	vim.keymap.set("n", "<C-m>", "<Cmd>NvimTreeToggle<CR>")
+	vim.keymap.set("n", "<C-n>", "<Cmd>NvimTreeToggle<CR>")
 
 end
 

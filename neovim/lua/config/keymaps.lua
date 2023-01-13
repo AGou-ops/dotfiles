@@ -1,6 +1,7 @@
 vim.o.timeoutlen = 300
 
 local bind = vim.keymap.set
+local opts = { noremap = true, silent = true }
 
 -- ============= Basic Keymaps =============
 --
@@ -11,6 +12,15 @@ bind('c', 'W', 'w')
 bind('c', 'WQ', 'wq')
 bind('c', 'Wq', 'wq')
 bind('c', 'QA', 'qa')
+
+-- do not copy delete and change command
+bind("n", "d", [["_d]], opts)
+bind("v", "d", [["_d]], opts)
+bind("n", "c", [["_c]], opts)
+bind("v", "c", [["_c]], opts)
+
+bind("n", "<C-o>", "<C-o>zz", opts)
+bind("n", "<C-i>", "<C-i>zz", opts)
 
 bind('n', 'q', '<Nop>')
 bind('n', 'H', 'g^')
@@ -48,8 +58,6 @@ bind('n', '<C-q>', '<C-w>q')
 bind('n', '<C-\\>', '<C-w><bar>')
 
 -- Auto indent pasted text
--- bind('n', 'p', 'p=`]<C-o>')
--- bind('n', 'P', 'P=`]<C-o>')
 bind('n', 'p', ']p')
 bind('n', 'P', '[p')
 bind('n', '(', '%')
@@ -78,7 +86,33 @@ bind('n', '<leader>tm', '<CMD>tabm<CR>')
 
 
 -- ============= Plugin Keymaps =============
---
+-- lspsaga
+bind("n", "gf", "<cmd>Lspsaga lsp_finder<CR>")
+bind({"n"}, "gx", "<cmd>Lspsaga code_action<CR>")
+bind("n", "gr", "<cmd>Lspsaga rename<CR>")
+bind("n", "gD", "<cmd>Lspsaga peek_definition<CR>")
+bind("n", "gd", "<cmd>Lspsaga goto_definition<CR>")
+bind("n", "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>")
+bind("n", "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>")
+bind("n", "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>")
+bind("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
+bind("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<CR>")
+bind("n", "gK", function()
+		require("lspsaga.diagnostic").goto_prev({
+			severity = vim.diagnostic.severity.ERROR
+		})
+	end)
+bind("n", "gJ", function()
+		require("lspsaga.diagnostic").goto_next({
+			severity = vim.diagnostic.severity.ERROR
+		})
+	end)
+bind("n", "<leader>o", "<cmd>Lspsaga outline<CR>")
+bind("n", "K", "<cmd>Lspsaga hover_doc<CR>")
+bind("n", "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>")
+bind("n", "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>")
+bind({"n", "t"}, "<A-d>", "<cmd>Lspsaga term_toggle<CR>")
+
 -- toggleTerm & Lazygit
 bind('n', '<leader>tt', '<CMD>exe v:count1 . "ToggleTerm"<CR>')
 bind('n', '<leader>gg', '<CMD>lua _LAZYGIT_TOGGLE()<CR>')
@@ -106,9 +140,9 @@ bind('n', 'f',
 	"<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<CR>")
 bind('n', 'F',
 	"<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>")
-bind('n', 'f',
+bind('v', 'f',
 	"<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<CR>")
-bind('n', 'F',
+bind('v', 'F',
 	"<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>")
 bind('n', 't', '<CMD>HopWord<CR>')
 bind('n', 'T', '<CMD>HopWord<CR>')

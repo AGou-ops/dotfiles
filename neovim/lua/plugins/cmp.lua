@@ -1,4 +1,3 @@
-local cmdline = false
 local M = {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
@@ -7,8 +6,6 @@ local M = {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-emoji",
-		{ "hrsh7th/cmp-cmdline", enabled = cmdline },
-		{ "dmitmel/cmp-cmdline-history", enabled = cmdline },
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"saadparwaiz1/cmp_luasnip",
@@ -232,7 +229,7 @@ function M.config()
 	--         { name = "buffer" },
 	--     },
 	-- })
-
+	--
 
 end
 

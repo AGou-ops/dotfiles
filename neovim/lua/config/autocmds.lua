@@ -33,116 +33,120 @@ au FileType go set noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
 local augroups = {}
 
 augroups.buf_write_pre = {
-	mkdir_before_saving = {
-		event = { "BufWritePre", "FileWritePre" },
-		pattern = "*",
-		-- TODO: Replace vimscript function
-		command = [[ silent! call mkdir(expand("<afile>:p:h"), "p") ]]
-	},
-	trim_extra_spaces_and_newlines = {
-		event = "BufWritePre",
-		pattern = "*",
-		-- TODO: Replace vimscript function
-		command = [[
+    mkdir_before_saving = {
+        event = {"BufWritePre", "FileWritePre"},
+        pattern = "*",
+        -- TODO: Replace vimscript function
+        command = [[ silent! call mkdir(expand("<afile>:p:h"), "p") ]]
+    },
+    trim_extra_spaces_and_newlines = {
+        event = "BufWritePre",
+        pattern = "*",
+        -- TODO: Replace vimscript function
+        command = [[
       let current_pos = getpos(".")
       silent! %s/\v\s+$|\n+%$//e
       silent! call setpos(".", current_pos)
     ]]
-	}
+    }
 }
 
 augroups.filetype_behaviour = {
-	remove_colorcolumn = {
-		event = "FileType",
-		pattern = { "fugitive*", "git" },
-		callback = function() vim.opt_local.colorcolumn = "" end
-	}
+    remove_colorcolumn = {
+        event = "FileType",
+        pattern = {"fugitive*", "git"},
+        callback = function() vim.opt_local.colorcolumn = "" end
+    }
 }
 
 augroups.misc = {
-	highlight_yank = {
-		event = "TextYankPost",
-		pattern = "*",
-		callback = function()
-			vim.highlight.on_yank {
-				higroup = "IncSearch",
-				timeout = 200,
-				on_visual = true
-			}
-		end
-	},
-	-- trigger_nvim_lint = {
-	--   event = {"BufEnter", "BufNew", "InsertLeave", "TextChanged"},
-	--   pattern = "<buffer>",
-	--   callback = function ()
-	--     require("lint").try_lint()
-	--   end,
-	-- },
-	unlist_terminal = {
-		event = "TermOpen",
-		pattern = "*",
-		callback = function() vim.opt_local.buflisted = false end
-	}
+    highlight_yank = {
+        event = "TextYankPost",
+        pattern = "*",
+        callback = function()
+            vim.highlight.on_yank {
+                higroup = "IncSearch",
+                timeout = 200,
+                on_visual = true
+            }
+        end
+    },
+    -- trigger_nvim_lint = {
+    --   event = {"BufEnter", "BufNew", "InsertLeave", "TextChanged"},
+    --   pattern = "<buffer>",
+    --   callback = function ()
+    --     require("lint").try_lint()
+    --   end,
+    -- },
+    unlist_terminal = {
+        event = "TermOpen",
+        pattern = "*",
+        callback = function() vim.opt_local.buflisted = false end
+    }
 }
 
 augroups.prose = {
-	wrap = {
-		event = "FileType",
-		pattern = { "markdown", "tex" },
-		callback = function() vim.opt_local.wrap = true end
-	}
+    wrap = {
+        event = "FileType",
+        pattern = {"markdown", "tex"},
+        callback = function() vim.opt_local.wrap = true end
+    }
 }
 
 augroups.quit = {
-	quit_with_q = {
-		event = "FileType",
-		pattern = {
-			"checkhealth", "fugitive", "git*", "help", "lspinfo", "startuptime",
-			"qf", "TelescopePrompt", "neotest-output-panel", "neotest-summary", "dashboard"
-		},
-		callback = function()
-			-- vim.api.nvim_win_close(0, true) -- TODO: Replace vim command with this
-			vim.api.nvim_buf_set_keymap(0, "n", "q", "<cmd>q!<cr>",
-				{ noremap = true, silent = true })
-		end
-	}
+    quit_with_q = {
+        event = "FileType",
+        pattern = {
+            "checkhealth", "fugitive", "git*", "help", "lspinfo", "startuptime",
+            "qf", "TelescopePrompt", "neotest-output-panel", "neotest-summary",
+            "dashboard"
+        },
+        callback = function()
+            -- vim.api.nvim_win_close(0, true) -- TODO: Replace vim command with this
+            vim.api.nvim_buf_set_keymap(0, "n", "q", "<cmd>q!<cr>",
+                                        {noremap = true, silent = true})
+        end
+    }
 }
 
 for group, commands in pairs(augroups) do
-	local augroup = vim.api.nvim_create_augroup("AU_" .. group, { clear = true })
+    local augroup = vim.api.nvim_create_augroup("AU_" .. group, {clear = true})
 
-	for _, opts in pairs(commands) do
-		local event = opts.event
-		opts.event = nil
-		opts.group = augroup
-		vim.api.nvim_create_autocmd(event, opts)
-	end
+    for _, opts in pairs(commands) do
+        local event = opts.event
+        opts.event = nil
+        opts.group = augroup
+        vim.api.nvim_create_autocmd(event, opts)
+    end
 end
 
 -- auto toggle wrap when split mutil window or goto single window.
--- vim.api.nvim_create_autocmd({ "WinNew", "WinClosed", "WinEnter" }, {
---     group = vim.api.nvim_create_augroup("on_demand_wrap", {}),
+vim.api.nvim_create_autocmd({ "WinNew", "WinClosed", "WinEnter" }, {
+    group = vim.api.nvim_create_augroup("on_demand_wrap", {}),
+    callback = function()
+        local should_wrap = vim.api.nvim_win_get_width(0) ~= vim.o.columns
+        vim.api.nvim_win_set_option(0, "wrap", should_wrap)
+    end,
+})
+
+
+-- go to last loc when opening a buffer
+-- vim.api.nvim_create_autocmd("BufReadPost", {
 --     callback = function()
---         local should_wrap = vim.api.nvim_win_get_width(0) ~= vim.o.columns
---         vim.api.nvim_win_set_option(0, "wrap", should_wrap)
---     end,
+--         local mark = vim.api.nvim_buf_get_mark(0, '"')
+--         local lcount = vim.api.nvim_buf_line_count(0)
+--         if mark[1] > 0 and mark[1] <= lcount then
+--             pcall(vim.api.nvim_win_set_cursor, 0, mark)
+--         end
+--     end
 -- })
---
 
-local vimrc_group = vim.api.nvim_create_augroup("vimrc", { clear = true })
-
-vim.api.nvim_create_autocmd("BufReadPost", {
-	desc = "Open file at same location where it was opened last time",
-	callback = function() vim.cmd([[silent! normal! g`"]]) end,
-	group = vimrc_group
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-	desc = "Autoformat before save",
-	pattern = {
-		"*.js", "*.ts", "*.tsx", "*.lua", "*.yml", "*.json", "*.prisma",
-		"*.py", "*.mjs"
-	},
-	callback = function() vim.lsp.buf.format() end,
-	group = vimrc_group
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+-- 	desc = "Autoformat before save",
+-- 	pattern = {
+-- 		"*.js", "*.ts", "*.tsx", "*.lua", "*.yml", "*.json", "*.prisma",
+-- 		"*.py", "*.mjs"
+-- 	},
+-- 	callback = function() vim.lsp.buf.format() end,
+-- 	group = vimrc_group
+-- })

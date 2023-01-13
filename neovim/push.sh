@@ -8,8 +8,7 @@
 # Copyright 2022 by AGou-ops.All Rights Reserved  *
 #**************************************************
 
-cd ~/myWeb/dotfiles && git checkout master && rsync -avzP --progress --exclude '%Users*'  ~/.config/nvim/  ~/myWeb/dotfiles/neovim/
-
+cd ~/myWeb/dotfiles && git checkout master && rsync -avzP --progress --exclude '%Users*' ~/.config/nvim/ ~/myWeb/dotfiles/neovim/
 
 cd ~/myWeb/dotfiles/
 
@@ -19,20 +18,20 @@ echo -e "\n"
 read -r -p "同步文件夹完成，是否继续？ [Y/n] " response
 response=${response,,} # tolower
 if [[ $response =~ ^(yes|y| ) ]] || [[ -z $response ]]; then
-    cd ~/myWeb/dotfiles/
+	cd ~/myWeb/dotfiles/
 
-    export http_proxy=127.0.0.1:7890
-    export https_proxy=127.0.0.1:7890
+	export http_proxy=127.0.0.1:7890
+	export https_proxy=127.0.0.1:7890
 
-    lazygit
+	lazygit
 
 else
-    exit 1
+	exit 1
 fi
 
 git checkout nvim
 
-rsync -avzP --progress --exclude '%Users*' --exclude '.git/' --exclude 'zsh/'  ~/.config/nvim/  ~/myWeb/dotfiles/
+rsync -avzP --progress --exclude '%Users*' --exclude '.git/' --exclude 'zsh/' ~/.config/nvim/ ~/myWeb/dotfiles/
 
 find . -name ".DS_Store" -exec rm -f {} \;
 

@@ -1,10 +1,10 @@
 return {
-	{
-		"sainnhe/gruvbox-material",
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		priority = 1000, -- make sure to load this before all the other start plugins
-		config = function()
-			vim.cmd([[
+    { ---- colorscheme.
+        "sainnhe/gruvbox-material",
+        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        priority = 1000, -- make sure to load this before all the other start plugins
+        config = function()
+            vim.cmd([[
             " https://github.com/sainnhe/gruvbox-material/blob/master/doc/gruvbox-material.txt
             " Important!!
             " For dark version.
@@ -23,96 +23,104 @@ return {
 
             colorscheme gruvbox-material
             ]])
-		end
-	}, {
-		"dstein64/vim-startuptime",
-		cmd = "StartupTime",
-		config = function() vim.g.startuptime_tries = 10 end
-	}, {
-		"max397574/better-escape.nvim",
-		lazy = false,
-		config = function()
-			require("better_escape").setup {
-				mapping = { "jk", "jj" }, -- a table with mappings to use
-				timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
-				clear_empty_lines = false, -- clear line after escaping if there is only whitespace
-				keys = "<Esc>" -- keys used for escaping, if it is a function will use the result everytime
-				-- example(recommended)
-				-- keys = function()
-				--   return vim.api.nvim_win_get_cursor(0)[2] > 1 and '<esc>l' or '<esc>'
-				-- end,
-			}
-		end
-	}, {
-		"907th/vim-auto-save",
-		lazy = false,
-		enabled = true,
-		config = function()
-			vim.cmd([[
+        end
+    }, { ---- A plugin show neovim startup time.
+        "dstein64/vim-startuptime",
+        cmd = "StartupTime",
+        config = function() vim.g.startuptime_tries = 10 end
+    }, { ---- enhance jk.
+        "max397574/better-escape.nvim",
+        lazy = false,
+        config = function()
+            require("better_escape").setup {
+                mapping = {"jk", "jj"}, -- a table with mappings to use
+                timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
+                clear_empty_lines = false, -- clear line after escaping if there is only whitespace
+                keys = "<Esc>" -- keys used for escaping, if it is a function will use the result everytime
+                -- example(recommended)
+                -- keys = function()
+                --   return vim.api.nvim_win_get_cursor(0)[2] > 1 and '<esc>l' or '<esc>'
+                -- end,
+            }
+        end
+    }, { ---- auto save file.
+        "907th/vim-auto-save",
+        lazy = false,
+        enabled = true,
+        config = function()
+            vim.cmd([[
 		let g:auto_save = 1
 		let g:auto_save_events = ["ExitPre", "BufLeave", "WinLeave"]
 			]])
-		end
-	},
-	{
-		"iamcco/markdown-preview.nvim",
-		build = "cd app && npm install",
-		config = function() vim.g.mkdp_filetypes = { "markdown" } end,
-		ft = { "markdown" }
-	}, { "lambdalisue/suda.vim" }, {
-		"preservim/tagbar",
-		ft = { "markdown", "go", "lua", },
-		config = function()
-			vim.cmd([[
-
+        end
+    }, { ---- A markdonw online real-time preview plugin.
+        "iamcco/markdown-preview.nvim",
+        build = "cd app && npm install",
+        config = function() vim.g.mkdp_filetypes = {"markdown"} end,
+        ft = {"markdown"}
+    }, { ---- Read or write file with sudo.
+        "lambdalisue/suda.vim"
+    }, { ---- A plugin show code outline.
+        "preservim/tagbar",
+        ft = {"markdown", "go", "lua"},
+        config = function()
+            vim.cmd([[
+			let g:tagbar_show_tag_count = 1
+			let g:tagbar_autoshowtag = 1
+			let g:tagbar_wrap = 1
+			let g:tagbar_zoomwidth = 0
+			let g:tagbar_show_linenumbers = 0
+			let g:tagbar_autofocus = 0
+			let g:tagbar_sort = 0
+			let g:tagbar_map_togglesort = "r"
+			let g:tagbar_help_visibility = 0
+			let g:tagbar_show_data_type = 1
+			let g:tagbar_autopreview = 0
             ]])
-		end,
-	}, {
-		"m4xshen/autoclose.nvim",
-		lazy = false,
-		config = function() require("autoclose").setup({}) end
-	}, {
-		"danymat/neogen",
-		dependencies = "nvim-treesitter/nvim-treesitter",
-		config = true
-		-- Uncomment next line if you want to follow only stable versions
-		-- version = "*"
-	}, {
-		"numToStr/Comment.nvim",
-		lazy = false,
-		config = function() require('Comment').setup() end
-	}, {
-		"mg979/vim-visual-multi",
-		lazy = false,
-		config = function()
-			vim.cmd([[
-			let g:VM_maps = {}
-			let g:VM_maps['Find Under']         = '<CR>'           " replace C-n
-			let g:VM_maps['Find Subword Under'] = '<CR>'           " replace visual C-n
-			let g:VM_mouse_mappings = 1
-			let g:VM_theme = 'iceblue'
-			let g:VM_highlight_matches = 'underline'
+        end
+    }, { ---- Symbol auto pair.
+        "m4xshen/autoclose.nvim",
+        lazy = false,
+        config = function() require("autoclose").setup({}) end
+    }, { ---- Auto generate some comments.
+        "danymat/neogen",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        config = true
+        -- Uncomment next line if you want to follow only stable versions
+        -- version = "*"
+    }, { ---- Quikly comment plugin.
+        "numToStr/Comment.nvim",
+        lazy = false,
+        config = function() require('Comment').setup() end
+    }, { ---- Multiple cursors plugin for vim/neovim
+        "mg979/vim-visual-multi",
+        lazy = false,
+        config = function()
+            vim.cmd([[
+            let g:VM_maps = {}
+            let g:VM_maps['Find Under']         = '<CR>'           " replace C-n
+            let g:VM_maps['Find Subword Under'] = '<CR>'           " replace visual C-n
+            let g:VM_mouse_mappings = 1
+            let g:VM_theme = 'iceblue'
+            let g:VM_highlight_matches = 'underline'
             ]])
-		end
-	}, {
-		"mbbill/undotree",
-		lazy = false
-	}, {
-		"voldikss/vim-translator",
-		event = "VeryLazy",
-		config = function()
-			vim.cmd([[
+        end
+    }, { ---- Undo tree.
+        "mbbill/undotree",
+        lazy = false
+    }, { ---- Just a translate plugin.
+        "voldikss/vim-translator",
+        event = "VeryLazy",
+        config = function()
+            vim.cmd([[
             let g:translator_target_lang = 'zh'
             ]])
-		end
-	}, {
-		"norcalli/nvim-colorizer.lua",
-		config = function() require('colorizer').setup() end
-	}, {
-		"sbdchd/neoformat",
-		ft = { "go", "lua" },
-		config = function()
-			vim.cmd([[
+        end
+    }, { ---- Format file.
+        "sbdchd/neoformat",
+        ft = {"go", "lua"},
+        config = function()
+            vim.cmd([[
 			augroup fmt
 			autocmd!
 			autocmd BufWritePre *.go Neoformat goimports | Neoformat gofumpt
@@ -121,15 +129,16 @@ return {
 			" " ignore error
 			let g:neoformat_only_msg_on_error = 1
         ]])
-		end
-	}, {
-		"phaazon/hop.nvim",
-		lazy = false,
-		config = function() require 'hop'.setup() end
-	}, {
-		"Yggdroot/LeaderF",
-		config = function()
-			vim.cmd([[
+        end
+    }, { ---- Jump to wherever you want.
+        "phaazon/hop.nvim",
+        lazy = false,
+        config = function() require'hop'.setup() end
+    },
+    { ---- > An efficient fuzzy finder that helps to locate files, buffers, mrus, gtags, etc. on the fly for both vim and neovim.
+        "Yggdroot/LeaderF",
+        config = function()
+            vim.cmd([[
             let g:Lf_HideHelp = 1
             let g:Lf_UseCache = 0
             let g:Lf_UseVersionControlTool = 0
@@ -152,52 +161,71 @@ return {
 
                 let g:Lf_ShortcutF = "<leader>ff"
             ]])
-		end
-	}, { "williamboman/mason-lspconfig.nvim" }, {
-		"rmagatti/goto-preview",
-		config = function()
-			require('goto-preview').setup {
-				width = 120, -- Width of the floating window
-				height = 15, -- Height of the floating window
-				border = {
-					"↖", "─", "┐", "│", "┘", "─", "└", "│"
-				}, -- Border characters of the floating window
-				default_mappings = false, -- Bind default mappings
-				debug = false, -- Print debug information
-				opacity = 0, -- 0-100 opacity level of the floating window where 100 is fully transparent.
-				resizing_mappings = false, -- Binds arrow keys to resizing the floating window.
-				post_open_hook = nil, -- A function taking two arguments, a buffer and a window to be ran as a hook.
-				-- references = { -- Configure the telescope UI for slowing the references cycling window.
-				--   telescope = telescope.themes.get_dropdown({ hide_preview = false })
-				-- };
-				-- These two configs can also be passed down to the goto-preview definition and implementation calls for one off "peak" functionality
-				focus_on_open = true, -- Focus the floating window when opening it.
-				dismiss_on_move = false, -- Dismiss the floating window when moving the cursor.
-				force_close = true, -- passed into vim.api.nvim_win_close's second argument. See :h nvim_win_close
-				bufhidden = "wipe" -- the bufhidden option to set on the floating window. See :h bufhidden
-			}
-		end
-	}, {
-		"skywind3000/asyncrun.vim",
-		ft = { "go", "lua" }
-	},
-	{
-		"xiyaowong/nvim-cursorword",
-		lazy = false,
-		config = function()
-			vim.cmd([[
+        end
+    }, {"williamboman/mason-lspconfig.nvim"}, {
+        ---- A code preview plugin.
+        "rmagatti/goto-preview",
+        config = function()
+            require('goto-preview').setup {
+                width = 120, -- Width of the floating window
+                height = 15, -- Height of the floating window
+                border = {
+                    "↖", "─", "┐", "│", "┘", "─", "└", "│"
+                }, -- Border characters of the floating window
+                default_mappings = false, -- Bind default mappings
+                debug = false, -- Print debug information
+                opacity = 0, -- 0-100 opacity level of the floating window where 100 is fully transparent.
+                resizing_mappings = false, -- Binds arrow keys to resizing the floating window.
+                post_open_hook = nil, -- A function taking two arguments, a buffer and a window to be ran as a hook.
+                -- references = { -- Configure the telescope UI for slowing the references cycling window.
+                --   telescope = telescope.themes.get_dropdown({ hide_preview = false })
+                -- };
+                -- These two configs can also be passed down to the goto-preview definition and implementation calls for one off "peak" functionality
+                focus_on_open = true, -- Focus the floating window when opening it.
+                dismiss_on_move = false, -- Dismiss the floating window when moving the cursor.
+                force_close = true, -- passed into vim.api.nvim_win_close's second argument. See :h nvim_win_close
+                bufhidden = "wipe" -- the bufhidden option to set on the floating window. See :h bufhidden
+            }
+        end
+    }, { ---- Async run a custom command.
+        "skywind3000/asyncrun.vim",
+        ft = {"go", "lua"}
+    }, { ---- Show current cursor word.
+        "xiyaowong/nvim-cursorword",
+        lazy = false,
+        enabled = true,
+        config = function()
+            vim.cmd([[
 			hi default CursorWord cterm=underline gui=underline
 			let g:cursorword_disable_filetypes = []
 			let g:cursorword_min_width = 3
 			]])
-		end
-	},
-	{
-		"folke/drop.nvim",
-		event = "VimEnter",
-		ft = { "dashboard" },
-		config = function()
-			require("drop").setup()
-		end,
-	}
+        end
+    },
+    { ---- > 🍁 Fun little plugin that can be used as a screensaver and on your dashboard
+        "folke/drop.nvim",
+        event = "VimEnter",
+        ft = {"dashboard"},
+        config = function() require("drop").setup() end
+    }, { ---- colorizer your neovim.
+        "norcalli/nvim-colorizer.lua",
+        event = "VeryLazy",
+        config = function()
+            require'colorizer'.setup({'*'}, {
+                RGB = true, -- #RGB hex codes
+                RRGGBB = true, -- #RRGGBB hex codes
+                names = true, -- "Name" codes like Blue
+                RRGGBBAA = true, -- #RRGGBBAA hex codes
+                rgb_fn = true, -- CSS rgb() and rgba() functions
+                hsl_fn = true, -- CSS hsl() and hsla() functions
+                css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+                css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+                -- Available modes: foreground, background
+                mode = 'background' -- Set the display mode.})
+                --[[ #558817
+			-- Red Blue Yellow
+			--]]
+            })
+        end
+    }
 }
