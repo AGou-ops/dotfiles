@@ -36,6 +36,20 @@ return {
 			end,
 			desc = "Search help manual page"
 		},
+		{
+			"<leader>ft",
+			function()
+				vim.cmd('TodoTelescope')
+			end,
+			desc = "Toggle Todo Telescope"
+		},
+		{
+			"<leader>fj",
+			function()
+				require("telescope.builtin").jumplist()
+			end,
+			desc = "Toggle Telescope jumplist"
+		},
 	},
 	config = function()
 		local telescope = require("telescope")

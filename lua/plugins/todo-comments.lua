@@ -1,5 +1,6 @@
 local M = {
 	"folke/todo-comments.nvim",
+	ft = { "go", "lua" },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},

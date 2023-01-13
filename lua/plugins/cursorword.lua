@@ -6,7 +6,7 @@ local M = {
 
 function M.config()
 
-	FOO = 'cursorword'
+	local FOO = 'cursorword'
 	vim.api.nvim_create_augroup(FOO, { clear = true })
 
 	require('murmur').setup {

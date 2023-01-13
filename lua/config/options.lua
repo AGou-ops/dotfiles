@@ -110,7 +110,7 @@ vim.o.showmatch = true
 vim.o.showmode = false
 
 -- Show absolute line number in front of each line
-vim.o.relativenumber = false
+vim.o.relativenumber = true
 
 -- Maximum height of the popup menu
 vim.o.pumheight = 15
