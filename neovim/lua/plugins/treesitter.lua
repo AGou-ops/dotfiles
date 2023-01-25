@@ -1,7 +1,6 @@
 return {
     {"nvim-treesitter/playground", cmd = "TSPlaygroundToggle"},
-    {"mrjones2014/nvim-ts-rainbow", lazy = false},
-	{
+    {"mrjones2014/nvim-ts-rainbow", lazy = false}, {
         "mfussenegger/nvim-treehopper",
         keys = {{"m", mode = {"o", "x"}}},
         config = function()
@@ -101,10 +100,10 @@ return {
                 incremental_selection = {
                     enable = true,
                     keymaps = {
-                        init_selection = "<C-space>",
-                        node_incremental = "<C-space>",
-                        scope_incremental = "<C-s>",
-                        node_decremental = "<C-bs>"
+                        init_selection = "<CR>",
+						node_incremental = "<CR>",
+                        scope_incremental = "<S-CR>",
+                        node_decremental = "<BS>"
                     }
                 },
                 query_linter = {

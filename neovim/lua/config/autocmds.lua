@@ -26,6 +26,8 @@ autocmd InsertLeave * set relativenumber
 autocmd FileType zsh set nowrap
 
 au FileType go set noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
+
+
 ]])
 
 -- ------------------------
@@ -121,25 +123,25 @@ for group, commands in pairs(augroups) do
 end
 
 -- auto toggle wrap when split mutil window or goto single window.
-vim.api.nvim_create_autocmd({ "WinNew", "WinClosed", "WinEnter" }, {
-    group = vim.api.nvim_create_augroup("on_demand_wrap", {}),
-    callback = function()
-        local should_wrap = vim.api.nvim_win_get_width(0) ~= vim.o.columns
-        vim.api.nvim_win_set_option(0, "wrap", should_wrap)
-    end,
-})
+-- vim.api.nvim_create_autocmd({ "WinNew", "WinClosed", "WinEnter" }, {
+--     group = vim.api.nvim_create_augroup("on_demand_wrap", {}),
+--     callback = function()
+--         local should_wrap = vim.api.nvim_win_get_width(0) ~= vim.o.columns
+--         vim.api.nvim_win_set_option(0, "wrap", should_wrap)
+--     end,
+-- })
 
 
 -- go to last loc when opening a buffer
--- vim.api.nvim_create_autocmd("BufReadPost", {
---     callback = function()
---         local mark = vim.api.nvim_buf_get_mark(0, '"')
---         local lcount = vim.api.nvim_buf_line_count(0)
---         if mark[1] > 0 and mark[1] <= lcount then
---             pcall(vim.api.nvim_win_set_cursor, 0, mark)
---         end
---     end
--- })
+vim.api.nvim_create_autocmd("BufReadPost", {
+    callback = function()
+        local mark = vim.api.nvim_buf_get_mark(0, '"')
+        local lcount = vim.api.nvim_buf_line_count(0)
+        if mark[1] > 0 and mark[1] <= lcount then
+            pcall(vim.api.nvim_win_set_cursor, 0, mark)
+        end
+    end
+})
 
 -- vim.api.nvim_create_autocmd("BufWritePre", {
 -- 	desc = "Autoformat before save",
@@ -150,3 +152,4 @@ vim.api.nvim_create_autocmd({ "WinNew", "WinClosed", "WinEnter" }, {
 -- 	callback = function() vim.lsp.buf.format() end,
 -- 	group = vimrc_group
 -- })
+--

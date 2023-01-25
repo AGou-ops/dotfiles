@@ -1,5 +1,6 @@
 local M = {
 	"nvim-neotest/neotest",
+	event = "VeryLazy",
 	dependencies = {
 		"nvim-neotest/neotest-go",
 		-- Your other test adapters here

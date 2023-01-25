@@ -1,6 +1,6 @@
 require("config.options")
 require("config.lazy")
-require('themes')
+require("config.highlights")
 require("config.autocmds")
 require("utils.dashboard").setup()
 

@@ -3,7 +3,7 @@ local M = {
 	dependencies = {
 		"kevinhwang91/promise-async",
 	},
-	lazy = false,
+	event = "VeryLazy",
 }
 
 function M.config()

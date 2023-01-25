@@ -1,7 +1,8 @@
 local spec = {
 	"utilyre/barbecue.nvim",
+	event = "VeryLazy",
+	-- lazy = false,
 	branch = "dev", -- omit this if you only want stable updates
-	lazy = false,
 	dependencies = {
 		"neovim/nvim-lspconfig",
 		"smiteshp/nvim-navic",
