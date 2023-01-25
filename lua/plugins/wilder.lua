@@ -1,6 +1,6 @@
 local M = {
 	"gelguy/wilder.nvim",
-	lazy = false
+	event = "VeryLazy",
 }
 
 function M.config()

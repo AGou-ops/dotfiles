@@ -1,6 +1,6 @@
 local M = {
 	"karb94/neoscroll.nvim",
-	lazy = false,
+	event = "VeryLazy",
 }
 
 function M.config()

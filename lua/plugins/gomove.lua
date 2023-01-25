@@ -1,6 +1,6 @@
 local M = {
 	"booperlv/nvim-gomove",
-	lazy = false,
+	event = "VeryLazy",
 }
 
 function M.config()

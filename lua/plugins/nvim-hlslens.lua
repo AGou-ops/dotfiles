@@ -1,6 +1,6 @@
 local M = {
 	"kevinhwang91/nvim-hlslens",
-	lazy = false,
+	event = "VeryLazy",
 }
 
 function M.config()

@@ -26,11 +26,12 @@ return {
         end
     }, { ---- A plugin show neovim startup time.
         "dstein64/vim-startuptime",
+		event = "VeryLazy",
         cmd = "StartupTime",
         config = function() vim.g.startuptime_tries = 10 end
     }, { ---- enhance jk.
         "max397574/better-escape.nvim",
-        lazy = false,
+		event = "VeryLazy",
         config = function()
             require("better_escape").setup {
                 mapping = {"jk", "jj"}, -- a table with mappings to use
@@ -45,7 +46,7 @@ return {
         end
     }, { ---- auto save file.
         "907th/vim-auto-save",
-        lazy = false,
+		event = "VeryLazy",
         enabled = true,
         config = function()
             vim.cmd([[
@@ -59,7 +60,8 @@ return {
         config = function() vim.g.mkdp_filetypes = {"markdown"} end,
         ft = {"markdown"}
     }, { ---- Read or write file with sudo.
-        "lambdalisue/suda.vim"
+        "lambdalisue/suda.vim",
+		event = "VeryLazy",
     }, { ---- A plugin show code outline.
         "preservim/tagbar",
         ft = {"markdown", "go", "lua"},
@@ -80,34 +82,36 @@ return {
         end
     }, { ---- Symbol auto pair.
         "m4xshen/autoclose.nvim",
-        lazy = false,
+		event = "VeryLazy",
         config = function() require("autoclose").setup({}) end
     }, { ---- Auto generate some comments.
         "danymat/neogen",
+		event = "VeryLazy",
         dependencies = "nvim-treesitter/nvim-treesitter",
         config = true
         -- Uncomment next line if you want to follow only stable versions
         -- version = "*"
     }, { ---- Quikly comment plugin.
         "numToStr/Comment.nvim",
-        lazy = false,
+		event = "VeryLazy",
         config = function() require('Comment').setup() end
     }, { ---- Multiple cursors plugin for vim/neovim
         "mg979/vim-visual-multi",
-        lazy = false,
+        event = "VeryLazy",
         config = function()
             vim.cmd([[
-            let g:VM_maps = {}
-            let g:VM_maps['Find Under']         = '<CR>'           " replace C-n
-            let g:VM_maps['Find Subword Under'] = '<CR>'           " replace visual C-n
-            let g:VM_mouse_mappings = 1
-            let g:VM_theme = 'iceblue'
-            let g:VM_highlight_matches = 'underline'
-            ]])
+				let g:VM_maps = {}
+				let g:VM_maps['Find Under']         = '<cr>'           " replace C-n
+				let g:VM_maps['Find Subword Under'] = '<cr>'           " replace visual C-n
+				let g:VM_mouse_mappings = 1
+				let g:VM_theme = 'iceblue'
+				let g:VM_highlight_matches = 'underline'
+				]])
+
         end
     }, { ---- Undo tree.
         "mbbill/undotree",
-        lazy = false
+		event = "VeryLazy",
     }, { ---- Just a translate plugin.
         "voldikss/vim-translator",
         event = "VeryLazy",
@@ -132,11 +136,12 @@ return {
         end
     }, { ---- Jump to wherever you want.
         "phaazon/hop.nvim",
-        lazy = false,
+		event = "VeryLazy",
         config = function() require'hop'.setup() end
     },
     { ---- > An efficient fuzzy finder that helps to locate files, buffers, mrus, gtags, etc. on the fly for both vim and neovim.
         "Yggdroot/LeaderF",
+		event = "VeryLazy",
         config = function()
             vim.cmd([[
             let g:Lf_HideHelp = 1
@@ -190,9 +195,16 @@ return {
     }, { ---- Async run a custom command.
         "skywind3000/asyncrun.vim",
         ft = {"go", "lua"}
-    }, { ---- Show current cursor word.
+    }, -- {
+    -- 	"echasnovski/mini.nvim",
+    -- 	lazy = false,
+    -- 	config = function()
+    -- 		require('mini.cursorword').setup()
+    -- 	end
+    -- },
+    { ---- Show current cursor word.
         "xiyaowong/nvim-cursorword",
-        lazy = false,
+		event = "VeryLazy",
         enabled = true,
         config = function()
             vim.cmd([[
@@ -226,6 +238,40 @@ return {
 			-- Red Blue Yellow
 			--]]
             })
+        end
+    }, { ---- cool standalone UI for nvim-lsp progress
+        "j-hui/fidget.nvim",
+        ft = {"lua", "go"},
+        config = true
+    }, { ---- session manager
+        "Shatur/neovim-session-manager",
+		event = "VeryLazy",
+        keys = {
+            {
+                "<leader>ss",
+                "<cmd>SessionManager save_current_session<CR>",
+                desc = "save session"
+            }, {
+                "<leader>sl",
+                "<cmd>SessionManager load_last_session<CR>",
+                desc = "load last session"
+            },
+            {
+                "<leader>sc",
+                "<cmd>SessionManager load_session<CR>",
+                desc = "load session"
+            }, {
+                "<leader>sd",
+                "<cmd>SessionManager delete_session<CR>",
+                desc = "delete session"
+            }
+        },
+        opts = function()
+            return {
+                autoload_mode = require("session_manager.config").AutoloadMode
+                    .Disabled,
+                autosave_last_session = false
+            }
         end
     }
 }

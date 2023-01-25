@@ -1,7 +1,6 @@
 local M = {
 	'nvim-tree/nvim-tree.lua',
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
-	-- event = "VeryLazy"
 	lazy = false
 }
 
@@ -236,7 +235,7 @@ function M.config()
 		}
 	} -- END_DEFAULT_OPTS
 
-	vim.keymap.set("n", "<C-n>", "<Cmd>NvimTreeToggle<CR>")
+	vim.keymap.set("n", "<M-n>", "<Cmd>NvimTreeToggle<CR>")
 
 end
 

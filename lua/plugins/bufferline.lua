@@ -1,11 +1,12 @@
 local M = {
 	'akinsho/bufferline.nvim',
 	version = "v3.*",
+	-- event = "VeryLazy",
+	lazy = false,
 	dependencies = {
 		'nvim-tree/nvim-web-devicons',
 		'famiu/bufdelete.nvim'
 	},
-	lazy = false,
 }
 
 function M.config()

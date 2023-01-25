@@ -1,5 +1,6 @@
 local M = {
 	"nyngwang/murmur.lua",
+	-- event = "VeryLazy",
 	lazy = false,
 	enabled = false,
 }
