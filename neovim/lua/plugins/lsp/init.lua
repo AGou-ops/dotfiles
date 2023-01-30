@@ -103,7 +103,7 @@ function M.config()
     })
 
     -- -------------------------- common lsp server ----------------------
-    local servers = {"bashls", "sqls", "dockerls"}
+    local servers = {"bashls", "sqls", "dockerls", "clangd"}
     ---------------------------------------------------------------
     for _, lsp in ipairs(servers) do
         nvim_lsp[lsp]
