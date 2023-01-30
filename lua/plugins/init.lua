@@ -26,12 +26,12 @@ return {
         end
     }, { ---- A plugin show neovim startup time.
         "dstein64/vim-startuptime",
-		event = "VeryLazy",
+        event = "VeryLazy",
         cmd = "StartupTime",
         config = function() vim.g.startuptime_tries = 10 end
     }, { ---- enhance jk.
         "max397574/better-escape.nvim",
-		event = "VeryLazy",
+        event = "VeryLazy",
         config = function()
             require("better_escape").setup {
                 mapping = {"jk", "jj"}, -- a table with mappings to use
@@ -46,7 +46,7 @@ return {
         end
     }, { ---- auto save file.
         "907th/vim-auto-save",
-		event = "VeryLazy",
+        event = "VeryLazy",
         enabled = true,
         config = function()
             vim.cmd([[
@@ -61,7 +61,7 @@ return {
         ft = {"markdown"}
     }, { ---- Read or write file with sudo.
         "lambdalisue/suda.vim",
-		event = "VeryLazy",
+        event = "VeryLazy"
     }, { ---- A plugin show code outline.
         "preservim/tagbar",
         ft = {"markdown", "go", "lua"},
@@ -82,18 +82,18 @@ return {
         end
     }, { ---- Symbol auto pair.
         "m4xshen/autoclose.nvim",
-		event = "VeryLazy",
+        event = "VeryLazy",
         config = function() require("autoclose").setup({}) end
     }, { ---- Auto generate some comments.
         "danymat/neogen",
-		event = "VeryLazy",
+        event = "VeryLazy",
         dependencies = "nvim-treesitter/nvim-treesitter",
         config = true
         -- Uncomment next line if you want to follow only stable versions
         -- version = "*"
     }, { ---- Quikly comment plugin.
         "numToStr/Comment.nvim",
-		event = "VeryLazy",
+        event = "VeryLazy",
         config = function() require('Comment').setup() end
     }, { ---- Multiple cursors plugin for vim/neovim
         "mg979/vim-visual-multi",
@@ -111,7 +111,7 @@ return {
         end
     }, { ---- Undo tree.
         "mbbill/undotree",
-		event = "VeryLazy",
+        event = "VeryLazy"
     }, { ---- Just a translate plugin.
         "voldikss/vim-translator",
         event = "VeryLazy",
@@ -136,12 +136,12 @@ return {
         end
     }, { ---- Jump to wherever you want.
         "phaazon/hop.nvim",
-		event = "VeryLazy",
+        event = "VeryLazy",
         config = function() require'hop'.setup() end
     },
     { ---- > An efficient fuzzy finder that helps to locate files, buffers, mrus, gtags, etc. on the fly for both vim and neovim.
         "Yggdroot/LeaderF",
-		event = "VeryLazy",
+        event = "VeryLazy",
         config = function()
             vim.cmd([[
             let g:Lf_HideHelp = 1
@@ -204,7 +204,7 @@ return {
     -- },
     { ---- Show current cursor word.
         "xiyaowong/nvim-cursorword",
-		event = "VeryLazy",
+        event = "VeryLazy",
         enabled = true,
         config = function()
             vim.cmd([[
@@ -245,7 +245,7 @@ return {
         config = true
     }, { ---- session manager
         "Shatur/neovim-session-manager",
-		event = "VeryLazy",
+        event = "VeryLazy",
         keys = {
             {
                 "<leader>ss",

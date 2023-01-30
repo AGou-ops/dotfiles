@@ -4,6 +4,27 @@ local M = {
 	lazy = false
 }
 
+-- always open nvim-tree
+local function open_nvim_tree(data)
+
+  -- buffer is a real file on the disk
+  local real_file = vim.fn.filereadable(data.file) == 1
+
+  -- buffer is a [No Name]
+  local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
+
+  -- only files please
+  if not real_file and not no_name then
+    return
+  end
+
+  -- open the tree but don't focus it
+  require("nvim-tree.api").tree.toggle({ focus = false })
+end
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
+
 function M.config()
 
 	if vim.g.started_by_firenvim then
@@ -27,9 +48,6 @@ function M.config()
 		hijack_cursor = false,
 		hijack_netrw = true,
 		hijack_unnamed_buffer_when_opening = false,
-		ignore_buffer_on_setup = false,
-		open_on_setup = true,
-		open_on_setup_file = true,
 		sort_by = "name",
 		root_dirs = {},
 		prefer_startup_root = true,
@@ -143,7 +161,6 @@ function M.config()
 			update_root = true,
 			ignore_list = {}
 		},
-		ignore_ft_on_setup = {},
 		system_open = { cmd = "", args = {} },
 		diagnostics = {
 			enable = true,
