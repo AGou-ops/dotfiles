@@ -24,6 +24,8 @@ autocmd InsertEnter * set norelativenumber number    " use absolute line number.
 autocmd InsertLeave * set relativenumber
 
 autocmd FileType zsh set nowrap
+autocmd FileType dashboard :NvimTreeToggle
+autocmd FileType dashboard nmap Q <cmd>qa<CR>
 
 au FileType go set noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
 
