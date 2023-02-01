@@ -19,8 +19,9 @@ function M.config()
 
         local opts = {noremap = true, silent = true}
         local map = vim.api.nvim_buf_set_keymap
-        map(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-        map(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+		-- use lspsaga.goto_definition instead.
+        -- map(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+        -- map(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
         -- map(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
         map(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
         -- map(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
@@ -57,7 +58,7 @@ function M.config()
         map(bufnr, "n", "gpt",
             "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>",
             opts)
-        map(bufnr, "n", "gP",
+        map(bufnr, "n", "gq",
             "<cmd>lua require('goto-preview').close_all_win()<CR>", opts)
         map(bufnr, "n", "gF",
             "<cmd>lua require('goto-preview').goto_preview_references()<CR>",
@@ -103,7 +104,7 @@ function M.config()
     })
 
     -- -------------------------- common lsp server ----------------------
-    local servers = {"bashls", "sqls", "dockerls", "clangd"}
+    local servers = {"bashls", "sqls", "dockerls", "clangd", "texlab"}
     ---------------------------------------------------------------
     for _, lsp in ipairs(servers) do
         nvim_lsp[lsp]
