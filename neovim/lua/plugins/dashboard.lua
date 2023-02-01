@@ -1,88 +1,52 @@
 local M = {
-	"glepnir/dashboard-nvim",
-	enabled = false,
+    'glepnir/dashboard-nvim',
+    event = 'VimEnter',
+    dependencies = {{'nvim-tree/nvim-web-devicons'}}
 }
 
 function M.config()
 
-	local home = os.getenv("HOME")
-	local db = require("dashboard")
-	-- 需要提前安装好lolcat命令
-	db.preview_command = "cat | lolcat -F 0.3"
-	db.preview_file_path = home .. "/.config/nvim/neovim.cat"
-	db.preview_file_height = 15
-	db.preview_file_width = 70
-	db.session_directory = home .. "/.config/nvim/sessions/"
-	db.custom_center = {
-		{
-			desc = "New File                                ",
-			shortcut = "KEY n",
-			icon = "  ",
-			action = "DashboardNewFile",
-		},
-		{
-			icon = "  ",
-			desc = "Recently latest session                 ",
-			shortcut = "KEY s",
-			action = "SessionLoad",
-		},
-		{
-			icon = "  ",
-			desc = "Find  File                              ",
-			action = "Telescope find_files find_command=rg,--hidden,--files",
-			shortcut = "KEY f",
-		},
-		{
-			icon = "  ",
-			desc = "File Browser                            ",
-			action = "Telescope file_browser",
-			shortcut = "KEY b",
-		},
-		{
-			icon = "  ",
-			desc = "Find  word                              ",
-			action = "Telescope live_grep",
-			shortcut = "KEY w",
-		},
-		{
-			icon = "  ",
-			desc = "Edit Personal dotfiles                  ",
-			action = "e ~/.config/nvim/init.vim",
-			shortcut = "KEY d",
-		},
-		{
-			desc = "Update Plugins                          ",
-			shortcut = "KEY u",
-			icon = "  ",
-			action = "PlugUpdate",
-		},
-		{
-			icon = "  ",
-			desc = "Quit Neovim                              ",
-			action = "qa!",
-			shortcut = "KEY q  ",
-		},
-	}
+    -- local home = os.getenv("HOME")
+    local db = require("dashboard")
+    db.setup({
+		-- theme: hyper, doom
+        theme = 'hyper',
+        config = {
+            week_header = {enable = true},
+            packages = {enable = true}, -- show how many plugins neovim loaded
+            -- limit how many projects list, action when you press key or enter it will run this action.
+            project = {
+                limit = 8,
+                -- label = '',
+                action = 'Telescope find_files cwd='
+            },
+            -- footer = { "\n\n岂能尽如人意，但求无愧我心。"}, -- footer
+            shortcut = {
+                {
+                    desc = ' Update',
+                    group = '@property',
+                    action = 'Lazy update',
+                    key = 'u'
+                }, {
+                    desc = ' Files',
+                    group = 'Label',
+                    action = 'Telescope find_files',
+                    key = 'f'
+                }, {
+                    desc = ' Apps',
+                    group = 'Special',
+                    action = 'Telescope app',
+                    key = 'a'
+                }, {
+                    desc = ' dotfiles',
+                    group = 'Number',
+                action = 'Telescope find_files cwd=~/.config/nvim',
+                    key = 'd'
+                }
+            }
+        }
+    })
 
-
-	vim.api.nvim_create_autocmd('Filetype', {
-		pattern = 'dashboard',
-		group = vim.api.nvim_create_augroup('Dashboard_au', { clear = true }),
-		callback = function()
-			vim.cmd [[
-                hi! link DashboardFooter NonText
-                setlocal buftype=nofile
-                setlocal nonumber norelativenumber nocursorline noruler
-                nnoremap <buffer> n <cmd>DashboardNewFile<CR>
-                nnoremap <buffer> f <cmd>Telescope find_files find_command=rg,--hidden,--files<CR>
-                nnoremap <buffer> b <cmd>Telescope file_browser<CR>
-                nnoremap <buffer> w <cmd>Telescope Telescope live_grep<CR>
-                nnoremap <buffer> c <cmd>e ~/.config/nvim/init.vim<CR>
-                nnoremap <buffer> u <cmd>PlugUpdate<CR>
-                nnoremap <buffer> q <cmd>exit<CR>
-            ]]
-		end
-	})
 end
 
 return M
