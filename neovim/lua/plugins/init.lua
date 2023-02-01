@@ -194,7 +194,7 @@ return {
         end
     }, { ---- Async run a custom command.
         "skywind3000/asyncrun.vim",
-        ft = {"go", "lua"}
+        ft = {"go", "lua", "tex"}
     }, -- {
     -- 	"echasnovski/mini.nvim",
     -- 	lazy = false,
