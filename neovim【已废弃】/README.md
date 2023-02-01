@@ -1,1 +1,0 @@
-some different with vimrc.
