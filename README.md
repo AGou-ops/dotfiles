@@ -5,6 +5,8 @@
 + 修改了一点点配置文件，neovim0.8.x版本可以直接使用~！！
 + 建议先将所有插件更新到最新.
 ```
+👀 **注意：`neovim with lua`使用的是`vim-plug`插件管理器，目前由于已切换至`lazy.nvim`进行管理，所以不再更新！ `neovim`文件夹则是我目前用的配置文件！会一直持续更新.**
+
 
 ## TL;DR
 
@@ -31,7 +33,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 # 执行插件安装
 nvim +PlugInstall       # 等待安装完毕即可.
-- 新lazy.nvim安装方法
+- ⭐️ 新lazy.nvim安装方法
 mv ~/.config/nvim{,.bak}
 git clone -b nvim https://github.com/AGou-ops/dotfiles.git ~/.config/nvim
 + 其他步骤暂无，安装完配置文件后首次会会自动安装
@@ -42,8 +44,6 @@ git clone -b nvim https://github.com/AGou-ops/dotfiles.git ~/.config/nvim
 ---
 
 ## 该仓库用于备份我的dotfiles.
-
-👀注意：`neovim with lua`是我目前在用的配置，里面包含了lua配置. `neovim`文件夹里面的配置是我之前用的（MacOS用户可以直接看里面的`MacOS`目录），纯配置，很少lua【已废弃】.
 
 主要开发语言：`Golang`、`Lua`,脚本语言：`Bash Shell`，文本编辑：`Markdown`
 
@@ -93,7 +93,7 @@ git clone -b nvim https://github.com/AGou-ops/dotfiles.git ~/.config/nvim
 
 <img width="1548" alt="image" src="https://user-images.githubusercontent.com/57939102/194984913-9c101911-fbe8-4cbd-ab01-53e41e1bbbb6.png">
 
-### `lazy.nvim`管理
+### ⭐️`lazy.nvim`管理
 
 共计插件`82`个。
 
