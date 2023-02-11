@@ -97,9 +97,9 @@ git clone -b nvim https://github.com/AGou-ops/dotfiles.git ~/.config/nvim
 
 共计插件`82`个。
 
-启动速度平均`42ms`（大部分已做`VeryLazy`处理）
+启动速度平均`20.4ms`（大部分已做`VeryLazy`处理）
 
-<img width="1548" alt="image" src="https://user-images.githubusercontent.com/57939102/214578129-32458324-dd46-402f-8d2f-6f99f6a2e27f.png">
+<img width="1548" alt="image" src="https://user-images.githubusercontent.com/57939102/218255154-b3a36ed2-0844-4c56-81c4-448aafbfeb86.png">
 
 
 
