@@ -15,4 +15,7 @@ hi lualine_c_inactive ctermfg=223 ctermbg=237 gui=italic guifg=#ddc7a1 guibg=#3c
 " hi ErrorText cterm=undercurl ctermbg=52 gui=italic guibg=#442e2d guisp=#ea6962
 hi Pmenu ctermfg=223 ctermbg=237 guifg=#ddc7a1 guibg=#1E2021
 
+" TEST hl group, don't use.
+" undercurl support: https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
+hi Foo cterm=undercurl ctermbg=52 gui=undercurl guibg=#543937 guisp=#ea6962 guifg=Red
 ]])
