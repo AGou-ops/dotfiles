@@ -1,7 +1,8 @@
 local M = {
     'glepnir/dashboard-nvim',
     event = 'VimEnter',
-    dependencies = {{'nvim-tree/nvim-web-devicons'}}
+    dependencies = {{'nvim-tree/nvim-web-devicons'}},
+	-- enable = false
 }
 
 function M.config()
