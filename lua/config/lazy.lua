@@ -1,9 +1,12 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
-		"git", "clone", "--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git", "--branch=stable", -- latest stable release
-		lazypath
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
 	})
 end
 vim.opt.rtp:prepend(lazypath)
@@ -12,12 +15,14 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ","
 
 require("lazy").setup("plugins", {
-	defaults = { lazy = true },
+	defaults = {
+		lazy = true,
+	},
 	install = {
 		-- install missing plugins on startup. This doesn't increase startup time.
 		missing = true,
 		-- try to load one of these colorschemes when starting an installation during startup
-		colorscheme = { "gruvbox-material" }
+		colorscheme = { "gruvbox-material" },
 	},
 	ui = {
 		-- a number <1 is a percentage., >1 is a fixed size
@@ -40,7 +45,7 @@ require("lazy").setup("plugins", {
 			start = "",
 			task = "✔ ",
 			lazy = "鈴 ",
-			list = { "●", "➜", "★", "‒" }
+			list = { "●", "➜", "★", "‒" },
 		},
 		-- leave nil, to automatically select a browser depending on your OS.
 		-- If you want to use a specific browser, you can define it here
@@ -49,7 +54,7 @@ require("lazy").setup("plugins", {
 		custom_keys = {
 			-- you can define custom key maps here.
 			-- To disable one of the defaults, set it to false
-		}
+		},
 	},
 	change_detection = {
 		-- automatically check for config file changes and reload the ui

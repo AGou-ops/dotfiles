@@ -28,8 +28,8 @@ vim.o.clipboard = "unnamed"
 vim.o.swapfile = false
 
 -- Save undo history
-vim.o.undofile = true
-vim.o.undolevels = 1000
+-- vim.o.undofile = true
+-- vim.o.undolevels = 1000
 
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true

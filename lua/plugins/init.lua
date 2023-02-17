@@ -141,6 +141,7 @@ return {
     },
     { ---- > An efficient fuzzy finder that helps to locate files, buffers, mrus, gtags, etc. on the fly for both vim and neovim.
         "Yggdroot/LeaderF",
+		enabled = true,
         event = "VeryLazy",
         config = function()
             vim.cmd([[

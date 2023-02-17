@@ -29,6 +29,8 @@ autocmd FileType dashboard nmap Q <cmd>qa<CR>
 
 au FileType go set noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
 
+let g:python3_host_prog = "/opt/homebrew/opt/python@3.11/libexec/bin/python"
+
 ]])
 
 -- ------------------------
