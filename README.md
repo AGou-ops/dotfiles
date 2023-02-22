@@ -20,7 +20,7 @@ pip3 install pynvim
 npm install tree-sitter-cli
 # tree-sitter用npm安装不上的话，可以用cargo进行安装
 # cargo install tree-sitter-cli
-echo "export PATH="$HOME/.local/share/nvim/mason/bin:$PATH" >> ~/.bashrc
+echo "export PATH=$HOME/.local/share/nvim/mason/bin:$PATH" >> ~/.bashrc
 # 如果你用的是zsh，请自行替换为`~/.zshrc`
 source ~/.bashrc
 ```
