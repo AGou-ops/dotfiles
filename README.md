@@ -17,13 +17,18 @@
 ```bash
 sudo apt install wget curl git python3-pip ripgrep ranger lolcat -y
 pip3 install pynvim
-echo "export PATH=~/.local/share/nvim/lsp_servers/bin:$PATH" >> ~/.bashrc
+npm install tree-sitter-cli
+# tree-sitter用npm安装不上的话，可以用cargo进行安装
+# cargo install tree-sitter-cli
+echo "export PATH="$HOME/.local/share/nvim/mason/bin:$PATH" >> ~/.bashrc
+# 如果你用的是zsh，请自行替换为`~/.zshrc`
 source ~/.bashrc
 ```
 
 安装配置文件及插件：
 
 ```diff
++ 第一步先把仓库克隆下来
 git clone https://github.com/AGou-ops/dotfiles.git
 - 旧vim-plug插件管理器安装方法
 cp -a dotfiles/neovim-with-lua ~/.config/nvim
