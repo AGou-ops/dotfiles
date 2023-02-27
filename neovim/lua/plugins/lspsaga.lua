@@ -1,6 +1,6 @@
 local M = {
     "glepnir/lspsaga.nvim",
-    ft = {"go", "lua"}
+    ft = {"go", "lua"},
     -- commit = "b7b4777"
 }
 
