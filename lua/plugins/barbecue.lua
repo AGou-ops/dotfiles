@@ -1,6 +1,7 @@
 local spec = {
 	"utilyre/barbecue.nvim",
-	event = "VeryLazy",
+	-- event = "VeryLazy",
+	ft = {"go", "lua"},
 	-- lazy = false,
 	dependencies = {
 		"neovim/nvim-lspconfig",
