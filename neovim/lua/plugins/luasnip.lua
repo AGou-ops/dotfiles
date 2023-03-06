@@ -19,6 +19,10 @@ function M.config()
 		-- updateevents = "TextChanged,TextChangedI",
 	})
 
+	require("luasnip.loaders.from_vscode").load({
+		include = { "go", "python", "sh", "json", "lua", "gitcommit", "sql" },
+	})
+
 	vim.cmd([[
     " press <Tab> to expand or jump in a snippet. These can also be mapped separately
     " via <Plug>luasnip-expand-snippet and <Plug>luasnip-jump-next.
