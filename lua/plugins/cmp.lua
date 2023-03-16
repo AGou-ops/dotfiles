@@ -115,7 +115,7 @@ function M.config()
 				return vim_item
 			end,
 		},
-		mapping = {
+		mapping = cmp.mapping.preset.insert({
 			-- ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
 			-- ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
 			-- ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
@@ -148,6 +148,8 @@ function M.config()
 				end
 			end, { "i", "s" }),
 			["<CR>"] = cmp.mapping.confirm({
+				-- ConfirmBehavior: Insert & Replace
+				behavior = cmp.ConfirmBehavior.Insert,
 				select = true,
 				-- cmp.close()
 			}),
@@ -172,7 +174,7 @@ function M.config()
 					fallback()
 				end
 			end, { "i", "s" }),
-		},
+		}),
 		-- You can set mappings if you want
 		-- mapping = insert_map,
 		snippet = {

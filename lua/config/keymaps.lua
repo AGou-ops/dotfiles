@@ -5,6 +5,9 @@ local opts = { noremap = true, silent = true }
 
 -- ============= Basic Keymaps =============
 --
+-- vim.api.nvim_create_user_command('TransparentToggle', 'hi Normal ctermbg=NONE guibg=NONE | hi EndOfBuffer guibg=NONE ctermbg=NONE', {})
+-- bind('n', '<F3>', '<CMD>TransparentToggle<CR>')
+
 bind('n', ';', ':')
 bind('v', ';', ':')
 
