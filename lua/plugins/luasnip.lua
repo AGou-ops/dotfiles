@@ -1,29 +1,29 @@
 local M = {
-	"L3MON4D3/LuaSnip",
-	event = "VeryLazy",
-	dependencies = {
-		"rafamadriz/friendly-snippets",
-		config = function()
-			require("luasnip.loaders.from_vscode").lazy_load()
-		end,
-	},
+    'L3MON4D3/LuaSnip',
+    event = 'VeryLazy',
+    dependencies = {
+        'rafamadriz/friendly-snippets',
+        config = function()
+            require('luasnip.loaders.from_vscode').lazy_load()
+        end,
+    },
 }
 
 function M.config()
-	local luasnip = require("luasnip")
+    local luasnip = require('luasnip')
 
-	luasnip.config.setup({
-		history = true,
-		enable_autosnippets = true,
-		-- Update more often, :h events for more info.
-		-- updateevents = "TextChanged,TextChangedI",
-	})
+    luasnip.config.setup({
+        history = true,
+        enable_autosnippets = true,
+        -- Update more often, :h events for more info.
+        -- updateevents = "TextChanged,TextChangedI",
+    })
 
-	require("luasnip.loaders.from_vscode").load({
-		include = { "go", "python", "sh", "json", "lua", "gitcommit", "sql" },
-	})
+    require('luasnip.loaders.from_vscode').load({
+        include = { 'go', 'python', 'sh', 'json', 'lua', 'gitcommit', 'sql' },
+    })
 
-	vim.cmd([[
+    vim.cmd([[
     " press <Tab> to expand or jump in a snippet. These can also be mapped separately
     " via <Plug>luasnip-expand-snippet and <Plug>luasnip-jump-next.
     imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'

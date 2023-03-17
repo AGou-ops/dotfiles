@@ -1,13 +1,15 @@
 -- vim.cmd('source ~/.config/nvim/lua/config/general.vim')
 
 -- Incremental live completion
-vim.o.inccommand = "nosplit"
+vim.o.inccommand = 'nosplit'
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = "menu,menuone,noselect"
+vim.o.completeopt = 'menu,menuone,noselect'
 
 -- Enable highlight on search
 vim.o.hlsearch = true
+
+vim.o.autochdir = true
 
 -- Highlight match while typing search pattern
 vim.o.incsearch = true
@@ -22,7 +24,7 @@ vim.o.hidden = true
 vim.o.breakindent = true
 
 -- Add clipboard support
-vim.o.clipboard = "unnamed"
+vim.o.clipboard = 'unnamed'
 
 -- Use swapfiles
 vim.o.swapfile = false
@@ -37,7 +39,7 @@ vim.o.smartcase = true
 
 -- Decrease update time
 vim.o.updatetime = 250
-vim.wo.signcolumn = "yes"
+vim.wo.signcolumn = 'yes'
 
 -- Faster scrolling
 vim.o.lazyredraw = true
@@ -49,21 +51,21 @@ vim.o.redrawtime = 100
 vim.o.termguicolors = true
 
 -- Disable intro message
-vim.opt.shortmess:append("I")
+vim.opt.shortmess:append('I')
 
 -- Disable search count res from the bottom right corner
-vim.opt.shortmess:append("S")
+vim.opt.shortmess:append('S')
 
 -- Disable ins-completion-menu messages
-vim.opt.shortmess:append("c")
+vim.opt.shortmess:append('c')
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-vim.opt.whichwrap:append("<>hl")
+vim.opt.whichwrap:append('<>hl')
 
 -- set symbols for space and newline
-vim.opt.listchars:append("space:⋅")
-vim.opt.listchars:append("eol:↴")
+vim.opt.listchars:append('space:⋅')
+vim.opt.listchars:append('eol:↴')
 
 -- Take indent for new line from previous line
 vim.o.autoindent = true
@@ -150,19 +152,19 @@ vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 -- vim.o.foldcolumn = "1"
 
 -- Use ripgrep as grep tool
-vim.o.grepprg = "rg --vimgrep --no-heading"
-vim.o.grepformat = "%f:%l:%c:%m,%f:%l:%m"
+vim.o.grepprg = 'rg --vimgrep --no-heading'
+vim.o.grepformat = '%f:%l:%c:%m,%f:%l:%m'
 
 -- No double spaces with join after a dot
 vim.opt.joinspaces = false
 
 -- Set directories for backup/swap/undo files
-vim.opt.directory = vim.fn.stdpath("state") .. "/swap"
-vim.opt.backupdir = vim.fn.stdpath("state") .. "/backup"
-vim.opt.undodir = vim.fn.stdpath("state") .. "/undo"
+vim.opt.directory = vim.fn.stdpath('state') .. '/swap'
+vim.opt.backupdir = vim.fn.stdpath('state') .. '/backup'
+vim.opt.undodir = vim.fn.stdpath('state') .. '/undo'
 
 -- Set python3 interpreter
-vim.g.python3_host_prog = "/opt/local/bin/python3"
+vim.g.python3_host_prog = '/opt/local/bin/python3'
 
 -- Disable some builtin providers
 vim.g.loaded_python_provider = 0

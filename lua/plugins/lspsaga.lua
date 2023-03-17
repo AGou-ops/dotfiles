@@ -1,12 +1,11 @@
 local M = {
-    "glepnir/lspsaga.nvim",
-    ft = {"go", "lua"},
+    'glepnir/lspsaga.nvim',
+    ft = { 'go', 'lua' },
     -- commit = "b7b4777"
 }
 
 function M.config()
-
-    require("lspsaga").setup({
+    require('lspsaga').setup({
         ui = {
             border = 'rounded',
             title = true,
@@ -18,7 +17,7 @@ function M.config()
             incoming = ' ',
             outgoing = ' ',
             hover = ' ',
-            kind = {}
+            kind = {},
         },
         diagnostic = {
             show_code_action = true,
@@ -28,27 +27,27 @@ function M.config()
             custom_fix = nil,
             custom_msg = nil,
             text_hl_follow = false,
-            keys = {exec_action = 'o', quit = 'q', go_action = 'g'}
+            keys = { exec_action = 'o', quit = 'q', go_action = 'g' },
         },
-        code_action = {num_shortcut = true, keys = {quit = 'q', exec = '<CR>'}},
+        code_action = { num_shortcut = true, keys = { quit = 'q', exec = '<CR>' } },
         lightbulb = {
             enable = true,
             enable_in_insert = true,
             -- cache_code_action = true,
             sign = true,
             sign_priority = 40,
-            virtual_text = false
+            virtual_text = false,
         },
-        preview = {lines_above = 0, lines_below = 10},
-        scroll_preview = {scroll_down = '<C-f>', scroll_up = '<C-b>'},
+        preview = { lines_above = 0, lines_below = 10 },
+        scroll_preview = { scroll_down = '<C-f>', scroll_up = '<C-b>' },
         request_timeout = 2000,
         finder = {
             jump_to = 'p',
-            edit = {'o', '<CR>'},
+            edit = { 'o', '<CR>' },
             vsplit = 'v',
             split = 's',
             tabe = 't',
-            quit = {'q', '<ESC>'}
+            quit = { 'q', '<ESC>' },
         },
         definition = {
             edit = '<C-c>o',
@@ -56,14 +55,14 @@ function M.config()
             split = '<C-c>i',
             tabe = '<C-c>t',
             quit = 'q',
-            close = '<Esc>'
+            close = '<Esc>',
         },
         rename = {
             quit = '<C-c>',
             exec = '<CR>',
             mark = 'x',
             confirm = '<CR>',
-            in_select = true
+            in_select = true,
         },
         symbol_in_winbar = {
             enable = false,
@@ -72,7 +71,7 @@ function M.config()
             show_file = true,
             folder_level = 2,
             respect_root = false,
-            color_mode = true
+            color_mode = true,
         },
         outline = {
             win_position = 'right',
@@ -83,7 +82,7 @@ function M.config()
             auto_refresh = true,
             auto_close = true,
             custom_sort = nil,
-            keys = {jump = 'o', expand_collapse = 'u', quit = 'q'}
+            keys = { jump = 'o', expand_collapse = 'u', quit = 'q' },
         },
         callhierarchy = {
             show_detail = false,
@@ -94,11 +93,11 @@ function M.config()
                 tabe = 't',
                 jump = 'o',
                 quit = 'q',
-                expand_collapse = 'u'
-            }
+                expand_collapse = 'u',
+            },
         },
-        beacon = {enable = true, frequency = 7},
-        server_filetype_map = {}
+        beacon = { enable = true, frequency = 7 },
+        server_filetype_map = {},
     })
 end
 
