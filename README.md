@@ -27,10 +27,20 @@ source ~/.bashrc
 
 安装配置文件及插件：
 
+⭐️ 新lazy.nvim安装方法：
+
 ```diff
-+ 第一步先把仓库克隆下来
+mv ~/.config/nvim{,.bak}
+git clone -b nvim https://github.com/AGou-ops/dotfiles.git ~/.config/nvim
++ 其他步骤暂无，安装完配置文件后首次会会自动安装.
+```
+
+~旧vim-plug插件管理器安装方法：~（已不在更新）
+
+```diff
+# 第一步先把仓库克隆下来
 git clone https://github.com/AGou-ops/dotfiles.git
-- 旧vim-plug插件管理器安装方法
+# 拷贝配置文件
 cp -a dotfiles/neovim-with-lua ~/.config/nvim
 # 如果没有.config/nvim，需要提前创建，mkdir -pv ~/.config/nvim
 # 快速安装vim-plug
@@ -38,10 +48,6 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 # 执行插件安装
 nvim +PlugInstall       # 等待安装完毕即可.
-- ⭐️ 新lazy.nvim安装方法
-mv ~/.config/nvim{,.bak}
-git clone -b nvim https://github.com/AGou-ops/dotfiles.git ~/.config/nvim
-+ 其他步骤暂无，安装完配置文件后首次会会自动安装
 ```
 
 🟥 特别注意：如果安装好之后发现有报错，八成是因为有的软件没有安装，比如`npm`、`node`、`TabNine`等等，你可以在nvim的命令行模式输入`:checkhealth`来进行检查，根据检查信息来手动安装缺少的东西，如果还是有问题，就提个[issue](https://github.com/AGou-ops/dotfiles/issues)吧.
