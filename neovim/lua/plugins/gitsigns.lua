@@ -1,42 +1,41 @@
 local M = {
-    "lewis6991/gitsigns.nvim",
-    event = "VeryLazy",
+    'lewis6991/gitsigns.nvim',
+    event = 'VeryLazy',
 }
 
 function M.config()
-
-    require('gitsigns').setup {
+    require('gitsigns').setup({
         signs = {
             add = {
                 hl = 'GitSignsAdd',
                 text = '│',
                 numhl = 'GitSignsAddNr',
-                linehl = 'GitSignsAddLn'
+                linehl = 'GitSignsAddLn',
             },
             change = {
                 hl = 'GitSignsChange',
                 text = '│',
                 numhl = 'GitSignsChangeNr',
-                linehl = 'GitSignsChangeLn'
+                linehl = 'GitSignsChangeLn',
             },
             delete = {
                 hl = 'GitSignsDelete',
                 text = '_',
                 numhl = 'GitSignsDeleteNr',
-                linehl = 'GitSignsDeleteLn'
+                linehl = 'GitSignsDeleteLn',
             },
             topdelete = {
                 hl = 'GitSignsDelete',
                 text = '‾',
                 numhl = 'GitSignsDeleteNr',
-                linehl = 'GitSignsDeleteLn'
+                linehl = 'GitSignsDeleteLn',
             },
             changedelete = {
                 hl = 'GitSignsChange',
                 text = '~',
                 numhl = 'GitSignsChangeNr',
-                linehl = 'GitSignsChangeLn'
-            }
+                linehl = 'GitSignsChangeLn',
+            },
         },
         signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
         numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
@@ -48,11 +47,11 @@ function M.config()
 
             ['n ]c'] = {
                 expr = true,
-                "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'"
+                "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'",
             },
             ['n [c'] = {
                 expr = true,
-                "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'"
+                "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'",
             },
 
             ['n <leader>hs'] = '<cmd>Gitsigns stage_hunk<CR>',
@@ -71,18 +70,18 @@ function M.config()
 
             -- Text objects
             ['o ih'] = ':<C-U>Gitsigns select_hunk<CR>',
-            ['x ih'] = ':<C-U>Gitsigns select_hunk<CR>'
+            ['x ih'] = ':<C-U>Gitsigns select_hunk<CR>',
         },
-        watch_gitdir = {interval = 1000, follow_files = true},
+        watch_gitdir = { interval = 1000, follow_files = true },
         attach_to_untracked = true,
         current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
         current_line_blame_opts = {
             virt_text = true,
             virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
             delay = 0,
-            ignore_whitespace = false
+            ignore_whitespace = false,
         },
-        current_line_blame_formatter_opts = {relative_time = true},
+        current_line_blame_formatter_opts = { relative_time = true },
         current_line_blame_formatter = '      <author>, <author_time:%R> - <summary>',
         -- current_line_blame_formatter = function(name, blame_info,opts)
         --        if blame_info.author == name then blame_info.author = 'You' end
@@ -114,11 +113,10 @@ function M.config()
             style = 'minimal',
             relative = 'cursor',
             row = 0,
-            col = 1
+            col = 1,
         },
-        yadm = {enable = false}
-    }
-
+        yadm = { enable = false },
+    })
 end
 
 return M

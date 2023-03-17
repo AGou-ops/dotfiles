@@ -119,6 +119,9 @@ bind({ 'n', 't' }, '<A-d>', '<cmd>Lspsaga term_toggle<CR>')
 bind('n', '<leader>tt', '<CMD>exe v:count1 . "ToggleTerm"<CR>')
 bind('n', '<leader>gg', '<CMD>lua _Lazygit_toggle()<CR>')
 
+-- vim-translator
+bind('n', '<leader>ts', '<CMD>TranslateW<CR>')
+
 -- leaderF
 bind('n', '<leader>fG', '<CMD>LeaderfRgInteractive<CR>')
 bind('n', '<leader>fm', '<CMD><C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>')

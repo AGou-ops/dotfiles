@@ -1,18 +1,18 @@
 local spec = {
-	"utilyre/barbecue.nvim",
-	-- event = "VeryLazy",
-	ft = {"go", "lua"},
-	-- lazy = false,
-	dependencies = {
-		"neovim/nvim-lspconfig",
-		"smiteshp/nvim-navic",
-		"nvim-tree/nvim-web-devicons", -- optional dependency
-	},
+    'utilyre/barbecue.nvim',
+    -- event = "VeryLazy",
+    ft = { 'go', 'lua' },
+    -- lazy = false,
+    dependencies = {
+        'neovim/nvim-lspconfig',
+        'smiteshp/nvim-navic',
+        'nvim-tree/nvim-web-devicons', -- optional dependency
+    },
 }
 
 function spec.config()
-	require("barbecue").setup()
-	vim.cmd([[
+    require('barbecue').setup()
+    vim.cmd([[
 	hi barbecue_context_namespace guifg=#40ffff guibg=#282828
 	hi barbecue_context_boolean guifg=#40ffff guibg=#282828
 	hi barbecue_context_number guifg=#40ffff guibg=#282828

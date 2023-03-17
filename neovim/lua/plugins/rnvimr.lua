@@ -1,21 +1,20 @@
 local M = {
-	"kevinhwang91/rnvimr",
-	event = "VeryLazy",
+    'kevinhwang91/rnvimr',
+    event = 'VeryLazy',
 
-	keys = {
-		{
-			"<leader>fF",
-			function()
-				vim.cmd("RnvimrToggle")
-			end,
-			desc = "Toggle Rnvimr"
-		},
-	}
+    keys = {
+        {
+            '<leader>fF',
+            function()
+                vim.cmd('RnvimrToggle')
+            end,
+            desc = 'Toggle Rnvimr',
+        },
+    },
 }
 
 function M.config()
-
-	vim.cmd([[
+    vim.cmd([[
     " Hide the files included in gitignore
     let g:rnvimr_hide_gitignore = 0
     " Change the border's color
@@ -54,7 +53,6 @@ function M.config()
             \ }
 
     ]])
-
 end
 
 return M
