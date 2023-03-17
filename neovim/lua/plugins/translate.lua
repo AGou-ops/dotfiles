@@ -1,5 +1,6 @@
 local M = {
     'JuanZoran/Trans.nvim',
+    branch = 'experimental',
     lazy = false,
     keys = {
         -- 可以换成其他你想映射的键
