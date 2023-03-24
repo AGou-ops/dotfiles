@@ -328,16 +328,4 @@ return {
             require('telescope').load_extension('goimpl')
         end,
     },
-    {
-        'glepnir/easyformat.nvim',
-        ft = { 'lua', 'go' },
-        config = function()
-            local get_config = require('easyformat.config').get_config
-            local configs = get_config({ 'lua', 'go' })
-            local params = vim.tbl_extend('keep', {
-                fmt_on_save = true,
-            }, configs)
-            require('easyformat').setup(params)
-        end,
-    },
 }

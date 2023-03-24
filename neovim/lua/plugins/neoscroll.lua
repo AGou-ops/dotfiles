@@ -9,6 +9,8 @@ function M.config()
         return
     end
 
+    local e
+
     neoscroll.setup({
         -- All these keys will be mapped to their corresponding default scrolling animation
         mappings = {

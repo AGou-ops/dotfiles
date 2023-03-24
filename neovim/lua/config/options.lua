@@ -9,7 +9,7 @@ vim.o.completeopt = 'menu,menuone,noselect'
 -- Enable highlight on search
 vim.o.hlsearch = true
 
-vim.o.autochdir = true
+-- vim.o.autochdir = true
 
 -- Highlight match while typing search pattern
 vim.o.incsearch = true
