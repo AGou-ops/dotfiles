@@ -49,17 +49,6 @@ return {
             })
         end,
     },
-    { ---- auto save file.
-        '907th/vim-auto-save',
-        event = 'VeryLazy',
-        enabled = false,
-        config = function()
-            vim.cmd([[
-		let g:auto_save = 1
-		let g:auto_save_events = ["ExitPre", "BufLeave", "WinLeave"]
-			]])
-        end,
-    },
     { ---- A markdonw online real-time preview plugin.
         'iamcco/markdown-preview.nvim',
         build = 'cd app && npm install',
