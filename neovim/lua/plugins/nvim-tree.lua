@@ -159,7 +159,7 @@ function M.config()
         },
         -- hijack_directories = { enable = true, auto_open = true },
         update_focused_file = {
-            enable = false,
+            enable = true,
             debounce_delay = 15,
             update_root = true,
             ignore_list = { 'toggleterm', 'term' },
