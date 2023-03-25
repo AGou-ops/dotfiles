@@ -1,6 +1,6 @@
 local spec = {
     'utilyre/barbecue.nvim',
-    -- event = "VeryLazy",
+    -- event = 'UIEnter',
     ft = { 'go', 'lua' },
     -- lazy = false,
     dependencies = {
