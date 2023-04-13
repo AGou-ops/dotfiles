@@ -119,7 +119,7 @@ function M.config()
     })
 
     -- -------------------------- common lsp server ----------------------
-    local servers = { 'bashls', 'sqls', 'dockerls', 'clangd', 'texlab' }
+    local servers = { 'bashls', 'sqlls', 'dockerls', 'clangd', 'texlab' }
     ---------------------------------------------------------------
     for _, lsp in ipairs(servers) do
         nvim_lsp[lsp].setup({ on_attach = on_attach, capabilities = capabilities })
