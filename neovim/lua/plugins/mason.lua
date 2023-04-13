@@ -12,7 +12,6 @@ M.tools = {
     'shellcheck',
     'deno',
     'shfmt',
-    'black',
     'isort',
     'flake8',
 }
