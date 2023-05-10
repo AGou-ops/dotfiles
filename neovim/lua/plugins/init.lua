@@ -323,4 +323,18 @@ return {
             require('telescope').load_extension('goimpl')
         end,
     },
+    {
+        'AckslD/muren.nvim',
+        config = true,
+        cmd = 'MurenToggle',
+        keys = {
+            {
+                '<leader>re',
+                function()
+                    require('muren.api').toggle_ui()
+                end,
+                desc = 'Toggle muren UI',
+            },
+        },
+    },
 }

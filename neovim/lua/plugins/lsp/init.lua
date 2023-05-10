@@ -119,7 +119,7 @@ function M.config()
     })
 
     -- -------------------------- common lsp server ----------------------
-    local servers = { 'bashls', 'sqlls', 'dockerls', 'clangd', 'texlab' }
+    local servers = { 'bashls', 'sqlls', 'clangd', 'texlab', 'dockerls' }
     ---------------------------------------------------------------
     for _, lsp in ipairs(servers) do
         nvim_lsp[lsp].setup({ on_attach = on_attach, capabilities = capabilities })
@@ -147,16 +147,16 @@ function M.config()
     })
     -- -------------------- yaml lsp settings -- --------------------
     -- install yaml-language-server first!!! --  yarn global add yaml-language-server
-    nvim_lsp.yamlls.setup({
-        settings = {
-            yaml = {
-                schemas = {
-                    ['file:///Users/agou-ops/.k8s/master-local/all.json'] = '/*.yaml',
-                },
-            },
-        },
-        single_file_support = true,
-    })
+    -- nvim_lsp.yamlls.setup({
+    --     settings = {
+    --         yaml = {
+    --             schemas = {
+    --                 ['file:///Users/agou-ops/.k8s/master-local/all.json'] = '/*.yaml',
+    --             },
+    --         },
+    --     },
+    --     single_file_support = true,
+    -- })
 
     -- -------------------- lua lsp settings -- --------------------
     local settings = {

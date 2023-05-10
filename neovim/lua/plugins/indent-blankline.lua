@@ -10,7 +10,7 @@ function M.config()
         return
     end
 
-    -- vim.opt.list = true
+    vim.opt.list = true
     vim.opt.listchars:append('space:⋅')
     vim.opt.listchars:append('eol:⤸')
 
@@ -18,6 +18,10 @@ function M.config()
         char = '│',
         space_char_blankline = ' ',
         show_first_indent_level = true,
+        show_end_of_lien = true,
+        show_trailing_blankline_indent = false,
+        show_current_context = true,
+        show_current_context_start = false,
         filetype_exclude = {
             'startify',
             'dashboard',
@@ -42,8 +46,6 @@ function M.config()
             '', -- for all buffers without a file type
         },
         buftype_exclude = { 'terminal', 'nofile' },
-        show_trailing_blankline_indent = false,
-        show_current_context = true,
         context_patterns = {
             'class',
             'function',
