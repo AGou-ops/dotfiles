@@ -44,7 +44,7 @@ require('lazy').setup('plugins', {
             source = ' ',
             start = '',
             task = '✔ ',
-            lazy = '鈴 ',
+            lazy = '󰒲 ',
             list = { '●', '➜', '★', '‒' },
         },
         -- leave nil, to automatically select a browser depending on your OS.
