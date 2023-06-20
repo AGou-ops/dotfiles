@@ -129,22 +129,23 @@ return {
             ]])
         end,
     },
-    --  { ---- Format file.
-    --      'sbdchd/neoformat',
-    --      ft = { 'go', 'lua' },
-    --      enabled = false,
-    --      config = function()
-    --          vim.cmd([[
-    -- augroup fmt
-    -- autocmd!
-    -- autocmd BufWritePre *.go Neoformat goimports | Neoformat gofumpt
-    -- autocmd BufWritePre *.sh Neoformat
-    -- augroup END
-    -- " " ignore error
-    -- let g:neoformat_only_msg_on_error = 1
-    --      ]])
-    --      end,
-    --  },
+    { ---- Format file.
+        'sbdchd/neoformat',
+        event = 'VeryLazy',
+        cmd = 'Neoformat',
+        enabled = true,
+        config = function()
+            vim.cmd([[
+    " augroup fmt
+    " autocmd!
+    " autocmd BufWritePre *.go Neoformat goimports | Neoformat gofumpt
+    " autocmd BufWritePre *.sh Neoformat
+    " augroup END
+    " " ignore error
+    let g:neoformat_only_msg_on_error = 1
+         ]])
+        end,
+    },
     { ---- Jump to wherever you want.
         'phaazon/hop.nvim',
         event = 'VeryLazy',
@@ -269,6 +270,7 @@ return {
     },
     { ---- cool standalone UI for nvim-lsp progress
         'j-hui/fidget.nvim',
+        branch = 'legacy',
         ft = { 'lua', 'go' },
         config = true,
     },

@@ -1,7 +1,7 @@
 local M = {
     'sindrets/diffview.nvim',
     event = 'VeryLazy',
-	enabled = false,
+    enabled = false,
     dependencies = {
         'nvim-lua/plenary.nvim',
     },
