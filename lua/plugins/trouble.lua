@@ -1,8 +1,15 @@
 local M = {
     'folke/trouble.nvim',
     ft = { 'lua', 'go' },
-    dependencies = {
-        -- "kyazdani42/nvim-web-devicons",
+    event = 'VeryLazy',
+    keys = {
+        {
+            '<leader>xx',
+            function()
+                vim.cmd('TroubleToggle')
+            end,
+            desc = 'TroubleToggle',
+        },
     },
 }
 
