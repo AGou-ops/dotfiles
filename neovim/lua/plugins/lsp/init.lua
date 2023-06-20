@@ -119,7 +119,14 @@ function M.config()
     })
 
     -- -------------------------- common lsp server ----------------------
-    local servers = { 'bashls', 'sqlls', 'clangd', 'texlab', 'dockerls' }
+    local servers = {
+        'bashls',
+        'sqlls',
+        'clangd',
+        'texlab',
+        'dockerls',
+        'docker_compose_language_service',
+    }
     ---------------------------------------------------------------
     for _, lsp in ipairs(servers) do
         nvim_lsp[lsp].setup({ on_attach = on_attach, capabilities = capabilities })
@@ -161,6 +168,7 @@ function M.config()
     -- -------------------- lua lsp settings -- --------------------
     local settings = {
         Lua = {
+            hint = { enable = true },
             runtime = { version = 'LuaJIT' },
             diagnostics = {
                 globals = {
@@ -194,6 +202,28 @@ function M.config()
         flags = { debounce_text_changes = 150 },
         capabilities = capabilities,
     })
+    -- -------------------- nginx lsp settings -- --------------------
+    local configs = require('lspconfig.configs')
+
+    local root_files = {
+        'default.conf',
+        'nginx.conf',
+    }
+
+    -- Check if the config is already defined (useful when reloading this file)
+    if not configs.nginx_ls then
+        configs.nginx_ls = {
+            default_config = {
+                cmd = { '/Users/agou-ops/.local/share/nvim/mason/bin/nginx-language-server' },
+                filetypes = { 'nginx' },
+                root_dir = function(fname)
+                    return nvim_lsp.util.root_pattern(unpack(root_files))(fname)
+                end,
+                settings = {},
+            },
+        }
+    end
+    nvim_lsp.nginx_ls.setup({})
 
     -- -------------------- sql lsp settings -- --------------------
     -- nvim_lsp.sqls.setup{
