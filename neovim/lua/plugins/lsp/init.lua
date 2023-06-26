@@ -128,7 +128,7 @@ function M.config()
         'texlab',
         'dockerls',
     }
-    ---------------------------------------------------------------
+
     for _, lsp in ipairs(servers) do
         nvim_lsp[lsp].setup({
             on_attach = on_attach,
@@ -143,8 +143,7 @@ function M.config()
     nvim_lsp.gopls.setup({
         on_attach = on_attach,
         capabilities = capabilities,
-        root_dir = nvim_lsp.util.root_pattern('.git', 'go.mod'),
-        -- init_options = {usePlaceholders = true, completeUnimported = true},
+        root_dir = nvim_lsp.util.root_pattern('go.mod'),
         settings = {
             gopls = {
                 gofumpt = true,
