@@ -97,6 +97,7 @@ bind('n', 'gd', '<cmd>Lspsaga goto_definition<CR>')
 bind('n', '<leader>sl', '<cmd>Lspsaga show_line_diagnostics<CR>')
 bind('n', '<leader>sc', '<cmd>Lspsaga show_cursor_diagnostics<CR>')
 bind('n', '<leader>sb', '<cmd>Lspsaga show_buf_diagnostics<CR>')
+bind('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>')
 bind('n', 'gP', '<cmd>Lspsaga peek_definition<CR>')
 bind('n', 'gk', '<cmd>Lspsaga diagnostic_jump_prev<CR>')
 bind('n', 'gj', '<cmd>Lspsaga diagnostic_jump_next<CR>')
@@ -168,3 +169,9 @@ bind(
 )
 bind('n', 't', '<CMD>HopWord<CR>')
 bind('n', 'T', '<CMD>HopWord<CR>')
+
+bind(
+    'n',
+    '<leader>il',
+    '<CMD>lua vim.lsp.buf.inlay_hint(0, true)<CR><CMD>highlight link LspInlayHint Comment<CR>'
+)
