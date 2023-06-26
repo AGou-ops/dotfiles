@@ -63,7 +63,9 @@ return {
     },
     { ---- A plugin show code outline.
         'preservim/tagbar',
-        ft = { 'markdown', 'go', 'lua' },
+        event = 'VeryLazy',
+        cmd = 'Tagbar',
+        -- ft = { 'markdown', 'go', 'lua' },
         config = function()
             vim.cmd([[
 			let g:tagbar_show_tag_count = 1
@@ -333,7 +335,7 @@ return {
             {
                 '<leader>re',
                 function()
-                    require('muren.api').toggle_ui()
+                    vim.cmd([[MurenToggle]])
                 end,
                 desc = 'Toggle muren UI',
             },

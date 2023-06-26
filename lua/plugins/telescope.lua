@@ -45,7 +45,7 @@ return {
             desc = 'Toggle Todo Telescope',
         },
         {
-            '<leader>fj',
+            '<leader>jl',
             function()
                 require('telescope.builtin').jumplist()
             end,
