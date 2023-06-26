@@ -10,7 +10,8 @@ local M = {
             '<leader>gt',
             function()
                 require('neotest').summary.open()
-                require('neotest').run.run(vim.fn.expand('%'))
+                vim.cmd([[Neotest run]])
+                -- require('neotest').run.run(vim.fn.expand('%'))
             end,
             desc = 'Neotest toggle',
         },
