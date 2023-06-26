@@ -1,7 +1,6 @@
 local M = {
     'neovim/nvim-lspconfig',
-    enabled = true,
-    event = 'BufReadPre',
+    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = { 'hrsh7th/cmp-nvim-lsp' },
 }
 
@@ -14,12 +13,15 @@ function M.config()
         -- require("lsp-format").on_attach(client)
         -- require("nvim-navic").attach(client, bufnr)
 
+        -- enable inlay hint
+        -- vim.lsp.buf.inlay_hint(0, true)
+
         vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
         local opts = { noremap = true, silent = true }
         local map = vim.api.nvim_buf_set_keymap
-        -- use lspsaga.goto_definition instead.
         -- map(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+        -- use lspsaga.goto_definition instead.
         -- map(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
         -- map(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
         map(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
@@ -36,7 +38,7 @@ function M.config()
         map(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
         map(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
         -- map(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-        map(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+        -- map(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
         map(bufnr, 'n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
         map(bufnr, 'n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
         map(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
@@ -125,7 +127,6 @@ function M.config()
         'clangd',
         'texlab',
         'dockerls',
-        'docker_compose_language_service',
     }
     ---------------------------------------------------------------
     for _, lsp in ipairs(servers) do
@@ -148,22 +149,62 @@ function M.config()
                     unusedparams = true,
                     shadow = true,
                 },
+                hints = {
+                    assignVariableTypes = true,
+                    compositeLiteralFields = true,
+                    compositeLiteralTypes = true,
+                    constantValues = true,
+                    functionTypeParameters = true,
+                    parameterNames = true,
+                    rangeVariableTypes = true,
+                },
                 staticcheck = true,
             },
         },
     })
     -- -------------------- yaml lsp settings -- --------------------
     -- install yaml-language-server first!!! --  yarn global add yaml-language-server
-    -- nvim_lsp.yamlls.setup({
-    --     settings = {
-    --         yaml = {
-    --             schemas = {
-    --                 ['file:///Users/agou-ops/.k8s/master-local/all.json'] = '/*.yaml',
-    --             },
-    --         },
-    --     },
-    --     single_file_support = true,
-    -- })
+    nvim_lsp.yamlls.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = { 'yaml' },
+        root_dir = function()
+            return vim.fn.getcwd()
+        end,
+        settings = {
+            yaml = {
+                -- schemas = {
+                --     ['file:///Users/agou-ops/.k8s/master-local/all.json'] = '/*.yaml',
+                -- },
+                -- 以下参考自：https://github.com/Allaman/nvim/blob/main/lua/core/plugins/lsp/settings/yaml.lua
+                schemaStore = {
+                    enable = true,
+                    url = 'https://www.schemastore.org/api/json/catalog.json',
+                },
+                schemas = {
+                    kubernetes = '*.yaml',
+                    ['http://json.schemastore.org/github-workflow'] = '.github/workflows/*',
+                    ['http://json.schemastore.org/github-action'] = '.github/action.{yml,yaml}',
+                    ['https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json'] = 'azure-pipelines.yml',
+                    ['http://json.schemastore.org/ansible-stable-2.9'] = 'roles/tasks/*.{yml,yaml}',
+                    ['http://json.schemastore.org/prettierrc'] = '.prettierrc.{yml,yaml}',
+                    ['http://json.schemastore.org/kustomization'] = 'kustomization.{yml,yaml}',
+                    ['http://json.schemastore.org/ansible-playbook'] = '*play*.{yml,yaml}',
+                    ['http://json.schemastore.org/chart'] = 'Chart.{yml,yaml}',
+                    ['https://json.schemastore.org/dependabot-v2'] = '.github/dependabot.{yml,yaml}',
+                    ['https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json'] = '*gitlab-ci*.{yml,yaml}',
+                    ['https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json'] = '*api*.{yml,yaml}',
+                    ['https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json'] = '*docker-compose*.{yml,yaml}',
+                    ['https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json'] = '*flow*.{yml,yaml}',
+                },
+                format = { enabled = false },
+                validate = false,
+                completion = true,
+                hover = true,
+            },
+        },
+        single_file_support = true,
+    })
 
     -- -------------------- lua lsp settings -- --------------------
     local settings = {
