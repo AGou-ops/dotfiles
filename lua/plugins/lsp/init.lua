@@ -130,7 +130,13 @@ function M.config()
     }
     ---------------------------------------------------------------
     for _, lsp in ipairs(servers) do
-        nvim_lsp[lsp].setup({ on_attach = on_attach, capabilities = capabilities })
+        nvim_lsp[lsp].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+            root_dir = function()
+                return vim.fn.getcwd()
+            end,
+        })
     end
 
     -- -------------------- go lsp settings -- --------------------
