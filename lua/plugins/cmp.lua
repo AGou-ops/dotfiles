@@ -57,9 +57,23 @@ function M.config()
         matching = {
             disallow_fuzzy_matching = true,
             disallow_fullfuzzy_matching = true,
-            disallow_partial_fuzzy_matching = true,
-            disallow_partial_matching = true,
-            disallow_prefix_unmatching = false,
+            disallow_partial_fuzzy_matching = false,
+            disallow_partial_matching = false,
+            disallow_prefix_unmatching = true,
+        },
+        sorting = {
+            comparators = {
+                -- > To achieve consistency across languages and to honor different clients usually the client is responsible for filtering and sorting.
+                -- > This has also the advantage that client can experiment with different filter and sorting models.
+                -- > However servers can enforce different behavior by setting a sortText.
+                cmp.config.compare.sort_text,
+                -- > The score is matched char count generally.
+                cmp.config.compare.score,
+                cmp.config.compare.recently_used,
+            },
+        },
+        completion = {
+            completeopt = 'menu,menuone,noinsert', -- remove default noselect
         },
         formatting = {
             fields = { 'kind', 'abbr', 'menu' },
