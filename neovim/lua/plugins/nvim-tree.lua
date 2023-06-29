@@ -42,6 +42,15 @@ function M.config()
 
     vim.keymap.set('n', '<M-n>', '<Cmd>NvimTreeToggle<CR>')
 
+    -- Silently open a new tab
+    local function open_tab_silent(node)
+        local api = require('nvim-tree.api')
+
+        api.node.open.tab(node)
+        vim.cmd.tabprev()
+    end
+
+    vim.keymap.set('n', 'T', open_tab_silent)
     -- NEW: keymapping Migration (default)
     local function on_attach(bufnr)
         local api = require('nvim-tree.api')
@@ -241,7 +250,7 @@ function M.config()
                         staged = '✓',
                         unmerged = '',
                         renamed = '➜',
-                        untracked = '★',
+                        untracked = '󰜄',
                         deleted = '',
                         ignored = '◌',
                     },
