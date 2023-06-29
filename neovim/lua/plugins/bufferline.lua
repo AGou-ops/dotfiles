@@ -10,7 +10,7 @@ local M = {
 }
 
 function M.config()
-    if vim.g.started_by_firenvim then
+	if vim.g.started_by_firenvim then
         return
     end
 
