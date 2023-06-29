@@ -168,7 +168,7 @@ bind(
     "<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>"
 )
 bind('n', 't', '<CMD>HopWord<CR>')
-bind('n', 'T', '<CMD>HopWord<CR>')
+-- bind('n', 'T', '<CMD>HopWord<CR>')
 
 bind(
     'n',
