@@ -150,6 +150,7 @@ return {
     },
     { ---- Jump to wherever you want.
         'phaazon/hop.nvim',
+        enabled = true,
         event = 'VeryLazy',
         config = function()
             require('hop').setup()
