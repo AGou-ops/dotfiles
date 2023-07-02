@@ -148,22 +148,12 @@ bind('n', '<leader>h', ':UndotreeToggle <BAR> :UndotreeFocus<CR>')
 
 -- hop
 bind(
-    'n',
+    { 'n', 'v' },
     'f',
     "<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<CR>"
 )
 bind(
-    'n',
-    'F',
-    "<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>"
-)
-bind(
-    'v',
-    'f',
-    "<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<CR>"
-)
-bind(
-    'v',
+    { 'n', 'v' },
     'F',
     "<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>"
 )
