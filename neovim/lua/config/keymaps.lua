@@ -84,7 +84,7 @@ bind('n', '<leader>tk', '<CMD>tabprev<CR>')
 bind('n', '<leader>tn', '<CMD>tabnext<CR>')
 -- bind('n', '<leader>tp', '<CMD>tabprev<CR>')
 bind('n', '<leader>te', '<CMD>tabedit<CR>')
-bind('n', '<leader>td', '<CMD>tabclose<CR>')
+-- bind('n', '<leader>td', '<CMD>tabclose<CR>')
 bind('n', '<leader>tm', '<CMD>tabm<CR>')
 
 -- ============= Plugin Keymaps =============
@@ -122,7 +122,7 @@ bind('n', '<leader>tt', '<CMD>exe v:count1 . "ToggleTerm"<CR>')
 bind('n', '<leader>gg', '<CMD>lua _Lazygit_toggle()<CR>')
 
 -- vim-translator
-bind('n', '<leader>ts', '<CMD>TranslateW<CR>')
+-- bind('n', '<leader>ts', '<CMD>TranslateW<CR>')
 
 -- leaderF
 bind('n', '<leader>fG', '<CMD>LeaderfRgInteractive<CR>')
@@ -137,27 +137,27 @@ bind(
 bind('n', '<C-F>', '<CMD><C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>')
 
 -- telescope-dap
-bind('n', '<leader>dcc', '<CMD>Telescope dap commands<CR>')
-bind('n', '<leader>dcf', '<CMD>Telescope dap configurations<CR>')
-bind('n', '<leader>dl', '<CMD>Telescope dap list_breakpoints<CR>')
-bind('n', '<leader>dv', '<CMD>Telescope dap variables<CR>')
-bind('n', '<leader>df', '<CMD>Telescope dap frames<CR>')
-
--- undotree
-bind('n', '<leader>h', ':UndotreeToggle <BAR> :UndotreeFocus<CR>')
-
--- hop
-bind(
-    { 'n', 'v' },
-    'f',
-    "<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<CR>"
-)
-bind(
-    { 'n', 'v' },
-    'F',
-    "<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>"
-)
-bind('n', 't', '<CMD>HopWord<CR>')
+-- bind('n', '<leader>dcc', '<CMD>Telescope dap commands<CR>')
+-- bind('n', '<leader>dcf', '<CMD>Telescope dap configurations<CR>')
+-- bind('n', '<leader>dl', '<CMD>Telescope dap list_breakpoints<CR>')
+-- bind('n', '<leader>dv', '<CMD>Telescope dap variables<CR>')
+-- bind('n', '<leader>df', '<CMD>Telescope dap frames<CR>')
+--
+-- -- undotree
+-- bind('n', '<leader>h', ':UndotreeToggle <BAR> :UndotreeFocus<CR>')
+--
+-- -- hop
+-- bind(
+--     { 'n', 'v' },
+--     'f',
+--     "<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<CR>"
+-- )
+-- bind(
+--     { 'n', 'v' },
+--     'F',
+--     "<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>"
+-- )
+-- bind('n', 't', '<CMD>HopWord<CR>')
 -- bind('n', 'T', '<CMD>HopWord<CR>')
 
 bind(
