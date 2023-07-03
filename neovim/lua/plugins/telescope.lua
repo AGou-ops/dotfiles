@@ -38,7 +38,7 @@ return {
             desc = 'Search help manual page',
         },
         {
-            '<leader>ft',
+            '<leader>td',
             function()
                 vim.cmd('TodoTelescope')
             end,
