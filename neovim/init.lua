@@ -2,6 +2,7 @@ require('config.options')
 require('config.lazy')
 require('config.highlights')
 require('config.autocmds')
+require('utils.autoheader')
 
 vim.api.nvim_create_autocmd('User', {
     pattern = 'VeryLazy',
