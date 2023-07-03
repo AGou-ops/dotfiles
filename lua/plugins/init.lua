@@ -125,6 +125,7 @@ return {
     { ---- Just a translate plugin.
         'voldikss/vim-translator',
         event = 'VeryLazy',
+        -- enabled = false,
         config = function()
             vim.cmd([[
             let g:translator_target_lang = 'zh'
@@ -135,7 +136,7 @@ return {
         'sbdchd/neoformat',
         event = 'VeryLazy',
         cmd = 'Neoformat',
-        enabled = true,
+        enabled = false,
         config = function()
             vim.cmd([[
     " augroup fmt
