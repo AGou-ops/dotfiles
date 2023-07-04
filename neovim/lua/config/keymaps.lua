@@ -144,7 +144,7 @@ bind('n', '<C-F>', '<CMD><C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>
 -- bind('n', '<leader>df', '<CMD>Telescope dap frames<CR>')
 --
 -- -- undotree
--- bind('n', '<leader>h', ':UndotreeToggle <BAR> :UndotreeFocus<CR>')
+bind('n', '<leader>oh', ':UndotreeToggle <BAR> :UndotreeFocus<CR>')
 --
 -- -- hop
 -- bind(
