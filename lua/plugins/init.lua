@@ -136,16 +136,18 @@ return {
         'sbdchd/neoformat',
         event = 'VeryLazy',
         cmd = 'Neoformat',
-        enabled = false,
+        enabled = true,
         config = function()
             vim.cmd([[
-    augroup fmt
-    autocmd!
-    autocmd BufWritePre *.go Neoformat goimports | Neoformat gofumpt
-    autocmd BufWritePre *.sh Neoformat
-    augroup END
+    " augroup fmt
+    " autocmd!
+    " autocmd BufWritePre *.go Neoformat goimports | Neoformat gofumpt
+    " autocmd BufWritePre *.sh Neoformat
+    " augroup END
     " " ignore error
     let g:neoformat_only_msg_on_error = 1
+	let g:neoformat_enabled_go = ['goimports', 'gofumpt' ]
+	let g:neoformat_enabled_lua = ['stylua']
          ]])
         end,
     },
@@ -224,6 +226,11 @@ return {
     { ---- Async run a custom command.
         'skywind3000/asyncrun.vim',
         ft = { 'go', 'lua', 'tex' },
+        config = function()
+            vim.cmd([[
+			let g:asynctasks_term_reuse = 1
+		]])
+        end,
     },
     { ---- Show current cursor word.
         'xiyaowong/nvim-cursorword',
