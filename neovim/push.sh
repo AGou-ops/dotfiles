@@ -8,7 +8,7 @@
 # Copyright 2022 by AGou-ops.All Rights Reserved  *
 #**************************************************
 
-cd ~/myWeb/dotfiles && git checkout master && rsync -avzP --progress --exclude '%Users*' ~/.config/nvim/ ~/myWeb/dotfiles/neovim/
+cd ~/myWeb/dotfiles && git checkout master && rsync -avzP --progress --delete --exclude '%Users*' ~/.config/nvim/ ~/myWeb/dotfiles/neovim/
 
 cd ~/myWeb/dotfiles/
 
@@ -31,7 +31,7 @@ fi
 
 git checkout nvim
 
-rsync -avzP --progress --exclude '%Users*' --exclude '.git/' --exclude 'zsh/' ~/.config/nvim/ ~/myWeb/dotfiles/
+rsync -avzP --progress --delete --exclude '%Users*' --exclude '.git/' --exclude 'zsh/' ~/.config/nvim/ ~/myWeb/dotfiles/
 
 find . -name ".DS_Store" -exec rm -f {} \;
 
