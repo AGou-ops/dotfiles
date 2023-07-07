@@ -1,7 +1,7 @@
 local M = {
     'glepnir/lspsaga.nvim',
     ft = { 'go', 'lua' },
-    -- commit = "b7b4777"
+    keys = { { '<leader>ol', '<cmd>Lspsaga outline<cr>', desc = 'Toggle Lspsaga outline' } },
 }
 
 function M.config()
