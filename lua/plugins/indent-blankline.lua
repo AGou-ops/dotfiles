@@ -43,8 +43,8 @@ function M.config()
             'TelescopePrompt',
             'undotree',
             'flutterToolsOutline',
-			'yaml',
-			'yml',
+            'yaml',
+            'yml',
             '', -- for all buffers without a file type
         },
         buftype_exclude = { 'terminal', 'nofile' },
