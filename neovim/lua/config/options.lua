@@ -63,10 +63,6 @@ vim.opt.shortmess:append('c')
 -- when cursor reaches end/beginning of line
 vim.opt.whichwrap:append('<>hl')
 
--- set symbols for space and newline
-vim.opt.listchars:append('space:⋅')
-vim.opt.listchars:append('eol:↴')
-
 -- Take indent for new line from previous line
 vim.o.autoindent = true
 vim.o.smartindent = true
@@ -149,7 +145,7 @@ vim.o.foldenable = true
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
--- vim.o.foldcolumn = "1"
+-- vim.o.foldcolumn = '1'
 
 -- Use ripgrep as grep tool
 vim.o.grepprg = 'rg --vimgrep --no-heading'
