@@ -126,15 +126,7 @@ bind('n', '<leader>gg', '<CMD>lua _Lazygit_toggle()<CR>')
 
 -- leaderF
 bind('n', '<leader>fG', '<CMD>LeaderfRgInteractive<CR>')
-bind('n', '<leader>fm', '<CMD><C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>')
-bind('n', '<leader>fl', '<CMD><C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>')
-bind('n', '<leader>fb', '<CMD><C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>')
-bind(
-    'n',
-    '<C-B>',
-    '<CMD><C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>'
-)
-bind('n', '<C-F>', '<CMD><C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>')
+bind('n', '<C-F>', '<CMD>LeaderfFile<CR>')
 
 -- telescope-dap
 -- bind('n', '<leader>dcc', '<CMD>Telescope dap commands<CR>')
