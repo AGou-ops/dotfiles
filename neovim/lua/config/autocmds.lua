@@ -202,16 +202,15 @@ vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost' }, {
 })
 
 -- experimental: inlay hint
--- vim.api.nvim_create_autocmd({ 'InsertEnter' }, {
---     callback = function()
---         vim.lsp.buf.inlay_hint(0, true)
---     end,
--- })
--- vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
---     callback = function()
---         vim.lsp.buf.inlay_hint(0, false)
---     end,
--- })
+vim.api.nvim_create_autocmd('LspAttach', {
+    pattern = { '*.go' },
+    callback = function()
+        if vim.lsp.buf.inlay_hint ~= nil and vim.bo.ft ~= 'TelescopePrompt' then
+            vim.cmd.highlight('default link LspInlayHint Comment')
+            vim.lsp.buf.inlay_hint(0, true)
+        end
+    end,
+})
 
 -- disable semantic highlighting
 for _, group in ipairs(vim.fn.getcompletion('@lsp', 'highlight')) do
