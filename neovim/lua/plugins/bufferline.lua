@@ -5,12 +5,12 @@ local M = {
     lazy = false,
     dependencies = {
         'nvim-tree/nvim-web-devicons',
-        'famiu/bufdelete.nvim',
+        -- 'famiu/bufdelete.nvim',
     },
 }
 
 function M.config()
-	if vim.g.started_by_firenvim then
+    if vim.g.started_by_firenvim then
         return
     end
 
@@ -24,9 +24,9 @@ function M.config()
             mode = 'buffers', -- set to "tabs" to only show tabpages instead
             numbers = 'ordinal', -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
             -- close_command = "bdelete! %d",       -- can be a string | function, see "Mouse actions"
-            close_command = function(bufnum)
-                require('bufdelete').bufdelete(bufnum, true)
-            end,
+            -- close_command = function(bufnum)
+            --     require('bufdelete').bufdelete(bufnum, true)
+            -- end,
             right_mouse_command = nil, -- can be a string | function, see "Mouse actions"
             -- left_mouse_command = "buffer %d",    -- can be a string | function, see "Mouse actions"
             left_mouse_command = nil,
