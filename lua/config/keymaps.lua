@@ -43,16 +43,12 @@ bind('n', '<C-t>', '<Esc><CMD>tabnew<CR>')
 
 bind('n', '<ESC>', '<CMD>noh<CR>')
 
-bind('n', '<C-i>', 'o<C-u>')
-
 bind('n', '<leader>0', '<CMD>tablast<CR>')
 bind('n', '<leader>dd', ':%bdelete<CR>')
 
 -- copy to system clipboard
--- bind('n', '<leader>y', '"+y')
 bind('n', '<C-c>', '"+y')
 bind('n', 'y', '"+y')
--- bind('n', '<C-v>', '"+p')
 bind('n', '<C-h>', '<C-w>h')
 bind('n', '<C-j>', '<C-w>j')
 bind('n', '<C-k>', '<C-w>k')
@@ -88,35 +84,6 @@ bind('n', '<leader>te', '<CMD>tabedit<CR>')
 bind('n', '<leader>tm', '<CMD>tabm<CR>')
 
 -- ============= Plugin Keymaps =============
--- lspsaga
-bind('n', 'gf', '<cmd>Lspsaga lsp_finder<CR>')
-bind({ 'n' }, 'gx', '<cmd>Lspsaga code_action<CR>')
-bind('n', 'gr', '<cmd>Lspsaga rename<CR>')
--- bind("n", "gD", "<cmd>Lspsaga peek_definition<CR>")
-bind('n', 'gd', '<cmd>Lspsaga goto_definition<CR>')
-bind('n', '<leader>sl', '<cmd>Lspsaga show_line_diagnostics<CR>')
-bind('n', '<leader>sc', '<cmd>Lspsaga show_cursor_diagnostics<CR>')
-bind('n', '<leader>sb', '<cmd>Lspsaga show_buf_diagnostics<CR>')
-bind('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>')
-bind('n', 'gP', '<cmd>Lspsaga peek_definition<CR>')
-bind('n', 'gk', '<cmd>Lspsaga diagnostic_jump_prev<CR>')
-bind('n', 'gj', '<cmd>Lspsaga diagnostic_jump_next<CR>')
-bind('n', 'gK', function()
-    require('lspsaga.diagnostic').goto_prev({
-        severity = vim.diagnostic.severity.ERROR,
-    })
-end)
-bind('n', 'gJ', function()
-    require('lspsaga.diagnostic').goto_next({
-        severity = vim.diagnostic.severity.ERROR,
-    })
-end)
-bind('n', '<leader>o', '<cmd>Lspsaga outline<CR>')
-bind('n', 'K', '<cmd>Lspsaga hover_doc<CR>')
-bind('n', '<Leader>ci', '<cmd>Lspsaga incoming_calls<CR>')
-bind('n', '<Leader>co', '<cmd>Lspsaga outgoing_calls<CR>')
-bind({ 'n', 't' }, '<A-d>', '<cmd>Lspsaga term_toggle<CR>')
-
 -- toggleTerm & Lazygit
 bind('n', '<leader>tt', '<CMD>exe v:count1 . "ToggleTerm"<CR>')
 bind('n', '<leader>gg', '<CMD>lua _Lazygit_toggle()<CR>')
@@ -137,21 +104,8 @@ bind('n', '<C-F>', '<CMD>LeaderfFile<CR>')
 --
 -- -- undotree
 bind('n', '<leader>oh', ':UndotreeToggle <BAR> :UndotreeFocus<CR>')
---
--- -- hop
--- bind(
---     { 'n', 'v' },
---     'f',
---     "<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<CR>"
--- )
--- bind(
---     { 'n', 'v' },
---     'F',
---     "<CMD>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<CR>"
--- )
--- bind('n', 't', '<CMD>HopWord<CR>')
--- bind('n', 'T', '<CMD>HopWord<CR>')
 
+-- lspinlayHit
 bind(
     'n',
     '<leader>il',
