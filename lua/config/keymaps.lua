@@ -105,9 +105,6 @@ bind('n', '<C-F>', '<CMD>LeaderfFile<CR>')
 -- -- undotree
 bind('n', '<leader>oh', ':UndotreeToggle <BAR> :UndotreeFocus<CR>')
 
--- lspinlayHit
-bind(
-    'n',
-    '<leader>il',
-    '<CMD>lua vim.lsp.buf.inlay_hint(0, true)<CR><CMD>highlight link LspInlayHint Comment<CR>'
-)
+-- close lspinlayHit
+bind('n', '<leader>io', '<CMD>lua vim.lsp.buf.inlay_hint(0, true)<CR>')
+bind('n', '<leader>ic', '<CMD>lua vim.lsp.buf.inlay_hint(0, false)<CR>')
