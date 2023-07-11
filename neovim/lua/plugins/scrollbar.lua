@@ -1,6 +1,7 @@
 local M = {
     'petertriho/nvim-scrollbar',
     event = 'VeryLazy',
+    -- enabled = false,
 }
 
 function M.config()
@@ -10,10 +11,10 @@ function M.config()
         folds = 1000, -- handle folds, set to number to disable folds if no. of lines in buffer exceeds this
         max_lines = false, -- disables if no. of lines in buffer exceeds this
         -- handle = {
-        --     text = " ",
+        --     text = ' ',
         --     -- color = '#7E7567',
         --     cterm = nil,
-        --     highlight = "CursorColumn",
+        --     highlight = 'CursorColumn',
         --     hide_if_all_visible = true, -- Hides handle if all lines are visible
         -- },
         marks = {
