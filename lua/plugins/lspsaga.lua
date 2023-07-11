@@ -74,6 +74,12 @@ function M.config()
             hover = ' ',
             kind = {},
         },
+        hover = {
+            max_width = 0.5,
+            max_height = 0.8,
+            open_link = 'gx',
+            open_cmd = '!chrome',
+        },
         diagnostic = {
             show_code_action = true,
             show_source = true,
