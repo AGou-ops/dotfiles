@@ -92,8 +92,9 @@ bind('n', '<leader>gg', '<CMD>lua _Lazygit_toggle()<CR>')
 -- bind('n', '<leader>ts', '<CMD>TranslateW<CR>')
 
 -- leaderF
-bind('n', '<leader>fG', '<CMD>LeaderfRgInteractive<CR>')
-bind('n', '<C-F>', '<CMD>LeaderfFile<CR>')
+bind('n', '<leader>lg', '<CMD>LeaderfRgInteractive<CR>')
+bind('n', '<leader>lf', '<CMD>LeaderfFile<CR>')
+bind('n', '<leader>lF', '<CMD>LeaderfFunctionAll<CR>')
 
 -- telescope-dap
 -- bind('n', '<leader>dcc', '<CMD>Telescope dap commands<CR>')
@@ -106,5 +107,5 @@ bind('n', '<C-F>', '<CMD>LeaderfFile<CR>')
 bind('n', '<leader>oh', ':UndotreeToggle <BAR> :UndotreeFocus<CR>')
 
 -- close lspinlayHit
-bind('n', '<leader>io', '<CMD>lua vim.lsp.buf.inlay_hint(0, true)<CR>')
-bind('n', '<leader>ic', '<CMD>lua vim.lsp.buf.inlay_hint(0, false)<CR>')
+bind('n', '<leader>io', '<CMD>lua vim.lsp.inlay_hint(0, true)<CR>')
+bind('n', '<leader>ic', '<CMD>lua vim.lsp.inlay_hint(0, false)<CR>')
