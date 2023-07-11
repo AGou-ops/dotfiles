@@ -106,6 +106,9 @@ bind('n', '<leader>lF', '<CMD>LeaderfFunctionAll<CR>')
 -- -- undotree
 bind('n', '<leader>oh', ':UndotreeToggle <BAR> :UndotreeFocus<CR>')
 
+-- -- tagbar
+bind('n', '<leader>tb', ':TagbarToggle<CR>')
+--
 -- close lspinlayHit
 bind('n', '<leader>io', '<CMD>lua vim.lsp.inlay_hint(0, true)<CR>')
 bind('n', '<leader>ic', '<CMD>lua vim.lsp.inlay_hint(0, false)<CR>')
