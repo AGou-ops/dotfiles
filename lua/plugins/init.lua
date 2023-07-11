@@ -151,14 +151,14 @@ return {
          ]])
         end,
     },
-    { ---- Jump to wherever you want.
-        'phaazon/hop.nvim',
-        enabled = true,
-        event = 'VeryLazy',
-        config = function()
-            require('hop').setup()
-        end,
-    },
+    -- { ---- Jump to wherever you want.
+    --     'phaazon/hop.nvim',
+    --     enabled = false,
+    --     event = 'VeryLazy',
+    --     config = function()
+    --         require('hop').setup()
+    --     end,
+    -- },
     { ---- > An efficient fuzzy finder that helps to locate files, buffers, mrus, gtags, etc. on the fly for both vim and neovim.
         'Yggdroot/LeaderF',
         enabled = true,
@@ -181,11 +181,9 @@ return {
                 \ 'file': []
                 \}
 
-                let g:Lf_RootMarkers = ['.git', '.gitignore', 'node_modules']
+                let g:Lf_RootMarkers = ['.git', '.gitignore', 'node_modules', 'go.mod']
                 " mode explain: https://github.com/Yggdroot/LeaderF/blob/master/doc/leaderf.txt#L485-L497
                 let g:Lf_WorkingDirectoryMode = 'A'
-
-                let g:Lf_ShortcutF = "<leader>ff"
             ]])
         end,
     },

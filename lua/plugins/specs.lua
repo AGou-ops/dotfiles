@@ -1,6 +1,7 @@
 local M = {
     'edluffy/specs.nvim',
     event = 'VeryLazy',
+    enabled = false,
 }
 
 function M.config()

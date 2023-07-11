@@ -101,4 +101,4 @@ require('lazy').setup('plugins', {
     },
 })
 
-vim.keymap.set('n', '<leader>l', '<cmd>:Lazy<cr>')
+vim.keymap.set('n', '<leader>lz', '<cmd>:Lazy<cr>')

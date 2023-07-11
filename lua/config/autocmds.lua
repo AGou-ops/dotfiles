@@ -205,9 +205,9 @@ vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost' }, {
 vim.api.nvim_create_autocmd('LspAttach', {
     pattern = { '*.go' },
     callback = function()
-        if vim.lsp.buf.inlay_hint ~= nil and vim.bo.ft ~= 'TelescopePrompt' then
+        if vim.lsp.inlay_hint ~= nil and vim.bo.ft ~= 'TelescopePrompt' then
             vim.cmd.highlight('default link LspInlayHint Comment')
-            vim.lsp.buf.inlay_hint(0, true)
+            vim.lsp.inlay_hint(0, true)
         end
     end,
 })
