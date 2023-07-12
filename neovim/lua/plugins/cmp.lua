@@ -48,7 +48,7 @@ function M.config()
             documentation = cmp.config.window.bordered(),
         },
         experimental = {
-            ghost_text = {},
+            ghost_text = false,
             git = {
                 async = true,
             },
