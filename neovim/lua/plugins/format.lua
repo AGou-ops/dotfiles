@@ -13,7 +13,7 @@ function M.config()
     ft('lua'):fmt('stylua')
 
     -- use lsp to format first then use golines to format
-    ft('go'):fmt('goimports'):append('gofumpt')
+    ft('go'):fmt('lsp'):append('golines')
 
     -- call setup LAST
     require('guard').setup({
