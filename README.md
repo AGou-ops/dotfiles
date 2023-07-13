@@ -1,4 +1,4 @@
-**[【😁中文文档】](./README-en.md)**
+**[【😁中文文档】](README-zh.md)**
 
 🎉 **Support Neovim 0.10.0-dev！！！**
 
@@ -31,6 +31,8 @@ mv ~/.config/nvim{,.bak}
 # download my config to your local machine.
 git clone -b nvim https://github.com/AGou-ops/dotfiles.git ~/.config/nvim
 ```
+
+🎉Done.
 
 ## Plugin list
 
@@ -165,6 +167,3 @@ lspsaga finder:
 `82` plugins.
 
 <img width="1548" alt="image" src="https://user-images.githubusercontent.com/57939102/218255154-b3a36ed2-0844-4c56-81c4-448aafbfeb86.png">
-
-
-🎉Done.
