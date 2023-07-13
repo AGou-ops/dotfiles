@@ -6,20 +6,15 @@ local M = {
 function M.config()
     local map = vim.api.nvim_set_keymap
 
-    map('n', '<S-h>', '<Plug>GoNSMLeft', {})
-    map('n', '<S-j>', '<Plug>GoNSMDown', {})
-    map('n', '<S-k>', '<Plug>GoNSMUp', {})
-    map('n', '<S-l>', '<Plug>GoNSMRight', {})
+    map('v', '<S-h>', '<Plug>GoNSMLeft', {})
+    map('v', '<S-j>', '<Plug>GoNSMDown', {})
+    map('v', '<S-k>', '<Plug>GoNSMUp', {})
+    map('v', '<S-l>', '<Plug>GoNSMRight', {})
 
     map('x', '<S-h>', '<Plug>GoVSMLeft', {})
     map('x', '<S-j>', '<Plug>GoVSMDown', {})
     map('x', '<S-k>', '<Plug>GoVSMUp', {})
     map('x', '<S-l>', '<Plug>GoVSMRight', {})
-
-    map('n', '<C-j>', '<Plug>GoNSDDown', {})
-    map('n', '<C-h>', '<Plug>GoNSDLeft', {})
-    map('n', '<C-k>', '<Plug>GoNSDUp', {})
-    map('n', '<C-l>', '<Plug>GoNSDRight', {})
 
     map('x', '<C-h>', '<Plug>GoVSDLeft', {})
     map('x', '<C-j>', '<Plug>GoVSDDown', {})
