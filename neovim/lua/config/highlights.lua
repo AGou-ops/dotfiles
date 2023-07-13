@@ -5,6 +5,7 @@ hi GitSignsCurrentLineBlame ctermfg=245 gui=italic guifg=#928374
 
 hi TSKeyword ctermfg=167 gui=italic guifg=#ea6962
 hi TSKeywordFunction ctermfg=167 gui=italic guifg=#ea6962
+hi TSKeywordReturn ctermfg=167 gui=italic guifg=#ea6962
 hi TSConditional ctermfg=167 gui=italic guifg=#ea6962
 hi TreesitterContext ctermfg=223 ctermbg=237 guifg=#ddc7a1 guibg=#3c3836
 hi NormalFloat ctermfg=223 ctermbg=237 guifg=#ddc7a1 guibg=#1E2021
