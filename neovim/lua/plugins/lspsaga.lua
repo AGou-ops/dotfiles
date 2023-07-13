@@ -126,7 +126,7 @@ function M.config()
             in_select = true,
         },
         implement = {
-            enable = true,
+            enable = false,
             sign = true,
             virtual_text = true,
         },
