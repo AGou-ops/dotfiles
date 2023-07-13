@@ -7,6 +7,7 @@ local M = {
 }
 
 function M.config()
+    require('neodev').setup({})
     local nvim_lsp = require('lspconfig')
     -- local configs = require 'lspconfig/configs'
     -- ------------------
@@ -18,7 +19,7 @@ function M.config()
         -- enable inlay hint
         -- vim.lsp.buf.inlay_hint(0, true)
 
-        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+        -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
         local opts = { noremap = true, silent = true }
         local map = vim.api.nvim_buf_set_keymap
@@ -218,6 +219,9 @@ function M.config()
         Lua = {
             hint = { enable = true },
             runtime = { version = 'LuaJIT' },
+            completion = {
+                callSnippet = 'Replace',
+            },
             diagnostics = {
                 globals = {
                     'vim',

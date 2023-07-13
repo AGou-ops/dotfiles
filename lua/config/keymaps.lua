@@ -97,12 +97,18 @@ bind('n', '<leader>lf', '<CMD>LeaderfFile<CR>')
 bind('n', '<leader>lF', '<CMD>LeaderfFunctionAll<CR>')
 
 -- telescope-dap
--- bind('n', '<leader>dcc', '<CMD>Telescope dap commands<CR>')
--- bind('n', '<leader>dcf', '<CMD>Telescope dap configurations<CR>')
--- bind('n', '<leader>dl', '<CMD>Telescope dap list_breakpoints<CR>')
--- bind('n', '<leader>dv', '<CMD>Telescope dap variables<CR>')
--- bind('n', '<leader>df', '<CMD>Telescope dap frames<CR>')
---
+bind('n', '<leader>dcc', '<CMD>Telescope dap commands<CR>')
+bind('n', '<leader>dcf', '<CMD>Telescope dap configurations<CR>')
+bind('n', '<leader>dl', '<CMD>Telescope dap list_breakpoints<CR>')
+bind('n', '<leader>dv', '<CMD>Telescope dap variables<CR>')
+bind('n', '<leader>df', '<CMD>Telescope dap frames<CR>')
+-- dap
+bind('n', '<leader>bp', '<CMD>DapToggleBreakpoint<CR>')
+bind('n', '<leader>ds', '<CMD>DapTerminate<CR>')
+bind('n', '<leader>dt', '<CMD>DapTerminate<CR>')
+bind('n', '<leader>db', '<CMD>DapContinue<CR>')
+bind('n', '<leader>du', '<CMD>lua require("dapui").toggle()<CR>')
+
 -- -- undotree
 bind('n', '<leader>oh', ':UndotreeToggle <BAR> :UndotreeFocus<CR>')
 

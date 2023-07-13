@@ -6,6 +6,9 @@ return {
             'nvim-telescope/telescope-fzf-native.nvim',
             build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
         },
+        {
+            'nvim-telescope/telescope-dap.nvim',
+        },
     },
     keys = {
         {
@@ -210,5 +213,6 @@ return {
             },
         })
         telescope.load_extension('fzf')
+        telescope.load_extension('dap')
     end,
 }

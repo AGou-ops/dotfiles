@@ -86,7 +86,12 @@ return {
         'm4xshen/autoclose.nvim',
         event = 'VeryLazy',
         config = function()
-            require('autoclose').setup({})
+            require('autoclose').setup({
+                options = {
+                    disable_when_touch = true,
+                    pair_spaces = true,
+                },
+            })
         end,
     },
     { ---- Auto generate some comments.
@@ -94,8 +99,6 @@ return {
         event = 'VeryLazy',
         dependencies = 'nvim-treesitter/nvim-treesitter',
         config = true,
-        -- Uncomment next line if you want to follow only stable versions
-        -- version = "*"
     },
     { ---- Quikly comment plugin.
         'numToStr/Comment.nvim',
@@ -334,7 +337,7 @@ return {
             require('telescope').load_extension('goimpl')
         end,
     },
-    {
+    { -- Batch replacement tool
         'AckslD/muren.nvim',
         config = true,
         cmd = 'MurenToggle',
@@ -368,5 +371,26 @@ return {
                 padding_top = 0,
             })
         end,
+    },
+    { -- picgo markdown
+        'askfiy/nvim-picgo',
+        ft = { 'md', 'markdown' },
+        config = function()
+            require('nvim-picgo').setup({
+                notice = 'echo',
+                image_name = true,
+            })
+        end,
+    },
+    { -- go test auto generation tool
+        'yanskun/gotests.nvim',
+        ft = 'go',
+        config = function()
+            require('gotests').setup()
+        end,
+    },
+    { -- Neovim setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
+        'folke/neodev.nvim',
+        opts = {},
     },
 }

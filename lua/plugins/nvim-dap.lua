@@ -1,6 +1,7 @@
 local M = {
     'rcarriga/nvim-dap-ui',
     event = 'VeryLazy',
+    ft = { 'go' },
     dependencies = {
         'mfussenegger/nvim-dap',
     },
@@ -10,40 +11,16 @@ function M.config()
     -- nvim-dap settings.
     local dap = require('dap')
 
-    vim.fn.sign_define('DapBreakpoint', { text = '🔴', texthl = '', linehl = '', numhl = '' })
+    vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'red', linehl = '', numhl = '' })
 
-    dap.adapters.go = function(callback, config)
-        local stdout = vim.loop.new_pipe(false)
-        local handle
-        local pid_or_err
-        -- 使用随机端口以运行多个dap实例.
-        local port = math.random(30000, 40000)
-        local opts = {
-            stdio = { nil, stdout },
-            args = { 'dap', '-l', '127.0.0.1:' .. port },
-            detached = true,
-        }
-        handle, pid_or_err = vim.loop.spawn('dlv', opts, function(code)
-            stdout:close()
-            handle:close()
-            if code ~= 0 then
-                print('dlv exited with code', code)
-            end
-        end)
-        assert(handle, 'Error running dlv: ' .. tostring(pid_or_err))
-        stdout:read_start(function(err, chunk)
-            assert(not err, err)
-            if chunk then
-                vim.schedule(function()
-                    require('dap.repl').append(chunk)
-                end)
-            end
-        end)
-        -- Wait for delve to start
-        vim.defer_fn(function()
-            callback({ type = 'server', host = '127.0.0.1', port = port })
-        end, 100)
-    end
+    dap.adapters.go = {
+        type = 'server',
+        port = '${port}',
+        executable = {
+            command = 'dlv',
+            args = { 'dap', '-l', '127.0.0.1:${port}' },
+        },
+    }
     -- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
     dap.configurations.go = {
         {
@@ -88,9 +65,6 @@ function M.config()
             repl = 'r',
             toggle = 't',
         },
-        -- Expand lines larger than the window
-        -- Requires >= 0.7
-        expand_lines = vim.fn.has('nvim-0.7'),
         -- Layouts define sections of the screen to place windows.
         -- The position can be "left", "right", "top" or "bottom".
         -- The size specifies the height/width depending on position. It can be an Int
@@ -124,14 +98,14 @@ function M.config()
             -- Display controls in this element
             element = 'repl',
             icons = {
-                pause = '',
-                play = '',
-                step_into = '',
-                step_over = '',
-                step_out = '',
-                step_back = '',
+                pause = '󰏤',
+                play = '',
+                step_into = '',
+                step_over = '',
+                step_out = '',
+                step_back = '',
                 run_last = '↻',
-                terminate = '□',
+                terminate = '󰓛',
             },
         },
         floating = {
