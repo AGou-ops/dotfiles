@@ -32,6 +32,8 @@ mv ~/.config/nvim{,.bak}
 git clone -b nvim https://github.com/AGou-ops/dotfiles.git ~/.config/nvim
 ```
 
+If you have any problems with the installation, please [submit an issue](https://github.com/AGou-ops/dotfiles/issues).
+
 🎉Done.
 
 ## Plugin list
