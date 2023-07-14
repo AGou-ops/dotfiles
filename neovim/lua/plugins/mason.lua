@@ -6,14 +6,10 @@ local M = {
 M.tools = {
     'prettierd',
     'stylua',
-    'selene',
     'luacheck',
-    'eslint_d',
     'shellcheck',
-    'deno',
     'shfmt',
-    'isort',
-    'flake8',
+	'lua-language-server',
 }
 
 function M.check()
