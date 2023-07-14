@@ -14,7 +14,7 @@
 ```bash
 sudo apt install wget curl git python3-pip ripgrep ranger lolcat -y
 pip3 install pynvim
-npm install tree-sitter-cli
+sudo npm install -g tree-sitter-cli
 # or use cargo to install tree-sitter-cli
 # cargo install tree-sitter-cli
 echo "export PATH=$HOME/.local/share/nvim/mason/bin:$PATH" >> ~/.bashrc
@@ -33,6 +33,15 @@ git clone -b nvim https://github.com/AGou-ops/dotfiles.git ~/.config/nvim
 ```
 
 If you have any problems with the installation, please [submit an issue](https://github.com/AGou-ops/dotfiles/issues).
+
+## Let's go!
+
+```bash
+# After opening neovim, lazy.nvim will automatically install all plugins.
+nvim
+# Neovim python error, https://github.com/gelguy/wilder.nvim/issues/16, run below command and restart neovim.
+:UpdateRemotePlugins
+```
 
 🎉Done.
 
