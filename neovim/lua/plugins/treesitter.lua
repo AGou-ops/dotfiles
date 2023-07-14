@@ -1,14 +1,30 @@
 return {
-    { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle' },
-    { 'mrjones2014/nvim-ts-rainbow', lazy = false },
     {
-        'mfussenegger/nvim-treehopper',
-        keys = { { 'm', mode = { 'o', 'x' } } },
+        'HiPhish/rainbow-delimiters.nvim',
+        lazy = false,
         config = function()
-            vim.cmd([[
-			omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>
-			xnoremap <silent> m :lua require('tsht').nodes()<CR>
-		  ]])
+            -- This module contains a number of default definitions
+            local rainbow_delimiters = require('rainbow-delimiters')
+
+            vim.g.rainbow_delimiters = {
+                strategy = {
+                    [''] = rainbow_delimiters.strategy['global'],
+                    vim = rainbow_delimiters.strategy['local'],
+                },
+                query = {
+                    [''] = 'rainbow-delimiters',
+                    lua = 'rainbow-blocks',
+                },
+                highlight = {
+                    'RainbowDelimiterRed',
+                    'RainbowDelimiterYellow',
+                    'RainbowDelimiterBlue',
+                    'RainbowDelimiterOrange',
+                    'RainbowDelimiterGreen',
+                    'RainbowDelimiterViolet',
+                    'RainbowDelimiterCyan',
+                },
+            }
         end,
     },
     {
@@ -103,7 +119,6 @@ return {
                     'gitignore',
                     'go',
                     'graphql',
-                    'help',
                     'html',
                     'http',
                     'java',
