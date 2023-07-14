@@ -39,7 +39,7 @@ If you have any problems with the installation, please [submit an issue](https:/
 ```bash
 # After opening neovim, lazy.nvim will automatically install all plugins.
 nvim
-# Neovim python error, https://github.com/gelguy/wilder.nvim/issues/16, run below command and restart neovim.
+# if you have Neovim python error, https://github.com/gelguy/wilder.nvim/issues/16, run below command and restart neovim.
 :UpdateRemotePlugins
 ```
 
