@@ -1,7 +1,6 @@
 local M = {
     'kevinhwang91/rnvimr',
     event = 'VeryLazy',
-
     keys = {
         {
             '<leader>fF',
