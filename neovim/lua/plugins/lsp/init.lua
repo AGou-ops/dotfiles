@@ -130,6 +130,7 @@ function M.config()
         'clangd',
         'texlab',
         'dockerls',
+        'vuels',
     }
 
     for _, lsp in ipairs(servers) do
@@ -266,7 +267,7 @@ function M.config()
     if not configs.nginx_ls then
         configs.nginx_ls = {
             default_config = {
-                cmd = { '/Users/agou-ops/.local/share/nvim/mason/bin/nginx-language-server' },
+                cmd = { os.getenv('HOME') .. '/.local/share/nvim/mason/bin/nginx-language-server' },
                 filetypes = { 'nginx' },
                 root_dir = function(fname)
                     return nvim_lsp.util.root_pattern(unpack(root_files))(fname)
@@ -276,6 +277,7 @@ function M.config()
         }
     end
     nvim_lsp.nginx_ls.setup({})
+
 
     -- -------------------- sql lsp settings -- --------------------
     -- nvim_lsp.sqls.setup{
