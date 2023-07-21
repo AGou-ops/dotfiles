@@ -38,7 +38,7 @@ return {
         event = 'VeryLazy',
         config = function()
             require('better_escape').setup({
-                mapping = { 'jk', 'jj' }, -- a table with mappings to use
+                mapping = { 'jk', 'jj', 'kj', 'jl' }, -- a table with mappings to use
                 timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
                 clear_empty_lines = false, -- clear line after escaping if there is only whitespace
                 keys = '<Esc>', -- keys used for escaping, if it is a function will use the result everytime
@@ -128,7 +128,7 @@ return {
     { ---- Just a translate plugin.
         'voldikss/vim-translator',
         event = 'VeryLazy',
-        -- enabled = false,
+        enabled = false,
         config = function()
             vim.cmd([[
             let g:translator_target_lang = 'zh'
@@ -154,14 +154,6 @@ return {
          ]])
         end,
     },
-    -- { ---- Jump to wherever you want.
-    --     'phaazon/hop.nvim',
-    --     enabled = false,
-    --     event = 'VeryLazy',
-    --     config = function()
-    --         require('hop').setup()
-    --     end,
-    -- },
     { ---- > An efficient fuzzy finder that helps to locate files, buffers, mrus, gtags, etc. on the fly for both vim and neovim.
         'Yggdroot/LeaderF',
         enabled = true,
@@ -340,6 +332,7 @@ return {
     { -- Batch replacement tool
         'AckslD/muren.nvim',
         config = true,
+        event = 'VeryLazy',
         cmd = 'MurenToggle',
         keys = {
             {
@@ -392,5 +385,13 @@ return {
     { -- Neovim setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
         'folke/neodev.nvim',
         opts = {},
+    },
+    {
+        'NeogitOrg/neogit',
+        dependencies = 'nvim-lua/plenary.nvim',
+        event = 'VeryLazy',
+        config = function()
+            require('neogit').setup({})
+        end,
     },
 }
