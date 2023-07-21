@@ -84,6 +84,8 @@ bind('n', '<leader>te', '<CMD>tabedit<CR>')
 bind('n', '<leader>tm', '<CMD>tabm<CR>')
 
 -- ============= Plugin Keymaps =============
+-- git open curren repo
+bind('n', '<leader>go', '<CMD>:!git open<CR><CR>', opts)
 -- toggleTerm & Lazygit
 bind('n', '<leader>tt', '<CMD>exe v:count1 . "ToggleTerm"<CR>')
 bind('n', '<leader>gg', '<CMD>lua _Lazygit_toggle()<CR>')
