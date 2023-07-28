@@ -1,3 +1,7 @@
+<a href="https://dotfyle.com/AGou-ops/dotfiles-neovim"><img src="https://dotfyle.com/AGou-ops/dotfiles-neovim/badges/plugins?style=flat" /></a>
+<a href="https://dotfyle.com/AGou-ops/dotfiles-neovim"><img src="https://dotfyle.com/AGou-ops/dotfiles-neovim/badges/leaderkey?style=flat" /></a>
+<a href="https://dotfyle.com/AGou-ops/dotfiles-neovim"><img src="https://dotfyle.com/AGou-ops/dotfiles-neovim/badges/plugin-manager?style=flat" /></a>
+
 **[【😁中文文档】](README-zh.md)**
 
 🎉 **Support Neovim 0.10.0-dev！！！**
