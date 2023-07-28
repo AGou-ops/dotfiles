@@ -9,7 +9,7 @@ function M.config()
         return
     end
 
-    local e
+    -- local e
 
     neoscroll.setup({
         -- All these keys will be mapped to their corresponding default scrolling animation
@@ -48,8 +48,8 @@ function M.config()
     t['zt'] = { 'zt', { '200' } }
     t['zz'] = { 'zz', { '200' } }
     t['zb'] = { 'zb', { '200' } }
-    t['gg'] = { 'scroll', { '-2*vim.api.nvim_buf_line_count(0)', 'true', '1', '5', e } }
-    t['G'] = { 'scroll', { '2*vim.api.nvim_buf_line_count(0)', 'true', '1', '5', e } }
+    -- t['gg'] = { 'scroll', { '-2*vim.api.nvim_buf_line_count(0)', 'true', '1', '5', e } }
+    -- t['G'] = { 'scroll', { '2*vim.api.nvim_buf_line_count(0)', 'true', '1', '5', e } }
 
     require('neoscroll.config').set_mappings(t)
 end

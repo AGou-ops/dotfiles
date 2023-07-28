@@ -61,7 +61,6 @@ bind('n', 'p', ']p')
 bind('n', 'P', '[p')
 bind('n', '(', '%')
 bind('n', ')', '%')
-bind('n', '<TAB>', '%')
 
 -- turn off direction keyboard, force yourself use `hjkl` !!!
 bind('n', '<Left>', '<Nop>')
