@@ -112,9 +112,9 @@ function M.config()
             quit = { 'q', '<ESC>' },
         },
         definition = {
-            edit = '<C-c>o',
-            vsplit = '<C-c>v',
-            split = '<C-c>i',
+            edit = 'o',
+            vsplit = '<C-v>',
+            split = '<C-s>',
             tabe = '<C-c>t',
             quit = 'q',
             close = '<Esc>',
@@ -127,7 +127,7 @@ function M.config()
             in_select = true,
         },
         implement = {
-            enable = false,
+            enable = true,
             sign = true,
             virtual_text = true,
         },
