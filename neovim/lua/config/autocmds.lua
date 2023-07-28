@@ -126,6 +126,7 @@ augroups.quit = {
             'neotest-output-panel',
             'neotest-summary',
             'dashboard',
+            'spectre_panel',
         },
         callback = function(event)
             vim.bo[event.buf].buflisted = false
