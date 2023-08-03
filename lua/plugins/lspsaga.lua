@@ -8,7 +8,7 @@ local M = {
         { '<leader>gf', '<cmd>Lspsaga finder imp<CR>', desc = 'Toggle Lspsaga finder imp' },
         { 'gx', '<cmd>Lspsaga code_action<CR>', desc = 'Toggle Lspsaga code_action' },
         { 'gr', '<cmd>Lspsaga rename<CR>', desc = 'Toggle Lspsaga rename' },
-        { 'gd', '<cmd>Lspsaga goto_definition<CR>', desc = 'Toggle Lspsaga goto_definition' },
+        -- { 'gd', '<cmd>Lspsaga goto_definition<CR>', desc = 'Toggle Lspsaga goto_definition' },
         { 'gP', '<cmd>Lspsaga peek_definition<CR>', desc = 'Toggle Lspsaga peek_definition' },
         {
             'gk',
