@@ -72,8 +72,8 @@ function M.config()
 			ScrollbarHide
 			set norelativenumber
 			set nonumber
-			set nowrap
 			Barbecue hide
+			Gitsigns toggle_current_line_blame
 			autocmd InsertEnter * set norelativenumber nonumber
 			autocmd InsertLeave * set norelativenumber nonumber
 			]])
@@ -83,8 +83,8 @@ function M.config()
 			IndentBlanklineEnable
 			ScrollbarShow
 			set relativenumber
-			set wrap
 			Barbecue show
+			Gitsigns toggle_current_line_blame
 			autocmd InsertEnter * set norelativenumber number
 			autocmd InsertLeave * set relativenumber
 			]])
