@@ -25,7 +25,7 @@ function M.config()
         local map = vim.api.nvim_buf_set_keymap
         -- map(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
         -- use lspsaga.goto_definition instead.
-        -- map(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+        map(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
         -- map(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
         map(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
         -- map(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
@@ -277,7 +277,6 @@ function M.config()
         }
     end
     nvim_lsp.nginx_ls.setup({})
-
 
     -- -------------------- sql lsp settings -- --------------------
     -- nvim_lsp.sqls.setup{
