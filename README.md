@@ -150,6 +150,10 @@ nvim
 
 ![image-20220408084010889](https://agou-images.oss-cn-qingdao.aliyuncs.com/others/image-20220408084010889.png)
 
+- Zen mode
+
+![image](https://github.com/AGou-ops/dotfiles/assets/57939102/516d6ef7-56e8-4dea-a7e7-76043a9514c1)
+
 
 - Golang
 
