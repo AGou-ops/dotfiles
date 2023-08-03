@@ -23,6 +23,9 @@ vim.o.hidden = true
 -- Enable break indent
 vim.o.breakindent = true
 
+-- Set breakline char
+vim.o.showbreak = '⤿ '
+
 -- Add clipboard support
 vim.o.clipboard = 'unnamed'
 
