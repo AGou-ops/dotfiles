@@ -1,11 +1,12 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 
 # Start configuration added by Zim install {{{
 #
@@ -139,17 +140,10 @@ unset key
 
 # =============================================================================================================
 
-# # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# # Initialization code that may require console input (password prompts, [y/n]
-# # confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
 # ---------------------------------------------------------------------------------------
 # -------------------- Remapping settings --------------------
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+# bindkey '^[[A' history-substring-search-up
+# bindkey '^[[B' history-substring-search-down
 bindkey "^A" vi-beginning-of-line
 bindkey "^E" vi-end-of-line
 bindkey '\e.' insert-last-word
@@ -166,7 +160,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 # -------------------- Alias settings --------------------
-alias proxy="http_proxy=127.0.0.1:1081 https_proxy=127.0.0.1:1081 all_proxy=socks5://127.0.0.1:1080 "
+alias proxy="http_proxy=http://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7891"
 
 alias rm='echo -e "\n\e[1;41mPlease donnot fucking use rm command.(use transh FILES instead)\e[0m\n\nUsage:\n\ntrash-put[tp]           trash files and directories.\ntrash-empty[te]         empty the trashcan(s).\ntrash-list[tl]          list trashed files.\ntrash-restore[tr]       restore a trashed file.\ntrash-rm[trm]           remove individual files from the trashcan." && false'
 alias tp='trash-put'
@@ -189,48 +183,75 @@ alias ../../='cd ../../'
 alias ../..='cd ../../'
 alias ../../../='cd ../../../'
 alias ../../..='cd ../../../'
-alias vim='nvim'
+alias vim='setproxy && nvim'
 alias vvim='nvim -u NONE'
-alias vi='vvim'
-alias vimc='proxy vim ~/.config/nvim/init.vim'
-alias setproxy='export http_proxy=127.0.0.1:1081 && export https_proxy=127.0.0.1:1081 && export all_proxy=socks5://127.0.0.1:1080 '
-alias unproxy='export http_proxy= && export https_proxy= '
+alias vi='/usr/bin/vim'
+alias lz='proxy LANG=zh_CN.UTF-8 lazygit'
+alias lzd='proxy LANG=zh_CN.UTF-8 lazydocker'
+alias vimc='setproxy && cd ~/.config/nvim && vim ~/.config/nvim/init.lua'
+alias vimz='proxy vim ~/.zshrc'
+alias setproxy='export http_proxy=http://127.0.0.1:7890 && export https_proxy=http://127.0.0.1:7890 && export all_proxy=socks5://127.0.0.1:7890 '
+alias unproxy='unset http_proxy && unset https_proxy'
 # 手残有时候老是按错
 alias s='ls'
 alias la='lsd -l -a'
 alias sub='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias sublime='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias hy='nohup ~/PATH/hysteria client > ~/PATH/logs/hy.log 2>&1 &'
-alias hysteria='nohup ~/PATH/hysteria client > ~/PATH/logs/hy.log 2>&1 &; nohup ~/PATH/hysteria-tun-darwin-10.12-arm64 client -c ./vir_config.json > /dev/null 2>&1 &'
+alias hysteria='nohup ~/PATH/hysteria client > /dev/null 2>&1 & ; nohup ~/PATH/hysteria-tun-darwin-10.12-arm64 client -c ./vir_config.json > /dev/null 2>&1 &'
 alias cat='bat'
 alias chrome='open -a "Google Chrome"'
 
-alias resume='miktex-xelatex resume_photo.tex && chrome resume_photo.pdf'
+alias resume='miktex-xelatex resume_photo.tex && open resume_photo.pdf'
 
 # tmp alias
-alias cka='ssh candidate@192.168.0.104 -p 9999'
-alias cka_remote='ssh candidate@23.94.56.169 -p 9999'
 
-alias greenlight='pgcli "postgres://postgres:123@localhost?sslmode=disable"'
-
+alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
+alias gitlog='git forgit log'
 
 alias ping='pingu'
+alias top='bpytop'
 
+alias k='kubecolor'
+
+alias close='bash ~/kill-applications.sh'
+
+alias remotedocker='docker --context remote '
+alias jdk8='export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home'
+alias jdk11='export JAVA_HOME=/opt/homebrew/opt/openjdk@11'
+
+alias zz='zoxide'
+
+alias goland='open /Applications/GoLand.app'
 
 # -------------------- PATH settings --------------------
-export LUALSP="/Users/agou-ops/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin"
-export MASON_PATH="/Users/agou-ops/.local/share/nvim/lsp_servers/bin/"
+export MASON_PATH="/Users/agou-ops/.local/share/nvim/mason/bin"
 export TABNINE=" ~/.vim/plugged/cmp-tabnine/binaries/4.4.6/aarch64-apple-darwin"
 export PSQL="/Library/PostgreSQL/14/bin"
-export PYTHON="~/Library/Python/3.9/bin"
+export GOPATH="/Users/agou-ops/go"
 export GOBIN="/Users/agou-ops/go/bin"
-export PATH="/Users/agou-ops/PATH/bin/:/Users/agou-ops/PATH:/opt/homebrew/opt/ruby/bin:/Users/agou-ops/Library/Python/3.9/bin:/opt/homebrew/lib/ruby/gems/3.1.0/bin:$LUALSP:$TABNINE:$PATH:$MASON_PATH:$PSQL:$PYTHON:$GOBIN"
+export CARGOBIN="/Users/agou-ops/.cargo/bin"
+export PODMAN="/opt/podman/bin"
+export KTOP="${HOME}/.krew/bin"
+export ITERM2="/Users/agou-ops/.iterm2"
+export TMUX_SESSION="$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin"
+export PATH="/opt/homebrew/opt/curl/bin:/opt/homebrew/opt/ruby/bin:/Users/agou-ops/PATH/bin:/Users/agou-ops/PATH:$LUALSP:$TABNINE:$PATH:$MASON_PATH:$PSQL:$GOBIN:$CARGOBIN:$PODMAN:$KTOP:$TMUX_SESSION:$ITERM2"
 
 # read man pages use neovim
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 
-export EDITOR='vim -u NONE'
+export EDITOR='vim --clean'
+
+export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
+
+export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
+
+export LANG="en_US.UTF-8"
+
+# cheange kubectl editor
+export KUBE_EDITOR="/usr/local/bin/nvim --clean"
 
 
 # -------------------- Source settings --------------------
@@ -245,19 +266,33 @@ export LS_COLORS="$(vivid generate ~/.config/vivid/themes/molokai.yml)"
 # -------------------- Other settings --------------------
 export TERM=xterm-256color
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# share history between terminal.
+# setopt share_history
 
-eval $(thefuck --alias)
-# typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
-# (( ! ${+functions[p10k]} )) || p10k finalize
+# source ~/.iterm2_shell_integration.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+. "/Users/agou-ops/.acme.sh/acme.sh.env"
 
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
-(( ! ${+functions[p10k]} )) || p10k finalize
+# eval "$(zoxide init zsh)"
+eval "$(assh completion zsh)"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/Users/agou-ops/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/Users/agou-ops/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/Users/agou-ops/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/Users/agou-ops/miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# <<< conda initialize <<<
