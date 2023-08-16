@@ -1,7 +1,6 @@
 local M = {
     'nvimdev/guard.nvim',
     cmd = 'GuardFmt',
-    enabled = true,
     ft = { 'lua', 'go' },
     keys = { { '<leader>ef', '<cmd>GuardFmt<cr>', desc = 'Format current file.' } },
 }
@@ -17,18 +16,10 @@ function M.config()
 
     -- call setup LAST
     require('guard').setup({
-        -- the only option for the setup function
+        -- the only options for the setup function
         fmt_on_save = true,
-        goimports = {
-            cmd = 'goimports',
-            args = { '-' },
-            stdin = true,
-        },
-        gofumpt = {
-            cmd = 'gofumpt',
-            args = { '-' },
-            stdin = true,
-        },
+        -- Use lsp if no formatter was defined for this filetype
+        lsp_as_default_formatter = true,
     })
 end
 
