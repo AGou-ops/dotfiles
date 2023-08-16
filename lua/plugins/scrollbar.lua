@@ -5,6 +5,7 @@ local M = {
 }
 
 function M.config()
+    require('scrollbar.handlers.search').setup()
     require('scrollbar').setup({
         show = true,
         set_highlights = true,
