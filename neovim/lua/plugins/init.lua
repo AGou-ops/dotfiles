@@ -218,7 +218,7 @@ return {
     },
     { ---- Async run a custom command.
         'skywind3000/asyncrun.vim',
-        ft = { 'go', 'lua', 'tex' },
+        ft = { 'go', 'lua', 'tex', 'html' },
         config = function()
             vim.cmd([[
 			let g:asynctasks_term_reuse = 1
@@ -412,5 +412,21 @@ return {
                 },
             })
         end,
+    },
+    {
+        'luckasRanarison/nvim-devdocs',
+        event = 'VeryLazy',
+        enabled = false,
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim',
+            'nvim-treesitter/nvim-treesitter',
+        },
+        opts = {},
+    },
+    {
+        'FabijanZulj/blame.nvim',
+        event = 'VeryLazy',
+        enabled = false,
     },
 }
