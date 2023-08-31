@@ -7,6 +7,7 @@ local M = {
 }
 
 function M.config()
+    vim.lsp.set_log_level('debug')
     require('neodev').setup({})
     local nvim_lsp = require('lspconfig')
     -- local configs = require 'lspconfig/configs'
@@ -131,6 +132,7 @@ function M.config()
         'texlab',
         'dockerls',
         'vuels',
+        'marksman',
     }
 
     for _, lsp in ipairs(servers) do
