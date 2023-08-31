@@ -23,7 +23,7 @@ function M.config()
             -- footer = { "\n\n岂能尽如人意，但求无愧我心。"}, -- footer
             shortcut = {
                 {
-                    desc = ' Update',
+                    desc = '󰚰 Update',
                     group = '@property',
                     action = 'Lazy update',
                     key = 'u',
