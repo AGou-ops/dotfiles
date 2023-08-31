@@ -1,25 +1,36 @@
 local M = {
-    'nvimdev/guard.nvim',
-    cmd = 'GuardFmt',
+    'stevearc/conform.nvim',
+    event = 'VeryLazy',
     ft = { 'lua', 'go' },
-    keys = { { '<leader>ef', '<cmd>GuardFmt<cr>', desc = 'Format current file.' } },
+    -- keys = { { '<leader>ef', '<cmd>GuardFmt<cr>', desc = 'Format current file.' } },
 }
 
 function M.config()
-    local ft = require('guard.filetype')
-
-    -- use stylua to format lua files and no linter
-    ft('lua'):fmt('stylua')
-
-    -- use lsp to format first then use golines to format
-    ft('go'):fmt('lsp'):append('golines')
-
-    -- call setup LAST
-    require('guard').setup({
-        -- the only options for the setup function
-        fmt_on_save = true,
-        -- Use lsp if no formatter was defined for this filetype
-        lsp_as_default_formatter = true,
+    require('conform').setup({
+        format_on_save = {
+            lsp_fallback = true,
+            timeout_ms = 500,
+        },
+        log_level = vim.log.levels.ERROR,
+        notify_on_error = true,
+        formatters_by_ft = {
+            lua = { 'stylua' },
+            -- Conform will use the first available formatter in the list
+            javascript = { 'prettier_d', 'prettier' },
+            -- Formatters can also be specified with additional options
+            python = {
+                formatters = { 'isort', 'black' },
+                -- Run formatters one after another instead of stopping at the first success
+                run_all_formatters = true,
+            },
+            go = {
+                formatters = { 'gofumpt', 'goimports', 'golines' },
+                run_all_formatters = true,
+            },
+            json = {
+                formatters = { 'jq' },
+            },
+        },
     })
 end
 
