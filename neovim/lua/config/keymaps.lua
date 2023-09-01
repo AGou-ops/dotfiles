@@ -35,8 +35,6 @@ bind('n', 'k', 'gk')
 bind('n', 'j', 'gj')
 bind('v', '<tab>', '<S->>gv')
 bind('v', '<S-tab>', '<S-<>gv')
-bind('n', '/', '/\\v')
-bind('n', '//', 'y/<c-r>"<cr>')
 bind('n', '<C-left>', '<CMD>bp<CR>')
 bind('n', '<C-right>', '<CMD>bn<CR>')
 
@@ -50,7 +48,6 @@ bind('n', '<leader>dd', ':%bdelete<CR>')
 
 -- copy to system clipboard
 bind('n', '<C-c>', '"+y')
-bind('n', 'y', '"+y')
 bind('n', '<C-h>', '<C-w>h')
 bind('n', '<C-j>', '<C-w>j')
 bind('n', '<C-k>', '<C-w>k')
@@ -93,6 +90,10 @@ bind('n', '<leader>gg', '<CMD>lua _Lazygit_toggle()<CR>')
 
 -- vim-translator
 -- bind('n', '<leader>ts', '<CMD>TranslateW<CR>')
+--
+
+-- treesitter
+bind('n', '<leader>hd', '<CMD>TSDisable highlight<CR>')
 
 -- leaderF
 bind('n', '<leader>lg', '<CMD>LeaderfRgInteractive<CR>')
