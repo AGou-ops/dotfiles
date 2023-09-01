@@ -167,7 +167,8 @@ return {
                 indent = { enable = false },
                 context_commentstring = { enable = true, enable_autocmd = false },
                 incremental_selection = {
-                    enable = true,
+                    -- TODO: error
+                    enable = false,
                     keymaps = {
                         init_selection = '<CR>',
                         node_incremental = '<CR>',

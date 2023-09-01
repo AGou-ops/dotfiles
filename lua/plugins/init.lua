@@ -68,18 +68,18 @@ return {
         -- ft = { 'markdown', 'go', 'lua' },
         config = function()
             vim.cmd([[
-			let g:tagbar_show_tag_count = 1
-			let g:tagbar_autoshowtag = 1
-			let g:tagbar_wrap = 1
-			let g:tagbar_zoomwidth = 0
-			let g:tagbar_show_linenumbers = 0
-			let g:tagbar_autofocus = 0
-			let g:tagbar_sort = 0
-			let g:tagbar_map_togglesort = "r"
-			let g:tagbar_help_visibility = 0
-			let g:tagbar_show_data_type = 1
-			let g:tagbar_autopreview = 0
-            ]])
+    		let g:tagbar_show_tag_count = 1
+    		let g:tagbar_autoshowtag = 1
+    		let g:tagbar_wrap = 1
+    		let g:tagbar_zoomwidth = 0
+    		let g:tagbar_show_linenumbers = 0
+    		let g:tagbar_autofocus = 0
+    		let g:tagbar_sort = 0
+    		let g:tagbar_map_togglesort = "r"
+    		let g:tagbar_help_visibility = 0
+    		let g:tagbar_show_data_type = 1
+    		let g:tagbar_autopreview = 0
+               ]])
         end,
     },
     { ---- Symbol auto pair.
@@ -112,13 +112,13 @@ return {
         event = 'VeryLazy',
         config = function()
             vim.cmd([[
-				let g:VM_maps = {}
-				let g:VM_maps['Find Under']         = '<cr>'           " replace C-n
-				let g:VM_maps['Find Subword Under'] = '<cr>'           " replace visual C-n
-				let g:VM_mouse_mappings = 1
-				let g:VM_theme = 'iceblue'
-				let g:VM_highlight_matches = 'underline'
-				]])
+    			let g:VM_maps = {}
+    			let g:VM_maps['Find Under']         = '<cr>'           " replace C-n
+    			let g:VM_maps['Find Subword Under'] = '<cr>'           " replace visual C-n
+    			let g:VM_mouse_mappings = 1
+    			let g:VM_theme = 'iceblue'
+    			let g:VM_highlight_matches = 'underline'
+    			]])
         end,
     },
     { ---- Undo tree.
@@ -131,8 +131,8 @@ return {
         enabled = false,
         config = function()
             vim.cmd([[
-            let g:translator_target_lang = 'zh'
-            ]])
+               let g:translator_target_lang = 'zh'
+               ]])
         end,
     },
     { ---- Format file.
@@ -142,16 +142,16 @@ return {
         enabled = true,
         config = function()
             vim.cmd([[
-    " augroup fmt
-    " autocmd!
-    " autocmd BufWritePre *.go Neoformat goimports | Neoformat gofumpt
-    " autocmd BufWritePre *.sh Neoformat
-    " augroup END
-    " " ignore error
-    let g:neoformat_only_msg_on_error = 1
-	let g:neoformat_enabled_go = ['goimports', 'gofumpt' ]
-	let g:neoformat_enabled_lua = ['stylua']
-         ]])
+       " augroup fmt
+       " autocmd!
+       " autocmd BufWritePre *.go Neoformat goimports | Neoformat gofumpt
+       " autocmd BufWritePre *.sh Neoformat
+       " augroup END
+       " " ignore error
+       let g:neoformat_only_msg_on_error = 1
+    let g:neoformat_enabled_go = ['goimports', 'gofumpt' ]
+    let g:neoformat_enabled_lua = ['stylua']
+            ]])
         end,
     },
     { ---- > An efficient fuzzy finder that helps to locate files, buffers, mrus, gtags, etc. on the fly for both vim and neovim.
@@ -160,26 +160,26 @@ return {
         event = 'VeryLazy',
         config = function()
             vim.cmd([[
-            let g:Lf_HideHelp = 1
-            let g:Lf_UseCache = 0
-            let g:Lf_UseVersionControlTool = 0
-            let g:Lf_IgnoreCurrentBufferName = 1
-            " Show icons, icons are shown by default
-            let g:Lf_ShowDevIcons = 1
-            " popup mode
-            let g:Lf_WindowPosition = 'popup'
-            let g:Lf_PreviewInPopup = 1
-            let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
-            let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
-            let g:Lf_WildIgnore = {
-                \ 'dir': ['.git', 'node_modules'],
-                \ 'file': []
-                \}
+               let g:Lf_HideHelp = 1
+               let g:Lf_UseCache = 0
+               let g:Lf_UseVersionControlTool = 0
+               let g:Lf_IgnoreCurrentBufferName = 1
+               " Show icons, icons are shown by default
+               let g:Lf_ShowDevIcons = 1
+               " popup mode
+               let g:Lf_WindowPosition = 'popup'
+               let g:Lf_PreviewInPopup = 1
+               let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+               let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+               let g:Lf_WildIgnore = {
+                   \ 'dir': ['.git', 'node_modules'],
+                   \ 'file': []
+                   \}
 
-                let g:Lf_RootMarkers = ['.git', '.gitignore', 'node_modules', 'go.mod']
-                " mode explain: https://github.com/Yggdroot/LeaderF/blob/master/doc/leaderf.txt#L485-L497
-                let g:Lf_WorkingDirectoryMode = 'A'
-            ]])
+                   let g:Lf_RootMarkers = ['.git', '.gitignore', 'node_modules', 'go.mod']
+                   " mode explain: https://github.com/Yggdroot/LeaderF/blob/master/doc/leaderf.txt#L485-L497
+                   let g:Lf_WorkingDirectoryMode = 'A'
+               ]])
         end,
     },
     { 'williamboman/mason-lspconfig.nvim' },
@@ -221,8 +221,8 @@ return {
         ft = { 'go', 'lua', 'tex', 'html' },
         config = function()
             vim.cmd([[
-			let g:asynctasks_term_reuse = 1
-		]])
+    		let g:asynctasks_term_reuse = 1
+    	]])
         end,
     },
     { ---- Show current cursor word.
@@ -231,10 +231,10 @@ return {
         enabled = true,
         config = function()
             vim.cmd([[
-			hi default CursorWord cterm=underline gui=underline
-			let g:cursorword_disable_filetypes = []
-			let g:cursorword_min_width = 3
-			]])
+    		hi default CursorWord cterm=underline gui=underline
+    		let g:cursorword_disable_filetypes = []
+    		let g:cursorword_min_width = 3
+    		]])
         end,
     },
     { ---- > 🍁 Fun little plugin that can be used as a screensaver and on your dashboard
@@ -267,8 +267,8 @@ return {
                 -- Available modes: foreground, background
                 mode = 'background', -- Set the display mode.})
                 --[[ #558817
-			-- Red Blue Yellow
-			--]]
+    		-- Red Blue Yellow
+    		--]]
             })
         end,
     },
@@ -393,40 +393,5 @@ return {
         config = function()
             require('neogit').setup({})
         end,
-    },
-    {
-        'VidocqH/lsp-lens.nvim',
-        ft = { 'lua', 'go' },
-        enabled = false,
-        config = function()
-            require('lsp-lens').setup({
-                enable = true,
-                include_declaration = false, -- Reference include declaration
-                sections = { -- Enable / Disable specific request
-                    definition = false,
-                    references = true,
-                    implements = true,
-                },
-                ignore_filetype = {
-                    'prisma',
-                },
-            })
-        end,
-    },
-    {
-        'luckasRanarison/nvim-devdocs',
-        event = 'VeryLazy',
-        enabled = false,
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-            'nvim-telescope/telescope.nvim',
-            'nvim-treesitter/nvim-treesitter',
-        },
-        opts = {},
-    },
-    {
-        'FabijanZulj/blame.nvim',
-        event = 'VeryLazy',
-        enabled = false,
     },
 }
