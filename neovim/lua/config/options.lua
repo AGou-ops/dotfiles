@@ -41,7 +41,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Decrease update time
-vim.o.updatetime = 250
+vim.o.updatetime = 200
 vim.wo.signcolumn = 'yes'
 
 -- Faster scrolling
