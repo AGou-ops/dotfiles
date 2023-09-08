@@ -7,7 +7,6 @@ local M = {
 }
 
 function M.config()
-    vim.lsp.set_log_level('debug')
     require('neodev').setup({})
     local nvim_lsp = require('lspconfig')
     -- local configs = require 'lspconfig/configs'
