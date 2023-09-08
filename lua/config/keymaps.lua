@@ -94,6 +94,7 @@ bind('n', '<leader>gg', '<CMD>lua _Lazygit_toggle()<CR>')
 
 -- treesitter
 bind('n', '<leader>hd', '<CMD>TSDisable highlight<CR>')
+bind('n', '<leader>he', '<CMD>TSEnable highlight<CR>')
 
 -- leaderF
 bind('n', '<leader>lg', '<CMD>LeaderfRgInteractive<CR>')

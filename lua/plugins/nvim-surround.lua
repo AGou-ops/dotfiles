@@ -24,6 +24,7 @@ function M.config()
     --
     -- "aaaaaaaa"        bbbb
     -- cccccccc        dddd
+    -- hello 'world'
 end
 
 return M
