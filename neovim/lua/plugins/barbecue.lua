@@ -1,8 +1,7 @@
 local spec = {
     'utilyre/barbecue.nvim',
     -- event = 'UIEnter',
-    ft = { 'go', 'lua', 'yaml', 'yml' },
-    -- lazy = false,
+    ft = { 'go', 'lua', 'yaml', 'yml', 'markdown' },
     dependencies = {
         'neovim/nvim-lspconfig',
         'smiteshp/nvim-navic',
@@ -11,7 +10,7 @@ local spec = {
 }
 
 function spec.config()
-    require('barbecue').setup()
+    require('barbecue').setup({})
     vim.cmd([[
 	hi barbecue_context_namespace guifg=#40ffff guibg=#282828
 	hi barbecue_context_boolean guifg=#40ffff guibg=#282828

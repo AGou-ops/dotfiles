@@ -153,6 +153,7 @@ return {
                     'yaml', -- "wgsl",
                     'json',
                     -- "markdown",
+                    'groovy',
                 },
                 sync_install = false,
                 auto_install = false,
