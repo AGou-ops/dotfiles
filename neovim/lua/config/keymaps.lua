@@ -119,6 +119,18 @@ bind('n', '<leader>oh', ':UndotreeToggle <BAR> :UndotreeFocus<CR>')
 
 -- -- tagbar
 bind('n', '<leader>tb', ':TagbarToggle<CR>')
+
+-- plenary debug
+bind(
+    'n',
+    '<leader>nd',
+    ':lua require("plenary.profile").start("profile.log", { flame = true })<CR>'
+)
+bind(
+    'n',
+    '<leader>ns',
+    ':lua require("plenary.profile").stop()<CR> | :!flamegraph.pl profile.log > flame.svg && rm -f profile.log && open flame.svg<CR>'
+)
 --
 -- close lspinlayHit
 bind('n', '<leader>io', '<CMD>lua vim.lsp.inlay_hint(0, true)<CR>')
