@@ -11,6 +11,9 @@ function M.config()
             lsp_fallback = true,
             timeout_ms = 500,
         },
+        format_after_save = {
+            lsp_fallback = true,
+        },
         log_level = vim.log.levels.ERROR,
         notify_on_error = true,
         formatters_by_ft = {
@@ -30,6 +33,7 @@ function M.config()
             json = {
                 formatters = { 'jq' },
             },
+            ['*'] = { 'trim_whitespace' },
         },
     })
 end
