@@ -1,5 +1,6 @@
 local M = {
     'karb94/neoscroll.nvim',
+    -- 'declancm/cinnamon.nvim',
     event = 'VeryLazy',
 }
 
@@ -8,8 +9,12 @@ function M.config()
     if not status_ok then
         return
     end
-
-    -- local e
+    -- require('cinnamon').setup({
+    --     extra_keymaps = true,
+    --     override_keymaps = true,
+    --     max_length = 500,
+    --     scroll_limit = -1,
+    -- })
 
     neoscroll.setup({
         -- All these keys will be mapped to their corresponding default scrolling animation

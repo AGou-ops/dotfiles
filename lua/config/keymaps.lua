@@ -9,7 +9,7 @@ local opts = { noremap = true, silent = true }
 -- bind('n', '<F3>', '<CMD>TransparentToggle<CR>')
 
 bind('n', ';', ':')
-bind('n', 'U', ':redo<CR>')
+bind('n', 'U', '<C-r>')
 bind('v', ';', ':')
 
 bind('c', 'W', 'w')

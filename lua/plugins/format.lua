@@ -27,7 +27,7 @@ function M.config()
                 run_all_formatters = true,
             },
             go = {
-                formatters = { 'gofumpt', 'goimports', 'golines' },
+                formatters = { 'gofumpt', 'goimports' },
                 run_all_formatters = true,
             },
             json = {
