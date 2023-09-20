@@ -85,7 +85,9 @@ bind('n', '<leader>tm', '<CMD>tabm<CR>')
 -- git open curren repo
 bind('n', '<leader>go', '<CMD>:!git open<CR><CR>', opts)
 -- toggleTerm & Lazygit
-bind('n', '<leader>tt', '<CMD>exe v:count1 . "ToggleTerm"<CR>')
+bind('n', '<leader>tf', '<CMD>exe v:count1 . "ToggleTerm"<CR>')
+bind('n', '<leader>tb', '<CMD>ToggleTerm size=12 direction=horizontal<CR>')
+bind('n', '<leader>tt', '<CMD>ToggleTerm direction=tab<CR>')
 bind('n', '<leader>gg', '<CMD>lua _Lazygit_toggle()<CR>')
 
 -- vim-translator
@@ -118,7 +120,7 @@ bind('n', '<leader>du', '<CMD>lua require("dapui").toggle()<CR>')
 bind('n', '<leader>oh', ':UndotreeToggle <BAR> :UndotreeFocus<CR>')
 
 -- -- tagbar
-bind('n', '<leader>tb', ':TagbarToggle<CR>')
+-- bind('n', '<leader>tb', ':TagbarToggle<CR>')
 
 -- plenary debug
 bind(
