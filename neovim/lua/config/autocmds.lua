@@ -13,7 +13,7 @@ autocmd FileType go nmap <Leader>gb :AsyncRun -mode=term -pos=bottom -rows=10 go
 autocmd FileType * nmap <Leader>ta :AsyncRun -mode=term -pos=bottom -rows=10 zsh<CR>
 autocmd FileType html nmap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=80 http-server .<CR>
 autocmd FileType markdown nnoremap <C-b> ciw****<left><Esc>P
-autocmd FileType markdown nnoremap <Leader>rr :MarkdownPreview<CR>
+autocmd FileType markdown nnoremap <Leader>rm :MarkdownPreview<CR>
 autocmd FileType markdown vnoremap <C-b> c****<left><Esc>P
 autocmd FileType tex nmap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=10 miktex-xelatex % && open -a "Google Chrome" resume_photo.pdf<CR>
 ]])
