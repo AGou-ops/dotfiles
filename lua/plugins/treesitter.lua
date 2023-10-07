@@ -1,6 +1,7 @@
 return {
     {
         'HiPhish/rainbow-delimiters.nvim',
+        branch = 'use-children',
         lazy = false,
         config = function()
             -- This module contains a number of default definitions
