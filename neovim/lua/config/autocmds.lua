@@ -207,15 +207,15 @@ vim.api.nvim_create_autocmd({ 'BufLeave', 'FocusLost' }, {
 })
 
 -- experimental: inlay hint
-vim.api.nvim_create_autocmd('LspAttach', {
-    pattern = { '*.go', '*.lua' },
-    callback = function(args)
-        local ok, err = pcall(vim.lsp.inlay_hint, args.buf, true)
-        if not ok then
-            print(err)
-        end
-    end,
-})
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--     pattern = { '*.go', '*.lua' },
+--     callback = function(args)
+--         local ok, err = pcall(vim.lsp.inlay_hint, args.buf, true)
+--         if not ok then
+--             print(err)
+--         end
+--     end,
+-- })
 
 -- disable semantic highlighting
 for _, group in ipairs(vim.fn.getcompletion('@lsp', 'highlight')) do
