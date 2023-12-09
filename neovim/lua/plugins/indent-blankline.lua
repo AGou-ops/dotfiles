@@ -17,6 +17,7 @@ function M.config()
 
     require('ibl').setup({
         indent = { char = '│' },
+        scope = { enabled = false },
 
         exclude = {
             filetypes = {
