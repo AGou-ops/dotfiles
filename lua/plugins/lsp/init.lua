@@ -127,11 +127,12 @@ function M.config()
     local servers = {
         'bashls',
         'sqlls',
-        'clangd',
-        'texlab',
+        -- 'clangd',
+        -- 'texlab',
         'dockerls',
         'vuels',
         'marksman',
+        'bufls',
     }
 
     for _, lsp in ipairs(servers) do
