@@ -142,6 +142,17 @@ function M.config()
 
     -- END: keymapping Migration
     --
+    -- change TOML icon
+    require('nvim-web-devicons').setup({
+        override_by_extension = {
+            ['toml'] = {
+                icon = '',
+                color = '#81e043',
+                name = 'Log',
+            },
+        },
+    })
+    --
     -- setup with all defaults
     -- each of these are documented in `:help nvim-tree.OPTION_NAME`
     nvim_tree.setup({ -- BEGIN_DEFAULT_OPTS
@@ -231,7 +242,7 @@ function M.config()
                 glyphs = {
                     default = '',
                     symlink = '',
-                    bookmark = '',
+                    bookmark = '',
                     modified = '●',
                     folder = {
                         arrow_closed = '',
