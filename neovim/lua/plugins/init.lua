@@ -388,7 +388,6 @@ return {
     },
     {
         'NeogitOrg/neogit',
-        enabled = false,
         dependencies = 'nvim-lua/plenary.nvim',
         event = 'VeryLazy',
         config = function()
