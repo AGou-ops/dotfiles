@@ -1,7 +1,7 @@
 local M = {
     'stevearc/conform.nvim',
     event = 'VeryLazy',
-    ft = { 'lua', 'go' },
+    ft = { 'lua', 'go', 'yaml' },
     -- keys = { { '<leader>ef', '<cmd>GuardFmt<cr>', desc = 'Format current file.' } },
 }
 
@@ -16,24 +16,29 @@ function M.config()
         },
         log_level = vim.log.levels.ERROR,
         notify_on_error = true,
+
         formatters_by_ft = {
             lua = { 'stylua' },
-            -- Conform will use the first available formatter in the list
-            javascript = { 'prettier_d', 'prettier' },
-            -- Formatters can also be specified with additional options
-            python = {
-                formatters = { 'isort', 'black' },
-                -- Run formatters one after another instead of stopping at the first success
-                run_all_formatters = true,
-            },
-            go = {
-                formatters = { 'gofumpt', 'goimports' },
-                run_all_formatters = true,
-            },
+            -- Conform will run multiple formatters sequentially
+            go = { 'goimports', 'gofmt' },
+            -- Use a sub-list to run only the first available formatter
+            javascript = { { 'prettierd', 'prettier' } },
+            -- You can use a function here to determine the formatters dynamically
+            python = function(bufnr)
+                if require('conform').get_formatter_info('ruff_format', bufnr).available then
+                    return { 'ruff_format' }
+                else
+                    return { 'isort', 'black' }
+                end
+            end,
             json = {
                 formatters = { 'jq' },
             },
-            ['*'] = { 'trim_whitespace' },
+            -- Use the "*" filetype to run formatters on all filetypes.
+            ['*'] = { 'codespell' },
+            -- Use the "_" filetype to run formatters on filetypes that don't
+            -- have other formatters configured.
+            ['_'] = { 'trim_whitespace' },
         },
     })
 end
