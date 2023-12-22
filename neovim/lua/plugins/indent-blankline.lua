@@ -8,16 +8,11 @@ function M.config()
     vim.opt.list = true
     vim.opt.listchars:append('eol:⤸')
     vim.opt.listchars:append('space:⋅')
-    vim.opt.listchars:append('tab:  ')
-
-    local highlight = {
-        'CursorColumn',
-        'Whitespace',
-    }
+    vim.opt.listchars:append('tab:│ ')
 
     require('ibl').setup({
         indent = { char = '│' },
-        scope = { enabled = false },
+        scope = { enabled = true },
 
         exclude = {
             filetypes = {
@@ -41,8 +36,6 @@ function M.config()
                 'TelescopePrompt',
                 'undotree',
                 'flutterToolsOutline',
-                'yaml',
-                'yml',
                 '', -- for all buffers without a file type
             },
         },
