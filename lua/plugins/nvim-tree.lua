@@ -147,7 +147,7 @@ function M.config()
         override_by_extension = {
             ['toml'] = {
                 icon = '',
-                color = '#81e043',
+                color = '#708085',
                 name = 'Log',
             },
         },
@@ -298,7 +298,7 @@ function M.config()
             dotfiles = false,
             git_clean = false,
             no_buffer = false,
-            custom = { 'node_modules' },
+            custom = { 'node_modules', '.DS_Store' },
             exclude = {},
         },
         filesystem_watchers = {
