@@ -56,8 +56,8 @@ bind('n', '<C-q>', '<C-w>q')
 bind('n', '<C-\\>', '<C-w><bar>')
 
 -- Auto indent pasted text
-bind('n', 'p', ']p')
-bind('n', 'P', '[p')
+-- bind('n', 'p', ']p')
+-- bind('n', 'P', '[p')
 bind('n', '(', '%')
 bind('n', ')', '%')
 
@@ -67,8 +67,7 @@ bind('n', '<Right>', '<Nop>')
 bind('n', '<Up>', '<Nop>')
 bind('n', '<Down>', '<Nop>')
 bind('n', '<space>', '/\\v')
-bind('n', '<Esc>[1;3D', '<CMD>bn<CR>')
-bind('n', '<Esc>[1;3C', '<CMD>bp<CR>')
+bind('t', '<Esc>', '<C-\\><C-n>')
 
 -- tab quick swich
 bind('n', '<leader>th', '<CMD>tabfirst<CR>')
