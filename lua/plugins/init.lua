@@ -386,7 +386,7 @@ return {
         'folke/neodev.nvim',
         opts = {},
     },
-    {
+    { -- git tui tool
         'NeogitOrg/neogit',
         dependencies = 'nvim-lua/plenary.nvim',
         event = 'VeryLazy',
@@ -394,11 +394,19 @@ return {
             require('neogit').setup({})
         end,
     },
-    {
+    { -- highlight text when undo or redo
         'tzachar/highlight-undo.nvim',
         event = 'VeryLazy',
         config = function()
             require('highlight-undo').setup({})
+        end,
+    },
+    { -- luasnip snippets collections( from  vim-snippets )
+        'mireq/luasnip-snippets',
+        --dir = "/tmp/snippets",
+        dependencies = { 'L3MON4D3/LuaSnip' },
+        init = function()
+            require('luasnip_snippets.common.snip_utils').setup()
         end,
     },
 }
