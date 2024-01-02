@@ -1,6 +1,16 @@
 local M = {
     'lewis6991/gitsigns.nvim',
     event = 'VeryLazy',
+    keys = {
+        {
+            '<leader>ga',
+            '<cmd>Gitsigns toggle_linehl<CR> <BAR> <cmd>Gitsigns toggle_deleted<CR> <BAR> <cmd>Gitsigns toggle_word_diff<CR>',
+            desc = 'Toggle ALL Gitsigns',
+        },
+        { '<leader>gl', '<cmd>Gitsigns toggle_linehl<CR>', desc = 'Toggle Gitsigns linehl' },
+        { '<leader>gd', '<cmd>Gitsigns toggle_deleted<CR>', desc = 'Toggle Gitsigns deleted' },
+        { '<leader>gw', '<cmd>Gitsigns toggle_word_diff<CR>', desc = 'Toggle Gitsigns worddiff' },
+    },
 }
 
 function M.config()
@@ -52,26 +62,6 @@ function M.config()
         },
         current_line_blame_formatter_opts = { relative_time = true },
         current_line_blame_formatter = '      <author>, <author_time:%R> - <summary>',
-        -- current_line_blame_formatter = function(name, blame_info,opts)
-        --        if blame_info.author == name then blame_info.author = 'You' end
-        --        local text
-        --        if blame_info.author == 'Not Committed Yet' then
-        --            text = blame_info.author
-        --        else
-        --            local date_time
-        --            if opts.relative_time then
-        --              date_time = require('gitsigns.util').get_relative_time(tonumber(blame_info['author_time']))
-        --            else
-        --              date_time = os.date('%Y-%m-%d', tonumber(blame_info['author_time']))
-        --            end
-        --            text = string.format('%s%s, %s - %s', blame_info.author,blame_info.author_mail,date_time,
-        --                                -- os.date(
-        --                                --      '%Y-%m-%d',
-        --                                --      tonumber(blame_info['author_time'])),
-        --                                 blame_info.summary)
-        --        end
-        --        return {{'       ' .. text, 'GitSignsCurrentLineBlame'}}
-        --    end,
         sign_priority = 6,
         update_debounce = 100,
         status_formatter = nil, -- Use default
