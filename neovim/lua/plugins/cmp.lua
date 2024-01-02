@@ -29,7 +29,8 @@ function M.config()
                 == nil
     end
 
-    require('luasnip.loaders.from_vscode').lazy_load({ paths = '~/.config/nvim/my_snippets' })
+    -- use mireq/luasnip-snippets instead
+    -- require('luasnip.loaders.from_vscode').lazy_load({ paths = '~/.config/nvim/my_snippets' })
 
     cmp.setup({
         enabled = function()
