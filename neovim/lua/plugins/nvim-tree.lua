@@ -121,7 +121,7 @@ function M.config()
         },
         view = {
             adaptive_size = true,
-            centralize_selection = true,
+            centralize_selection = false,
             cursorline = true,
             width = 30,
             side = 'left',
@@ -234,7 +234,7 @@ function M.config()
             dotfiles = false,
             git_clean = false,
             no_buffer = false,
-            custom = { 'node_modules', '.DS_Store' },
+            custom = { 'node_modules', '.DS_Store', '.git', '.vscode', '.idea' },
             exclude = {},
         },
         filesystem_watchers = {
