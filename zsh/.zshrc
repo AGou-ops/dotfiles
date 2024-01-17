@@ -1,13 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-
 # Start configuration added by Zim install {{{
 #
 # User configuration sourced by interactive shells
@@ -45,7 +35,7 @@ WORDCHARS=${WORDCHARS//[\/]}
 # -----------------
 
 # Use degit instead of git as the default tool to install and update modules.
-zstyle ':zim:zmodule' use 'degit'
+#zstyle ':zim:zmodule' use 'degit'
 
 # --------------------
 # Module configuration
@@ -138,7 +128,20 @@ for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 # }}} End configuration added by Zim install
 
-# =============================================================================================================
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# -------------- CUSTOM CONFIG ---------------
+
 
 # ---------------------------------------------------------------------------------------
 # -------------------- Remapping settings --------------------
@@ -159,15 +162,24 @@ zstyle ':completion:*' cache-path "/tmp/zcompcache"
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+# -------------------- Custom Functions --------------------
+function google() {
+  open "http://www.google.com/search?q=$1"
+}
 # -------------------- Alias settings --------------------
 alias proxy="http_proxy=http://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7891"
+alias ss="sudo lsof -i -n -P"
+alias hosts="sudo vim /etc/hosts"
 
-alias rm='echo -e "\n\e[1;41mPlease donnot fucking use rm command.(use transh FILES instead)\e[0m\n\nUsage:\n\ntrash-put[tp]           trash files and directories.\ntrash-empty[te]         empty the trashcan(s).\ntrash-list[tl]          list trashed files.\ntrash-restore[tr]       restore a trashed file.\ntrash-rm[trm]           remove individual files from the trashcan." && false'
+alias rm='echo -e "\n\e[1;41mPlease do NOT use the fucking rm command.(use trash FILES instead！)\e[0m\n\nUsage:\n\ntrash-put[tp]           trash files and directories.\ntrash-empty[te]         empty the trashcan(s).\ntrash-list[tl]          list trashed files.\ntrash-restore[tr]       restore a trashed file.\ntrash-rm[trm]           remove individual files from the trashcan." && false'
 alias tp='trash-put'
 alias te='trash-empty'
 alias tl='trash-list'
 alias tr='trash-restore'
 alias trm='trash-rm'
+
+alias grep='rg -i'
+alias tar='tar --no-xattrs'
 
 # alias ls="/usr/local/bin/colorls"
 alias ls="lsd"
@@ -185,13 +197,13 @@ alias ../../../='cd ../../../'
 alias ../../..='cd ../../../'
 alias vim='setproxy && nvim'
 alias vvim='nvim -u NONE'
-alias vi='/usr/bin/vim'
+alias vi='/opt/homebrew/Cellar/vim/9.1.0_1/bin/vim'
 alias lz='proxy LANG=zh_CN.UTF-8 lazygit'
 alias lzd='proxy LANG=zh_CN.UTF-8 lazydocker'
 alias vimc='setproxy && cd ~/.config/nvim && vim ~/.config/nvim/init.lua'
 alias vimz='proxy vim ~/.zshrc'
 alias setproxy='export http_proxy=http://127.0.0.1:7890 && export https_proxy=http://127.0.0.1:7890 && export all_proxy=socks5://127.0.0.1:7890 '
-alias unproxy='unset http_proxy && unset https_proxy'
+alias unproxy='unset http_proxy && unset https_proxy && unset all_proxy'
 # 手残有时候老是按错
 alias s='ls'
 alias la='lsd -l -a'
@@ -207,12 +219,13 @@ alias resume='miktex-xelatex resume_photo.tex && open resume_photo.pdf'
 # tmp alias
 
 alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
-alias gitlog='git forgit log'
+alias gitlog="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 
 alias ping='pingu'
 alias top='bpytop'
 
-alias k='kubecolor'
+alias kubectl='kubecolor'
+#compdef kubecolor=kubectl
 
 alias close='bash ~/kill-applications.sh'
 
@@ -220,22 +233,32 @@ alias remotedocker='docker --context remote '
 alias jdk8='export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-8.jdk/Contents/Home'
 alias jdk11='export JAVA_HOME=/opt/homebrew/opt/openjdk@11'
 
+alias ansible='ansible -i ~/.ansible/hosts'
+
 alias zz='zoxide'
 
 alias goland='open /Applications/GoLand.app'
 
+alias dotfiles='open https://github.com/AGou-ops/dotfiles'
+
+alias udp2raw='sudo /Users/mingday/path/udp2raw_mp_mac_m1 -c -l0.0.0.0:3333  -r101.69.229.138:8141  -k "passwd" --raw-mode faketcp
+'
+alias chmodbpf='sudo chown -R mingday:staff /dev/bpf*'
+
 # -------------------- PATH settings --------------------
-export MASON_PATH="/Users/agou-ops/.local/share/nvim/mason/bin"
+export MASON_PATH="/Users/mingday/.local/share/nvim/mason/bin"
 export TABNINE=" ~/.vim/plugged/cmp-tabnine/binaries/4.4.6/aarch64-apple-darwin"
 export PSQL="/Library/PostgreSQL/14/bin"
-export GOPATH="/Users/agou-ops/go"
-export GOBIN="/Users/agou-ops/go/bin"
-export CARGOBIN="/Users/agou-ops/.cargo/bin"
+export GOPATH="/Users/mingday/go"
+export GOBIN="/Users/mingday/go/bin"
+export CARGOBIN="/Users/mingday/.cargo/bin"
 export PODMAN="/opt/podman/bin"
 export KTOP="${HOME}/.krew/bin"
-export ITERM2="/Users/agou-ops/.iterm2"
+export ITERM2="/Users/mingday/.iterm2"
 export TMUX_SESSION="$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin"
-export PATH="/opt/homebrew/opt/curl/bin:/opt/homebrew/opt/ruby/bin:/Users/agou-ops/PATH/bin:/Users/agou-ops/PATH:$LUALSP:$TABNINE:$PATH:$MASON_PATH:$PSQL:$GOBIN:$CARGOBIN:$PODMAN:$KTOP:$TMUX_SESSION:$ITERM2"
+export GNUSED="/opt/homebrew/Cellar/gnu-sed/4.9/libexec/gnubin"
+export PG_HOME="/Library/PostgreSQL/16"
+export PATH="$PG_HOME/bin:$GNUSED:/opt/homebrew/opt/curl/bin:/opt/homebrew/opt/ruby/bin:/Users/mingday/PATH/bin:/Users/mingday/PATH:$LUALSP:$TABNINE:$PATH:$MASON_PATH:$PSQL:$GOBIN:$CARGOBIN:$PODMAN:$KTOP:$TMUX_SESSION:$ITERM2"
 
 # read man pages use neovim
 export MANPAGER='nvim +Man!'
@@ -253,11 +276,11 @@ export LANG="en_US.UTF-8"
 # cheange kubectl editor
 export KUBE_EDITOR="/usr/local/bin/nvim --clean"
 
-
 # -------------------- Source settings --------------------
 
 # -------------- ls colors theme --------------
-source ~/lscolors.sh
+# TODO
+#source ~/lscolors.sh
 # vivid install required.( brew install vivid )
 export LS_COLORS="$(vivid generate ~/.config/vivid/themes/molokai.yml)"
 
@@ -269,30 +292,26 @@ export TERM=xterm-256color
 # share history between terminal.
 # setopt share_history
 
-# source ~/.iterm2_shell_integration.zsh
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-. "/Users/agou-ops/.acme.sh/acme.sh.env"
 
 # eval "$(zoxide init zsh)"
-eval "$(assh completion zsh)"
+# eval "$(assh completion zsh)"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/Users/agou-ops/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/Users/agou-ops/miniconda3/etc/profile.d/conda.sh" ]; then
-#         . "/Users/agou-ops/miniconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/Users/agou-ops/miniconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# <<< conda initialize <<<
+[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
+
+[ -f ~/.istioctl.zsh ] && source ~/.istioctl.zsh
+
+[ -f ~/.krew_completion ] && source ~/.krew_completion
+
+[ -f ~/.docker_completion ] && source ~/.docker_completion
+
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
