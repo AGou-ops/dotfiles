@@ -41,7 +41,7 @@ return {
                 mapping = { 'jk', 'jj', 'kj', 'jl' }, -- a table with mappings to use
                 timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
                 clear_empty_lines = false, -- clear line after escaping if there is only whitespace
-                keys = '<Esc>', -- keys used for escaping, if it is a function will use the result everytime
+                keys = '<Esc>', -- keys used for escaping, if it is a function will use the result every time
                 -- example(recommended)
                 -- keys = function()
                 --   return vim.api.nvim_win_get_cursor(0)[2] > 1 and '<esc>l' or '<esc>'
@@ -407,6 +407,20 @@ return {
         dependencies = { 'L3MON4D3/LuaSnip' },
         init = function()
             require('luasnip_snippets.common.snip_utils').setup()
+        end,
+    },
+    { -- Apply highlights in different modes and operators, active and inactive windows.
+        'rasulomaroff/reactive.nvim',
+        event = 'VeryLazy',
+        enabled = false,
+        config = function()
+            require('reactive').setup({
+                builtin = {
+                    cursorline = true,
+                    cursor = true,
+                    modemsg = true,
+                },
+            })
         end,
     },
 }
