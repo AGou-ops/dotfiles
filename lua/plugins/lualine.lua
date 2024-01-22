@@ -106,7 +106,7 @@ function M.config()
                 },
                 {
                     'filesize',
-                    icon = '',
+                    icon = '󰷊',
                     cond = conditions.buffer_not_empty,
                     color = { fg = '#a3be8c' },
                 },
