@@ -35,10 +35,10 @@ au FileType go set noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
 
 au BufRead,BufNewFile Jenkinsfile,*.jenkins set filetype=groovy
 
-let g:python3_host_prog = "/opt/homebrew/opt/python@3.11/libexec/bin/python"
+let g:python3_host_prog = "/opt/homebrew/bin/python3"
 
 " Clear jumplist on exit
-au VimEnter * exe 'tabdo windo clearjumps' | tabnext
+" au VimEnter * exe 'tabdo window clearjumps' | tabnext
 
 ]])
 
