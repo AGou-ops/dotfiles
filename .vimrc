@@ -1,29 +1,56 @@
-" AGou's minial vim config
-" Install vim-plug
-" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-call plug#begin()
+call plug#begin('~/.vim')
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sainnhe/gruvbox-material'
 Plug 'preservim/nerdtree'
 
 call plug#end()
 
-" ---------- autocmd
-autocmd VimEnter * NERDTree | wincmd p
+" colorscheme
+if has('termguicolors')
+  set termguicolors
+endif
+set background=dark
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_better_performance = 1
+colorscheme gruvbox-material
+" ---------------------
 
-" ---------- highlights
-highlight Visual cterm=reverse ctermbg=NONE
+" options
+set nu
+set encoding=utf-8
+set nobackup
+set nowritebackup
+set updatetime=300
+set signcolumn=yes
 
-" ---------- keymappings
-imap jk <ESC>
-nnoremap <C-n> :NERDTreeToggle<CR>
+" ---------------------
+
+"  keymaps
+
+noremap y "*y
+noremap p "*p
+noremap Y "+y
+noremap P "+p
+
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
-nnoremap q <Nop>
-nnoremap H g^
-nnoremap k gk
-nnoremap j gj
-nnoremap L g_
-vnoremap H g^
-vnoremap L g_
+nnoremap ; :
+imap jk <ESC>
+
+nnoremap <C-n> :NERDTreeToggle<CR>
+
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" ---------------------
+
+
+autocmd VimEnter * NERDTree | wincmd p
+" ---------------------
