@@ -133,6 +133,7 @@ function M.config()
         'vuels',
         'marksman',
         'bufls',
+        'ansiblels',
     }
 
     for _, lsp in ipairs(servers) do
