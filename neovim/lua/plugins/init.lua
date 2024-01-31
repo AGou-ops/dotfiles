@@ -15,6 +15,7 @@ return {
             let g:gruvbox_material_background = 'hard'
             " For better performance
             let g:gruvbox_material_better_performance = 1
+			let g:gruvbox_material_enable_italic = 1
 
             let g:gruvbox_material_diagnostic_text_highlight = 1
             " let g:gruvbox_material_diagnostic_line_highlight = 1

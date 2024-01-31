@@ -250,4 +250,5 @@ return {
             parser_config.markdown.filetype_to_parsername = 'octo'
         end,
     },
+    { 'nvim-treesitter/playground', lazy = false, enable = false },
 }
