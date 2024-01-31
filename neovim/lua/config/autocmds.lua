@@ -2,20 +2,19 @@
 -- TODO: 待优化
 vim.cmd([[
 " use async terminal instead
-autocmd FileType go nmap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=10 go run $(VIM_FILEPATH)<CR>
-autocmd FileType go nmap <Leader>rR :AsyncRun -mode=term -pos=bottom -rows=85 go run $(VIM_FILEPATH)<CR>
-autocmd FileType go nmap <Leader>rt :AsyncRun -mode=term -pos=toggleterm2 go run $(VIM_FILEPATH)<CR>
-autocmd FileType go nmap <Leader>rT :AsyncRun -mode=term -pos=macos go run $(VIM_FILEPATH)<CR>
-autocmd FileType go nmap <Leader>rp :AsyncRun -mode=term -pos=bottom -rows=10 go run .<CR>
-autocmd FileType go nmap <Leader>rP :AsyncRun -mode=term -pos=macos -rows=10 go run .<CR>
-" autocmd FileType go nmap <Leader>gt :AsyncRun -mode=term -pos=bottom -rows=10 go test $(VIM_FILEPATH)CR>
-autocmd FileType go nmap <Leader>gb :AsyncRun -mode=term -pos=bottom -rows=10 go build .<CR>
-autocmd FileType * nmap <Leader>ta :AsyncRun -mode=term -pos=bottom -rows=10 zsh<CR>
-autocmd FileType html nmap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=80 http-server .<CR>
-autocmd FileType markdown nnoremap <C-b> ciw****<left><Esc>P
-autocmd FileType markdown nnoremap <Leader>rm :MarkdownPreview<CR>
-autocmd FileType markdown vnoremap <C-b> c****<left><Esc>P
-autocmd FileType tex nmap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=10 miktex-xelatex % && open -a "Google Chrome" resume_photo.pdf<CR>
+autocmd BufEnter *.go nnoremap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=10 go run $(VIM_FILEPATH)<CR>
+autocmd BufEnter *.go nnoremap <Leader>rR :AsyncRun -mode=term -pos=bottom -rows=85 go run $(VIM_FILEPATH)<CR>
+autocmd BufEnter *.go nnoremap <Leader>rt :AsyncRun -mode=term -pos=toggleterm2 go run $(VIM_FILEPATH)<CR>
+autocmd BufEnter *.go nnoremap <Leader>rT :AsyncRun -mode=term -pos=macos go run $(VIM_FILEPATH)<CR>
+autocmd BufEnter *.go nnoremap <Leader>rp :AsyncRun -mode=term -pos=bottom -rows=10 go run .<CR>
+autocmd BufEnter *.go nnoremap <Leader>rP :AsyncRun -mode=term -pos=macos -rows=10 go run .<CR>
+" autocmd BufEnter *.go nnoremap <Leader>gt :AsyncRun -mode=term -pos=bottom -rows=10 go test $(VIM_FILEPATH)CR>
+autocmd BufEnter *.go nnoremap <Leader>gb :AsyncRun -mode=term -pos=bottom -rows=10 go build .<CR>
+autocmd BufEnter *.html nnoremap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=80 http-server .<CR>
+autocmd BufEnter *.markdown nnoremap <C-b> ciw****<left><Esc>P
+autocmd BufEnter *.markdown nnoremap <Leader>rm :MarkdownPreview<CR>
+autocmd BufEnter *.markdown vnoremap <C-b> c****<left><Esc>P
+autocmd BufEnter *.tex nnoremap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=10 miktex-xelatex % && open -a "Google Chrome" resume_photo.pdf<CR>
 ]])
 
 vim.cmd([[
