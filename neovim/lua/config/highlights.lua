@@ -3,7 +3,9 @@ vim.cmd([[
 hi Comment cterm=NONE ctermfg=245 gui=NONE guifg=#928374
 hi GitSignsCurrentLineBlame ctermfg=245 gui=italic guifg=#928374
 
-hi TSKeyword ctermfg=167 gui=italic guifg=#ea6962
+" hi TSKeyword ctermfg=167 gui=italic guifg=#ea6962
+hi TSTYPE ctermfg=3 guifg=#D1A863
+hi @module ctermfg=3 guifg=#D1A863
 hi TSKeywordFunction ctermfg=167 gui=italic guifg=#ea6962
 hi TSKeywordReturn ctermfg=167 gui=italic guifg=#ea6962
 hi TSRepeat ctermfg=167 gui=italic guifg=#ea6962
