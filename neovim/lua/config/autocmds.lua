@@ -10,9 +10,9 @@ autocmd BufEnter *.go nnoremap <Leader>rp :AsyncRun -mode=term -pos=bottom -rows
 autocmd BufEnter *.go nnoremap <Leader>rP :AsyncRun -mode=term -pos=macos -rows=10 go run .<CR>
 " autocmd BufEnter *.go nnoremap <Leader>gt :AsyncRun -mode=term -pos=bottom -rows=10 go test $(VIM_FILEPATH)CR>
 autocmd BufEnter *.go nnoremap <Leader>gb :AsyncRun -mode=term -pos=bottom -rows=10 go build .<CR>
-autocmd BufEnter *.html nnoremap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=80 http-server .<CR>
+autocmd BufEnter *.html nnoremap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=80 miniserve .<CR>
 autocmd BufEnter *.markdown nnoremap <C-b> ciw****<left><Esc>P
-autocmd BufEnter *.markdown nnoremap <Leader>rm :MarkdownPreview<CR>
+autocmd BufEnter *.markdown nnoremap <Leader>mp :MarkdownPreview<CR>
 autocmd BufEnter *.markdown vnoremap <C-b> c****<left><Esc>P
 autocmd BufEnter *.tex nnoremap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=10 miktex-xelatex % && open -a "Google Chrome" resume_photo.pdf<CR>
 ]])
