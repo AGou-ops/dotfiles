@@ -3,3 +3,4 @@ neovim/lua/utils/snippets
 .DS_Store
 profile.log
 flame.svg
+Tmux/.tmux
