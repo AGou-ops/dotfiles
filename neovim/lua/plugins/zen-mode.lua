@@ -68,7 +68,7 @@ function M.config()
         },
         on_open = function()
             vim.cmd([[
-			IndentBlanklineDisable
+			IBLDisable
 			ScrollbarHide
 			set norelativenumber
 			set nonumber
@@ -80,7 +80,7 @@ function M.config()
         end,
         on_close = function()
             vim.cmd([[
-			IndentBlanklineEnable
+			IBLEnable
 			ScrollbarShow
 			set relativenumber
 			Barbecue show
