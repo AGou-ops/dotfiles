@@ -80,6 +80,9 @@ bind('n', '<leader>te', '<CMD>tabedit<CR>', opts)
 -- bind('n', '<leader>td', '<CMD>tabclose<CR>', opts)
 bind('n', '<leader>tm', '<CMD>tabm<CR>', opts)
 
+-- open vscode from current directory
+bind('n', '<leader>cd', "<CMD>let $VIM_DIR=expand('%:p:h')<CR>:silent !code $VIM_DIR<CR>")
+
 -- ============= Plugin Keymaps =============
 -- git open current repo
 bind('n', '<leader>go', '<CMD>:!git open<CR><CR>', opts)
