@@ -5,6 +5,7 @@ hi GitSignsCurrentLineBlame ctermfg=245 gui=italic guifg=#928374
 
 " hi TSKeyword ctermfg=167 gui=italic guifg=#ea6962
 hi TSTYPE ctermfg=3 guifg=#D1A863
+hi TSTypeDefinition ctermfg=3 guifg=#D1A863
 hi @module ctermfg=3 guifg=#D1A863
 hi TSKeywordFunction ctermfg=167 gui=italic guifg=#ea6962
 hi TSKeywordReturn ctermfg=167 gui=italic guifg=#ea6962
