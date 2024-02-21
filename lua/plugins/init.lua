@@ -428,6 +428,7 @@ return {
     { -- auto close lsp server when losing focus. ( save mem )
         'hinell/lsp-timeout.nvim',
         lazy = false,
+        enabled = false,
         dependencies = { 'neovim/nvim-lspconfig' },
         init = function()
             vim.g.lspTimeoutConfig = {
@@ -445,6 +446,7 @@ return {
     { -- Tint inactive windows in Neovim using window-local highlight namespaces.
         'levouh/tint.nvim',
         event = 'VeryLazy',
+        enabled = false,
         config = function()
             require('tint').setup({
                 tint = -3, -- Darken colors, use a positive value to brighten

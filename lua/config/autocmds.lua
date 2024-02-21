@@ -36,8 +36,8 @@ au BufRead,BufNewFile Jenkinsfile,*.jenkins set filetype=groovy
 
 let g:python3_host_prog = "/opt/homebrew/bin/python3"
 
-" Clear jumplist on exit
-" au VimEnter * exe 'tabdo window clearjumps' | tabnext
+" Clear jumplist on vim Enter
+au VimEnter * :clearjumps
 
 ]])
 
