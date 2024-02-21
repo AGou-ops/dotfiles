@@ -8,7 +8,7 @@ local opts = { noremap = true, silent = true }
 -- vim.api.nvim_create_user_command('TransparentToggle', 'hi Normal ctermbg=NONE guibg=NONE | hi EndOfBuffer guibg=NONE ctermbg=NONE', {})
 -- bind('n', '<F3>', '<CMD>TransparentToggle<CR>')
 
-bind('n', ';', ':', opts)
+bind('n', ';', ':')
 bind('n', 'U', '<C-r>', opts)
 bind('v', ';', ':', opts)
 
@@ -82,8 +82,14 @@ bind('n', '<leader>tm', '<CMD>tabm<CR>', opts)
 
 -- open vscode from current directory
 bind('n', '<leader>cd', "<CMD>let $VIM_DIR=expand('%:p:h')<CR>:silent !code $VIM_DIR<CR>")
+-- select all text
+bind('n', '<M-a>', 'ggVG', opts)
 
 -- ============= Plugin Keymaps =============
+-- lsp restart
+bind('n', '<leader>lr', '<CMD>LspRestart<CR>', opts)
+bind('n', '<leader>ls', '<CMD>LspStop<CR>', opts)
+bind('n', '<leader>lS', '<CMD>LspStart<CR>', opts)
 -- git open current repo
 bind('n', '<leader>go', '<CMD>:!git open<CR><CR>', opts)
 -- toggleTerm & Lazygit
