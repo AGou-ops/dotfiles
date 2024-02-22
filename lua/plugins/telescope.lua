@@ -57,6 +57,13 @@ return {
             end,
             desc = 'Toggle Telescope jumplist',
         },
+        {
+            '<leader>tp',
+            function()
+                vim.cmd('Telescope projects')
+            end,
+            desc = 'Toggle Telescope projects',
+        },
     },
     config = function()
         local telescope = require('telescope')
@@ -214,5 +221,6 @@ return {
         })
         telescope.load_extension('fzf')
         telescope.load_extension('dap')
+        telescope.load_extension('projects')
     end,
 }

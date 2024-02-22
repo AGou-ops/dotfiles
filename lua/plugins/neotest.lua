@@ -7,7 +7,7 @@ local M = {
     },
     keys = {
         {
-            '<leader>gt',
+            '<leader>nt',
             function()
                 require('neotest').summary.open()
                 vim.cmd([[Neotest run]])
@@ -16,7 +16,7 @@ local M = {
             desc = 'Neotest toggle',
         },
         {
-            '<leader>tp',
+            '<leader>np',
             function()
                 require('neotest').output_panel.toggle()
             end,
