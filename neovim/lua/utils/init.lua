@@ -1,3 +1,7 @@
+-- autoheader util
+require('utils.autoheader')
+
+-- hardMode util
 local o = vim.o
 local fn = vim.fn
 local cmd = vim.cmd
