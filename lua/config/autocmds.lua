@@ -34,7 +34,8 @@ au FileType go set noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
 
 au BufRead,BufNewFile Jenkinsfile,*.jenkins set filetype=groovy
 
-" let g:python3_host_prog = "/opt/homebrew/bin/python3"
+" TODO: set your own python3 path.(LeaderF)
+let g:python3_host_prog = "/opt/homebrew/bin/python3.11"
 
 " Clear jumplist on vim Enter
 au VimEnter * :clearjumps
