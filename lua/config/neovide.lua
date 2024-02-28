@@ -20,4 +20,31 @@ if vim.g.neovide then
 
     -- remap nvimTree keymap
     vim.keymap.set('n', '<D-n>', '<Cmd>NvimTreeToggle<CR>')
+    vim.opt.laststatus = 3
+
+    -- command mapping
+    vim.keymap.set({ 'i', 'n' }, '<D-a>', '<Esc>ggVG') -- select all
+    vim.keymap.set({ 'i', 'n' }, '<D-w>', function()
+        confirm_close_tab()
+    end) -- close tab
+    vim.keymap.set({ 'i', 'n' }, '<D-[>', function()
+        vim.cmd('BufferPrevious')
+    end) -- previous tab
+    vim.keymap.set({ 'i', 'n' }, '<D-]>', function()
+        vim.cmd('BufferNext')
+    end) -- next tab
+    vim.keymap.set('i', '<D-t>', '<C-o>:tabnew<CR><Esc>') -- new tab (insert)
+    vim.keymap.set('n', '<D-t>', ':tabnew<CR>') -- new tab (insert)
+    vim.keymap.set('i', '<D-s>', '<C-o>:w<CR>') -- save (insert)
+    vim.keymap.set('n', '<D-s>', ':w<CR>') -- save (normal)
+    vim.keymap.set('x', '<D-x>', '"+dm0i<Esc>`0') -- cut (include insert hack to fix whichkey issue #518)
+    vim.keymap.set('x', '<D-c>', '"+y') -- copy
+    vim.keymap.set('i', '<D-v>', '<C-r><C-o>+') -- paste (insert)
+    vim.keymap.set('n', '<D-v>', 'i<C-r><C-o>+<Esc>l') -- paste (normal)
+    vim.keymap.set('x', '<D-v>', '"+P') -- paste (visual)
+    vim.keymap.set('c', '<D-v>', '<C-r>+') -- paste (command)
+    vim.keymap.set('n', '<D-z>', 'u') -- undo
+    vim.keymap.set({ 'i', 'n' }, '<D-q>', function()
+        vim.cmd('confirm qa')
+    end) -- quit
 end
