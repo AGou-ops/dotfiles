@@ -1,7 +1,8 @@
+---@diagnostic disable: missing-fields
 local M = {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
-    enabled = true,
+    -- lazy = false,
     dependencies = {
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-buffer',
@@ -213,9 +214,13 @@ function M.config()
             end,
         },
         sources = {
+            {
+                name = 'codeium',
+                priority = 100,
+            },
             { name = 'nvim_lsp', priority = 50 },
             { name = 'cmp_tabnine', priority = 90 },
-            { name = 'luasnip', priority = 50 },
+            { name = 'luasnip', priority = 100 },
             { name = 'path', priority = 99 },
             { name = 'buffer', priority = 50, max_item_count = 5 },
             { name = 'emoji', priority = 50 },

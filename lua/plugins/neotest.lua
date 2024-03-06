@@ -1,5 +1,6 @@
 local M = {
     'nvim-neotest/neotest',
+    enabled = false,
     event = 'VeryLazy',
     dependencies = {
         'nvim-neotest/neotest-go',

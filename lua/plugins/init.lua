@@ -97,6 +97,7 @@ return {
     },
     { ---- Auto generate some comments.
         'danymat/neogen',
+		enabled = false,
         event = 'VeryLazy',
         dependencies = 'nvim-treesitter/nvim-treesitter',
         config = true,
@@ -283,6 +284,7 @@ return {
     },
     { ---- session manager
         'Shatur/neovim-session-manager',
+		enabled = false,
         event = 'VeryLazy',
         keys = {
             {
@@ -322,6 +324,7 @@ return {
             'nvim-treesitter/nvim-treesitter',
         },
         ft = 'go',
+		enabled = false,
         config = function()
             vim.api.nvim_set_keymap(
                 'n',
@@ -334,6 +337,7 @@ return {
     },
     { -- Batch replacement tool
         'AckslD/muren.nvim',
+		enabled = false,
         config = true,
         event = 'VeryLazy',
         cmd = 'MurenToggle',
@@ -394,6 +398,7 @@ return {
         'NeogitOrg/neogit',
         dependencies = 'nvim-lua/plenary.nvim',
         event = 'VeryLazy',
+		enabled = false,
         config = function()
             require('neogit').setup({})
         end,
@@ -403,14 +408,6 @@ return {
         event = 'VeryLazy',
         config = function()
             require('highlight-undo').setup({})
-        end,
-    },
-    { -- luasnip snippets collections( from  vim-snippets )
-        'mireq/luasnip-snippets',
-        --dir = "/tmp/snippets",
-        dependencies = { 'L3MON4D3/LuaSnip' },
-        init = function()
-            require('luasnip_snippets.common.snip_utils').setup()
         end,
     },
     { -- Apply highlights in different modes and operators, active and inactive windows.
