@@ -1,5 +1,6 @@
 local M = {
     'folke/zen-mode.nvim',
+	enabled = false,
     event = 'VeryLazy',
     keys = {
         {

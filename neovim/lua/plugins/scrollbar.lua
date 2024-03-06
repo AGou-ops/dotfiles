@@ -1,7 +1,7 @@
 local M = {
     'petertriho/nvim-scrollbar',
     event = 'VeryLazy',
-    -- enabled = false,
+    enabled = false,
 }
 
 function M.config()
