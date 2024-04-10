@@ -97,17 +97,9 @@ return {
     },
     { ---- Auto generate some comments.
         'danymat/neogen',
-		enabled = false,
         event = 'VeryLazy',
         dependencies = 'nvim-treesitter/nvim-treesitter',
         config = true,
-    },
-    { ---- Quikly comment plugin.
-        'numToStr/Comment.nvim',
-        event = 'VeryLazy',
-        config = function()
-            require('Comment').setup()
-        end,
     },
     { ---- Multiple cursors plugin for vim/neovim
         'mg979/vim-visual-multi',
@@ -284,7 +276,7 @@ return {
     },
     { ---- session manager
         'Shatur/neovim-session-manager',
-		enabled = false,
+        enabled = false,
         event = 'VeryLazy',
         keys = {
             {
@@ -324,7 +316,7 @@ return {
             'nvim-treesitter/nvim-treesitter',
         },
         ft = 'go',
-		enabled = false,
+        enabled = false,
         config = function()
             vim.api.nvim_set_keymap(
                 'n',
@@ -337,7 +329,7 @@ return {
     },
     { -- Batch replacement tool
         'AckslD/muren.nvim',
-		enabled = false,
+        enabled = false,
         config = true,
         event = 'VeryLazy',
         cmd = 'MurenToggle',
@@ -398,7 +390,7 @@ return {
         'NeogitOrg/neogit',
         dependencies = 'nvim-lua/plenary.nvim',
         event = 'VeryLazy',
-		enabled = false,
+        enabled = false,
         config = function()
             require('neogit').setup({})
         end,
@@ -454,6 +446,15 @@ return {
                 tint_background_colors = true, -- Tint background portions of highlight groups
                 highlight_ignore_patterns = { 'WinSeparator', 'Status.*' }, -- Highlight group patterns to ignore, see `string.find`
             })
+        end,
+    },
+    { -- open LSP textDocument/documentLink
+        'icholy/lsplinks.nvim',
+        ft = 'go',
+        config = function()
+            local lsplinks = require('lsplinks')
+            lsplinks.setup()
+            vim.keymap.set('n', 'gl', lsplinks.gx)
         end,
     },
 }
