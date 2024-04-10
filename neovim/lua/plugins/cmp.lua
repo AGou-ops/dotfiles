@@ -6,12 +6,19 @@ local M = {
     dependencies = {
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-emoji',
+        -- 'hrsh7th/cmp-emoji',
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-nvim-lsp-signature-help',
         'saadparwaiz1/cmp_luasnip',
         'octaltree/cmp-look',
         'tzachar/cmp-tabnine',
+        {
+            'Exafunction/codeium.nvim',
+            enabled = false,
+            cmd = 'Codeium',
+            build = ':Codeium Auth',
+            opts = {},
+        },
     },
 }
 
@@ -102,7 +109,7 @@ function M.config()
                     Enum = '',
                     Keyword = '',
                     Snippet = '',
-                    Color = '',
+                    Color = '',
                     File = '',
                     Reference = '',
                     Folder = '',
@@ -113,6 +120,7 @@ function M.config()
                     Operator = '',
                     TypeParameter = ' ',
                     Robot = '󱚤',
+                    Roboti = '󱨚',
                     Smiley = ' ',
                     Note = ' ',
                 }
@@ -124,23 +132,28 @@ function M.config()
                     -- vim_item.kind_hl_group = "CmpItemKindTabnine"
                 end
 
-                if entry.source.name == 'emoji' then
-                    vim_item.kind = lspkind_icons['Smiley']
-                    vim_item.kind_hl_group = 'CmpItemKindEmoji'
-                end
+                -- if entry.source.name == 'emoji' then
+                --     vim_item.kind = lspkind_icons['Smiley']
+                --     vim_item.kind_hl_group = 'CmpItemKindEmoji'
+                -- end
 
                 if entry.source.name == 'look' then
                     vim_item.kind = lspkind_icons['Note']
                     -- vim_item.kind_hl_group = "CmpItemKindEmoji"
                 end
+                -- if entry.source.name == 'codeium' then
+                --     vim_item.kind = lspkind_icons['Roboti']
+                --     -- vim_item.kind_hl_group = "CmpItemKindEmoji"
+                -- end
                 vim_item.menu = ({
                     buffer = '[Buffer]',
                     nvim_lsp = meta_type,
                     path = '[Path]',
                     luasnip = '[LuaSnip]',
                     cmp_tabnine = '[TN]',
-                    emoji = '[Emoji]',
+                    -- emoji = '[Emoji]',
                     look = '[Dict]',
+                    -- codeium = '[Code]',
                 })[entry.source.name]
 
                 return vim_item
@@ -214,16 +227,17 @@ function M.config()
             end,
         },
         sources = {
-            {
-                name = 'codeium',
-                priority = 100,
-            },
+            -- {
+            --     name = 'codeium',
+            --     group_index = 1,
+            --     priority = 100,
+            -- },
             { name = 'nvim_lsp', priority = 50 },
             { name = 'cmp_tabnine', priority = 90 },
             { name = 'luasnip', priority = 100 },
             { name = 'path', priority = 99 },
             { name = 'buffer', priority = 50, max_item_count = 5 },
-            { name = 'emoji', priority = 50 },
+            -- { name = 'emoji', priority = 50 },
             { name = 'nvim_lsp_signature_help', priority = 50 },
             {
                 name = 'look',
