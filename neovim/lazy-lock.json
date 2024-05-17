@@ -1,5 +1,4 @@
 {
-  "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
   "LeaderF": { "branch": "master", "commit": "25218c5ff71e2569155a23a757fbc0d79b3a5608" },
   "LuaSnip": { "branch": "master", "commit": "78296bfabf756dbb6c7134aa219e75564dddf40f" },
   "asyncrun.vim": { "branch": "master", "commit": "4261fa97f4a5429ec4bf5cfeaba74159c7e74f12" },

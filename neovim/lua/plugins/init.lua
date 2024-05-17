@@ -101,13 +101,13 @@ return {
         dependencies = 'nvim-treesitter/nvim-treesitter',
         config = true,
     },
-    { ---- Quikly comment plugin.
-        'numToStr/Comment.nvim',
-        event = 'VeryLazy',
-        config = function()
-            require('Comment').setup()
-        end,
-    },
+    -- { ---- Quikly comment plugin.
+    --     'numToStr/Comment.nvim',
+    --     event = 'VeryLazy',
+    --     config = function()
+    --         require('Comment').setup()
+    --     end,
+    -- },
     { ---- Multiple cursors plugin for vim/neovim
         'mg979/vim-visual-multi',
         event = 'VeryLazy',
