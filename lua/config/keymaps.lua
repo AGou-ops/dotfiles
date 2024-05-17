@@ -145,5 +145,9 @@ bind(
 )
 --
 -- close lspinlayHit
-bind('n', '<leader>io', '<CMD>lua vim.lsp.inlay_hint(0, true)<CR>', opts)
-bind('n', '<leader>ic', '<CMD>lua vim.lsp.inlay_hint(0, false)<CR>', opts)
+bind(
+    'n',
+    '<leader>ih',
+    '<CMD>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>',
+    opts
+)

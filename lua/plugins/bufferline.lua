@@ -1,6 +1,6 @@
 local M = {
     'akinsho/bufferline.nvim',
-    version = 'v3.*',
+    -- version = 'v3.*',
     -- event = "VeryLazy",
     lazy = false,
     dependencies = {
