@@ -1,7 +1,7 @@
 return {
     'kevinhwang91/nvim-ufo',
     dependencies = 'kevinhwang91/promise-async',
-    enabled = false,
+    enabled = true,
     event = 'VeryLazy',
     opts = {
         -- INFO: Uncomment to use treeitter as fold provider, otherwise nvim lsp is used
@@ -9,7 +9,8 @@ return {
         --   return { "treesitter", "indent" }
         -- end,
         open_fold_hl_timeout = 400,
-        close_fold_kinds = { 'imports', 'comment' },
+        close_fold_kinds_for_ft = { default = { 'imports', 'comment' } },
+
         preview = {
             win_config = {
                 border = { '', '─', '', '', '', '─', '', '' },
@@ -36,7 +37,7 @@ return {
             local newVirtText = {}
             local totalLines = vim.api.nvim_buf_line_count(0)
             local foldedLines = endLnum - lnum
-            local suffix = (' 󰘕 %d %d%%'):format(foldedLines, foldedLines / totalLines * 100)
+            local suffix = (' 󰦸 %d %d%%'):format(foldedLines, foldedLines / totalLines * 100)
             local sufWidth = vim.fn.strdisplaywidth(suffix)
             local targetWidth = width - sufWidth
             local curWidth = 0
