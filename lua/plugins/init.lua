@@ -16,9 +16,10 @@ return {
             " For better performance
             let g:gruvbox_material_better_performance = 1
 			let g:gruvbox_material_enable_italic = 1
+			let g:gruvbox_material_inlay_hints_background = 'dimmed'
 
             let g:gruvbox_material_diagnostic_text_highlight = 1
-            " let g:gruvbox_material_diagnostic_line_highlight = 1
+            "let g:gruvbox_material_diagnostic_line_highlight = 1
             let g:gruvbox_material_diagnostic_virtual_text = "colored"
             let g:gruvbox_material_sign_column_background = 'none'
 
@@ -463,5 +464,18 @@ return {
             lsplinks.setup()
             vim.keymap.set('n', 'gl', lsplinks.gx)
         end,
+    },
+    { -- sub stitute
+        'chrisgrieser/nvim-rip-substitute',
+        keys = {
+            {
+                '<leader>fs',
+                function()
+                    require('rip-substitute').sub()
+                end,
+                mode = { 'n', 'x' },
+                desc = ' rip substitute',
+            },
+        },
     },
 }
