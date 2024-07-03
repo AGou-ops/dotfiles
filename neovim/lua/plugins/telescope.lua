@@ -4,7 +4,31 @@ return {
     dependencies = {
         {
             'nvim-telescope/telescope-fzf-native.nvim',
-            build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
+            build = function(plugin)
+                local obj = vim.system(
+                    { 'cmake', '-S.', '-Bbuild', '-DCMAKE_BUILD_TYPE=Release' },
+                    { cwd = plugin.dir }
+                ):wait()
+                if obj.code ~= 0 then
+                    error(obj.stderr)
+                end
+                obj = vim.system(
+                    { 'cmake', '--build', 'build', '--config', 'Release' },
+                    { cwd = plugin.dir }
+                )
+                    :wait()
+                if obj.code ~= 0 then
+                    error(obj.stderr)
+                end
+                obj = vim.system(
+                    { 'cmake', '--install', 'build', '--prefix', 'build' },
+                    { cwd = plugin.dir }
+                )
+                    :wait()
+                if obj.code ~= 0 then
+                    error(obj.stderr)
+                end
+            end,
         },
         {
             'nvim-telescope/telescope-dap.nvim',
@@ -68,7 +92,7 @@ return {
     config = function()
         local telescope = require('telescope')
         local actions = require('telescope.actions')
-        local trouble = require('trouble.providers.telescope')
+        local trouble = require('trouble.sources.telescope')
 
         telescope.setup({
             defaults = {
@@ -172,7 +196,7 @@ return {
                         ['<M-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
                         ['<C-l>'] = actions.complete_tag,
                         ['<C-_>'] = actions.which_key, -- keys from pressing <C-/>
-                        ['<c-t>'] = trouble.open_with_trouble,
+                        ['<c-t>'] = trouble.open,
                     },
 
                     n = {
