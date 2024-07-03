@@ -130,10 +130,10 @@ function M.config()
         -- 'clangd',
         -- 'texlab',
         'dockerls',
-        'vuels',
         'marksman',
         'bufls',
         'ansiblels',
+        'denols',
     }
 
     for _, lsp in ipairs(servers) do
@@ -298,6 +298,12 @@ function M.config()
     --     },
     --   },
     -- }
+    -- -------------------- html lsp settings -- --------------------
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+    nvim_lsp.html.setup({
+        capabilities = capabilities,
+    })
     -- -- --------------------------------------------------------------
 end
 
