@@ -40,10 +40,10 @@ return {
         event = 'VeryLazy',
         config = function()
             require('better_escape').setup({
-                mapping = { 'jk', 'jj', 'kj', 'jl' }, -- a table with mappings to use
-                timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
-                clear_empty_lines = false, -- clear line after escaping if there is only whitespace
-                keys = '<Esc>', -- keys used for escaping, if it is a function will use the result every time
+                -- mapping = { 'jk', 'jj', 'kj', 'jl' }, -- a table with mappings to use
+                -- timeout = vim.o.timeoutlen, -- the time in which the keys must be hit in ms. Use option timeoutlen by default
+                -- clear_empty_lines = false, -- clear line after escaping if there is only whitespace
+                -- keys = '<Esc>', -- keys used for escaping, if it is a function will use the result every time
                 -- example(recommended)
                 -- keys = function()
                 --   return vim.api.nvim_win_get_cursor(0)[2] > 1 and '<esc>l' or '<esc>'
@@ -246,11 +246,12 @@ return {
         config = function()
             if not vim.g.neovide then
                 require('drop').setup({
-                    theme = 'leaves', -- can be one of rhe default themes, or a custom theme
+                    theme = 'auto', -- can be one of rhe default themes, or a custom theme
                     max = 80, -- maximum number of drops on the screen
                     interval = 100, -- every 150ms we update the drops
                     screensaver = 1000 * 60 * 15, -- show after 15 minutes. Set to false, to disable
                     filetypes = { 'dashboard', 'alpha', 'starter' }, -- will enable/disable automatically for the following filetypes
+                    winblend = 100, -- winblend for the drop window
                 })
             end
         end,
@@ -477,5 +478,17 @@ return {
                 desc = ' rip substitute',
             },
         },
+    },
+    {
+        'Isrothy/neominimap.nvim',
+        enabled = false,
+        lazy = false, -- WARN: NO NEED to Lazy load
+        init = function()
+            vim.opt.wrap = false -- Recommended
+            vim.opt.sidescrolloff = 36 -- It's recommended to set a large value
+            vim.g.neominimap = {
+                auto_enable = true,
+            }
+        end,
     },
 }
