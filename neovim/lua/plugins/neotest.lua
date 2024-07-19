@@ -1,53 +1,28 @@
-local M = {
-    'nvim-neotest/neotest',
-    enabled = false,
-    event = 'VeryLazy',
-    dependencies = {
-        'nvim-neotest/neotest-go',
-        -- Your other test adapters here
-    },
-    keys = {
-        {
-            '<leader>nt',
-            function()
-                require('neotest').summary.open()
-                vim.cmd([[Neotest run]])
-                -- require('neotest').run.run(vim.fn.expand('%'))
-            end,
-            desc = 'Neotest toggle',
+return {
+    {
+        'nvim-neotest/neotest',
+        dependencies = {
+            'nvim-neotest/nvim-nio',
+            'nvim-lua/plenary.nvim',
+            'antoinemadec/FixCursorHold.nvim',
+            'nvim-treesitter/nvim-treesitter',
+            'fredrikaverpil/neotest-golang', -- Installation
         },
-        {
-            '<leader>np',
-            function()
-                require('neotest').output_panel.toggle()
-            end,
-            desc = 'Neotest output_panel toggle',
+        config = function()
+            require('neotest').setup({
+                adapters = {
+                    require('neotest-golang'), -- Registration
+                },
+            })
+        end,
+        keys = {
+            {
+                '<leader>tg',
+                function()
+                    require('neotest').run.run({ suite = false, strategy = 'dap' })
+                end,
+                desc = 'Debug nearest test',
+            },
         },
     },
-
-    -- 	nnoremap <leader>gt <cmd>lua require("neotest").summary.open() <CR> <cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>
-    -- nnoremap <leader>tp <cmd>lua require("neotest").output_panel.toggle()<CR>
 }
-
-function M.config()
-    -- get neotest namespace (api call creates or returns namespace)
-    local neotest_ns = vim.api.nvim_create_namespace('neotest')
-    vim.diagnostic.config({
-        virtual_text = {
-            format = function(diagnostic)
-                local message = diagnostic.message
-                    :gsub('\n', ' ')
-                    :gsub('\t', ' ')
-                    :gsub('%s+', ' ')
-                    :gsub('^%s+', '')
-                return message
-            end,
-        },
-    }, neotest_ns)
-    require('neotest').setup({
-        -- your neotest config here
-        adapters = { require('neotest-go') },
-    })
-end
-
-return M
