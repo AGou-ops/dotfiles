@@ -482,12 +482,16 @@ return {
     {
         'Isrothy/neominimap.nvim',
         enabled = false,
-        lazy = false, -- WARN: NO NEED to Lazy load
+        lazy = false,
         init = function()
             vim.opt.wrap = false -- Recommended
             vim.opt.sidescrolloff = 36 -- It's recommended to set a large value
             vim.g.neominimap = {
                 auto_enable = true,
+                buf_filter = function(bufnr)
+                    local line_count = vim.api.nvim_buf_line_count(bufnr)
+                    return line_count < 4096
+                end,
             }
         end,
     },
