@@ -112,17 +112,17 @@ bind('n', '<leader>lf', '<CMD>LeaderfFile<CR>', opts)
 bind('n', '<leader>lF', '<CMD>LeaderfFunctionAll<CR>', opts)
 
 -- telescope-dap
-bind('n', '<leader>dcc', '<CMD>Telescope dap commands<CR>', opts)
-bind('n', '<leader>dcf', '<CMD>Telescope dap configurations<CR>', opts)
-bind('n', '<leader>dl', '<CMD>Telescope dap list_breakpoints<CR>', opts)
-bind('n', '<leader>dv', '<CMD>Telescope dap variables<CR>', opts)
-bind('n', '<leader>df', '<CMD>Telescope dap frames<CR>', opts)
--- dap
-bind('n', '<leader>bp', '<CMD>DapToggleBreakpoint<CR>', opts)
-bind('n', '<leader>ds', '<CMD>DapTerminate<CR>', opts)
-bind('n', '<leader>dt', '<CMD>DapTerminate<CR>', opts)
-bind('n', '<leader>db', '<CMD>DapContinue<CR>', opts)
-bind('n', '<leader>du', '<CMD>lua require("dapui").toggle()<CR>', opts)
+-- bind('n', '<leader>dcc', '<CMD>Telescope dap commands<CR>', opts)
+-- bind('n', '<leader>dcf', '<CMD>Telescope dap configurations<CR>', opts)
+-- bind('n', '<leader>dl', '<CMD>Telescope dap list_breakpoints<CR>', opts)
+-- bind('n', '<leader>dv', '<CMD>Telescope dap variables<CR>', opts)
+-- bind('n', '<leader>df', '<CMD>Telescope dap frames<CR>', opts)
+-- -- dap
+-- bind('n', '<leader>bp', '<CMD>DapToggleBreakpoint<CR>', opts)
+-- bind('n', '<leader>ds', '<CMD>DapTerminate<CR>', opts)
+-- bind('n', '<leader>dt', '<CMD>DapTerminate<CR>', opts)
+-- bind('n', '<leader>db', '<CMD>DapContinue<CR>', opts)
+-- bind('n', '<leader>du', '<CMD>lua require("dapui").toggle()<CR>', opts)
 
 -- -- undotree
 bind('n', '<leader>oh', ':UndotreeToggle <BAR> :UndotreeFocus<CR>', opts)

@@ -1,5 +1,6 @@
 return {
     'tomasky/bookmarks.nvim',
+    enabled = false,
     dependencies = 'telescope.nvim',
     event = 'VeryLazy',
     keys = {
