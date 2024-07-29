@@ -1,6 +1,7 @@
 local M = {
     'rcarriga/nvim-dap-ui',
     ft = { 'go' },
+    enabled = false,
     dependencies = {
         'mfussenegger/nvim-dap',
         'nvim-neotest/nvim-nio',

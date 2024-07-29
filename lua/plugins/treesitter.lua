@@ -30,6 +30,7 @@ return {
     },
     {
         'nvim-treesitter/nvim-treesitter-context',
+        enabled = false,
         cmd = 'TSContextToggle',
         ft = { 'lua', 'go' },
         config = function()
