@@ -25,6 +25,7 @@ hi MatchParen ctermbg=6 guibg=#928374
 hi DiagnosticError ctermfg=1 guifg=Red
 hi DiagnosticWarn ctermfg=3 guifg=Orange
 hi DiagnosticHint ctermfg=7 guifg=LightGrey
+hi Goplements ctermfg=7 ctermbg=22 gui=italic guifg=LightGrey guibg=#333e34
 
 " ------------------
 " TEST hl group, don't use.
