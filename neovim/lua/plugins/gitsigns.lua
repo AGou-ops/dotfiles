@@ -8,7 +8,7 @@ local M = {
             desc = 'Toggle ALL Gitsigns',
         },
         { '<leader>gl', '<cmd>Gitsigns toggle_linehl<CR>', desc = 'Toggle Gitsigns linehl' },
-        { '<leader>gd', '<cmd>Gitsigns toggle_deleted<CR>', desc = 'Toggle Gitsigns deleted' },
+        { '<leader>gd', '<cmd>Gitsigns diffthis<CR>', desc = 'Toggle Gitsigns deleted' },
         { '<leader>gw', '<cmd>Gitsigns toggle_word_diff<CR>', desc = 'Toggle Gitsigns worddiff' },
     },
 }

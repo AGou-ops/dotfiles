@@ -4,6 +4,10 @@ local M = {
     dependencies = {
         'nvim-lua/plenary.nvim',
     },
+    keys = {
+        { '<leader>dv', '<cmd>DiffviewOpen<cr>', desc = 'Open DiffView for git' },
+        { '<leader>dc', '<cmd>DiffviewClose<cr>', desc = 'Close DiffView for git' },
+    },
 }
 
 function M.config()
