@@ -61,11 +61,18 @@ bind('n', '<C-\\>', '<C-w><bar>', opts)
 bind('n', '(', '%', opts)
 bind('n', ', opts)', '%', opts)
 
--- turn off direction keyboard, force yourself use `hjkl` !!!
-bind('n', '<Left>', '<Nop>', opts)
-bind('n', '<Right>', '<Nop>', opts)
-bind('n', '<Up>', '<Nop>', opts)
-bind('n', '<Down>', '<Nop>', opts)
+-- remap arrow keys to switch window
+bind('n', '<Up>', '<C-w>k', opts)
+bind('n', '<Down>', '<C-w>j', opts)
+bind('n', '<Left>', '<C-w>h', opts)
+bind('n', '<Right>', '<C-w>l', opts)
+
+-- resize window
+bind('n', '<S-Up>', '<cmd>resize +2<CR>', opts)
+bind('n', '<S-Down>', '<cmd>resize -2<CR>', opts)
+bind('n', '<S-Right>', '<cmd>vertical resize +5<CR>', opts)
+bind('n', '<S-Left>', '<cmd>vertical resize -5<CR>', opts)
+
 bind('n', '<space>', '/\\v', opts)
 bind('t', '<Esc>', '<C-\\><C-n>', opts)
 
