@@ -479,7 +479,7 @@ return {
             },
         },
     },
-    {
+    { -- show golang implements
         'maxandron/goplements.nvim',
         ft = 'go',
         opts = {
