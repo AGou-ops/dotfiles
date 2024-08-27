@@ -66,6 +66,10 @@ function M.config()
         completion = {
             completeopt = 'menu,menuone,noinsert', -- remove default noselect
         },
+        performance = {
+            debounce = 0, -- default is 60ms
+            throttle = 0, -- default is 30ms
+        },
         matching = {
             disallow_fuzzy_matching = true,
             disallow_fullfuzzy_matching = true,
