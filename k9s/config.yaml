@@ -1,0 +1,44 @@
+k9s:
+  liveViewAutoRefresh: true
+  screenDumpDir: /Users/mingday/Library/Application Support/k9s/screen-dumps
+  refreshRate: 2
+  maxConnRetry: 5
+  readOnly: false
+  noExitOnCtrlC: false
+  ui:
+    enableMouse: true
+    headless: true
+    logoless: true
+    crumbsless: true
+    reactive: true
+    noIcons: false
+    defaultsToFullScreen: true
+    skin: catppuccin-mocha-transparent
+  skipLatestRevCheck: false
+  disablePodCounting: false
+  shellPod:
+    image: registry.local:5000/nicolaka/netshoot:v0.13
+    namespace: default
+    limits:
+      cpu: 100m
+      memory: 100Mi
+  imageScans:
+    enable: false
+    exclusions:
+      namespaces: []
+      labels: {}
+  logger:
+    tail: 100
+    buffer: 5000
+    sinceSeconds: -1
+    textWrap: false
+    showTime: false
+  thresholds:
+    cpu:
+      critical: 90
+      warn: 70
+    memory:
+      critical: 90
+      warn: 70
+  featureGates:
+    nodeShell: true

@@ -1,0 +1,13 @@
+k9s:
+  cluster: kubernetes
+  namespace:
+    active: all
+    lockFavorites: false
+    favorites:
+    - all
+    - default
+  view:
+    active: po
+  featureGates:
+    nodeShell: true
+  portForwardAddress: localhost

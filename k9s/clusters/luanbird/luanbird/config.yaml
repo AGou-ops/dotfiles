@@ -1,0 +1,13 @@
+k9s:
+  cluster: luanbird
+  namespace:
+    active: all
+    lockFavorites: false
+    favorites:
+    - all
+    - default
+  view:
+    active: po
+  featureGates:
+    nodeShell: false
+  portForwardAddress: localhost
