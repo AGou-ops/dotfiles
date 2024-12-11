@@ -131,9 +131,10 @@ function M.config()
         -- 'texlab',
         'dockerls',
         'marksman',
-        'bufls',
+        -- 'bufls',
         'ansiblels',
         'denols',
+        -- 'pyright',
     }
 
     for _, lsp in ipairs(servers) do
@@ -146,6 +147,26 @@ function M.config()
         })
     end
 
+    -- -------------------- python3 lsp settings -- --------------------
+    nvim_lsp.pylsp.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+        settings = {
+            pylsp = {
+                plugins = {
+                    -- flake8 = {
+                    --     enabled = true,
+                    -- },
+                    rope_autoimport = {
+                        enabled = true,
+                    },
+                    -- rope_completion = {
+                    --     enabled = true,
+                    -- },
+                },
+            },
+        },
+    })
     -- -------------------- go lsp settings -- --------------------
     nvim_lsp.gopls.setup({
         on_attach = on_attach,
