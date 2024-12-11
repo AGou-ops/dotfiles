@@ -1,6 +1,6 @@
 local M = {
     'glepnir/lspsaga.nvim',
-    ft = { 'go', 'lua', 'sh' },
+    ft = { 'go', 'python', 'lua', 'sh' },
     -- commit = '06a131f',
     keys = {
         { 'K', '<cmd>Lspsaga hover_doc<CR>', desc = 'Toggle Lspsaga hover_doc' },

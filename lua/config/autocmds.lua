@@ -3,6 +3,7 @@
 vim.cmd([[
 " use async terminal instead
 autocmd BufEnter *.go nnoremap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=10 go run $(VIM_FILEPATH)<CR>
+autocmd BufEnter *.py nnoremap <Leader>rr :AsyncRun -mode=term -pos=bottom -rows=10 python3 $(VIM_FILEPATH)<CR>
 autocmd BufEnter *.go nnoremap <Leader>rR :AsyncRun -mode=term -pos=bottom -rows=85 go run $(VIM_FILEPATH)<CR>
 autocmd BufEnter *.go nnoremap <Leader>rt :AsyncRun -mode=term -pos=toggleterm2 go run $(VIM_FILEPATH)<CR>
 autocmd BufEnter *.go nnoremap <Leader>rT :AsyncRun -mode=term -pos=macos go run $(VIM_FILEPATH)<CR>
@@ -227,5 +228,59 @@ vim.api.nvim_create_autocmd('BufRead', {
                 vim.cmd([[Trouble qflist open]])
             end)
         end
+    end,
+})
+
+-- auto header
+local function SetTitle()
+    local ext = vim.fn.expand('%:e') -- 获取文件扩展名
+
+    if ext == 'sh' then
+        local lines = {
+            '#!/usr/bin/env bash',
+            '#',
+            '#**************************************************',
+            '# Author:         AGou-ops                        *',
+            '# Description:                                 *',
+            '# Date:             ' .. os.date('%Y-%m-%d') .. '                   *',
+            '# Copyright ' .. os.date('%Y') .. ' by AGou-ops. All Rights Reserved  *',
+            '#**************************************************',
+            '',
+            '',
+        }
+        vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+    elseif ext == 'py' then
+        local lines = {
+            '#!/usr/bin/env python3',
+            '# -*- coding: utf-8 -*-',
+            '',
+            '',
+        }
+        vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+    end
+end
+
+vim.api.nvim_create_autocmd('BufNewFile', {
+    pattern = { '*.sh', '*.py' },
+    callback = SetTitle,
+})
+
+vim.api.nvim_create_autocmd('BufNewFile', {
+    pattern = '*',
+    command = 'normal G',
+})
+
+vim.api.nvim_create_autocmd('LspProgress', {
+    ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
+    callback = function(ev)
+        local spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' }
+        vim.notify(vim.lsp.status(), 'info', {
+            id = 'lsp_progress',
+            title = 'LSP Progress',
+            opts = function(notif)
+                notif.icon = ev.data.params.value.kind == 'end' and ' '
+                    or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
+            end,
+        })
     end,
 })

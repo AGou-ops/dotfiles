@@ -27,6 +27,16 @@ hi DiagnosticWarn ctermfg=3 guifg=Orange
 hi DiagnosticHint ctermfg=7 guifg=LightGrey
 hi Goplements ctermfg=7 ctermbg=22 gui=italic guifg=LightGrey guibg=#333e34
 
+hi NvimTreeDiagnosticWarnIcon ctermfg=3 guifg=Orange
+hi NvimTreeDiagnosticInfoIcon ctermfg=109 guifg=#7daea3
+
+hi SnacksNotifierBorderInfo ctermfg=109 guifg=#7daea3
+hi SnacksNotifierBorderWarn ctermfg=3 guifg=Orange
+hi SnacksNotifierBorderError ctermfg=1 guifg=Red
+hi SnacksNotifierTitleInfo ctermfg=109 guifg=#7daea3
+hi SnacksNotifierTitleWarn ctermfg=3 guifg=Orange
+hi SnacksNotifierTitleError ctermfg=1 guifg=Red
+
 " ------------------
 " TEST hl group, don't use.
 " undercurl support: https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
