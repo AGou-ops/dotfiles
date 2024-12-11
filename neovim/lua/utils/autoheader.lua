@@ -15,8 +15,8 @@ function SetTitle()
         vim.fn.setline(11, '')
     end
     if vim.fn.expand('%:e') == 'py' then
-        -- vim.fn.setline(1, "\#!/usr/bin/env python")
-        -- vim.fn.append(1, "\# encoding: utf-8")
+        vim.fn.setline(1, '\\#!/usr/bin/env python3')
+        vim.fn.append(1, '\\# encoding: utf-8')
         vim.fn.setline(1, '# -*- coding: utf-8 -*-')
         vim.cmd('normal! Go')
     end
@@ -25,3 +25,4 @@ end
 vim.cmd([[
 autocmd BufNewFile * normal G
 ]])
+

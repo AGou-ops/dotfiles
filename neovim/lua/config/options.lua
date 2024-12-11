@@ -1,5 +1,8 @@
 -- vim.cmd('source ~/.config/nvim/lua/config/general.vim')
 
+-- leader KEY
+vim.g.mapleader = ','
+
 -- Incremental live completion
 vim.o.inccommand = 'nosplit'
 

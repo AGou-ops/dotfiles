@@ -2,6 +2,7 @@
 local M = {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
+    -- enabled = false,
     -- lazy = false,
     dependencies = {
         'hrsh7th/cmp-nvim-lsp',
