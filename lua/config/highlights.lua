@@ -1,45 +1,51 @@
-vim.cmd([[
-" ========= custom highlight group(buildin & Treesitter) settings =======
-hi Comment cterm=NONE ctermfg=245 gui=NONE guifg=#928374
-hi GitSignsCurrentLineBlame ctermfg=245 gui=italic guifg=#928374
+local function hi(group, opts)
+    vim.api.nvim_set_hl(0, group, opts)
+end
 
-" hi TSKeyword ctermfg=167 gui=italic guifg=#ea6962
-hi TSTYPE ctermfg=3 guifg=#D1A863
-hi TSTypeDefinition ctermfg=3 guifg=#D1A863
-hi @module ctermfg=3 guifg=#D1A863
-hi TSKeywordFunction ctermfg=167 gui=italic guifg=#ea6962
-hi TSKeywordReturn ctermfg=167 gui=italic guifg=#ea6962
-hi TSRepeat ctermfg=167 gui=italic guifg=#ea6962
-hi TSConditional ctermfg=167 gui=italic guifg=#ea6962
-hi TreesitterContext ctermfg=223 ctermbg=237 guifg=#ddc7a1 guibg=#3c3836
-hi NormalFloat ctermfg=223 ctermbg=237 guifg=#ddc7a1 guibg=#1E2021
-hi FloatBorder ctermfg=142 guifg=#a9b665 guibg=#1E2021
-" hi InclineNormal ctermfg=223 ctermbg=237 gui=italic guifg=#ddc7a1 guibg=#3c3836
-hi lualine_c_inactive ctermfg=223 ctermbg=237 gui=italic guifg=#ddc7a1 guibg=#3c3836
-" hi FocusedSymbol cterm=italic ctermfg=4 ctermbg=11 gui=bold,italic guifg=#181A1A guibg=#77814C
-" hi ErrorText cterm=undercurl ctermbg=52 gui=italic guibg=#442e2d guisp=#ea6962
-hi Pmenu ctermfg=223 ctermbg=237 guifg=#ddc7a1 guibg=#1E2021
-hi link LspInlayHint Comment
-hi MatchParen ctermbg=6 guibg=#928374
+hi('Comment', { fg = '#928374', italic = false })
+hi('GitSignsCurrentLineBlame', { fg = '#928374', italic = true })
 
-hi DiagnosticError ctermfg=1 guifg=Red
-hi DiagnosticWarn ctermfg=3 guifg=Orange
-hi DiagnosticHint ctermfg=7 guifg=LightGrey
-hi Goplements ctermfg=7 ctermbg=22 gui=italic guifg=LightGrey guibg=#333e34
+-- Treesitter
+hi('TSTYPE', { fg = '#D1A863' })
+hi('TSTypeDefinition', { fg = '#D1A863' })
+hi('@module', { fg = '#D1A863' })
+-- Treesitter keyword
+local keyword_groups = { 'TSKeywordFunction', 'TSKeywordReturn', 'TSRepeat', 'TSConditional' }
+for _, group in ipairs(keyword_groups) do
+    hi(group, { fg = '#ea6962', italic = true })
+end
 
-hi NvimTreeDiagnosticWarnIcon ctermfg=3 guifg=Orange
-hi NvimTreeDiagnosticInfoIcon ctermfg=109 guifg=#7daea3
+hi('TreesitterContext', { fg = '#ddc7a1', bg = '#3c3836' })
+hi('NormalFloat', { fg = '#ddc7a1', bg = '#1E2021' })
+hi('FloatBorder', { fg = '#a9b665', bg = '#1E2021' })
+hi('lualine_c_inactive', { fg = '#ddc7a1', bg = '#3c3836', italic = true })
+hi('Pmenu', { fg = '#ddc7a1', bg = '#1E2021' })
+hi('MatchParen', { bg = '#928374' })
+hi('DiagnosticError', { fg = 'Red' })
+hi('DiagnosticWarn', { fg = 'Orange' })
+hi('DiagnosticHint', { fg = 'LightGrey' })
+hi('Goplements', { fg = 'LightGrey', bg = '#333e34', italic = true })
 
-hi SnacksNotifierBorderInfo ctermfg=109 guifg=#7daea3
-hi SnacksNotifierBorderWarn ctermfg=3 guifg=Orange
-hi SnacksNotifierBorderError ctermfg=1 guifg=Red
-hi SnacksNotifierTitleInfo ctermfg=109 guifg=#7daea3
-hi SnacksNotifierTitleWarn ctermfg=3 guifg=Orange
-hi SnacksNotifierTitleError ctermfg=1 guifg=Red
+-- NvimTree
+hi('NvimTreeDiagnosticWarnIcon', { fg = 'Orange' })
+hi('NvimTreeDiagnosticInfoIcon', { fg = '#7daea3' })
 
-" ------------------
-" TEST hl group, don't use.
-" undercurl support: https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
-hi Foo cterm=undercurl ctermbg=52 gui=undercurl guibg=#543937 guisp=#ea6962 guifg=Red
-" ------------------
-]])
+-- Snacks
+local snacks_colors = {
+    info = '#7daea3',
+    warn = 'Orange',
+    error = 'Red',
+}
+
+for _, level in ipairs({ 'Info', 'Warn', 'Error' }) do
+    local color = snacks_colors[level:lower()]
+    hi('SnacksNotifierBorder' .. level, { fg = color })
+    hi('SnacksNotifierTitle' .. level, { fg = color })
+end
+
+hi('SnacksInputNormal', { fg = '#ddc7a1' })
+hi('SnacksInputBorder', { fg = '#a9b665' })
+hi('SnacksInputTitle', { fg = '#e78a4e', bold = true })
+
+-- LspInlayHint
+vim.api.nvim_set_hl(0, 'LspInlayHint', { link = 'Comment' })
