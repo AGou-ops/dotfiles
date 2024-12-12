@@ -4,11 +4,8 @@
 
 **[【😁中文文档】](README-zh.md)**
 
-🎉 **Support Neovim 0.10.0-dev！！！**
-
 ```diff
 - Tip: If you only want to use neovim's configuration, please manually switch to the `nvim` branch!!!
-+ It is recommended to update all plugins to the latest first.
 ```
 
 # Quickly start
