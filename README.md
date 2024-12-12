@@ -4,9 +4,8 @@
 
 **[【😁中文文档】](README-zh.md)**
 
-```diff
-- Tip: If you only want to use neovim's configuration, please manually switch to the `nvim` branch!!!
-```
+> [!tip]
+> **Switch to the `nvim` branch if you only need neovim configuration!**
 
 # Quickly start
 
@@ -50,90 +49,49 @@ nvim
 
 ```
 .
-├── Comment.nvim
-├── LeaderF
-├── LuaSnip
-├── asyncrun.vim
-├── autoclose.nvim
-├── barbecue.nvim
-├── better-escape.nvim
-├── bufferline.nvim
-├── cmp-buffer
-├── cmp-emoji
-├── cmp-look
-├── cmp-nvim-lsp
-├── cmp-nvim-lsp-signature-help
-├── cmp-path
-├── cmp-tabnine
-├── cmp_luasnip
-├── dashboard-nvim
-├── drop.nvim
-├── fidget.nvim
-├── flash.nvim
-├── friendly-snippets
-├── gitsigns.nvim
-├── goimpl.nvim
-├── gotests.nvim
-├── goto-preview
-├── gruvbox-material
-├── guard.nvim
-├── indent-blankline.nvim
-├── lazy.nvim
-├── lspsaga.nvim
-├── lualine.nvim
-├── markdown-preview.nvim
-├── mason-lspconfig.nvim
-├── mason.nvim
-├── muren.nvim
-├── neodev.nvim
-├── neoformat
-├── neogen
-├── neoscroll.nvim
-├── neotest
-├── neotest-go
-├── neovim-session-manager
-├── nvim-cmp
-├── nvim-colorizer.lua
-├── nvim-cursorword
-├── nvim-dap
-├── nvim-dap-ui
-├── nvim-gomove
-├── nvim-hlslens
-├── nvim-lspconfig
-├── nvim-navic
-├── nvim-picgo
-├── nvim-scrollbar
-├── nvim-surround
+├── barbecue.lua
+├── bookmarks.lua
+├── bufferline.lua
+├── close-buffers.lua
+├── cmp.lua
+├── cursorword.lua
+├── dashboard.lua
+├── diffview.lua
+├── flash.lua
+├── format.lua
+├── gitsigns.lua
+├── gomove.lua
+├── indent-blankline.lua
+├── init.lua
+├── lsp
+├── lspsaga.lua
+├── lualine.lua
+├── luasnip.lua
+├── mason.lua
+├── neoscroll.lua
+├── neotest.lua
+├── nvim-dap.lua
+├── nvim-hlslens.lua
+├── nvim-spectre.lua
+├── nvim-surround.lua
 ├── nvim-tree.lua
-├── nvim-treehopper
-├── nvim-treesitter
-├── nvim-treesitter-context
-├── nvim-treesitter-textobjects
-├── nvim-ts-rainbow
-├── nvim-ufo
-├── nvim-web-devicons
-├── playground
-├── plenary.nvim
-├── popup.nvim
-├── promise-async
-├── rnvimr
-├── suda.vim
-├── tagbar
-├── telescope-dap.nvim
-├── telescope-fzf-native.nvim
-├── telescope.nvim
-├── todo-comments.nvim
-├── toggleterm.nvim
-├── trouble.nvim
-├── undotree
-├── vim-startuptime
-├── vim-translator
-├── vim-visual-multi
-├── which-key.nvim
-└── wilder.nvim
+├── nvim-ufo.lua
+├── project.lua
+├── rnvimr.lua
+├── scrollbar.lua
+├── snacks.lua
+├── specs.lua
+├── telescope.lua
+├── todo-comments.lua
+├── toggleterm.lua
+├── translate.lua
+├── treesitter.lua
+├── trouble.lua
+├── which-key.lua
+├── wilder.lua
+└── zen-mode.lua
 
 82 directories, 0 files
-
 ```
 
 ## ScreenShot
