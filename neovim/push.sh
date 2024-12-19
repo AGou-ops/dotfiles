@@ -12,6 +12,8 @@ cd ~/myWeb/dotfiles && git checkout master && rsync -avzP --progress --delete --
 
 cd ~/myWeb/dotfiles/
 
+git pull
+
 find . -name ".DS_Store" -exec rm -f {} \;
 
 echo -e "\n"
