@@ -13,9 +13,7 @@ return {
         {
             '<leader>fg',
             function()
-                require('fzf-lua').live_grep({
-                    cmd = 'git grep --line-number --column --color=always',
-                })
+                require('fzf-lua').live_grep({})
             end,
             desc = 'Live grep file content',
         },
