@@ -54,6 +54,7 @@ return {
     { ---- A markdonw online real-time preview plugin.
         'iamcco/markdown-preview.nvim',
         build = 'cd app && npm install',
+        enabled = false,
         config = function()
             vim.g.mkdp_filetypes = { 'markdown' }
         end,
@@ -457,17 +458,9 @@ return {
             })
         end,
     },
-    { -- open LSP textDocument/documentLink
-        'icholy/lsplinks.nvim',
-        ft = 'go',
-        config = function()
-            local lsplinks = require('lsplinks')
-            lsplinks.setup()
-            vim.keymap.set('n', 'gl', lsplinks.gx)
-        end,
-    },
     { -- sub stitute
         'chrisgrieser/nvim-rip-substitute',
+        enabled = false,
         keys = {
             {
                 '<leader>fs',
