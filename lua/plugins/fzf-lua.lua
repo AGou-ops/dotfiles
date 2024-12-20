@@ -50,12 +50,15 @@ return {
         -- calling `setup` is optional for customization
         require('fzf-lua').setup({
             winopts = {
+                -- row = 1.0,
+                -- col = 0.0,
+                -- height = 0.5,
+                -- width = 1.0,
                 height = 0.9, -- window height
                 width = 0.9, -- window width
                 row = 0.45, -- window row position (0=top, 1=bottom)
-                -- Backdrop opacity, 0 is fully opaque, 100 is fully transparent (i.e. disabled)
-                backdrop = 80,
-                title = 'Fzf-lua',
+                backdrop = 100,
+                title = 'Searching...',
                 title_pos = 'center', -- 'left', 'center' or 'right',
             },
             fzf_opts = {

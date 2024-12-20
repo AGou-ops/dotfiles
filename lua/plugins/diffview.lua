@@ -4,6 +4,7 @@ local M = {
     dependencies = {
         'nvim-lua/plenary.nvim',
     },
+    enabled = false,
     keys = {
         { '<leader>dv', '<cmd>DiffviewOpen<cr>', desc = 'Open DiffView for git' },
         { '<leader>dc', '<cmd>DiffviewClose<cr>', desc = 'Close DiffView for git' },

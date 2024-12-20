@@ -220,16 +220,16 @@ for _, group in ipairs(vim.fn.getcompletion('@lsp', 'highlight')) do
     vim.api.nvim_set_hl(0, group, {})
 end
 
-vim.api.nvim_create_autocmd('BufRead', {
-    callback = function(ev)
-        if vim.bo[ev.buf].buftype == 'quickfix' then
-            vim.schedule(function()
-                vim.cmd([[cclose]])
-                vim.cmd([[Trouble qflist open]])
-            end)
-        end
-    end,
-})
+-- vim.api.nvim_create_autocmd('BufRead', {
+--     callback = function(ev)
+--         if vim.bo[ev.buf].buftype == 'quickfix' then
+--             vim.schedule(function()
+--                 vim.cmd([[cclose]])
+--                 vim.cmd([[Trouble qflist open]])
+--             end)
+--         end
+--     end,
+-- })
 
 -- auto header
 local function SetTitle()
