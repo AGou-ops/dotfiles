@@ -173,15 +173,6 @@ for group, commands in pairs(augroups) do
     end
 end
 
--- auto toggle wrap when split mutil window or goto single window.
--- vim.api.nvim_create_autocmd({ "WinNew", "WinClosed", "WinEnter" }, {
---     group = vim.api.nvim_create_augroup("on_demand_wrap", {}),
---     callback = function()
---         local should_wrap = vim.api.nvim_win_get_width(0) ~= vim.o.columns
---         vim.api.nvim_win_set_option(0, "wrap", should_wrap)
---     end,
--- })
-
 -- go to last loc when opening a buffer
 vim.api.nvim_create_autocmd('BufReadPost', {
     callback = function()
@@ -219,68 +210,3 @@ vim.api.nvim_create_autocmd('LspAttach', {
 for _, group in ipairs(vim.fn.getcompletion('@lsp', 'highlight')) do
     vim.api.nvim_set_hl(0, group, {})
 end
-
--- vim.api.nvim_create_autocmd('BufRead', {
---     callback = function(ev)
---         if vim.bo[ev.buf].buftype == 'quickfix' then
---             vim.schedule(function()
---                 vim.cmd([[cclose]])
---                 vim.cmd([[Trouble qflist open]])
---             end)
---         end
---     end,
--- })
-
--- auto header
-local function SetTitle()
-    local ext = vim.fn.expand('%:e') -- 获取文件扩展名
-
-    if ext == 'sh' then
-        local lines = {
-            '#!/usr/bin/env bash',
-            '#',
-            '#**************************************************',
-            '# Author:         AGou-ops                        *',
-            '# Description:                                 *',
-            '# Date:             ' .. os.date('%Y-%m-%d') .. '                   *',
-            '# Copyright ' .. os.date('%Y') .. ' by AGou-ops. All Rights Reserved  *',
-            '#**************************************************',
-            '',
-            '',
-        }
-        vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
-    elseif ext == 'py' then
-        local lines = {
-            '#!/usr/bin/env python3',
-            '# -*- coding: utf-8 -*-',
-            '',
-            '',
-        }
-        vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
-    end
-end
-
-vim.api.nvim_create_autocmd('BufNewFile', {
-    pattern = { '*.sh', '*.py' },
-    callback = SetTitle,
-})
-
-vim.api.nvim_create_autocmd('BufNewFile', {
-    pattern = '*',
-    command = 'normal G',
-})
-
-vim.api.nvim_create_autocmd('LspProgress', {
-    ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
-    callback = function(ev)
-        local spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' }
-        vim.notify(vim.lsp.status(), 'info', {
-            id = 'lsp_progress',
-            title = 'LSP Progress',
-            opts = function(notif)
-                notif.icon = ev.data.params.value.kind == 'end' and ' '
-                    or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
-            end,
-        })
-    end,
-})
