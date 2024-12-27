@@ -484,4 +484,27 @@ return {
             highlight = 'Goplements',
         },
     },
+    {
+        'MagicDuck/grug-far.nvim',
+        config = function()
+            vim.g.maplocalleader = ','
+            require('grug-far').setup({})
+        end,
+        keys = {
+            {
+                '<leader>wr',
+                function()
+                    require('grug-far').open({ prefills = { paths = vim.fn.expand('%') } })
+                end,
+                desc = 'Find and Replace word in current file.',
+            },
+            {
+                '<leader>wR',
+                function()
+                    require('grug-far').open()
+                end,
+                desc = 'Find and Replace word in whole project.',
+            },
+        },
+    },
 }
