@@ -132,6 +132,7 @@ augroups.quit = {
             'spectre_panel',
             'neotest-output',
             'blame',
+            'grug-far',
         },
         callback = function(event)
             vim.bo[event.buf].buflisted = false
