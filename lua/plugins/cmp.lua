@@ -2,8 +2,6 @@
 local M = {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
-    -- enabled = false,
-    -- lazy = false,
     dependencies = {
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-buffer',
@@ -13,13 +11,6 @@ local M = {
         'saadparwaiz1/cmp_luasnip',
         'octaltree/cmp-look',
         'tzachar/cmp-tabnine',
-        {
-            'Exafunction/codeium.nvim',
-            enabled = false,
-            cmd = 'Codeium',
-            build = ':Codeium Auth',
-            opts = {},
-        },
     },
 }
 
@@ -37,9 +28,6 @@ function M.config()
             and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s')
                 == nil
     end
-
-    -- use mireq/luasnip-snippets instead
-    -- require('luasnip.loaders.from_vscode').lazy_load({ paths = '~/.config/nvim/my_snippets' })
 
     cmp.setup({
         enabled = function()
@@ -274,18 +262,6 @@ function M.config()
             },
         },
     })
-
-    -- require("cmp").setup.cmdline(":", {
-    --     sources = {
-    --         { name = "cmdline", max_item_count = 10 },
-    --     },
-    -- })
-    -- require("cmp").setup.cmdline("/", {
-    --     sources = {
-    --         { name = "buffer" },
-    --     },
-    -- })
-    --
 end
 
 return M
