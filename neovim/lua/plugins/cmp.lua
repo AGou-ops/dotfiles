@@ -225,6 +225,7 @@ function M.config()
             --     group_index = 1,
             --     priority = 100,
             -- },
+            { name = 'codecompanion' },
             { name = 'nvim_lsp', priority = 50 },
             { name = 'cmp_tabnine', priority = 90 },
             { name = 'luasnip', priority = 100 },
