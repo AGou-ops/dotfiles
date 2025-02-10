@@ -1,8 +1,18 @@
+---@diagnostic disable: undefined-field
 local M = {
     'folke/todo-comments.nvim',
     ft = { 'go', 'lua' },
     dependencies = {
         'nvim-lua/plenary.nvim',
+    },
+    keys = {
+        {
+            '<leader>td',
+            function()
+                Snacks.picker.todo_comments()
+            end,
+            desc = 'Todo',
+        },
     },
 }
 
@@ -40,7 +50,7 @@ function M.config()
             exclude = {}, -- list of file types to exclude highlighting
         },
         -- list of named colors where we try to extract the guifg from the
-        -- list of hilight groups or use the hex color if hl not found as a fallback
+        -- list of highlight groups or use the hex color if hl not found as a fallback
         colors = {
             error = { 'DiagnosticError', 'ErrorMsg', '#DC2626' },
             warning = { 'DiagnosticWarning', 'WarningMsg', '#FBBF24' },

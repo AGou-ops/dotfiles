@@ -51,15 +51,6 @@ return {
             })
         end,
     },
-    { ---- A markdonw online real-time preview plugin.
-        'iamcco/markdown-preview.nvim',
-        build = 'cd app && npm install',
-        enabled = false,
-        config = function()
-            vim.g.mkdp_filetypes = { 'markdown' }
-        end,
-        ft = { 'markdown' },
-    },
     { ---- Read or write file with sudo.
         'lambdalisue/suda.vim',
         event = 'VeryLazy',
@@ -103,7 +94,7 @@ return {
         dependencies = 'nvim-treesitter/nvim-treesitter',
         config = true,
     },
-    -- { ---- Quikly comment plugin.
+    -- { ---- Quickly comment plugin.
     --     'numToStr/Comment.nvim',
     --     event = 'VeryLazy',
     --     config = function()
@@ -128,16 +119,6 @@ return {
         'mbbill/undotree',
         event = 'VeryLazy',
     },
-    { ---- Just a translate plugin.
-        'voldikss/vim-translator',
-        event = 'VeryLazy',
-        enabled = false,
-        config = function()
-            vim.cmd([[
-               let g:translator_target_lang = 'zh'
-               ]])
-        end,
-    },
     { ---- Format file.
         'sbdchd/neoformat',
         event = 'VeryLazy',
@@ -152,37 +133,9 @@ return {
        " augroup END
        " " ignore error
        let g:neoformat_only_msg_on_error = 1
-    let g:neoformat_enabled_go = ['goimports', 'gofumpt' ]
-    let g:neoformat_enabled_lua = ['stylua']
+       let g:neoformat_enabled_go = ['goimports', 'gofumpt' ]
+       let g:neoformat_enabled_lua = ['stylua']
             ]])
-        end,
-    },
-    { ---- > An efficient fuzzy finder that helps to locate files, buffers, mrus, gtags, etc. on the fly for both vim and neovim.
-        'Yggdroot/LeaderF',
-        enabled = false,
-        event = 'VeryLazy',
-        config = function()
-            vim.cmd([[
-               let g:Lf_HideHelp = 1
-               let g:Lf_UseCache = 0
-               let g:Lf_UseVersionControlTool = 0
-               let g:Lf_IgnoreCurrentBufferName = 1
-               " Show icons, icons are shown by default
-               let g:Lf_ShowDevIcons = 1
-               " popup mode
-               let g:Lf_WindowPosition = 'popup'
-               let g:Lf_PreviewInPopup = 1
-               let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
-               let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
-               let g:Lf_WildIgnore = {
-                   \ 'dir': ['.git', 'node_modules'],
-                   \ 'file': []
-                   \}
-
-                   let g:Lf_RootMarkers = ['.git', '.gitignore', 'node_modules', 'go.mod']
-                   " mode explain: https://github.com/Yggdroot/LeaderF/blob/master/doc/leaderf.txt#L485-L497
-                   let g:Lf_WorkingDirectoryMode = 'A'
-               ]])
         end,
     },
     { 'williamboman/mason-lspconfig.nvim' },
@@ -284,107 +237,6 @@ return {
         ft = { 'lua', 'go' },
         config = true,
     },
-    { ---- session manager
-        'Shatur/neovim-session-manager',
-        enabled = false,
-        event = 'VeryLazy',
-        keys = {
-            {
-                '<leader>ss',
-                '<cmd>SessionManager save_current_session<CR>',
-                desc = 'save session',
-            },
-            {
-                '<leader>sl',
-                '<cmd>SessionManager load_last_session<CR>',
-                desc = 'load last session',
-            },
-            {
-                '<leader>sc',
-                '<cmd>SessionManager load_session<CR>',
-                desc = 'load session',
-            },
-            {
-                '<leader>sd',
-                '<cmd>SessionManager delete_session<CR>',
-                desc = 'delete session',
-            },
-        },
-        opts = function()
-            return {
-                autoload_mode = require('session_manager.config').AutoloadMode.Disabled,
-                autosave_last_session = false,
-            }
-        end,
-    },
-    { -- go implement tool
-        'edolphin-ydf/goimpl.nvim',
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-            'nvim-lua/popup.nvim',
-            'nvim-telescope/telescope.nvim',
-            'nvim-treesitter/nvim-treesitter',
-        },
-        ft = 'go',
-        enabled = false,
-        config = function()
-            vim.api.nvim_set_keymap(
-                'n',
-                '<leader>im',
-                [[<cmd>lua require'telescope'.extensions.goimpl.goimpl{}<CR>]],
-                { noremap = true, silent = true }
-            )
-            require('telescope').load_extension('goimpl')
-        end,
-    },
-    { -- Batch replacement tool
-        'AckslD/muren.nvim',
-        enabled = false,
-        config = true,
-        event = 'VeryLazy',
-        cmd = 'MurenToggle',
-        keys = {
-            {
-                '<leader>re',
-                function()
-                    vim.cmd([[MurenToggle]])
-                end,
-                desc = 'Toggle muren UI',
-            },
-        },
-    },
-    {
-        'dgagn/diagflow.nvim',
-        event = 'VeryLazy',
-        enabled = false,
-        ft = { 'go', 'lua' },
-        config = function()
-            require('diagflow').setup({
-                enable = true,
-                max_width = 60, -- The maximum width of the diagnostic messages
-                severity_colors = { -- The highlight groups to use for each diagnostic severity level
-                    error = 'DiagnosticFloatingError',
-                    warning = 'DiagnosticFloatingWarning',
-                    info = 'DiagnosticFloatingInfo',
-                    hint = 'DiagnosticFloatingHint',
-                },
-                gap_size = 1,
-                scope = 'line', -- 'cursor', 'line'
-                padding_top = 0,
-            })
-        end,
-    },
-    { -- picgo markdown
-        'askfiy/nvim-picgo',
-        enabled = false,
-        ft = { 'md', 'markdown' },
-        config = function()
-            require('nvim-picgo').setup({
-                notice = 'echo',
-                image_name = true,
-            })
-        end,
-    },
     { -- go test auto generation tool
         'yanskun/gotests.nvim',
         ft = 'go',
@@ -396,81 +248,12 @@ return {
         'folke/neodev.nvim',
         opts = {},
     },
-    { -- git tui tool
-        'NeogitOrg/neogit',
-        dependencies = 'nvim-lua/plenary.nvim',
-        event = 'VeryLazy',
-        enabled = false,
-        config = function()
-            require('neogit').setup({})
-        end,
-    },
     { -- highlight text when undo or redo
         'tzachar/highlight-undo.nvim',
         event = 'VeryLazy',
         config = function()
             require('highlight-undo').setup({})
         end,
-    },
-    { -- Apply highlights in different modes and operators, active and inactive windows.
-        'rasulomaroff/reactive.nvim',
-        event = 'VeryLazy',
-        enabled = false,
-        config = function()
-            require('reactive').setup({
-                builtin = {
-                    cursorline = true,
-                    cursor = true,
-                    modemsg = true,
-                },
-            })
-        end,
-    },
-    { -- auto close lsp server when losing focus. ( save mem )
-        'hinell/lsp-timeout.nvim',
-        lazy = false,
-        enabled = false,
-        dependencies = { 'neovim/nvim-lspconfig' },
-        init = function()
-            vim.g.lspTimeoutConfig = {
-                stopTimeout = 1000 * 60 * 5, -- ms, timeout before stopping all LSPs
-                startTimeout = 1000 * 10, -- ms, timeout before restart
-                silent = false, -- true to suppress notifications
-                filetypes = {
-                    ignore = { -- filetypes to ignore; empty by default
-                        -- lsp-timeout is disabled completely
-                    }, -- for these filetypes
-                },
-            }
-        end,
-    },
-    { -- Tint inactive windows in Neovim using window-local highlight namespaces.
-        'levouh/tint.nvim',
-        event = 'VeryLazy',
-        enabled = false,
-        config = function()
-            require('tint').setup({
-                tint = -3, -- Darken colors, use a positive value to brighten
-                saturation = 0.8, -- Saturation to preserve
-                transforms = require('tint').transforms.SATURATE_TINT, -- Showing default behavior, but value here can be predefined set of transforms
-                tint_background_colors = true, -- Tint background portions of highlight groups
-                highlight_ignore_patterns = { 'WinSeparator', 'Status.*' }, -- Highlight group patterns to ignore, see `string.find`
-            })
-        end,
-    },
-    { -- sub stitute
-        'chrisgrieser/nvim-rip-substitute',
-        enabled = false,
-        keys = {
-            {
-                '<leader>fs',
-                function()
-                    require('rip-substitute').sub()
-                end,
-                mode = { 'n', 'x' },
-                desc = ' rip substitute',
-            },
-        },
     },
     { -- show golang implements
         'maxandron/goplements.nvim',

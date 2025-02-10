@@ -33,6 +33,48 @@ return {
             end,
             desc = 'Command History',
         },
+        {
+            'gd',
+            function()
+                Snacks.picker.lsp_definitions()
+            end,
+            desc = 'Goto Definition',
+        },
+        {
+            'gD',
+            function()
+                Snacks.picker.lsp_declarations()
+            end,
+            desc = 'Goto Declaration',
+        },
+        {
+            'gi',
+            function()
+                Snacks.picker.lsp_implementations()
+            end,
+            desc = 'Goto Implementation',
+        },
+        {
+            'gy',
+            function()
+                Snacks.picker.lsp_type_definitions()
+            end,
+            desc = 'Goto T[y]pe Definition',
+        },
+        {
+            '<leader>lf',
+            function()
+                Snacks.picker.lsp_symbols()
+            end,
+            desc = 'LSP Symbols',
+        },
+        {
+            '<leader>lF',
+            function()
+                Snacks.picker.lsp_workspace_symbols()
+            end,
+            desc = 'LSP Workspace Symbols',
+        },
     },
     init = function()
         vim.api.nvim_create_autocmd('User', {
