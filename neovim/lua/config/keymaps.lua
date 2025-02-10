@@ -107,16 +107,10 @@ bind('n', '<leader>gg', '<CMD>lua _Lazygit_toggle()<CR>', opts)
 
 -- vim-translator
 -- bind('n', '<leader>ts', '<CMD>TranslateW<CR>', opts)
---
 
 -- treesitter
 bind('n', '<leader>hd', '<CMD>TSDisable highlight<CR>', opts)
 bind('n', '<leader>he', '<CMD>TSEnable highlight<CR>', opts)
-
--- leaderF
-bind('n', '<leader>lg', '<CMD>LeaderfRgInteractive<CR>', opts)
-bind('n', '<leader>lf', '<CMD>LeaderfFile<CR>', opts)
-bind('n', '<leader>lF', '<CMD>LeaderfFunctionAll<CR>', opts)
 
 -- telescope-dap
 -- bind('n', '<leader>dcc', '<CMD>Telescope dap commands<CR>', opts)

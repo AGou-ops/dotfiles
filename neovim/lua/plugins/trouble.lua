@@ -2,7 +2,6 @@ local M = {
     'folke/trouble.nvim',
     ft = { 'lua', 'go' },
     event = 'VeryLazy',
-    enabled = false,
     keys = {
         {
             '<leader>xd',
