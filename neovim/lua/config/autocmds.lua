@@ -24,8 +24,8 @@ autocmd FileChangedShellPost *
             \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
 " toggle number style when input mode changed.
-autocmd InsertEnter * set norelativenumber number    " use absolute line number.
-autocmd InsertLeave * set relativenumber
+"autocmd InsertEnter * set norelativenumber number    " use absolute line number.
+"autocmd InsertLeave * set relativenumber
 
 autocmd FileType zsh set nowrap
 autocmd FileType dashboard :NvimTreeToggle
@@ -211,3 +211,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 for _, group in ipairs(vim.fn.getcompletion('@lsp', 'highlight')) do
     vim.api.nvim_set_hl(0, group, {})
 end
+
+-- auto toggle file explorer when startup nvim
+vim.cmd([[
+autocmd VimEnter * execute "normal \<M-n>"
+]])
