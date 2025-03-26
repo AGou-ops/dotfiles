@@ -27,6 +27,13 @@ return {
     },
     keys = {
         {
+            '<M-n>',
+            function()
+                Snacks.picker.explorer({})
+            end,
+            desc = 'Toggle file explorer',
+        },
+        {
             '<leader>:',
             function()
                 Snacks.picker.command_history()
