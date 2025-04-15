@@ -9,6 +9,9 @@ vim.o.inccommand = 'nosplit'
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menu,menuone,noselect'
 
+-- Disable laststatus
+vim.o.laststatus = 0
+
 -- Enable highlight on search
 vim.o.hlsearch = true
 
@@ -151,7 +154,7 @@ vim.o.foldenable = true
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
--- vim.o.foldcolumn = '1'
+vim.o.foldcolumn = '1'
 
 -- Use ripgrep as grep tool
 vim.o.grepprg = 'rg --vimgrep --no-heading'

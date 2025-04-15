@@ -6,14 +6,18 @@ return {
     opts = {
         bigfile = { enabled = true },
         dashboard = { enabled = false },
-        explorer = { enabled = true },
+        explorer = { enabled = false },
         indent = { enabled = false },
-        input = { enabled = true },
+        input = {
+            enabled = true,
+        },
         notifier = {
             enabled = true,
-            timeout = 3000,
+            timeout = 1000,
         },
-        picker = { enabled = true },
+        picker = {
+            enabled = true,
+        },
         quickfile = { enabled = true },
         scope = { enabled = false },
         scroll = { enabled = false },

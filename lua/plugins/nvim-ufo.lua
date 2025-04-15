@@ -1,13 +1,16 @@
 return {
     'kevinhwang91/nvim-ufo',
-    dependencies = 'kevinhwang91/promise-async',
+    dependencies = {
+        'kevinhwang91/promise-async',
+        'luukvbaal/statuscol.nvim',
+    },
     enabled = true,
     event = 'VeryLazy',
     opts = {
         -- INFO: Uncomment to use treeitter as fold provider, otherwise nvim lsp is used
-        -- provider_selector = function(bufnr, filetype, buftype)
-        --   return { "treesitter", "indent" }
-        -- end,
+        provider_selector = function(bufnr, filetype, buftype)
+            return { 'treesitter', 'indent' }
+        end,
         open_fold_hl_timeout = 400,
         close_fold_kinds_for_ft = { default = { 'imports', 'comment' } },
 
@@ -33,6 +36,15 @@ return {
         vim.o.foldenable = true
     end,
     config = function(_, opts)
+        local builtin = require('statuscol.builtin')
+        require('statuscol').setup({
+            relculright = true,
+            segments = {
+                { text = { builtin.foldfunc }, click = 'v:lua.ScFa' },
+                { text = { '%s' }, click = 'v:lua.ScSa' },
+                { text = { builtin.lnumfunc, ' ' }, click = 'v:lua.ScLa' },
+            },
+        })
         local handler = function(virtText, lnum, endLnum, width, truncate)
             local newVirtText = {}
             local totalLines = vim.api.nvim_buf_line_count(0)
