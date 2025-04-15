@@ -89,7 +89,8 @@ function M.config()
         update_in_insert = false,
         underline = true,
         severity_sort = true,
-        virtual_text = true,
+        virtual_text = false,
+        virtual_lines = true,
     })
 
     -- -------------------------- common lsp server ----------------------

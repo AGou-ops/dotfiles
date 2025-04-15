@@ -213,6 +213,6 @@ for _, group in ipairs(vim.fn.getcompletion('@lsp', 'highlight')) do
 end
 
 -- auto toggle file explorer when startup nvim
-vim.cmd([[
-autocmd VimEnter * execute "normal \<M-n>"
-]])
+-- vim.cmd([[
+-- autocmd VimEnter * execute "normal \<M-n>"
+-- ]])
