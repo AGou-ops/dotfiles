@@ -63,29 +63,27 @@ function M.config()
     }
 
     -- -------------------- general settings -- --------------------
-    vim.fn.sign_define('DiagnosticSignError', {
-        texthl = 'DiagnosticSignError',
-        text = ' ✗',
-        numhl = 'DiagnosticSignError',
-    })
-    vim.fn.sign_define('DiagnosticSignWarn', {
-        texthl = 'DiagnosticSignWarn',
-        text = ' ❢',
-        numhl = 'DiagnosticSignWarn',
-    })
-    vim.fn.sign_define('DiagnosticSignHint', {
-        texthl = 'DiagnosticSignHint',
-        text = ' ',
-        numhl = 'DiagnosticSignHint',
-    })
-    vim.fn.sign_define('DiagnosticSignInfo', {
-        texthl = 'DiagnosticSignInfo',
-        text = ' 𝓲',
-        numhl = 'DiagnosticSignInfo',
-    })
-
     vim.diagnostic.config({
-        signs = true,
+        signs = {
+            text = {
+                [vim.diagnostic.severity.INFO] = ' 𝓲',
+                [vim.diagnostic.severity.WARN] = ' ❢',
+                [vim.diagnostic.severity.HINT] = ' ',
+                [vim.diagnostic.severity.ERROR] = ' ✗',
+            },
+            linehl = {
+                [vim.diagnostic.severity.INFO] = 'DiagnosticSignInfo',
+                [vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
+                [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint',
+                [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
+            },
+            numhl = {
+                [vim.diagnostic.severity.INFO] = 'DiagnosticSignInfo',
+                [vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
+                [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint',
+                [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
+            },
+        },
         update_in_insert = false,
         underline = true,
         severity_sort = true,
