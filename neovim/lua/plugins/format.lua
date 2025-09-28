@@ -18,7 +18,7 @@ function M.config()
         notify_on_error = true,
 
         formatters_by_ft = {
-            lua = { 'stylua' },
+            -- lua = { 'stylua' },
             -- Conform will run multiple formatters sequentially
             go = { 'goimports', 'gofumpt' },
             -- Use a sub-list to run only the first available formatter

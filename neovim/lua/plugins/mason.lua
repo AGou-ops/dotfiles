@@ -1,5 +1,5 @@
 local M = {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     event = 'VeryLazy',
 }
 
@@ -9,7 +9,7 @@ M.tools = {
     'luacheck',
     'shellcheck',
     'shfmt',
-	'lua-language-server',
+    'lua-language-server',
 }
 
 function M.check()

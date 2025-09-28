@@ -134,8 +134,8 @@ return {
        " " ignore error
        let g:neoformat_only_msg_on_error = 1
        let g:neoformat_enabled_go = ['goimports', 'gofumpt' ]
-       let g:neoformat_enabled_lua = ['stylua']
-            ]])
+       "let g:neoformat_enabled_lua = ['stylua']
+       "     ]])
         end,
     },
     { 'williamboman/mason-lspconfig.nvim' },
