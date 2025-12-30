@@ -2,6 +2,7 @@ local M = {
     'gelguy/wilder.nvim',
     build = ':UpdateRemotePlugins',
     event = 'VeryLazy',
+    enabled = true
 }
 
 function M.config()
@@ -21,7 +22,7 @@ function M.config()
     })
 
     local highlighters = {
-        wilder.pcre2_highlighter(),
+        -- wilder.pcre2_highlighter(),
         wilder.basic_highlighter(),
     }
 

@@ -169,7 +169,7 @@ vim.opt.backupdir = vim.fn.stdpath('state') .. '/backup'
 vim.opt.undodir = vim.fn.stdpath('state') .. '/undo'
 
 -- Set python3 interpreter
-vim.g.python3_host_prog = '/opt/local/bin/python3'
+vim.g.python3_host_prog = '/Users/mingday/.pyenv/shims/python3'
 
 -- Disable some builtin providers
 vim.g.loaded_python_provider = 0

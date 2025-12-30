@@ -2,6 +2,7 @@ return {
     'azorng/goose.nvim',
     branch = 'main',
     event = 'VeryLazy',
+	enabled = false,
     dependencies = {
         'nvim-lua/plenary.nvim',
         {
