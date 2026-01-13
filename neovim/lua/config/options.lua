@@ -181,3 +181,6 @@ vim.g.loaded_netrw = 1
 
 -- ctrl-o/ctrl-i jump options
 vim.opt.jumpoptions = 'stack,view'
+
+-- Set win border style
+vim.o.winborder = "rounded"
