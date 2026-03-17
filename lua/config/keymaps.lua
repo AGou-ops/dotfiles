@@ -8,7 +8,7 @@ local map = vim.keymap.set
 map({ "n", "v" }, ";", function()
   vim.api.nvim_input(":")
 end, { silent = true, desc = "Command Mode" })
-map({ "n" }, "<space>", "/\\v", { silent = true, nowait = true, desc = "Search" })
+map({ "n" }, "<space>", "/\\v", { nowait = true, desc = "Search" })
 map("n", "U", "<C-r>", { silent = true, desc = "Redo" })
 map("c", "W", "w", { silent = true, desc = "Write" })
 map("c", "WQ", "wq", { silent = true, desc = "Write and Quit" })
