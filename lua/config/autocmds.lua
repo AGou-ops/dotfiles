@@ -10,25 +10,25 @@
 local go_imports_group = vim.api.nvim_create_augroup("go_organize_imports", { clear = true })
 
 local function go_organize_imports(bufnr)
-  local params = vim.lsp.util.make_range_params(0, "utf-8")
-  params.context = { only = { "source.organizeImports" }, diagnostics = {} }
+    local params = vim.lsp.util.make_range_params(0, "utf-8")
+    params.context = { only = { "source.organizeImports" }, diagnostics = {} }
 
-  local results = vim.lsp.buf_request_sync(bufnr, "textDocument/codeAction", params, 1000)
-  if not results then
-    return
-  end
-
-  for client_id, res in pairs(results) do
-    for _, action in ipairs(res.result or {}) do
-      if action.edit then
-        local client = vim.lsp.get_client_by_id(client_id)
-        vim.lsp.util.apply_workspace_edit(action.edit, (client and client.offset_encoding) or "utf-16")
-      end
-      if action.command then
-        vim.lsp.buf.execute_command(action.command)
-      end
+    local results = vim.lsp.buf_request_sync(bufnr, "textDocument/codeAction", params, 1000)
+    if not results then
+        return
     end
-  end
+
+    for client_id, res in pairs(results) do
+        for _, action in ipairs(res.result or {}) do
+            if action.edit then
+                local client = vim.lsp.get_client_by_id(client_id)
+                vim.lsp.util.apply_workspace_edit(action.edit, (client and client.offset_encoding) or "utf-16")
+            end
+            if action.command then
+                vim.lsp.buf.execute_command(action.command)
+            end
+        end
+    end
 end
 
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -36,5 +36,35 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.go",
   callback = function(event)
     go_organize_imports(event.buf)
+  end,
+})
+
+local autosave_group = vim.api.nvim_create_augroup("autosave_on_focus_lost", { clear = true })
+
+local function should_autosave(bufnr)
+  if not vim.api.nvim_buf_is_valid(bufnr) then
+    return false
+  end
+  if vim.bo[bufnr].buftype ~= "" then
+    return false
+  end
+  if not vim.bo[bufnr].modifiable or vim.bo[bufnr].readonly then
+    return false
+  end
+  if vim.api.nvim_buf_get_name(bufnr) == "" then
+    return false
+  end
+  return vim.bo[bufnr].modified
+end
+
+vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
+  group = autosave_group,
+  callback = function(event)
+    if not should_autosave(event.buf) then
+      return
+    end
+    vim.api.nvim_buf_call(event.buf, function()
+      vim.cmd("silent update")
+    end)
   end,
 })

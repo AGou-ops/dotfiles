@@ -5,7 +5,9 @@
 local map = vim.keymap.set
 
 -- Basic keymaps from external config.
-map({ "n", "v" }, ";", ":", { silent = true, nowait = true, desc = "Command Mode" })
+map({ "n", "v" }, ";", function()
+  vim.api.nvim_input(":")
+end, { silent = true, desc = "Command Mode" })
 map({ "n" }, "<space>", "/\\v", { silent = true, nowait = true, desc = "Search" })
 map("n", "U", "<C-r>", { silent = true, desc = "Redo" })
 map("c", "W", "w", { silent = true, desc = "Write" })
@@ -73,4 +75,3 @@ vim.keymap.set('n', '<leader>lz', '<cmd>:Lazy<cr>')
 vim.keymap.set('n', '<leader>lu', '<cmd>:Lazy update<cr>')
 map("n", "<leader>lz", "<cmd>:Lazy<cr>", { silent = true, desc = "Lazy plugin manager" })
 map("n", "<leader>lu", "<cmd>:Lazy update<cr>", { silent = true, desc = "Lazy plugin update" })
-
