@@ -1,6 +1,7 @@
 {
   "extras": [
-
+    "plugins.extras.ai.claudecode",
+    "plugins.extras.ai.codex"
   ],
   "install_version": 8,
   "news": {
