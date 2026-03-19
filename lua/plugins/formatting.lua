@@ -19,6 +19,15 @@ end
 
 return {
   {
+    "mason-org/mason.nvim",
+    opts = function(_, opts)
+      opts.ensure_installed = opts.ensure_installed or {}
+      if not vim.tbl_contains(opts.ensure_installed, "prettier") then
+        table.insert(opts.ensure_installed, "prettier")
+      end
+    end,
+  },
+  {
     "stevearc/conform.nvim",
     dependencies = { "mason.nvim" },
     lazy = true,
@@ -74,6 +83,10 @@ return {
           lua = { "stylua" },
           fish = { "fish_indent" },
           sh = { "shfmt" },
+          json = { "prettier" },
+          jsonc = { "prettier" },
+          json5 = { "prettier" },
+          yaml = { "prettier" },
         },
         -- The options you set here will be merged with the builtin formatters.
         -- You can also define any custom formatters here.

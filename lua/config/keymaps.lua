@@ -4,9 +4,11 @@
 
 local map = vim.keymap.set
 
+pcall(vim.keymap.del, "n", "<BS>")
+
 -- Basic keymaps from external config.
 map({ "n", "v" }, ";", function()
-  vim.api.nvim_input(":")
+    vim.api.nvim_input(":")
 end, { silent = true, desc = "Command Mode" })
 map({ "n" }, "<space>", "/\\v", { nowait = true, desc = "Search" })
 map("n", "U", "<C-r>", { silent = true, desc = "Redo" })
@@ -60,18 +62,18 @@ map("n", "<leader>hd", "<Cmd>TSDisable highlight<CR>", { silent = true, desc = "
 map("n", "<leader>he", "<Cmd>TSEnable highlight<CR>", { silent = true, desc = "TS Highlight On" })
 map("n", "<leader>oh", ":UndotreeToggle <BAR> :UndotreeFocus<CR>", { silent = true, desc = "Undotree Toggle" })
 map(
-  "n",
-  "<leader>nd",
-  ':lua require("plenary.profile").start("profile.log", { flame = true })<CR>',
-  { silent = true, desc = "Start Lua Profiling" }
+    "n",
+    "<leader>nd",
+    ':lua require("plenary.profile").start("profile.log", { flame = true })<CR>',
+    { silent = true, desc = "Start Lua Profiling" }
 )
 map(
-  "n",
-  "<leader>ns",
-  ':lua require("plenary.profile").stop()<CR> | :!flamegraph.pl profile.log > flame.svg && rm -f profile.log && open flame.svg<CR>',
-  { silent = true, desc = "Stop Lua Profiling" }
+    "n",
+    "<leader>ns",
+    ':lua require("plenary.profile").stop()<CR> | :!flamegraph.pl profile.log > flame.svg && rm -f profile.log && open flame.svg<CR>',
+    { silent = true, desc = "Stop Lua Profiling" }
 )
-vim.keymap.set('n', '<leader>lz', '<cmd>:Lazy<cr>')
-vim.keymap.set('n', '<leader>lu', '<cmd>:Lazy update<cr>')
+vim.keymap.set("n", "<leader>lz", "<cmd>:Lazy<cr>")
+vim.keymap.set("n", "<leader>lu", "<cmd>:Lazy update<cr>")
 map("n", "<leader>lz", "<cmd>:Lazy<cr>", { silent = true, desc = "Lazy plugin manager" })
 map("n", "<leader>lu", "<cmd>:Lazy update<cr>", { silent = true, desc = "Lazy plugin update" })
